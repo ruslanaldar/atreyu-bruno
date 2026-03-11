@@ -1,0 +1,49 @@
+info:
+  name: Create GREEN Ticket - ERP 59506975
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/api/productionplans/part-tickets/create/"
+  headers:
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "container_no": "wk-0002",
+          "pp_no": "60001929",
+          "erp_no": "59506975",
+          "station": "s01",
+          "sub_station": "s0102",
+          "completed_qty": "8.00",
+          "status": "green",
+          "emp_id": "212",
+          "emp_name": "Jia Honggang",
+          "unit_processing_time": "0.40",
+          "created_by": "quality_inspector_02",
+          "mo_no": "I-0709-0009",
+          "drawing_no": "30043109.00",
+          "man_seq": 1,
+          "notes": "GREEN ticket - 8 pieces completed successfully"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        if (res.getStatus() === 201) {
+            const response = res.getBody();
+            bru.setVar('green_ticket_id_2', response.part_ticket.id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

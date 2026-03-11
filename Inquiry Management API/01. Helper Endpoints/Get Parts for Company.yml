@@ -1,0 +1,52 @@
+info:
+  name: Get Parts for Company
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/parts/?company_id={{company_id}}"
+  params:
+    - name: company_id
+      value: "{{company_id}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Success Response
+    request:
+      url: "{{base_url}}/parts/?company_id={{company_id}}"
+      method: GET
+      params:
+        - name: company_id
+          value: "{{company_id}}"
+          type: query
+    response:
+      statusText: "200"
+      body:
+        type: text
+        data: |-
+          {
+            "company": {
+              "id": 1,
+              "name": "TechCorp Solutions",
+              "inquiry_number_cssc": "TC001"
+            },
+            "parts": [
+              {
+                "id": 1,
+                "part_number": "ENG-001",
+                "drawing_no": "DRW-001",
+                "description": "Engine Block Assembly",
+                "unit_price": "2500.00",
+                "status": "confirmed"
+              }
+            ],
+            "total": 1
+          }

@@ -1,0 +1,38 @@
+info:
+  name: Save Capacity Data
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/mpp/capacity/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "planning_date": "{{planning_date}}",
+          "capacity_data": {
+              "w06": {
+                  "w0601": {
+                      "name": "w0601",
+                      "emp_id": "164",
+                      "shift": "normal",
+                      "used": "400.00",
+                      "rem": 80,
+                      "cap": 480
+                  }
+              }
+          }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Save capacity data (triggers replanning)

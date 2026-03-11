@@ -1,0 +1,11 @@
+info:
+  name: Bulk Operations
+  type: folder
+  seq: 9
+
+request:
+  auth: inherit
+
+docs:
+  content: Bulk operations for handling multiple records
+  type: text/markdown

@@ -1,0 +1,32 @@
+info:
+  name: Update Inquiry Info
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: "{{base_url}}/inquiries/?inquiry_id={{inquiry_id}}&action=update_inquiry"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: inquiry_id
+      value: "{{inquiry_id}}"
+      type: query
+    - name: action
+      value: update_inquiry
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Updated description",
+        "inquiry_type": "serial"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

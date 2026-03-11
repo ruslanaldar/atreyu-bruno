@@ -1,0 +1,28 @@
+info:
+  name: POST Customer Add
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/{{prefix}}/customers/"
+  body:
+    type: json
+    data: |-
+      {
+        "full_name": "John Doe",
+        "birth_date": "1990-01-01",
+        "title_department": "Sales",
+        "email": "john.doe@example.com",
+        "company": {"id": 69},
+        "personal_number": "1234567890",
+        "phone_number": "+1234567890",
+        "fax": "+0987654321"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,28 @@
+info:
+  name: 07. Filter
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/delivery-types/?trasport_type=express&container_category=express_package&max_cost_factor=2.0&list_view"
+  params:
+    - name: trasport_type
+      value: express
+      type: query
+    - name: container_category
+      value: express_package
+      type: query
+    - name: max_cost_factor
+      value: "2.0"
+      type: query
+    - name: list_view
+      value: ""
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

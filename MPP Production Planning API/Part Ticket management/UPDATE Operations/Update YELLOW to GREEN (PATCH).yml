@@ -1,0 +1,27 @@
+info:
+  name: Update YELLOW to GREEN (PATCH)
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{base_url}}/api/productionplans/part-tickets/{{yellow_ticket_id}}/"
+  headers:
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "status": "green",
+          "notes": "YELLOW ticket updated to GREEN - quality issues resolved after rework"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

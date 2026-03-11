@@ -1,0 +1,31 @@
+info:
+  name: Update Inquiry Status
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: "{{base_url}}/inquiries/?inquiry_id={{inquiry_id}}&action=update_status"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: inquiry_id
+      value: "{{inquiry_id}}"
+      type: query
+    - name: action
+      value: update_status
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "status": "approved"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,104 @@
+opencollection: 1.0.0
+
+info:
+  name: Parts Management API
+
+request:
+  auth:
+    type: bearer
+    token: "{{auth_token}}"
+  variables:
+    - name: base_url
+      value: http://27.223.82.66:18080/api/parts
+    - name: part_id
+      value: "472"
+    - name: subpart_id
+      value: "1450"
+    - name: company_id
+      value: "67"
+    - name: equipment_id
+      value: 14c178f5-0e0c-4409-8ade-ae32802036c8
+    - name: part_number
+      value: "60001981"
+    - name: bom_id
+      value: "460"
+    - name: test_part_id
+      value: "477"
+    - name: station_id
+      value: 187d75d3-1145-43d7-b852-e2b8e92ab74e
+    - name: shape_type_id
+      value: "85"
+    - name: auth_token
+      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2ODAzNzQ2LCJpYXQiOjE3NTY3MTczNDYsImp0aSI6ImMxZmE0MjM1MDM0ODRiM2Q4OTk2YjgzMjE5MTM4OTE4IiwidXNlcl9pZCI6MX0.27mEZPfYXsWFNPqmUoCjBWpEo_AsGP9bA9pxtwTQpH0
+    - name: existing_shape_id
+      value: "1"
+    - name: workcenter_id
+      value: 77ddf626-274d-47e0-b1da-ea2898ed7a94
+    - name: shape_id
+      value: "13"
+  scripts:
+    - type: before-request
+      code: |-
+        // Auto-set common headers
+        if (!req.getHeaders().has('Accept')) {
+            req.getHeaders().add({
+                key: 'Accept',
+                value: 'application/json'
+            });
+        }
+
+        // Add authentication if token exists
+        const authToken = bru.getEnvVar('auth_token');
+        if (authToken && !req.getHeaders().has('Authorization')) {
+            req.getHeaders().add({
+                key: 'Authorization',
+                value: 'Bearer ' + authToken
+            });
+        }
+    - type: after-response
+      code: |-
+        // Basic response validation
+        test('Status code is successful', function () {
+            expect(res.getStatus()).to.be.oneOf([200, 201, 204]);
+        });
+
+        test('Response time is reasonable', function () {
+            expect(res.getResponseTime()).to.be.below(5000);
+        });
+
+        // Extract IDs from successful responses
+        if (res.getStatus() === 200 || res.getStatus() === 201) {
+            try {
+                const responseJson = res.getBody();
+                
+                // Extract various IDs for chaining requests
+                if (responseJson.id) {
+                    const url = req.getUrl().toString();
+                    if (url.includes('/parts/')) {
+                        bru.setEnvVar('part_id', responseJson.id);
+                    } else if (url.includes('/companies/')) {
+                        bru.setEnvVar('company_id', responseJson.id);
+                    }
+                }
+                
+                // Handle nested data structures
+                if (responseJson.data && responseJson.data.id) {
+                    const url = req.getUrl().toString();
+                    if (url.includes('/sub-parts/')) {
+                        bru.setEnvVar('subpart_id', responseJson.data.id);
+                    }
+                }
+            } catch (e) {
+                console.log('Could not parse JSON response');
+            }
+        }
+
+docs:
+  content: Complete API collection for Parts Management System with hierarchical SubParts, BOM, WorkSteps, Files, and Shape management
+  type: text/markdown
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

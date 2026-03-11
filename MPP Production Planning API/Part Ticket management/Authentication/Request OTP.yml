@@ -1,0 +1,25 @@
+info:
+  name: Request OTP
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/api/organization/categories/otp/request-otp/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "email": "ruslan.aldar@gmail.com",
+        "porpose": "login"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

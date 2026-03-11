@@ -1,0 +1,26 @@
+info:
+  name: "Example 1: Create Sample Inquiry"
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/inquiries/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "company": 61,
+        "inquiry_type": "sample",
+        "description": "Sample order for 50 engine blocks"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

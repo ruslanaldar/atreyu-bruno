@@ -1,0 +1,54 @@
+info:
+  name: 6. Bulk Shape Operations
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/api/parts/sub-parts/bulk_shape_operations/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "operations": [
+              {
+                  "action": "attach",
+                  "subpart_id": {{subpart_id}},
+                  "shape_id": {{existing_shape_id}}
+              },
+              {
+                  "action": "detach",
+                  "subpart_id": {{subpart_id_2}}
+              }
+          ]
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+            expect(res.getStatus()).to.equal(200);
+        });
+
+        test("Bulk operations completed", function () {
+            var jsonData = res.getBody();
+            expect(jsonData).to.have.property('successful_operations');
+            expect(jsonData).to.have.property('failed_operations');
+            expect(jsonData).to.have.property('results');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

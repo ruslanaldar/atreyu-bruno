@@ -1,0 +1,19 @@
+info:
+  name: 09. Delete by Query
+  type: http
+  seq: 10
+
+http:
+  method: DELETE
+  url: "{{base_url}}/inquiries/container-types/?id=27"
+  params:
+    - name: id
+      value: "27"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

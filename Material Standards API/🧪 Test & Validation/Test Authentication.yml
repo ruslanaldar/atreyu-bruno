@@ -1,0 +1,24 @@
+info:
+  name: Test Authentication
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{baseUrl}}/basics/materials/countries/?page_size=1"
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+  params:
+    - name: page_size
+      value: "1"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Simple request to test authentication

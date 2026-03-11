@@ -1,0 +1,11 @@
+info:
+  name: WORKFLOW 1 - Create Daily Production Plan
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: Complete workflow for creating daily production plan
+  type: text/markdown

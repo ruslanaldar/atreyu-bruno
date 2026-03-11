@@ -1,0 +1,22 @@
+info:
+  name: Validate Deliveries
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{base_url}}/inquiries/?inquiry_id={{inquiry_id}}&action=validate_deliveries"
+  params:
+    - name: inquiry_id
+      value: "{{inquiry_id}}"
+      type: query
+    - name: action
+      value: validate_deliveries
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,56 @@
+info:
+  name: 5. Detach Shape from SubPart Copy
+  type: http
+  seq: 14
+
+http:
+  method: POST
+  url: "{{base_url}}/api/parts/sub-parts/{{subpart_id}}/detach_shape/"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+      disabled: true
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+            expect(res.getStatus()).to.equal(200);
+        });
+
+        test("Shape detached successfully", function () {
+            var jsonData = res.getBody();
+            expect(jsonData).to.have.property('success');
+            expect(jsonData.success).to.be.true;
+            expect(jsonData).to.have.property('detached_shape');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 5. Detach Shape from SubPart
+    request:
+      url: "{{base_url}}/sub-parts/detach_shape_query/?subpart_id={{subpart_id"
+      method: POST
+      headers:
+        - name: Accept
+          value: application/json
+        - name: Authorization
+          value: Bearer {{auth_token}}
+          disabled: true
+      params:
+        - name: subpart_id
+          value: "{{subpart_id"
+          type: query
+    response:
+      body:
+        type: text
+        data: ""

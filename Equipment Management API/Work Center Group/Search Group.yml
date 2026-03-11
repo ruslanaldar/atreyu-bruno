@@ -1,0 +1,22 @@
+info:
+  name: Search Group
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/{{api_prefix}}/work-center-groups/?search=bending&ordering=-created_at"
+  params:
+    - name: search
+      value: bending
+      type: query
+    - name: ordering
+      value: -created_at
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,462 @@
+opencollection: 1.0.0
+
+info:
+  name: Inquiry Management API
+
+request:
+  variables:
+    - name: base_url
+      value: http://27.223.82.66:18080/api/orders
+    - name: inquiry_id
+      value: "24"
+    - name: company_id
+      value: "1"
+    - name: part_id
+      value: "1"
+    - name: schedule_id
+      value: "1"
+    - name: prefix
+      value: ""
+
+docs:
+  content: |-
+    # 📖 Frontend API Handbook
+
+    ## Production Planning - API Reference
+
+    ---
+
+    ## 🔧 Base Configuration
+
+    ```
+    javascriptconst API_BASE_URL = 'http://27.223.82.66:18000';
+    // Helper to build URLs with query parameters
+    function buildURL(endpoint, params = {}) {
+      const url = new URL(`${API_BASE_URL}${endpoint}`);
+      Object.keys(params).forEach(key => {
+        if (params[key] !== null && params[key] !== undefined) {
+          url.searchParams.append(key, params[key]);
+        }
+      });
+      return url.toString();
+    }
+
+     ```
+
+    ---
+
+    ## 📋 API Endpoints Reference
+
+    ### 1\. Helper Endpoints
+
+    #### Get All Companies
+
+    ```
+    javascriptGET /companies-list/
+    // Returns: List of all companies for dropdowns
+
+     ```
+
+    #### Get Parts for Company
+
+    ```
+    javascriptGET /parts-list/?company_id=1
+    // Returns: All parts belonging to specified company
+
+     ```
+
+    #### Get Status/Type Choices
+
+    ```
+    javascriptGET /inquiry-choices/
+    // Returns: Available status and inquiry type options
+
+     ```
+
+    ---
+
+    ### 2\. Inquiry Basic Operations
+
+    #### List All Inquiries
+
+    ``` json
+    javascriptGET /inquiries/
+    // Returns: All inquiries
+    // With filters:
+    GET /inquiries/?company_id=1&status=approved&inquiry_type=serial&search=engine
+    // Returns: Filtered inquiries
+
+     ```
+
+    #### Get Specific Inquiry
+
+    ```
+    javascriptGET /inquiries/?inquiry_id=5
+    // Returns: Complete inquiry details with parts and deliveries
+
+     ```
+
+    #### Create New Inquiry
+
+    ```
+    javascriptPOST /inquiries/
+    Body: {
+      "company": 1,
+      "inquiry_type": "sample",  // or "serial" or "one_time"
+      "description": "Order description"
+    }
+    // Action: Creates new inquiry, returns inquiry details
+
+     ```
+
+    ---
+
+    ### 3\. Parts Management
+
+    #### Add Parts to Inquiry
+
+    ```
+    javascriptPOST /inquiries/?inquiry_id=5&action=add_parts
+    Body: {
+      "parts": [
+        {
+          "part_id": "1",
+          "total_quantity": "100",
+          "notes": "Optional notes"
+        },
+        {
+          "part_id": "2", 
+          "total_quantity": "50"
+        }
+      ]
+    }
+    // Action: Adds parts with quantities to inquiry
+
+     ```
+
+    #### Update Part Quantity
+
+    ```
+    javascriptPUT /inquiries/?inquiry_id=5&action=update_part_quantity
+    Body: {
+      "part_id": 1,
+      "total_quantity": 150
+    }
+    // Action: Changes total quantity for specified part
+
+     ```
+
+    #### Remove Part from Inquiry
+
+    ```
+    javascriptDELETE /inquiries/?inquiry_id=5&action=remove_part
+    Body: {
+      "part_id": 1
+    }
+    // Action: Removes specified part from inquiry
+
+     ```
+
+    ---
+
+    ### 4\. Status Management
+
+    #### Update Inquiry Status
+
+    ```
+    javascriptPUT /inquiries/?inquiry_id=5&action=update_status
+    Body: {
+      "status": "approved"  // draft, pending, approved, rejected, in_production, completed
+    }
+    // Action: Changes inquiry status (affects what operations are allowed)
+
+     ```
+
+    #### Update Inquiry Information
+
+    ```
+    javascriptPUT /inquiries/?inquiry_id=5&action=update_inquiry
+    Body: {
+      "description": "Updated description",
+      "inquiry_type": "serial"
+    }
+    // Action: Updates basic inquiry information
+
+     ```
+
+    #### Delete Inquiry
+
+    ```
+    javascriptDELETE /inquiries/?inquiry_id=5&action=delete_inquiry
+    // Action: Completely removes inquiry (only allowed for draft/pending)
+
+     ```
+
+    ---
+
+    ### 5\. Delivery Schedules (Serial Inquiries Only)
+
+    #### Add Delivery Schedule
+
+    ``` json
+    javascriptPOST /inquiries/?inquiry_id=5&action=add_delivery_schedule
+    Body: {
+      "delivery_date": "2025-07-15",
+      "delivery_address": "Warehouse A, 123 Main St",
+      "notes": "First delivery batch",
+      "delivery_parts": [
+        {
+          "part_id": 1,
+          "quantity": 25
+        },
+        {
+          "part_id": 2,
+          "quantity": 10
+        }
+      ]
+    }
+    // Action: Creates delivery schedule with specific part quantities
+
+     ```
+
+    #### Get Delivery Schedules
+
+    ```
+    javascriptGET /delivery-schedules/?inquiry_id=5
+    // Returns: All delivery schedules for specified inquiry
+
+     ```
+
+    #### Update Delivery Status
+
+    ```
+    javascriptPUT /delivery-schedules/?inquiry_id=5&schedule_id=3
+    Body: {
+      "status": "delivered"  // scheduled, in_progress, delivered, delayed
+    }
+    // Action: Updates delivery schedule status
+
+     ```
+
+    #### Delete Delivery Schedule
+
+    ```
+    javascriptDELETE /delivery-schedules/?inquiry_id=5&schedule_id=3
+    // Action: Removes delivery schedule (only for draft/pending inquiries)
+
+     ```
+
+    #### Validate Delivery Totals
+
+    ```
+    javascriptPOST /inquiries/?inquiry_id=5&action=validate_deliveries
+    // Action: Checks if all delivery quantities match inquiry totals
+    // Returns: Validation result with detailed breakdown
+
+     ```
+
+    ---
+
+    ### 6\. Analytics & Reports
+
+    #### Get Inquiry Summary
+
+    ```
+    javascriptGET /inquiries/summary/
+    // Returns: Statistics for all inquiries
+    GET /inquiries/summary/?company_id=1
+    // Returns: Statistics filtered by company
+
+     ```
+
+    #### Get Production Ready Inquiries
+
+    ```
+    javascriptGET /production-ready/
+    // Returns: Approved inquiries ready for production
+    GET /production-ready/?company_id=1
+    // Returns: Production ready inquiries for specific company
+
+     ```
+
+    ---
+
+    ## 🔄 Common Workflows
+
+    ### Sample Inquiry Workflow
+
+    ```
+    javascript// 1. Create inquiry
+    POST /inquiries/
+    Body: {"company": 1, "inquiry_type": "sample", "description": "..."}
+    // 2. Add parts
+    POST /inquiries/?inquiry_id=X&action=add_parts
+    Body: {"parts": [{"part_id": "1", "total_quantity": "10"}]}
+    // 3. Approve
+    PUT /inquiries/?inquiry_id=X&action=update_status
+    Body: {"status": "approved"}
+
+     ```
+
+    ### Serial Production Workflow
+
+    ```
+    javascript// 1. Create serial inquiry
+    POST /inquiries/
+    Body: {"company": 1, "inquiry_type": "serial", "description": "..."}
+    // 2. Add parts with total quantities
+    POST /inquiries/?inquiry_id=X&action=add_parts
+    Body: {"parts": [
+      {"part_id": "1", "total_quantity": "200"},
+      {"part_id": "2", "total_quantity": "400"}
+    ]}
+    // 3. Add first delivery (partial quantities)
+    POST /inquiries/?inquiry_id=X&action=add_delivery_schedule
+    Body: {
+      "delivery_date": "2025-07-15",
+      "delivery_parts": [
+        {"part_id": 1, "quantity": 50},
+        {"part_id": 2, "quantity": 100}
+      ]
+    }
+    // 4. Add second delivery (remaining quantities)
+    POST /inquiries/?inquiry_id=X&action=add_delivery_schedule
+    Body: {
+      "delivery_date": "2025-08-15",
+      "delivery_parts": [
+        {"part_id": 1, "quantity": 150},
+        {"part_id": 2, "quantity": 300}
+      ]
+    }
+    // 5. Validate totals match
+    POST /inquiries/?inquiry_id=X&action=validate_deliveries
+    // 6. Approve for production
+    PUT /inquiries/?inquiry_id=X&action=update_status
+    Body: {"status": "approved"}
+
+     ```
+
+    ---
+
+    ## 📊 Query Parameters Reference
+
+    ```
+    ParameterUsed InDescriptionExampleinquiry_idMost operationsTarget specific inquiry?inquiry_id=5actionPOST/PUT/DELETEOperation to perform?action=add_partscompany_idFilteringFilter by company?company_id=1statusFilteringFilter by status?status=approvedinquiry_typeFilteringFilter by type?inquiry_type=serialsearchFilteringText search?search=engineschedule_idDelivery opsTarget delivery schedule?schedule_id=3
+
+     ```
+
+    ---
+
+    ## 🎯 Status Values
+
+    ### Inquiry Status Options
+
+    - `draft` - Can be edited
+        
+    - `pending` - Awaiting approval, can be edited
+        
+    - `approved` - Ready for production, cannot be edited
+        
+    - `rejected` - Declined, cannot be edited
+        
+    - `in_production` - Being manufactured, cannot be edited
+        
+    - `completed` - Finished, cannot be edited
+        
+
+    ### Inquiry Type Options
+
+    - `sample` - One-time sample order
+        
+    - `one_time` - Single production run
+        
+    - `serial` - Multiple deliveries over time
+        
+
+    ### Delivery Status Options
+
+    - `scheduled` - Planned delivery
+        
+    - `in_progress` - Being prepared
+        
+    - `delivered` - Completed delivery
+        
+    - `delayed` - Behind schedule
+        
+
+    ---
+
+    ## ⚠️ Important Rules
+
+    ### Edit Restrictions
+
+    - Only `draft` and `pending` inquiries can be modified
+        
+    - `approved`, `in_production`, `completed` inquiries are read-only
+        
+    - Parts can only be added/removed from `draft`/`pending` inquiries
+        
+
+    ### Serial Production Rules
+
+    - Total delivery quantities must equal inquiry quantities
+        
+    - Use `validate_deliveries` to check before approval
+        
+    - Each delivery can contain partial quantities of multiple parts
+        
+
+    ### Company-Part Validation
+
+    - Parts must belong to the same company as the inquiry
+        
+    - Get parts using `/parts-list/?company_id=X` to ensure correct company
+        
+
+    ---
+
+    ## 🔍 Quick Examples
+
+    ### Change Status
+
+    ```
+    javascript// Get status options first
+    GET /inquiry-choices/
+    // Update status
+    PUT /inquiries/?inquiry_id=5&action=update_status
+    Body: {"status": "approved"}
+
+     ```
+
+    ### Add Multiple Parts
+
+    ```
+    javascriptPOST /inquiries/?inquiry_id=5&action=add_parts
+    Body: {
+      "parts": [
+        {"part_id": "1", "total_quantity": "100"},
+        {"part_id": "2", "total_quantity": "50"},
+        {"part_id": "3", "total_quantity": "25"}
+      ]
+    }
+
+     ```
+
+    ### Filter Inquiries
+
+    ```
+    javascript// Get approved serial inquiries for company 1
+    GET /inquiries/?company_id=1&status=approved&inquiry_type=serial
+    // Search for inquiries containing "engine"
+    GET /inquiries/?search=engine
+
+     ```
+
+    **That's it! Use these endpoints to build your frontend. Each URL + parameters performs exactly one action.** 🚀
+  type: text/markdown
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

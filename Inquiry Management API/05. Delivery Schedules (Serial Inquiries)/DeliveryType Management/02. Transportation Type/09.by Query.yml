@@ -1,0 +1,19 @@
+info:
+  name: 09.by Query
+  type: http
+  seq: 9
+
+http:
+  method: DELETE
+  url: "{{base_url}}/inquiries/transportation-types/?id=8"
+  params:
+    - name: id
+      value: "8"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

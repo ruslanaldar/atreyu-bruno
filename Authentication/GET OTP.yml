@@ -1,0 +1,23 @@
+info:
+  name: GET OTP
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: http://27.223.82.66:18080/api/organization/categories/otp/request-otp/
+  body:
+    type: multipart-form
+    data:
+      - name: email
+        type: text
+        value: ruslan.aldar@gmail.com
+      - name: purpose
+        type: text
+        value: login
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

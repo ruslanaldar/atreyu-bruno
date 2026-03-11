@@ -1,0 +1,28 @@
+info:
+  name: Create Work Center
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/{{api_prefix}}/work-centers/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Manufacturing Center A",
+        "name_cn": "制造中心A",
+        "abbreviation": "MCA",
+        "starting_code": 1,
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

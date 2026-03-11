@@ -1,0 +1,19 @@
+info:
+  name: 02. List View
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/delivery-types/?list_view=true"
+  params:
+    - name: list_view
+      value: "true"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

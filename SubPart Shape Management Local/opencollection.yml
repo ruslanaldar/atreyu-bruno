@@ -1,0 +1,66 @@
+opencollection: 1.0.0
+
+info:
+  name: SubPart Shape Management Local
+
+request:
+  auth:
+    type: bearer
+    token: "{{auth_token}}"
+  variables:
+    - name: base_url
+      value: http://localhost:8000
+    - name: subpart_id
+      value: "8486"
+    - name: existing_shape_id
+      value: "21"
+    - name: replacement_shape_id
+      value: "17"
+    - name: subpart_id_2
+      value: "8487"
+    - name: auth_token
+      value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzU2OTc0MjM2LCJpYXQiOjE3NTY4ODc4MzYsImp0aSI6IjhhM2ZkNDI0YjcyZDQ0ZjhiNWE0ZDViMjVjNWZiMTM2IiwidXNlcl9pZCI6MX0.GAFcH33Cp6-6pGOlMFJX_ALwpmtz6_UURZ__oMaEyAk
+    - name: created_shape_id
+      value: ""
+  scripts:
+    - type: before-request
+      code: |-
+        // Set default values if not already set
+        if (!bru.getEnvVar("base_url")) {
+            bru.setEnvVar("base_url", "http://localhost:8000");
+        }
+
+        if (!bru.getEnvVar("subpart_id")) {
+            bru.setEnvVar("subpart_id", "8486");
+        }
+
+        // Log current environment values
+        console.log("=== Current Environment ===");
+        console.log("Base URL:", bru.getEnvVar("base_url"));
+        console.log("SubPart ID:", bru.getEnvVar("subpart_id"));
+        console.log("Auth Token:", bru.getEnvVar("auth_token") ? "Set" : "Not Set");
+        console.log("=============================");
+    - type: after-response
+      code: |-
+        // Global test script for debugging
+        if (res.getStatus() >= 400) {
+            console.log("=== ERROR RESPONSE ===");
+            console.log("Status:", res.getStatus(), res.statusText);
+            console.log("Response Body:", JSON.stringify(res.getBody()));
+            console.log("=====================");
+        } else {
+            console.log("=== SUCCESS RESPONSE ===");
+            console.log("Status:", res.getStatus(), res.statusText);
+            console.log("Response:", JSON.stringify(res.getBody(), null, 2));
+            console.log("========================");
+        }
+
+docs:
+  content: Collection for creating and attaching shapes to SubParts using the SubPart-centric API endpoints
+  type: text/markdown
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

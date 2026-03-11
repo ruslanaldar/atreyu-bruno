@@ -1,0 +1,37 @@
+info:
+  name: "Example 3: Serial Delivery Schedule 1"
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/inquiries/?inquiry_id=22&action=add_delivery_schedule"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: inquiry_id
+      value: "22"
+      type: query
+    - name: action
+      value: add_delivery_schedule
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "delivery_date": "2025-11-15",
+        "delivery_address": "Warehouse A",
+        "notes": "First delivery:part6:50, part7: 80",
+        "delivery_parts": [
+          {"part_id": 6, "quantity": 50},
+          {"part_id": 7, "quantity": 80}
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,33 @@
+info:
+  name: List Work Centers
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/{{api_prefix}}/work-centers/?ordering=name"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: ordering
+      value: name
+      type: query
+      description: "Order by: name, abbreviation, starting_code, code_string"
+    - name: name
+      value: ""
+      type: query
+      description: Filter by name
+      disabled: true
+    - name: abbreviation
+      value: ""
+      type: query
+      description: Filter by abbreviation
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

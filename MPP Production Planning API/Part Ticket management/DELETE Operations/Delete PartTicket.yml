@@ -1,0 +1,22 @@
+info:
+  name: Delete PartTicket
+  type: http
+  seq: 1
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/productionplans/part-tickets/?ticket_id={{yellow_ticket_id}}"
+  headers:
+    - name: Authorization
+      value: Bearer {{access_token}}
+  params:
+    - name: ticket_id
+      value: "{{yellow_ticket_id}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

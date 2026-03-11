@@ -1,0 +1,11 @@
+info:
+  name: WORKFLOW 2 - Monitor Container Progress
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+
+docs:
+  content: Workflow for monitoring container progress
+  type: text/markdown

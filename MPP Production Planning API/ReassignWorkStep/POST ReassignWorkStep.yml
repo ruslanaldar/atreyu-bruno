@@ -1,0 +1,25 @@
+info:
+  name: POST ReassignWorkStep
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/reassign-worksteps/"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "cl-0144",
+          "partNumber": "60001551",
+          "subpartNumber": "60001551",
+          "workCenter": "pt03",
+          "reassignDate": "2025-11-10"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

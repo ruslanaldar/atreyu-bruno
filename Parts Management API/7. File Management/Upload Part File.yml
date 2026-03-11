@@ -1,0 +1,31 @@
+info:
+  name: Upload Part File
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/part-files/"
+  body:
+    type: multipart-form
+    data:
+      - name: part
+        type: text
+        value: "484"
+      - name: title
+        type: text
+        value: Technical Drawing
+      - name: description
+        type: text
+        value: Main technical drawing
+      - name: file
+        type: file
+        value:
+          - postman-cloud:///1f036e27-59b0-4d90-a8e5-c4791efbc5d1
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

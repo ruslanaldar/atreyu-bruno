@@ -1,0 +1,25 @@
+info:
+  name: 07.  by economical
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/delivery-types/?action=recommendations&type=economical&limit=5"
+  params:
+    - name: action
+      value: recommendations
+      type: query
+    - name: type
+      value: economical
+      type: query
+    - name: limit
+      value: "5"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

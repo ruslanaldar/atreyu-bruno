@@ -1,0 +1,15 @@
+info:
+  name: Get Inquiry Summary
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/summary/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

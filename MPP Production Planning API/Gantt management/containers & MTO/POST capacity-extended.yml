@@ -1,0 +1,21 @@
+info:
+  name: POST capacity-extended
+  type: http
+  seq: 15
+
+http:
+  method: DELETE
+  url: "{{base_url}}/productionplans/capacity-extended/"
+  body:
+    type: json
+    data: |-
+      {
+          "scenario_id":"recommended"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

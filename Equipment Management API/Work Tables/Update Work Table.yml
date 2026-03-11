@@ -1,0 +1,30 @@
+info:
+  name: Update Work Table
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/{{api_prefix}}/work-tables/1"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Updated Assembly Table 1",
+        "name_cn": "更新装配台1",
+        "st_no": "AT001",
+        "dimension_x": 220.5,
+        "dimension_y": 160.0,
+        "dimension_z": 85.0,
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

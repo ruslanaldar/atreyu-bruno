@@ -1,0 +1,19 @@
+info:
+  name: Company CRUD
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    GET company  
+    companies/{id}
+
+    companies/?id={id}
+
+    companies/?short_name={company.short_name}
+
+    companies/?inquiry_number={company.inquiry_number_cssc}
+  type: text/markdown

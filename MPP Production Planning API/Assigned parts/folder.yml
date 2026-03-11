@@ -1,0 +1,16 @@
+info:
+  name: Assigned parts
+  type: folder
+  seq: 12
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Assigned parts are used to reassign date of completion for the part.
+
+    That will cause changes for for the current part compeltion on the next production plan run.  
+    It takes data from the database and assigned_date from the data.  
+    Then calculate the part length for the competion, assign it before even production starts, and allocate the current part production in the productionplan.
+  type: text/markdown

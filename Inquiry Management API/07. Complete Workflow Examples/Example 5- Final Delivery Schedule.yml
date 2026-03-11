@@ -1,0 +1,36 @@
+info:
+  name: "Example 5: Final Delivery Schedule"
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/inquiries/?inquiry_id={{inquiry_id}}&action=add_delivery_schedule"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: inquiry_id
+      value: "{{inquiry_id}}"
+      type: query
+    - name: action
+      value: add_delivery_schedule
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "delivery_date": "2025-09-15",
+        "delivery_address": "Warehouse A",
+        "notes": "Final delivery: part3=200",
+        "delivery_parts": [
+          {"part_id": 2, "quantity": 200}
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,21 @@
+info:
+  name: Get MPP by Container
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/mpp/by_container/?container_no={{container_no}}"
+  params:
+    - name: container_no
+      value: "{{container_no}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get MPP data for specific container (uses latest MPP if mpp_id not provided)

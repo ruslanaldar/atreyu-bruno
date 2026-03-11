@@ -1,0 +1,42 @@
+info:
+  name: Bulk Create MPP Records
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/mpp/bulk_create/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "mpp_list": [
+              {
+                  "planning_date": "2025-08-22",
+                  "trigger_reason": "bulk_creation_1",
+                  "status": "draft"
+              },
+              {
+                  "planning_date": "2025-08-23",
+                  "trigger_reason": "bulk_creation_2",
+                  "status": "draft"
+              },
+              {
+                  "planning_date": "2025-08-24",
+                  "trigger_reason": "bulk_creation_3",
+                  "status": "draft"
+              }
+          ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create multiple MPP records at once (up to 100)

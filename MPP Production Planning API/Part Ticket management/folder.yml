@@ -1,0 +1,7 @@
+info:
+  name: Part Ticket management
+  type: folder
+  seq: 11
+
+request:
+  auth: inherit

@@ -1,0 +1,64 @@
+info:
+  name: change_status
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/parts/change_status/?part_id={{part_id}}&status=inquiry"
+  params:
+    - name: part_id
+      value: "{{part_id}}"
+      type: query
+    - name: status
+      value: inquiry
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Get by part_id
+    request:
+      url: "{{base_url}}/parts/"
+      method: GET
+    response:
+      body:
+        type: text
+        data: ""
+  - name: Get by company_id
+    request:
+      url: "{{base_url}}/parts/{{company_id}}"
+      method: GET
+    response:
+      body:
+        type: text
+        data: ""
+  - name: Get by part_number
+    request:
+      url: "{{base_url}}/parts/?part_number={{part_number}}"
+      method: GET
+      params:
+        - name: part_number
+          value: "{{part_number}}"
+          type: query
+    response:
+      body:
+        type: text
+        data: ""
+  - name: Get by bom_id
+    request:
+      url: "{{base_url}}/parts/?bom_id=bom_id"
+      method: GET
+      params:
+        - name: bom_id
+          value: bom_id
+          type: query
+    response:
+      body:
+        type: text
+        data: ""

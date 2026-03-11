@@ -1,0 +1,22 @@
+info:
+  name: DELETE Customer Inactive
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/{{prefix}}/customers/?id=114"
+  params:
+    - name: id
+      value: "114"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

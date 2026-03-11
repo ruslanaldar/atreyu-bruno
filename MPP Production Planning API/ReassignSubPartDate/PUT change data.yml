@@ -1,0 +1,23 @@
+info:
+  name: PUT change data
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/productionplans/reassign-part-date/"
+  body:
+    type: json
+    data: |
+      {
+          "id": "ec36d8f7-0a97-4d3a-ae45-0f2a50fa518c",
+          "reassign_date": "2025-11-25",
+          "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

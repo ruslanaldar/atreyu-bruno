@@ -1,0 +1,32 @@
+info:
+  name: List Work Tables
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/{{api_prefix}}/work-tables?ordering=name&search="
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: ordering
+      value: name
+      type: query
+      description: "Order by: section, workcenter, wc_code_string, name, code_string"
+    - name: search
+      value: ""
+      type: query
+      description: Search in name, section__name, workcenter__name, code_string
+    - name: section
+      value: ""
+      type: query
+      description: Filter by section ID
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

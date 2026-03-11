@@ -1,0 +1,24 @@
+info:
+  name: Get MPP by Customer with Specific MPP
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/mpp/by_customer/?mo_no={{mo_no}}&mpp_id={{mpp_id}}"
+  params:
+    - name: mo_no
+      value: "{{mo_no}}"
+      type: query
+    - name: mpp_id
+      value: "{{mpp_id}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get MPP data for specific customer order from specific MPP version

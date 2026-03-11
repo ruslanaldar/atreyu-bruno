@@ -1,0 +1,11 @@
+info:
+  name: MPP Analytics & Management
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs:
+  content: Analytics, management, and utility operations for MPP
+  type: text/markdown

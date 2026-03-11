@@ -1,0 +1,25 @@
+info:
+  name: Add Skills
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/employee-skills/"
+  body:
+    type: json
+    data: |-
+      {
+          "user": 265,
+          "skill_set":{
+              "f01": 1,
+              "f02": 2
+          }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

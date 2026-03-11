@@ -1,0 +1,25 @@
+info:
+  name: Change Work Center Status
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: "{{base_url}}/{{api_prefix}}/work-centers/change_status/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "workcenter_id": "aeec648c-93d8-476b-89fd-3569edfc9142",
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

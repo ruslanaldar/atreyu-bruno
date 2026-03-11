@@ -1,0 +1,41 @@
+info:
+  name: Bulk Create Equivalencies
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{baseUrl}}/basics/materials/standard-equivalencies/bulk_create/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+  body:
+    type: json
+    data: |-
+      {
+        "equivalencies": [
+          {
+            "standard_1_id": 123,
+            "standard_2_id": 124,
+            "equivalency_type": "approximate",
+            "confidence_level": 90
+          },
+          {
+            "standard_1_id": 125,
+            "standard_2_id": 126,
+            "equivalency_type": "exact",
+            "confidence_level": 100
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create multiple equivalencies at once

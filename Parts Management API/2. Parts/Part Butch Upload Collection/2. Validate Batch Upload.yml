@@ -1,0 +1,45 @@
+info:
+  name: 2. Validate Batch Upload
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/validate_batch_upload/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "part_id": {{test_part_id}},
+          "subparts": [
+              {
+                  "serial": "SP001",
+                  "name": "Test Validation",
+                  "description": "Test part for validation",
+                  "drawing_no": "TEST-001",
+                  "active_part": true,
+                  "quantity": 1,
+                  "unit_time": "10.0",
+                  "worksteps": [
+                      {
+                          "equipment_id": "3354cd45-643f-46c1-be05-bca79f230d07",
+                          "sequence": 1,
+                          "production_time_minutes": "10.0",
+                          "description": "Test operation"
+                      }
+                  ]
+              }
+          ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Validate the batch upload data before actual submission

@@ -1,0 +1,23 @@
+info:
+  name: PUT daily capacity
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/productionplans/daily-capacity/"
+  body:
+    type: json
+    data: |-
+      {
+          "id": "ca43d099-0020-4e27-8f5f-3b3dfdcb8806",
+          "shift_date": "2025-11-24",
+          "shift_type": "normal-late"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,19 @@
+info:
+  name: Get Group WokrCenters
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/{{api_prefix}}/work-center-groups/?group_id=e6c04b26-f240-4f24-b5c6-b17c3d2d40f6"
+  params:
+    - name: group_id
+      value: e6c04b26-f240-4f24-b5c6-b17c3d2d40f6
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

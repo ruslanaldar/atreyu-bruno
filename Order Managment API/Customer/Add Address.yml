@@ -1,0 +1,24 @@
+info:
+  name: Add Address
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{baseUrl}}/{{prefix}}/addresses/"
+  body:
+    type: json
+    data: |-
+      {
+        "company": 61,
+        "address_type": "Company Address", //choices: Company Address, Delivery, Invoice Address
+        "status": true,
+        "address": " TEST 1234 Elm Street, Springfield, IL, 62704, InquiryStatusAPI"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,53 @@
+info:
+  name: 2.2 Get SubPart Shape Info Query
+  type: http
+  seq: 11
+
+http:
+  method: GET
+  url: "{{base_url}}/sub-parts/shape_info_query/"
+  headers:
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+      disabled: true
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "subpart_id": {{subpart_id}}
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+            expect(res.getStatus()).to.equal(200);
+        });
+
+        test("Response has subpart info", function () {
+            var jsonData = res.getBody();
+            expect(jsonData).to.have.property('subpart_id');
+            expect(jsonData).to.have.property('subpart_name');
+            expect(jsonData).to.have.property('attached_shape');
+        });
+
+        test("Shape is attached", function () {
+            var jsonData = res.getBody();
+            if (jsonData.attached_shape) {
+                expect(jsonData.attached_shape).to.have.property('id');
+                expect(jsonData.attached_shape).to.have.property('name');
+                expect(jsonData.attached_shape.name).to.eql("Debug Test - Console Output");
+            }
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

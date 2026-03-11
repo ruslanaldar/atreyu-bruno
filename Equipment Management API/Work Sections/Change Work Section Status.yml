@@ -1,0 +1,25 @@
+info:
+  name: Change Work Section Status
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{base_url}}/{{api_prefix}}/work-sections/change_status/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "section_id": "13ccb9d4-9e93-4ee2-ae40-7d8bf93d5b34",
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

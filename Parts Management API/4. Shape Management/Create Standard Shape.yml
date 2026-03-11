@@ -1,0 +1,33 @@
+info:
+  name: Create Standard Shape
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/standard-shapes/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "name": "Standard Angle Profile 70x70x7",
+          "description": "Standard angle profile dimensions",
+          "shape_type": 105,
+          "dimension_data": {
+              "leg_a":70,
+              "leg_b":70,
+              "thickness":7,
+              "length":1634
+          },
+          "is_standard": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

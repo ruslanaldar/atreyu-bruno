@@ -1,0 +1,37 @@
+info:
+  name: Delete Employee
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{base_url}}/factory/employees/?employee_id=6898d972c8e6d556b5bc2d0f"
+  headers:
+    - name: Accept
+      value: application/json
+  params:
+    - name: employee_id
+      value: 6898d972c8e6d556b5bc2d0f
+      type: query
+  body:
+    type: json
+    data: |2-
+       {
+        "name_cn": "测试用户",
+        "name_en": "Test User",
+        "department": "Technical",
+        "team": "sample",
+        "position": "tooling_locksmith",
+        "workcenters": {
+          "c01": 3,
+          "m05": 1,
+          "m06": 2,
+          "p01": 4
+        }
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

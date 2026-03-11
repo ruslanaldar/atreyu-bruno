@@ -1,0 +1,33 @@
+info:
+  name: Update SubPart - Clear Material Assignment
+  type: http
+  seq: 3
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/parts/sub-parts/update_by_query?subpart_id={{subPart}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+  params:
+    - name: subpart_id
+      value: "{{subPart}}"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "material_standard_id": null,
+        "standard_shape_id": null
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Clear material and shape assignments

@@ -1,0 +1,17 @@
+info:
+  name: Check Container Changes (Latest)
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/mpp/check_containers/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Check for container changes in current planning vs latest MPP

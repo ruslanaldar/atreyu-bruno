@@ -1,0 +1,29 @@
+info:
+  name: Edit by URL
+  type: http
+  seq: 7
+
+http:
+  method: PATCH
+  url: "{{base_url}}/parts/{{part_id}}/update_part_by_path/"
+  body:
+    type: json
+    data: |-
+      {
+          "id": 472,
+          "company_id": 67,
+          "part_number": "60001927",
+          "revision_number": 0,
+          "description": "patch by url",
+          "sub_part_qty": 17,
+          "bom_status": true,
+          "status": "Inquiry",
+          "bill_of_material_id": 472
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

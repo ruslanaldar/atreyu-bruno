@@ -1,0 +1,41 @@
+info:
+  name: Save Production Plan
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/production-plan/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "planning_date": "{{planning_date}}",
+          "container_no": "wk-0006",
+          "plan_data": {
+              "w06": {
+                  "w0601": [
+                      {
+                          "mo_no": "INQ-20250617-0002",
+                          "pp_no": "59508119",
+                          "order_qty": "150",
+                          "planned_qty": "150",
+                          "start_time": "2025-08-21T08:00:00",
+                          "finish_time": "2025-08-21T12:00:00"
+                      }
+                  ]
+              }
+          }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Save production plan (triggers replanning)

@@ -1,0 +1,7 @@
+info:
+  name: Part Butch Upload Collection
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

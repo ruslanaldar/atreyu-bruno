@@ -1,0 +1,28 @@
+info:
+  name: Update Work Center
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{base_url}}/{{api_prefix}}/work-centers/aeec648c-93d8-476b-89fd-3569edfc9142/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Updated Manufacturing Center A",
+        "name_cn": "更新制造中心A",
+        "abbreviation": "UMCA",
+        "starting_code": 1,
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

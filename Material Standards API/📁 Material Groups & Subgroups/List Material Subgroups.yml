@@ -1,0 +1,25 @@
+info:
+  name: List Material Subgroups
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{baseUrl}}/basics/materials/material-subgroups?material_group=13"
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+  params:
+    - name: material_group
+      value: "13"
+      type: query
+      description: Filter by material group
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get subgroups, optionally filtered by group

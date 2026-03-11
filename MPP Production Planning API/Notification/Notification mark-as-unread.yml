@@ -1,0 +1,15 @@
+info:
+  name: Notification mark-as-unread
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: http://27.223.82.66:18080/api/chat/notifications/d4ff06a5-d46f-474e-94d1-3dc3b0a42743/mark-as-unread/
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

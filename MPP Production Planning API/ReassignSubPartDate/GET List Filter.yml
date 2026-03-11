@@ -1,0 +1,24 @@
+info:
+  name: GET List Filter
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/reassign-part-date/"
+  body:
+    type: json
+    data: |
+      {
+        "container_no": "h-0389",
+        "part_no": 614,
+        "subpart_no": 2816,
+        "reassign_date": "2025-10-30"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

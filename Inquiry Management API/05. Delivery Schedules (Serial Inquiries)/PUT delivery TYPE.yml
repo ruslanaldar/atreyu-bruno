@@ -1,0 +1,25 @@
+info:
+  name: PUT delivery TYPE
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{base_url}}/inquiries/delivery-schedules/?id=1"
+  params:
+    - name: id
+      value: "1"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+          "delivery_type_id":10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

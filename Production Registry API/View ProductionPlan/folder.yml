@@ -1,0 +1,7 @@
+info:
+  name: View ProductionPlan
+  type: folder
+  seq: 7
+
+request:
+  auth: inherit

@@ -1,0 +1,26 @@
+info:
+  name: 2. Apply update
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: "{{base_url}}/productionplans/mpp/{{mpp_id}}/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "status": "confirmed"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Step 2: Apply the update"

@@ -1,0 +1,36 @@
+info:
+  name: Update SubPart - With Image Upload
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/parts/sub-parts/update_by_query?subpart_id={{subPart}}"
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+  params:
+    - name: subpart_id
+      value: "{{subPart}}"
+      type: query
+  body:
+    type: multipart-form
+    data:
+      - name: material_standard_id
+        type: text
+        value: "123"
+      - name: quantity
+        type: text
+        value: "10"
+      - name: image
+        type: file
+        value: []
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update with image file upload

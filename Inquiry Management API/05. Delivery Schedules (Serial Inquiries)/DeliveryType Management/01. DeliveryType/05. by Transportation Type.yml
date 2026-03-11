@@ -1,0 +1,19 @@
+info:
+  name: 05. by Transportation Type
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/delivery-types/?action=by_transport_type"
+  params:
+    - name: action
+      value: by_transport_type
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

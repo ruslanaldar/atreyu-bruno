@@ -1,0 +1,36 @@
+info:
+  name: Update Work Station
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{base_url}}/{{api_prefix}}/work-stations/1"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Updated CNC Machine Station 1",
+        "name_cn": "更新CNC机床站1",
+        "model": "CNC-2000X-Pro",
+        "brand": "Industrial Tech",
+        "manufacturer": "Tech Manufacturing Co.",
+        "material_type": "metal",
+        "material": "aluminum",
+        "processing_size": "600x400x250",
+        "thickness": 30.0,
+        "epc": "EPC001",
+        "st_no": "ST001",
+        "specifications": "Updated high precision CNC machine for metal processing",
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

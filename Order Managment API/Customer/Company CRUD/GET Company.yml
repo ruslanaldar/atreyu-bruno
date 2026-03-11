@@ -1,0 +1,19 @@
+info:
+  name: GET Company
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{baseUrl}}/{{prefix}}/companies/?id=69"
+  params:
+    - name: id
+      value: "69"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

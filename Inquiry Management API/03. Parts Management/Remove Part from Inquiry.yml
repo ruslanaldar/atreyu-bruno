@@ -1,0 +1,31 @@
+info:
+  name: Remove Part from Inquiry
+  type: http
+  seq: 3
+
+http:
+  method: DELETE
+  url: "{{base_url}}/inquiries/?inquiry_id={{inquiry_id}}&action=remove_part"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: inquiry_id
+      value: "{{inquiry_id}}"
+      type: query
+    - name: action
+      value: remove_part
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "part_id": {{part_id}}
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

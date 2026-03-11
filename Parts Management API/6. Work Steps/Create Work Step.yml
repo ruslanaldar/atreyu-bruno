@@ -1,0 +1,29 @@
+info:
+  name: Create Work Step
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/work-steps/create_for_subpart/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "subpart_id":"1450",
+          "center_id": "14c178f5-0e0c-4409-8ade-ae32802036c8",
+          "station_id": "187d75d3-1145-43d7-b852-e2b8e92ab74e",
+          "sequence": 10,
+          "production_time_minutes": 1.3,
+          "description": "Laser cutting for the part."
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

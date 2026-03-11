@@ -1,0 +1,21 @@
+info:
+  name: PUT daily capacity Copy
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: "{{base_url}}/productionplans/daily-capacity/"
+  body:
+    type: json
+    data: |-
+      {
+          "id": "e61b9485-4180-4a50-a1a8-6981d2d15bbf"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

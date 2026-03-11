@@ -1,0 +1,27 @@
+info:
+  name: Update Work Section
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/{{api_prefix}}/work-sections/13ccb9d4-9e93-4ee2-ae40-7d8bf93d5b34/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Updated Assembly Section",
+        "name_cn": "更新装配区",
+        "description": "Updated main assembly work section",
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,11 @@
+info:
+  name: Capacity Management
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit
+
+docs:
+  content: Capacity management operations
+  type: text/markdown

@@ -1,0 +1,22 @@
+info:
+  name: GET gantt workcenters analytics date_range
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/gantt/workcenter_analysis/?date_from=2026-01-05&date_to=2026-01-20"
+  params:
+    - name: date_from
+      value: 2026-01-05
+      type: query
+    - name: date_to
+      value: 2026-01-20
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

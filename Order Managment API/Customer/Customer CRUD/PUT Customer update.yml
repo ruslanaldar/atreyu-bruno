@@ -1,0 +1,22 @@
+info:
+  name: PUT Customer update
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/{{prefix}}/customers/"
+  body:
+    type: json
+    data: |-
+      {
+          "id": 114,
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

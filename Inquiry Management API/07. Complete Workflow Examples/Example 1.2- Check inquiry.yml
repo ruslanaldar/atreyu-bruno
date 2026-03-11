@@ -1,0 +1,30 @@
+info:
+  name: "Example 1.2: Check inquiry"
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/?inquiry_id=22"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: inquiry_id
+      value: "22"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "company": 61,
+        "inquiry_type": "serial",
+        "description": "Serial production: 200 part1, 400 part2, 350 part3"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

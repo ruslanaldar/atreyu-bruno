@@ -1,0 +1,25 @@
+info:
+  name: Change Work Station Status
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: "{{base_url}}/{{api_prefix}}/work-stations/change_status/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "station_id": 1,
+        "status": "inactive"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,117 @@
+info:
+  name: 3. Batch Upload with Form Data
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/batch_upload/"
+  body:
+    type: multipart-form
+    data:
+      - name: part_id
+        type: text
+        value: "484"
+      - name: data
+        type: text
+        value: |-
+          {
+            "strict_mode": false,
+            "subparts": [
+              {
+                "serial": "SP017",
+                "name": "Component with Images",
+                "description": "This component includes uploaded files",
+                "drawing_no": "DWG-2030-0007",
+                "active_part": true,
+                "quantity": 1,
+                "unit_time": "25.0",
+                "worksteps": [
+                  {
+                    "center_id": "14c178f5-0e0c-4409-8ade-ae32802036c8",
+                    "station_id": "187d75d3-1145-43d7-b852-e2b8e92ab74e",
+                    "sequence": 1,
+                    "production_time_minutes": "15.0",
+                    "description": "Laser cutting operation"
+                  },
+                  {
+                    "center_id": "df15330b-226b-4046-90ac-6cffa9f0da9a",
+                    "station_id": "25ac9b53-307a-46c9-8403-4550a2580194",
+                    "sequence": 2,
+                    "production_time_minutes": "30",
+                    "description": "Bending operations for housing shape"
+                  }
+                ]
+              },
+              {
+                "serial": "SP008",
+                "name": "End Cap Assembly - Front",
+                "description": "Front end cap with mounting provisions",
+                "drawing_no": "DWG-ECA-F001",
+                "active_part": true,
+                "quantity": 1,
+                "material_standard_id": null,
+                "standard_shape_id": null,
+                "parent_id": null,
+                "worksteps": [
+                  {
+                    "center_id": "7f67d5a0-1dbd-4b2b-b2a0-3d38b260b688",
+                    "station_id": "4cc4b01a-29af-491d-a65e-3871b3de8a16",
+                    "sequence": 1,
+                    "production_time_minutes": "25",
+                    "description": "Pipe laser cutting for end cap profile"
+                  },
+                  {
+                    "center_id": "eb63c835-f729-4d02-be2b-69160e8732fa",
+                    "station_id": "a98b8ea2-26d5-4aeb-b637-76cc2390026c",
+                    "sequence": 2,
+                    "production_time_minutes": "40",
+                    "description": "CNC milling of mounting features"
+                  },
+                  {
+                    "center_id": "8b1f68b5-1f9c-4b10-bd6b-ce98bf20c0ad",
+                    "station_id": "10387b39-39b3-4f8f-8408-e952b4ac0e0a",
+                    "sequence": 3,
+                    "production_time_minutes": "20",
+                    "description": "Drilling mounting holes"
+                  },
+                  {
+                    "center_id": "1f20e177-80d3-440c-9671-53947d667d43",
+                    "station_id": "43a5f2ab-9fec-4851-b0a3-17e062c5e4b3",
+                    "sequence": 4,
+                    "production_time_minutes": "35",
+                    "description": "TIG welding of end cap assembly"
+                  }
+                ]
+              }
+            ]
+          }
+      - name: subpart_0_image
+        type: file
+        value:
+          - postman-cloud:///1f06affc-37eb-40b0-895c-2bef7ae0d506
+        description: Image file for the subpart
+      - name: subpart_0_drawing
+        type: file
+        value:
+          - postman-cloud:///1f06affc-37eb-40b0-895c-2bef7ae0d506
+        description: Drawing file for the subpart
+      - name: subpart_1_image
+        type: file
+        value:
+          - postman-cloud:///1f06affc-37eb-40b0-895c-2bef7ae0d506
+        description: Image file for the subpart
+      - name: subpart_1_drawing
+        type: file
+        value:
+          - postman-cloud:///1f06affc-37eb-40b0-895c-2bef7ae0d506
+        description: Drawing file for the subpart
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Batch upload with file attachments using multipart/form-data

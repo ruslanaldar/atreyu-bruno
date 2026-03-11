@@ -1,0 +1,21 @@
+info:
+  name: DELETE change status inactive
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{base_url}}/productionplans/reassign-part-date/"
+  body:
+    type: json
+    data: |
+      {
+          "id": "ababae53-2a83-41a1-a4b5-912097e47020"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,35 @@
+info:
+  name: Update SubPart - Material & Quantity
+  type: http
+  seq: 2
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/parts/sub-parts/update_by_query?subpart_id=522"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+    - name: X-CSRFToken
+      value: "{{csrfToken}}"
+  params:
+    - name: subpart_id
+      value: "522"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "material_standard_id": 123,
+        "quantity": 10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update material and quantity only

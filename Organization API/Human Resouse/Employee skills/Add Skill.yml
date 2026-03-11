@@ -1,0 +1,27 @@
+info:
+  name: Add Skill
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{base_url}}/employee-skills/add_skills/?user_id=217"
+  params:
+    - name: user_id
+      value: "217"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+          "skill_set": {
+              "b01": 1
+          }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

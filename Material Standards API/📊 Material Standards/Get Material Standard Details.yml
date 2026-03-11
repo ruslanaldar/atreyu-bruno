@@ -1,0 +1,54 @@
+info:
+  name: Get Material Standard Details
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{baseUrl}}/basics/materials/material-standards/98"
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Query Material Standard
+    request:
+      url: "{{baseUrl}}/basics/materials/material-standards/98"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{authToken}}
+    response:
+      body:
+        type: text
+        data: ""
+  - name: Query Material Group
+    request:
+      url: "{{baseUrl}}/basics/materials/material-standards/98"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{authToken}}
+    response:
+      body:
+        type: text
+        data: ""
+  - name: Query MaterialSubgroup
+    request:
+      url: "{{baseUrl}}/basics/materials/material-standards/98"
+      method: GET
+      headers:
+        - name: Authorization
+          value: Bearer {{authToken}}
+    response:
+      body:
+        type: text
+        data: ""
+
+docs: Get detailed information about a specific material standard

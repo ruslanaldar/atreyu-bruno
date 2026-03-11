@@ -1,0 +1,18 @@
+info:
+  name: Get Work Section
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/{{api_prefix}}/work-sections/13ccb9d4-9e93-4ee2-ae40-7d8bf93d5b34"
+  headers:
+    - name: Content-Type
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

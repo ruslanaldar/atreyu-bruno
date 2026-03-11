@@ -1,0 +1,32 @@
+info:
+  name: Check status
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/mpp/task_status/?task_id=77158b5f-7fd9-4c2b-959b-7e92f7da49d2"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: task_id
+      value: 77158b5f-7fd9-4c2b-959b-7e92f7da49d2
+      type: query
+  body:
+    type: json
+    data: |
+      {
+          "planning_date": "{{planning_date}}",
+          "trigger_reason": "manual_creation",
+          "status": "draft"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create new MPP - automatically runs production planning to generate production_plan and remaining_capacity

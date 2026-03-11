@@ -1,0 +1,29 @@
+info:
+  name: 06. by Query
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{base_url}}/inquiries/transportation-types/?id=8"
+  params:
+    - name: id
+      value: "8"
+      type: query
+  body:
+    type: json
+    data: |
+      {
+        "name": "Express Delivery",
+        "transportation_type": "road_transport",
+        "description": "Test Description",
+        "typical_delivery_time": "16 hours",
+        "is_active": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

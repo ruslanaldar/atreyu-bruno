@@ -1,0 +1,30 @@
+info:
+  name: Calculate Material Cost
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{baseUrl}}/basics/materials/material-standards/calculate_cost/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+  body:
+    type: json
+    data: |-
+      {
+        "material_standard_id": 98,
+        "quantity": 10.5,
+        "quantity_unit": "kg"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Calculate cost for specific quantity and unit

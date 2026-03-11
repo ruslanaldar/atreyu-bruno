@@ -1,0 +1,22 @@
+info:
+  name: Get All PartTickets by Container
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/api/productionplans/part-tickets/?container_no=wk-0002"
+  headers:
+    - name: Authorization
+      value: Bearer {{access_token}}
+  params:
+    - name: container_no
+      value: wk-0002
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

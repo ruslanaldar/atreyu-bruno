@@ -1,0 +1,18 @@
+info:
+  name: Get Company by ID
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/companies/{{company_id}}/"
+  headers:
+    - name: Accept
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

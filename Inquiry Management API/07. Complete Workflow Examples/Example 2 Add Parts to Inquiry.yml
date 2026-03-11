@@ -1,0 +1,47 @@
+info:
+  name: Example 2 Add Parts to Inquiry
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/inquiries/?inquiry_id=22&action=add_parts"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: inquiry_id
+      value: "22"
+      type: query
+    - name: action
+      value: add_parts
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+          "parts": [
+              {
+                  "part_id": "7",
+                  "total_quantity": "100",
+                  "notes": "Main component"
+              },
+              {
+                  "part_id": "8", 
+                  "total_quantity": "50",
+                  "notes": "Secondary component"
+              },
+              {
+                  "part_id": "6",
+                  "total_quantity": "75",
+                  "notes": "Accessory component"
+              }
+          ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

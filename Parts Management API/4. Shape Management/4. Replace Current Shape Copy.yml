@@ -1,0 +1,92 @@
+info:
+  name: 4. Replace Current Shape Copy
+  type: http
+  seq: 13
+
+http:
+  method: POST
+  url: "{{base_url}}/sub-parts/{{subpart_id}}/replace_shape/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "new_shape_id": {{existing_shape_id}}
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+            expect(res.getStatus()).to.equal(200);
+        });
+
+        test("Shape replaced successfully", function () {
+            var jsonData = res.getBody();
+            expect(jsonData).to.have.property('success');
+            expect(jsonData.success).to.be.true;
+            expect(jsonData).to.have.property('new_shape');
+            expect(jsonData).to.have.property('old_shape');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 4. Replace Current Shape
+    request:
+      url: "{{base_url}}/api/parts/sub-parts/{{subpart_id}}/replace_shape/"
+      method: POST
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Accept
+          value: application/json
+        - name: Authorization
+          value: Bearer {{auth_token}}
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+              "new_shape_id": {{replacement_shape_id}}
+          }
+    response:
+      body:
+        type: text
+        data: ""
+  - name: 4. Replace Current Shape
+    request:
+      url: "{{base_url}}/sub-parts/replace_shape/"
+      method: POST
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Accept
+          value: application/json
+        - name: Authorization
+          value: Bearer {{auth_token}}
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+              "subpart_id": {{subpart_id}},
+              "new_shape_id": {{existing_shape_id}}
+          }
+    response:
+      body:
+        type: text
+        data: ""

@@ -1,0 +1,30 @@
+info:
+  name: upload_image
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/upload_image/?part_id={{part_id}}"
+  params:
+    - name: part_id
+      value: "{{part_id}}"
+      type: query
+  body:
+    type: multipart-form
+    data:
+      - name: image
+        type: file
+        value:
+          - postman-cloud:///1f06affc-37eb-40b0-895c-2bef7ae0d506
+      - name: part_id
+        type: text
+        value: ""
+        disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

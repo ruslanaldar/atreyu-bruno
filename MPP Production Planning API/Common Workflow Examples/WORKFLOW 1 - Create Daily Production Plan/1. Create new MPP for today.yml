@@ -1,0 +1,27 @@
+info:
+  name: 1. Create new MPP for today
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/mpp/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "planning_date": "{{planning_date}}",
+          "trigger_reason": "daily_planning"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Step 1: Create daily production plan"

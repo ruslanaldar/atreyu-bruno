@@ -1,0 +1,15 @@
+info:
+  name: Notification Detail
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: http://27.223.82.66:18080/api/chat/notifications/d4ff06a5-d46f-474e-94d1-3dc3b0a42743
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

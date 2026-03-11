@@ -1,0 +1,21 @@
+info:
+  name: GET gantt all containers Overview refresh
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?force_refresh=true"
+  params:
+    - name: force_refresh
+      value: "true"
+      type: query
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzUzMTQ3NzM5LCJpYXQiOjE3NTMwNjEzMzksImp0aSI6IjA1MWI2MDJjNDg4MTRhMGFhODAyYWI3ZGNmZDg5MWM5IiwidXNlcl9pZCI6MX0.-UpPoHKq4J6xBuT8dsN7KBeGQcCRZm4EdNsFb02J9BQ
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

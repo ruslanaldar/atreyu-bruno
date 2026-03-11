@@ -1,0 +1,29 @@
+info:
+  name: POST capacity-extended extra_stations
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/capacity-extended/"
+  body:
+    type: json
+    data: |-
+      {  
+        "container_no": "s-0349",
+        "scenario_id": "scenario-1768612861350-h2udr2ohd",
+        "extra_stations": [
+          {
+            "wc_code": "l02",
+            "quantity": 1,
+            "days" : 1
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

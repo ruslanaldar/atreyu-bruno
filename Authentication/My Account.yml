@@ -1,0 +1,15 @@
+info:
+  name: My Account
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: http://27.223.82.66:18080/auth/users/me/
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

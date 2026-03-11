@@ -1,0 +1,25 @@
+info:
+  name: Change Work Table Status
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/{{api_prefix}}/work-tables/change_status/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "table_id": "525562b9-085b-467a-b260-f017251df422",
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

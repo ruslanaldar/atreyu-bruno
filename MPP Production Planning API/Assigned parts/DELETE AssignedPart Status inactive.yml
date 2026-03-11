@@ -1,0 +1,19 @@
+info:
+  name: DELETE AssignedPart Status inactive
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{base_url}}/productionplans/assigned-parts/?id=42bb4253-cb1e-4ebb-9247-d35a4a990ad8"
+  params:
+    - name: id
+      value: 42bb4253-cb1e-4ebb-9247-d35a4a990ad8
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

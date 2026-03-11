@@ -1,0 +1,43 @@
+info:
+  name: Customer CRUD
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    GET [http://27.223.82.66:18080/api/orders/customers/](http://localhost:8000/api/orders/customers/)  
+    Authorization: Bearer {{access_token}}
+
+    # Add customer to the company with id = 850
+
+    POST [http://27.223.82.66:18080](http://localhost:8000/api/orders/customers/)[/api/orders/customers/](http://localhost:8000/api/orders/customers/)  
+    Authorization: Bearer {{access_token}}  
+    Content-Type: application/json  
+    {  
+    "full_name": "John Doe",  
+    "birth_date": "1990-01-01",  
+    "title_department": "Sales",  
+    "email": "[john.doe@example.com](https://mailto:john.doe@example.com)",  
+    "company": {"id": 69},  
+    "personal_number": "1234567890",  
+    "phone_number": "+1234567890",  
+    "fax": "+0987654321"  
+    }
+
+    # Update customer with id = 230
+
+    PUT [http://27.223.82.66:18080](http://localhost:8000/api/orders/customers/)[/api/orders/customers/?id=230](http://localhost:8000/api/orders/customers/?id=230)  
+    Authorization: Bearer {{access_token}}  
+    Content-Type: application/json  
+    {  
+    "status": "active"  
+    }
+
+    # Delete customer with id = 230
+
+    DELETE [http://27.223.82.66:18080](http://localhost:8000/api/orders/customers/)/[api/orders/customers/?id=230](http://localhost:8000/api/orders/customers/?id=230)  
+    Authorization: Bearer {{access_token}}
+  type: text/markdown

@@ -1,0 +1,33 @@
+info:
+  name: 6. Create Part (if needed)
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "company": {{company_id}},
+          "part_number": "P-2024-001",
+          "drawing_no": "DRW-2024-MAIN-001",
+          "revision_number": 1,
+          "description": "Main Assembly Part for Manufacturing",
+          "status": "Confirmed",
+          "sub_part_qty": 0,
+          "bom_status": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a new part if part_id 3343 doesn't exist

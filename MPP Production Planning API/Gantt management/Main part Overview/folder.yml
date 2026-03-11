@@ -1,0 +1,24 @@
+info:
+  name: Main part Overview
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    {
+
+    "container_no": "cl-0144",
+
+    "pp_no": "60002350",
+
+    "erp_no": "60002350",
+
+    "_main_part_id": 611
+
+    }
+
+    able to use part_id instead of _main_part_id_
+  type: text/markdown

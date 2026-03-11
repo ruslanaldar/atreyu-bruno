@@ -1,0 +1,27 @@
+info:
+  name: PUT AssignedPart
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{base_url}}/productionplans/assigned-parts/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "42bb4253-cb1e-4ebb-9247-d35a4a990ad8",
+        "container_no": "wk-0002",
+        "pp_no": "60001927",
+        "erp_no": "60001927",
+        "station": "w04",
+        "sub_statio": "w0408",
+        "assigned_date": "2025-10-02"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

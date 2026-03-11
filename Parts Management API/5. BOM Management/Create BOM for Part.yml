@@ -1,0 +1,32 @@
+info:
+  name: Create BOM for Part
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/bom/create_for_part/?part_id={{part_id}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: part_id
+      value: "{{part_id}}"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+          "name": "Main Assembly BOM",
+          "description": "Bill of materials for main assembly",
+          "quantity": 1,
+          "is_active": true,
+          "revision": "Rev A"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

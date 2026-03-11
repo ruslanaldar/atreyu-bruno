@@ -1,0 +1,22 @@
+info:
+  name: Change Address Copy
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{baseUrl}}/{{prefix}}/addresses/"
+  body:
+    type: json
+    data: |-
+      {
+        "id":57, // or in query params
+        "status": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

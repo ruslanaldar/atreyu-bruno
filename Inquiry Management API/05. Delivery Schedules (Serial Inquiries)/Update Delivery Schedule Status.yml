@@ -1,0 +1,31 @@
+info:
+  name: Update Delivery Schedule Status
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: "{{base_url}}/delivery-schedules/?inquiry_id={{inquiry_id}}&schedule_id={{schedule_id}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: inquiry_id
+      value: "{{inquiry_id}}"
+      type: query
+    - name: schedule_id
+      value: "{{schedule_id}}"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "status": "delivered"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

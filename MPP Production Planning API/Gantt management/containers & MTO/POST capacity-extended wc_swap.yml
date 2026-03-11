@@ -1,0 +1,30 @@
+info:
+  name: POST capacity-extended wc_swap
+  type: http
+  seq: 11
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/capacity-extended/"
+  body:
+    type: json
+    data: |-
+      { 
+      "container_no": "ed-0174",
+      "wc_swaps": [
+        {
+          "pp_no": "60001729",
+          "erp_no": "59506310",
+          "from": "d03",
+          "to": "d02",
+          "sp_otn": 9.5
+      }
+      ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

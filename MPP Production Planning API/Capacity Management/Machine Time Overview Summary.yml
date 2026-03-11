@@ -1,0 +1,24 @@
+info:
+  name: Machine Time Overview Summary
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/machine-time-overview/"
+  body:
+    type: json
+    data: |-
+      {
+        "date_from": "2025-12-10",
+        "date_to": "2025-12-27",
+        "hours_per_day": 16,
+        "workcenter": "w04"
+        }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

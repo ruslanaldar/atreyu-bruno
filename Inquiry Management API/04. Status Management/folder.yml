@@ -1,0 +1,7 @@
+info:
+  name: 04. Status Management
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit

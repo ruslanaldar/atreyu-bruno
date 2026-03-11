@@ -1,0 +1,24 @@
+info:
+  name: Post SubGroup
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{baseUrl}}/basics/materials/material-subgroups/"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "Stainless spring steel",
+          "description": "engineered to withstand significant mechanical stress while maintaining its shape and functionality",
+          "code": "",
+          "material_group_id": 27
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

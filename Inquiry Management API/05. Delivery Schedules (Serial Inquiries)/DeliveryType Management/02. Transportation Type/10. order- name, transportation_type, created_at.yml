@@ -1,0 +1,19 @@
+info:
+  name: "10. order: name, transportation_type, created_at"
+  type: http
+  seq: 11
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/transportation-types/?ordering=-created_at"
+  params:
+    - name: ordering
+      value: -created_at
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

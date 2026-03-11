@@ -1,0 +1,33 @@
+info:
+  name: Create SubPart empty
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/sub-parts/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "main_part": {{part_id}},
+          "name": "Base Plate",
+          "serial": "SP001",
+          "description": "Main base plate component",
+          "drawing_no": "BP-001",
+          "quantity": 1,
+          "material_standard": null,
+          "use_existing_shape": false,
+          "standard_shape_id": null,
+          "active_part": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

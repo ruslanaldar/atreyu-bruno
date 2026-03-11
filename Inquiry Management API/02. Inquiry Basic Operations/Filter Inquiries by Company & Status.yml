@@ -1,0 +1,25 @@
+info:
+  name: Filter Inquiries by Company & Status
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/?company_id={{company_id}}&status=approved&inquiry_type=serial"
+  params:
+    - name: company_id
+      value: "{{company_id}}"
+      type: query
+    - name: status
+      value: approved
+      type: query
+    - name: inquiry_type
+      value: serial
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

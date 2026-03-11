@@ -1,0 +1,33 @@
+info:
+  name: Update SubPart (Query Parameter)
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{base_url}}/sub-parts/update_by_query/?subpart_id={{subpart_id}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: subpart_id
+      value: "{{subpart_id}}"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+          "name": "Updated Base Plate",
+          "quantity": 2,
+          "unit_time": 60.0,
+          "material_standard_id": 2,
+          "standard_shape_id": 3,
+          "active_part": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

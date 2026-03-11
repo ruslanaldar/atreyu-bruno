@@ -1,0 +1,21 @@
+info:
+  name: List MPP Records with Query
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/mpp/?planning_date={{planning_date}}"
+  params:
+    - name: planning_date
+      value: "{{planning_date}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: List MPP records filtered by planning date

@@ -1,0 +1,22 @@
+info:
+  name: POST Container to list
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/containers/"
+  body:
+    type: json
+    data: |-
+      {
+          "container_no": "wk-0002",
+          "so_etd": "2025-10-12"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

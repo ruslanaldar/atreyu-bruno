@@ -1,0 +1,7 @@
+info:
+  name: With instruction
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

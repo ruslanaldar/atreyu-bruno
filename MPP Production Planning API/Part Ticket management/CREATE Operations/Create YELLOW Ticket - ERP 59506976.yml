@@ -1,0 +1,49 @@
+info:
+  name: Create YELLOW Ticket - ERP 59506976
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/api/productionplans/part-tickets/create/"
+  headers:
+    - name: Authorization
+      value: Bearer {{access_token}}
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "container_no": "wk-0002",
+          "pp_no": "60001929",
+          "erp_no": "59506976",
+          "station": "s01",
+          "sub_station": "s0101",
+          "completed_qty": "3.00",
+          "status": "yellow",
+          "emp_id": "211",
+          "emp_name": "Wang Yanzhong",
+          "unit_processing_time": "0.50",
+          "created_by": "quality_inspector_01",
+          "mo_no": "I-0709-0009",
+          "drawing_no": "30026801.00",
+          "man_seq": 1,
+          "notes": "YELLOW ticket - 3 pieces with minor quality issues"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        if (res.getStatus() === 201) {
+            const response = res.getBody();
+            bru.setVar('yellow_ticket_id', response.part_ticket.id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

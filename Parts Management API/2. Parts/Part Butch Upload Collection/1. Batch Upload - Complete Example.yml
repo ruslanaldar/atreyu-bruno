@@ -1,0 +1,275 @@
+info:
+  name: 1. Batch Upload - Complete Example
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/batch_upload/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "part_id": {{test_part_id}},
+        "strict_mode": false,
+          "subparts": [
+              {
+                  "serial": "SP007",
+                  "name": "Main Housing Shell",
+                  "description": "Primary housing component for pressure vessel",
+                  "drawing_no": "DWG-MHS-001",
+                  "active_part": true,
+                  "quantity": 1,
+                  "material_standard_id": null,
+                  "standard_shape_id": null,
+                  "parent_id": null,
+                  "worksteps": [
+                      {
+                          "center_id": "14c178f5-0e0c-4409-8ade-ae32802036c8",
+                          "station_id": "187d75d3-1145-43d7-b852-e2b8e92ab74e",
+                          "sequence": 1,
+                          "production_time_minutes": "45",
+                          "description": "Laser cutting of main housing shell"
+                      },
+                      {
+                          "center_id": "df15330b-226b-4046-90ac-6cffa9f0da9a",
+                          "station_id": "25ac9b53-307a-46c9-8403-4550a2580194",
+                          "sequence": 2,
+                          "production_time_minutes": "30",
+                          "description": "Bending operations for housing shape"
+                      },
+                      {
+                          "center_id": "06a942f6-06a3-4f3a-acb5-5caa0182a8b6",
+                          "station_id": "5661a1d4-3048-4091-99c0-2e6b271d80d8",
+                          "sequence": 3,
+                          "production_time_minutes": "60",
+                          "description": "MAG welding of housing seams"
+                      },
+                      {
+                          "center_id": "955b1ce7-ab84-41db-aa78-f2b2526f4cb3",
+                          "station_id": "c8705611-a6bd-4aa5-9001-1951de1ba3ca",
+                          "sequence": 4,
+                          "production_time_minutes": "15",
+                          "description": "Plate grinding and deburring"
+                      }
+                  ]
+              },
+              {
+                  "serial": "SP008",
+                  "name": "End Cap Assembly - Front",
+                  "description": "Front end cap with mounting provisions",
+                  "drawing_no": "DWG-ECA-F001",
+                  "active_part": true,
+                  "quantity": 1,
+                  "material_standard_id": null,
+                  "standard_shape_id": null,
+                  "parent_id": null,
+                  "worksteps": [
+                      {
+                          "center_id": "7f67d5a0-1dbd-4b2b-b2a0-3d38b260b688",
+                          "station_id": "4cc4b01a-29af-491d-a65e-3871b3de8a16",
+                          "sequence": 1,
+                          "production_time_minutes": "25",
+                          "description": "Pipe laser cutting for end cap profile"
+                      },
+                      {
+                          "center_id": "eb63c835-f729-4d02-be2b-69160e8732fa",
+                          "station_id": "a98b8ea2-26d5-4aeb-b637-76cc2390026c",
+                          "sequence": 2,
+                          "production_time_minutes": "40",
+                          "description": "CNC milling of mounting features"
+                      },
+                      {
+                          "center_id": "8b1f68b5-1f9c-4b10-bd6b-ce98bf20c0ad",
+                          "station_id": "10387b39-39b3-4f8f-8408-e952b4ac0e0a",
+                          "sequence": 3,
+                          "production_time_minutes": "20",
+                          "description": "Drilling mounting holes"
+                      },
+                      {
+                          "center_id": "1f20e177-80d3-440c-9671-53947d667d43",
+                          "station_id": "43a5f2ab-9fec-4851-b0a3-17e062c5e4b3",
+                          "sequence": 4,
+                          "production_time_minutes": "35",
+                          "description": "TIG welding of end cap assembly"
+                      }
+                  ]
+              },
+              {
+                  "serial": "SP009",
+                  "name": "End Cap Assembly - Rear",
+                  "description": "Rear end cap with pressure relief provisions",
+                  "drawing_no": "DWG-ECA-R001",
+                  "active_part": true,
+                  "quantity": 1,
+                  "material_standard_id": null,
+                  "standard_shape_id": null,
+                  "parent_id": null,
+                  "worksteps": [
+                      {
+                          "center_id": "7f67d5a0-1dbd-4b2b-b2a0-3d38b260b688",
+                          "station_id": "4cc4b01a-29af-491d-a65e-3871b3de8a16",
+                          "sequence": 1,
+                          "production_time_minutes": "25",
+                          "description": "Pipe laser cutting for end cap profile"
+                      },
+                      {
+                          "center_id": "41e7d9df-5d5e-4213-8103-1f37fdc03583",
+                          "station_id": "02f23ce9-803b-49f7-b400-258637832ab2",
+                          "sequence": 2,
+                          "production_time_minutes": "35",
+                          "description": "Manual milling operations"
+                      },
+                      {
+                          "center_id": "6ef7c002-2a6f-4956-a7af-cdb35e5bc18a",
+                          "station_id": "711774de-edae-4442-826c-de9f9206748f",
+                          "sequence": 3,
+                          "production_time_minutes": "15",
+                          "description": "Tapping threaded connections"
+                      },
+                      {
+                          "center_id": "0613ee3a-f2ba-4306-9bf5-53b4fce434a4",
+                          "station_id": "19c7c576-6ac6-4647-8576-854d74a92f31",
+                          "sequence": 4,
+                          "production_time_minutes": "20",
+                          "description": "Sandblasting surface preparation"
+                      }
+                  ]
+              },
+              {
+                  "serial": "SP010",
+                  "name": "Internal Baffle System",
+                  "description": "Internal flow control baffles",
+                  "drawing_no": "DWG-IBS-001",
+                  "active_part": true,
+                  "quantity": 3,
+                  "material_standard_id": null,
+                  "standard_shape_id": null,
+                  "parent_id": null,
+                  "worksteps": [
+                      {
+                          "center_id": "14c178f5-0e0c-4409-8ade-ae32802036c8",
+                          "station_id": "9ce2063a-ef0e-442a-a943-c25826895100",
+                          "sequence": 1,
+                          "production_time_minutes": "30",
+                          "description": "Laser cutting of baffle plates"
+                      },
+                      {
+                          "center_id": "31d3607e-02cd-46fa-8e95-462918d7c8c3",
+                          "station_id": "447aa151-91c0-4234-b192-5c3a3e325884",
+                          "sequence": 2,
+                          "production_time_minutes": "25",
+                          "description": "Pipe bending for baffle supports"
+                      },
+                      {
+                          "center_id": "162cabb0-918e-425c-97cd-bee4affde73f",
+                          "station_id": "d439e32d-cdff-4c31-9584-65bd028e60f8",
+                          "sequence": 3,
+                          "production_time_minutes": "45",
+                          "description": "Robotic welding of baffle assembly"
+                      },
+                      {
+                          "center_id": "65b9012b-949e-4f51-8c9e-febed2fad5ee",
+                          "station_id": "4f72bbc5-d8be-4403-97be-778684d246e1",
+                          "sequence": 4,
+                          "production_time_minutes": "10",
+                          "description": "Profile grinding and finishing"
+                      }
+                  ]
+              },
+              {
+                  "serial": "SP011",
+                  "name": "Pressure Relief Valve Mount",
+                  "description": "Mounting bracket for pressure relief valve",
+                  "drawing_no": "DWG-PRVM-001",
+                  "active_part": true,
+                  "quantity": 1,
+                  "material_standard_id": null,
+                  "standard_shape_id": null,
+                  "parent_id": null,
+                  "worksteps": [
+                      {
+                          "center_id": "1b632a69-7af5-4ef1-bd4b-5c2d8a5dc24c",
+                          "station_id": "0b7858f7-faaf-495c-b12e-201ddcadd0ee",
+                          "sequence": 1,
+                          "production_time_minutes": "15",
+                          "description": "Band sawing of mounting bracket stock"
+                      },
+                      {
+                          "center_id": "687b9b80-73c4-44a9-be83-72d1645a18e6",
+                          "station_id": "fcca8653-bf78-489e-a2d4-017557ffc8d5",
+                          "sequence": 2,
+                          "production_time_minutes": "30",
+                          "description": "CNC lathing of valve mounting surface"
+                      },
+                      {
+                          "center_id": "8199a6bf-645a-4444-a7b0-aae960aa6ffb",
+                          "station_id": "f7752f3f-5b58-4cee-bb7c-50b7363e30a5",
+                          "sequence": 3,
+                          "production_time_minutes": "20",
+                          "description": "Drilling and tapping mounting holes"
+                      },
+                      {
+                          "center_id": "acaba2de-1a33-4cae-99cd-9823262c2d8e",
+                          "station_id": "9bcf899b-206e-4f22-a15b-f62ef432d463",
+                          "sequence": 4,
+                          "production_time_minutes": "10",
+                          "description": "Quality inspection and testing"
+                      }
+                  ]
+              },
+              {
+                  "serial": "SP012",
+                  "name": "Temperature Sensor Housing",
+                  "description": "Housing for temperature monitoring sensors",
+                  "drawing_no": "DWG-TSH-001",
+                  "active_part": true,
+                  "quantity": 2,
+                  "material_standard_id": null,
+                  "standard_shape_id": null,
+                  "parent_id": null,
+                  "worksteps": [
+                      {
+                          "center_id": "77ddf626-274d-47e0-b1da-ea2898ed7a94",
+                          "station_id": "68d6a276-4668-4cec-b077-123fc21797c1",
+                          "sequence": 1,
+                          "production_time_minutes": "10",
+                          "description": "Disc sawing of sensor housing material"
+                      },
+                      {
+                          "center_id": "4f000e81-9191-4b7e-8355-ab5b399db410",
+                          "station_id": "3ef5f966-4087-4617-8f46-1b5cdd9adeee",
+                          "sequence": 2,
+                          "production_time_minutes": "25",
+                          "description": "Manual lathing of housing body"
+                      },
+                      {
+                          "center_id": "bf080aff-afea-4e4c-8092-17cfb2b933d4",
+                          "station_id": "c609e3e8-d86e-47be-ac16-3f152ad2a23b",
+                          "sequence": 3,
+                          "production_time_minutes": "15",
+                          "description": "Thread rolling for sensor connections"
+                      },
+                      {
+                          "center_id": "2c1529fd-4196-422b-95a7-031c0156e73e",
+                          "station_id": "1bb858e3-08e5-4f5a-9bc2-de9703db9d78",
+                          "sequence": 4,
+                          "production_time_minutes": "5",
+                          "description": "Final inspection and checking"
+                      }
+                  ]
+              }
+          ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Complete batch upload example with 6 subparts and multiple worksteps using equipment from your mapping

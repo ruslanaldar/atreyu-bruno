@@ -1,0 +1,77 @@
+info:
+  name: 3. Attach Existing Shape to SubPart
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: "{{base_url}}/sub-parts/{{subpart_id}}/attach_existing_shape/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "shape_id": {{existing_shape_id}}
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+            expect(res.getStatus()).to.equal(200);
+        });
+
+        test("Response has success field", function () {
+            var jsonData = res.getBody();
+            expect(jsonData).to.have.property('success');
+            expect(jsonData.success).to.be.true;
+        });
+
+        test("Attachment confirmed", function () {
+            var jsonData = res.getBody();
+            expect(jsonData).to.have.property('new_shape');
+            expect(jsonData.new_shape).to.have.property('id');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 3. Attach Existing Shape to SubPart
+    request:
+      url: "{{base_url}}/api/parts/sub-parts/attach_existing_shape_query/?subpart_id={{subpart_id}}"
+      method: POST
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Accept
+          value: application/json
+        - name: Authorization
+          value: Bearer {{auth_token}}
+          disabled: true
+      params:
+        - name: subpart_id
+          value: "{{subpart_id}}"
+          type: query
+      body:
+        type: json
+        data: |-
+          {
+              "shape_id": {{existing_shape_id}}
+          }
+    response:
+      body:
+        type: text
+        data: ""

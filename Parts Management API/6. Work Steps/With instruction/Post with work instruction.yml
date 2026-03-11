@@ -1,0 +1,43 @@
+info:
+  name: Post with work instruction
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/work-steps/create_for_subpart/"
+  body:
+    type: multipart-form
+    data:
+      - name: subpart_id
+        type: text
+        value: "1535"
+      - name: center_id
+        type: text
+        value: 14c178f5-0e0c-4409-8ade-ae32802036c8
+      - name: station_id
+        type: text
+        value: 187d75d3-1145-43d7-b852-e2b8e92ab74e
+      - name: sequence
+        type: text
+        value: "5"
+      - name: prodcution_time_minutes
+        type: text
+        value: "2.5"
+      - name: description
+        type: text
+        value: laser cutting for the part
+      - name: work_description
+        type: text
+        value: percise cut for the laser
+      - name: work_instruction_file
+        type: file
+        value:
+          - postman-cloud:///1f0a8496-d2ed-44b0-bf6c-cbd19b8fe5de
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

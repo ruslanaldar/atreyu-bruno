@@ -1,0 +1,36 @@
+info:
+  name: Verify OTP
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/api/organization/categories/otp/verify-otp/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "email": "ruslan.aldar@gmail.com",
+        "otp": "123456",
+        "purpose": "login"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        if (res.getStatus() === 200) {
+            const response = res.getBody();
+            bru.setVar('access_token', response.access);
+            bru.setVar('refresh_token', response.refresh);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

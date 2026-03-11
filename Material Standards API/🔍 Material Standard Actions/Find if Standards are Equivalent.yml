@@ -1,0 +1,29 @@
+info:
+  name: Find if Standards are Equivalent
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{baseUrl}}/basics/material-standards/find_equivalent/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+  body:
+    type: json
+    data: |-
+      {
+        "standard_1_id": 123,
+        "standard_2_id": 124
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Check if two standards are equivalent

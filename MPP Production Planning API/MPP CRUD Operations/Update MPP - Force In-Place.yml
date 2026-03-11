@@ -1,0 +1,31 @@
+info:
+  name: Update MPP - Force In-Place
+  type: http
+  seq: 12
+
+http:
+  method: PUT
+  url: "{{base_url}}/productionplans/mpp/{{mpp_id}}/?force_in_place=true"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: force_in_place
+      value: "true"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+          "status": "in_progress",
+          "notes": "Forced in-place update"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Force in-place update without creating new version

@@ -1,0 +1,42 @@
+info:
+  name: Create for subpart
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/sub-part-files/create_for_subpart/"
+  params:
+    - name: subpart_id
+      value: "1376"
+      type: query
+      disabled: true
+  body:
+    type: multipart-form
+    data:
+      - name: subpart_id
+        type: text
+        value: "1639"
+      - name: category
+        type: text
+        value: ""
+      - name: category_name_input
+        type: text
+        value: test
+      - name: title
+        type: text
+        value: subpart 1639 pdf template
+      - name: description
+        type: text
+        value: test
+      - name: file
+        type: file
+        value:
+          - postman-cloud:///1f036e27-59b0-4d90-a8e5-c4791efbc5d1
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

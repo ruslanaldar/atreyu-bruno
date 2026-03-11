@@ -1,0 +1,60 @@
+info:
+  name: Shape List
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/standard-shapes/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  ### Endpoint: Retrieve Standard Shapes
+
+  This endpoint allows users to retrieve a list of standard shapes available in the system. The request does not require any input parameters and is a simple HTTP GET request.
+
+  #### Request
+
+  - **Method**: GET
+      
+  - **URL**: `{{base_url}}/standard-shapes/`
+      
+
+  #### Response
+
+  Upon a successful request, the server responds with a status code of `200` and a JSON array containing the details of the standard shapes. Each shape object in the response includes the following fields:
+
+  - **id**: (integer) Unique identifier for the shape.
+      
+  - **name**: (string) The name of the shape.
+      
+  - **description**: (string) A brief description of the shape.
+      
+  - **shape_type**: (integer) An identifier representing the type of shape.
+      
+  - **shape_type_name**: (string) The name of the shape type.
+      
+  - **shape_type_image**: (string) URL or path to an image representing the shape type.
+      
+  - **shape_type_drawing**: (nullable) A drawing associated with the shape type, can be null.
+      
+  - **shape_group_name**: (string) The name of the group to which the shape belongs.
+      
+  - **dimension_string**: (string) A string representation of the dimensions of the shape.
+      
+  - **volume_m3**: (number) The volume of the shape in cubic meters.
+      
+  - **surface_area_m2**: (number) The surface area of the shape in square meters.
+      
+  - **is_standard**: (boolean) Indicates whether the shape is a standard shape.
+      
+  - **created_at**: (string) Timestamp indicating when the shape was created.
+      
+
+  This endpoint is useful for applications that need to display or manipulate standard shapes, providing essential details for each shape in a structured format.

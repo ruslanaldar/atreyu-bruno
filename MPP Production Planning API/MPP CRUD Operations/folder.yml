@@ -1,0 +1,11 @@
+info:
+  name: MPP CRUD Operations
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: Basic CRUD operations for Master Production Plan records
+  type: text/markdown

@@ -1,0 +1,25 @@
+info:
+  name: Get SubPart for Editing
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{baseUrl}}/parts/sub-parts/update_by_query/?subpart_id=8"
+  headers:
+    - name: Authorization
+      value: Bearer {{authToken}}
+  params:
+    - name: subpart_id
+      value: "8"
+      type: query
+      description: ID of the SubPart to retrieve
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get current SubPart data for form pre-filling

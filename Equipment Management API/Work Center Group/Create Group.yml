@@ -1,0 +1,23 @@
+info:
+  name: Create Group
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/{{api_prefix}}/work-center-groups/"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "  production department  ",
+          "name_cn": "生产部门",
+          "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

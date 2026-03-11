@@ -1,0 +1,23 @@
+info:
+  name: Post Material Group
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{baseUrl}}/basics/materials/material-groups/"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "",
+          "description": "",
+          "code": ""
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

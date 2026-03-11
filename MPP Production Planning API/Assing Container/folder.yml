@@ -1,0 +1,14 @@
+info:
+  name: Assing Container
+  type: folder
+  seq: 13
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Assign Containers to force finish date in assigned date.
+
+    In the productionplans assigned so_etd dates will take a place instead of delivery date for the current parts.
+  type: text/markdown

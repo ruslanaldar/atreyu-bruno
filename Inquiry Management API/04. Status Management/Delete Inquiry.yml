@@ -1,0 +1,22 @@
+info:
+  name: Delete Inquiry
+  type: http
+  seq: 3
+
+http:
+  method: DELETE
+  url: "{{base_url}}/inquiries/?inquiry_id={{inquiry_id}}&action=delete_inquiry"
+  params:
+    - name: inquiry_id
+      value: "{{inquiry_id}}"
+      type: query
+    - name: action
+      value: delete_inquiry
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

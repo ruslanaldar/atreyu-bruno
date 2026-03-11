@@ -1,0 +1,28 @@
+info:
+  name: Create New MPP
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/mpp/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |
+      {
+
+          "trigger_reason": "manual_creation",
+          "status": "draft"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create new MPP - automatically runs production planning to generate production_plan and remaining_capacity

@@ -1,0 +1,23 @@
+info:
+  name: POST daily capacity
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/daily-capacity/"
+  body:
+    type: json
+    data: |-
+      {
+          "center_code": "w06",
+          "shift_date": "2025-11-25",
+          "shift_type": "extended"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

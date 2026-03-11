@@ -1,0 +1,11 @@
+info:
+  name: WORKFLOW 3 - Update and Version Control
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs:
+  content: Workflow for updating MPP with version control
+  type: text/markdown

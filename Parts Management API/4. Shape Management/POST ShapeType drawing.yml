@@ -1,0 +1,25 @@
+info:
+  name: POST ShapeType drawing
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/shape-types/upload_drawing/"
+  body:
+    type: multipart-form
+    data:
+      - name: shape_type_id
+        type: text
+        value: "{{shape_type_id}}"
+      - name: drawing
+        type: file
+        value:
+          - postman-cloud:///1f06affc-37eb-40b0-895c-2bef7ae0d506
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

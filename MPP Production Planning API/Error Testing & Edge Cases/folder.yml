@@ -1,0 +1,11 @@
+info:
+  name: Error Testing & Edge Cases
+  type: folder
+  seq: 7
+
+request:
+  auth: inherit
+
+docs:
+  content: Error testing and edge case scenarios
+  type: text/markdown

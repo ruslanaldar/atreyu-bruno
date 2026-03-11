@@ -1,0 +1,22 @@
+info:
+  name: Change Status
+  type: http
+  seq: 11
+
+http:
+  method: PUT
+  url: "{{base_url}}/sub-parts/change_status/?subpart_id=1459&status=active"
+  params:
+    - name: subpart_id
+      value: "1459"
+      type: query
+    - name: status
+      value: active
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

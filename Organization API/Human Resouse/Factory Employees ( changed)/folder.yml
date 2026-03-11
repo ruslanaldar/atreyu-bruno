@@ -1,0 +1,7 @@
+info:
+  name: Factory Employees ( changed)
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit

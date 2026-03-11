@@ -1,0 +1,445 @@
+info:
+  name: Create Material Standard
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{baseUrl}}/basics/materials/material-standards/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+  body:
+    type: json
+    data: |-
+      {
+        "material_group_id": 33,
+        "material_subgroup_id": 14,
+        "organization_id": 9,
+        "standard_number": "2024",
+        "description": "High strength aluminum alloy for aerospace",
+        "material_price_kg": 28.5,
+        "density_kg_m3": 2780.0,
+          "chemical_composition": {
+              "aluminum": {
+                  "name": "Aluminum",
+                  "symbol": "Al",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 100.0,
+                      "min": 85.0
+                  },
+                  "effect": "Base metal, provides lightweight and corrosion resistance.",
+                  "value": "90.7-94.7%",
+                  "specification": "Balance",
+                  "test_method": "Calculated"
+              },
+              "silicon": {
+                  "name": "Silicon",
+                  "symbol": "Si",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 13.0,
+                      "min": 0.0
+                  },
+                  "effect": "Improves castability, forms Mg2Si precipitates for strengthening.",
+                  "value": "≤0.50%",
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              },
+              "iron": {
+                  "name": "Iron",
+                  "symbol": "Fe",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 2.0,
+                      "min": 0.0
+                  },
+                  "effect": "Usually impurity, reduces ductility and corrosion resistance.",
+                  "value": "≤0.50%",
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              },
+              "copper": {
+                  "name": "Copper",
+                  "symbol": "Cu",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 6.0,
+                      "min": 0.0
+                  },
+                  "effect": "Increases strength through precipitation hardening.",
+                  "value": "3.8-4.9%",
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              },
+              "manganese": {
+                  "name": "Manganese",
+                  "symbol": "Mn",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 2.0,
+                      "min": 0.0
+                  },
+                  "effect": "Increases strength, controls iron effects.",
+                  "value": "0.3-0.9%",
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              },
+              "magnesium": {
+                  "name": "Magnesium",
+                  "symbol": "Mg",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 6.0,
+                      "min": 0.0
+                  },
+                  "effect": "Solid solution strengthening, forms Mg2Si precipitates.",
+                  "value": "1.2-1.8%",
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              },
+              "chromium": {
+                  "name": "Chromium",
+                  "symbol": "Cr",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 0.5,
+                      "min": 0.0
+                  },
+                  "effect": "Controls grain structure, increases strength.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              },
+              "zinc": {
+                  "name": "Zinc",
+                  "symbol": "Zn",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 8.0,
+                      "min": 0.0
+                  },
+                  "effect": "Major strengthening element in 7xxx series.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              },
+              "titanium": {
+                  "name": "Titanium",
+                  "symbol": "Ti",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 0.2,
+                      "min": 0.0
+                  },
+                  "effect": "Grain refiner, controls grain size.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              },
+              "zirconium": {
+                  "name": "Zirconium",
+                  "symbol": "Zr",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 0.3,
+                      "min": 0.0
+                  },
+                  "effect": "Grain refiner, recrystallization control.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              },
+              "lithium": {
+                  "name": "Lithium",
+                  "symbol": "Li",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 3.0,
+                      "min": 0.0
+                  },
+                  "effect": "Reduces density, increases stiffness.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              },
+              "scandium": {
+                  "name": "Scandium",
+                  "symbol": "Sc",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "max": 1.0,
+                      "min": 0.0
+                  },
+                  "effect": "Grain refiner, prevents recrystallization.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "ASTM E1019"
+              }
+          },
+          "material_properties": {
+              "density": {
+                  "name": "Density",
+                  "symbol": "ρ",
+                  "unit": "kg/m³",
+                  "typical_range": {
+                      "max": 2900,
+                      "min": 2600
+                  },
+                  "effect": "Mass per unit volume, key advantage over steel.",
+                  "value": null,
+                  "test_standard": "ASTM B311",
+                  "category": "physical"
+              },
+              "melting_point": {
+                  "name": "Melting Point",
+                  "symbol": "Tm",
+                  "unit": "°C",
+                  "typical_range": {
+                      "max": 660,
+                      "min": 475
+                  },
+                  "effect": "Temperature at which alloy melts.",
+                  "value": "502-638°C",
+                  "test_standard": "ASTM E794",
+                  "category": "physical"
+              },
+              "thermal_conductivity": {
+                  "name": "Thermal Conductivity",
+                  "symbol": "k",
+                  "unit": "W/(m·K)",
+                  "typical_range": {
+                      "max": 237,
+                      "min": 80
+                  },
+                  "effect": "Excellent heat conductor.",
+                  "value": "121 W/m·K",
+                  "test_standard": "ASTM E1461",
+                  "category": "physical"
+              },
+              "thermal_expansion": {
+                  "name": "Thermal Expansion Coefficient",
+                  "symbol": "α",
+                  "unit": "10⁻⁶/K",
+                  "typical_range": {
+                      "max": 25,
+                      "min": 20
+                  },
+                  "effect": "Relatively high thermal expansion.",
+                  "value": "22.9×10⁻⁶/°C",
+                  "test_standard": "ASTM E228",
+                  "category": "physical"
+              },
+              "electrical_conductivity": {
+                  "name": "Electrical Conductivity",
+                  "symbol": "σ",
+                  "unit": "% IACS",
+                  "typical_range": {
+                      "max": 65,
+                      "min": 20
+                  },
+                  "effect": "Excellent electrical conductor.",
+                  "value": null,
+                  "test_standard": "ASTM B193",
+                  "category": "physical"
+              },
+              "specific_heat": {
+                  "name": "Specific Heat Capacity",
+                  "symbol": "Cp",
+                  "unit": "J/(kg·K)",
+                  "typical_range": {
+                      "max": 920,
+                      "min": 880
+                  },
+                  "effect": "Heat capacity per unit mass.",
+                  "value": "875 J/kg·K",
+                  "test_standard": "ASTM E1269",
+                  "category": "physical"
+              },
+              "yield_strength": {
+                  "name": "Yield Strength",
+                  "symbol": "σy",
+                  "unit": "MPa",
+                  "typical_range": {
+                      "max": 600,
+                      "min": 35
+                  },
+                  "effect": "Stress at which permanent deformation begins.",
+                  "value": "≥324 MPa",
+                  "test_standard": "ASTM E8",
+                  "category": "mechanical"
+              },
+              "ultimate_tensile_strength": {
+                  "name": "Ultimate Tensile Strength",
+                  "symbol": "σu",
+                  "unit": "MPa",
+                  "typical_range": {
+                      "max": 700,
+                      "min": 90
+                  },
+                  "effect": "Maximum stress before fracture.",
+                  "value": null,
+                  "test_standard": "ASTM E8",
+                  "category": "mechanical"
+              },
+              "elastic_modulus": {
+                  "name": "Elastic Modulus",
+                  "symbol": "E",
+                  "unit": "GPa",
+                  "typical_range": {
+                      "max": 72,
+                      "min": 68
+                  },
+                  "effect": "Stiffness, about 1/3 of steel.",
+                  "value": null,
+                  "test_standard": "ASTM E111",
+                  "category": "mechanical"
+              },
+              "poisson_ratio": {
+                  "name": "Poisson's Ratio",
+                  "symbol": "ν",
+                  "unit": "dimensionless",
+                  "typical_range": {
+                      "max": 0.36,
+                      "min": 0.31
+                  },
+                  "effect": "Ratio of lateral to axial strain.",
+                  "value": null,
+                  "test_standard": "ASTM E132",
+                  "category": "mechanical"
+              },
+              "elongation": {
+                  "name": "Elongation at Break",
+                  "symbol": "εf",
+                  "unit": "%",
+                  "typical_range": {
+                      "max": 45,
+                      "min": 1
+                  },
+                  "effect": "Ductility measure.",
+                  "value": "≥10%",
+                  "test_standard": "ASTM E8",
+                  "category": "mechanical"
+              },
+              "hardness_brinell": {
+                  "name": "Brinell Hardness",
+                  "symbol": "HB",
+                  "unit": "HB",
+                  "typical_range": {
+                      "max": 150,
+                      "min": 15
+                  },
+                  "effect": "Resistance to indentation.",
+                  "value": null,
+                  "test_standard": "ASTM E10",
+                  "category": "mechanical"
+              },
+              "fatigue_strength": {
+                  "name": "Fatigue Strength",
+                  "symbol": "σf",
+                  "unit": "MPa",
+                  "typical_range": {
+                      "max": 200,
+                      "min": 50
+                  },
+                  "effect": "Stress for specified cycles.",
+                  "value": null,
+                  "test_standard": "ASTM D7791",
+                  "category": "mechanical"
+              },
+              "fracture_toughness": {
+                  "name": "Fracture Toughness",
+                  "symbol": "KIC",
+                  "unit": "MPa·m^0.5",
+                  "typical_range": {
+                      "max": 45,
+                      "min": 15
+                  },
+                  "effect": "Resistance to crack propagation.",
+                  "value": null,
+                  "test_standard": "ASTM E399",
+                  "category": "mechanical"
+              },
+              "legacy_hardness": {
+                  "name": "Legacy_Hardness",
+                  "symbol": "legacy_hardness",
+                  "value": {
+                      "name": "Hardness",
+                      "note": "Migrated from material_property",
+                      "unit": "HB",
+                      "value": "120",
+                      "effect": "Legacy property preserved from previous schema",
+                      "symbol": "hardness",
+                      "category": "legacy",
+                      "test_standard": "Unknown"
+                  },
+                  "unit": "",
+                  "effect": "Additional property not in current schema",
+                  "note": "Preserved from existing data"
+              },
+              "legacy_fatigue_limit": {
+                  "name": "Legacy_Fatigue_Limit",
+                  "symbol": "legacy_fatigue_limit",
+                  "value": {
+                      "name": "Fatigue Limit",
+                      "note": "Migrated from material_property",
+                      "unit": "MPa",
+                      "value": "138",
+                      "effect": "Legacy property preserved from previous schema",
+                      "symbol": "fatigue_limit",
+                      "category": "legacy",
+                      "test_standard": "Unknown"
+                  },
+                  "unit": "",
+                  "effect": "Additional property not in current schema",
+                  "note": "Preserved from existing data"
+              },
+              "legacy_tensile_strength": {
+                  "name": "Legacy_Tensile_Strength",
+                  "symbol": "legacy_tensile_strength",
+                  "value": {
+                      "name": "Tensile Strength",
+                      "note": "Migrated from material_property",
+                      "unit": "MPa",
+                      "value": "≥469",
+                      "effect": "Legacy property preserved from previous schema",
+                      "symbol": "tensile_strength",
+                      "category": "legacy",
+                      "test_standard": "Unknown"
+                  },
+                  "unit": "",
+                  "effect": "Additional property not in current schema",
+                  "note": "Preserved from existing data"
+              },
+              "legacy_electrical_resistivity": {
+                  "name": "Legacy_Electrical_Resistivity",
+                  "symbol": "legacy_electrical_resistivity",
+                  "value": {
+                      "name": "Electrical Resistivity",
+                      "note": "Migrated from material_property",
+                      "unit": "μΩ·m",
+                      "value": "0.057",
+                      "effect": "Legacy property preserved from previous schema",
+                      "symbol": "electrical_resistivity",
+                      "category": "legacy",
+                      "test_standard": "Unknown"
+                  },
+                  "unit": "",
+                  "effect": "Additional property not in current schema",
+                  "note": "Preserved from existing data"
+              }
+          },
+        "is_active": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a new material standard

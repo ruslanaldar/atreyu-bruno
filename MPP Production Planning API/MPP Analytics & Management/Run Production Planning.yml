@@ -1,0 +1,27 @@
+info:
+  name: Run Production Planning
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/mpp/run_planning/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "planning_date": "{{planning_date}}",
+          "trigger_reason": "manual_run"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Run production planning and create/update MPP

@@ -1,0 +1,17 @@
+info:
+  name: ReassignWorkStep
+  type: folder
+  seq: 15
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Mission for this functionality is to register worksteps that we require to complete at the same day.  
+    We drag from back to forward.
+
+    content data:
+
+    container_no, part_no (pp_no), subpart_no (erp_no), center_code ( from workcenter), related_code (to workcenter)
+  type: text/markdown

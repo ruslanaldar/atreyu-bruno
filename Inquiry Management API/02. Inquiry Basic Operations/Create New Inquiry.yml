@@ -1,0 +1,26 @@
+info:
+  name: Create New Inquiry
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/inquiries/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "company": {{company_id}},
+        "inquiry_type": "sample",
+        "description": "Sample order for testing"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,7 @@
+info:
+  name: 4. Shape Management
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit

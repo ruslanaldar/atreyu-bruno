@@ -1,0 +1,25 @@
+info:
+  name: 07.  by fastest
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/delivery-types/?action=recommendations&type=fastest&limit=3"
+  params:
+    - name: action
+      value: recommendations
+      type: query
+    - name: type
+      value: fastest
+      type: query
+    - name: limit
+      value: "3"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,63 @@
+info:
+  name: Workcenter Management
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Gantt Workcenter related view.  
+    GET workcenter cache records
+
+    GET [http://localhost:8000/api/productionplans/workcenters/](http://localhost:8000/api/productionplans/workcenters/)  
+    Authorization: Bearer {{access_token}}
+
+    # GET workcenter cache records by container_no
+
+    GET [http://27.223.82.66:18080/api/productionplans/workcenters/?container_no=wk-0002](http://localhost:8000/api/productionplans/workcenters/?container_no=wk-0005)  
+    Authorization: Bearer {{access_token}}
+
+    # GET workcenter cache records by employee_name
+
+    GET [http://27.223.82.66:18080](http://localhost:8000/api/productionplans/workcenters/?container_no=wk-0005)[/api/productionplans/workcenters/](http://localhost:8000/api/productionplans/workcenters/)  
+    Authorization: Bearer {{access_token}}  
+    Content-Type: application/json  
+    {  
+    "employee_name": "Sun Guofeng"  
+    }
+
+    # GET workcenter cache records by workcenter code_string
+
+    GET [http://27.223.82.66:18080](http://localhost:8000/api/productionplans/workcenters/?container_no=wk-0005)[/api/productionplans/workcenters/?center_code=w06](http://localhost:8000/api/productionplans/workcenters/?center_code=w06)  
+    Authorization: Bearer {{access_token}}
+
+    # GET workcenter cache records by workcenter code_string from data
+
+    GET [http://27.223.82.66:18080](http://localhost:8000/api/productionplans/workcenters/?container_no=wk-0005)[/api/productionplans/workcenters/](http://localhost:8000/api/productionplans/workcenters/)  
+    Authorization: Bearer {{access_token}}  
+    Content-Type: application/json  
+    {  
+    "center_code": "w06"  
+    }
+
+    # GET workcenter cache records by part_no
+
+    GET [http://27.223.82.66:18080](http://localhost:8000/api/productionplans/workcenters/?container_no=wk-0005)[/api/productionplans/workcenters/?part_no=59508117](http://localhost:8000/api/productionplans/workcenters/?part_no=59508117)  
+    Authorization: Bearer {{access_token}}  
+    Content-Type: application/json  
+    {  
+    "part_no": "59508117"  
+    }
+
+    # GET workcenter cache multiple filters
+
+    GET [http://27.223.82.66:18080](http://localhost:8000/api/productionplans/workcenters/?container_no=wk-0005)[/api/productionplans/workcenters/](http://localhost:8000/api/productionplans/workcenters/)  
+    Authorization: Bearer {{access_token}}  
+    Content-Type: application/json  
+    {  
+    "container_no": "wk-0002",  
+    "center_code": "d03"  
+    }
+  type: text/markdown

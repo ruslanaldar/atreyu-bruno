@@ -1,0 +1,150 @@
+info:
+  name: 1. Create and Attach Shape to SubPart
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/sub-parts/{{subpart_id}}/create_and_attach_shape/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Accept
+      value: application/json
+    - name: Authorization
+      value: Bearer {{auth_token}}
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+          "name": "Custom Shape - Part 59506954",
+          "description": "Custom shape for Part 59506954",
+          "shape_type": 138,
+          "is_standard": false,
+          "dimension_data": {
+              "width": 100,
+              "outer_diameter": 100,
+              "inner_diameter": 90
+          }
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: before-request
+      code: |-
+        console.log("Creating shape for SubPart:", bru.getEnvVar("subpart_id"));
+        console.log("Shape data:", JSON.stringify({
+            name: "Debug Test - Console Output",
+            shape_type: 590,
+            dimension_data: {
+                length: 1000,
+                width: 500,
+                thickness: 10,
+                manufacturing_process: "hot_rolled"
+            }
+        }, null, 2));
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+            expect(res.getStatus()).to.equal(201);
+        });
+
+        test("Response has success field", function () {
+            var jsonData = res.getBody();
+            expect(jsonData).to.have.property('success');
+            expect(jsonData.success).to.be.true;
+        });
+
+        test("Shape was created", function () {
+            var jsonData = res.getBody();
+            expect(jsonData).to.have.property('created_shape');
+            expect(jsonData.created_shape).to.have.property('id');
+            expect(jsonData.created_shape).to.have.property('name');
+            expect(jsonData.created_shape.name).to.eql("Debug Test - Console Output");
+        });
+
+        // Store created shape ID for cleanup
+        if (res.getStatus() === 201) {
+            var jsonData = res.getBody();
+            if (jsonData.created_shape && jsonData.created_shape.id) {
+                bru.setEnvVar("created_shape_id", jsonData.created_shape.id);
+                console.log("Created shape ID:", jsonData.created_shape.id);
+            }
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: 1. Create and Attach Shape to SubPart with query
+    request:
+      url: "{{base_url}}/api/parts/sub-parts/create_and_attach_shape_query/?subpart_id={{subpart_id}}"
+      method: POST
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Accept
+          value: application/json
+        - name: Authorization
+          value: Bearer {{auth_token}}
+          disabled: true
+      params:
+        - name: subpart_id
+          value: "{{subpart_id}}"
+          type: query
+      body:
+        type: json
+        data: |-
+          {
+              "name": "Debug Test - Console Output",
+              "description": "Watch Django console for debug messages",
+              "shape_type": {{shape_type_id}},
+              "dimension_data": {
+                  "length": 1000,
+                  "width": 500,
+                  "thickness": 10,
+                  "manufacturing_process": "hot_rolled"
+              },
+              "is_standard": true
+          }
+    response:
+      body:
+        type: text
+        data: ""
+  - name: 1. Create and Attach Shape to SubPart DATA
+    request:
+      url: "{{base_url}}/sub-parts/create_and_attach_shape_query/"
+      method: POST
+      headers:
+        - name: Content-Type
+          value: application/json
+        - name: Accept
+          value: application/json
+        - name: Authorization
+          value: Bearer {{auth_token}}
+          disabled: true
+      body:
+        type: json
+        data: |-
+          {
+              "name": "Debug Test - Console Output",
+              "description": "Watch Django console for debug messages",
+              "subpart_id": {{subpart_id}},
+              "shape_type": {{shape_type_id}},
+              "dimension_data": {
+                  "length": 1000,
+                  "width": 500,
+                  "thickness": 10,
+                  "manufacturing_process": "hot_rolled"
+              },
+              "is_standard": true
+          }
+    response:
+      body:
+        type: text
+        data: ""

@@ -1,0 +1,22 @@
+info:
+  name: Delete Delivery Schedule
+  type: http
+  seq: 8
+
+http:
+  method: DELETE
+  url: "{{base_url}}/delivery-schedules/?inquiry_id={{inquiry_id}}&schedule_id={{schedule_id}}"
+  params:
+    - name: inquiry_id
+      value: "{{inquiry_id}}"
+      type: query
+    - name: schedule_id
+      value: "{{schedule_id}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

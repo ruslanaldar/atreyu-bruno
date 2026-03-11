@@ -1,0 +1,17 @@
+info:
+  name: Get Daily MPP Data (All Dates)
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/mpp/daily/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get daily MPP data for all dates from latest MPP

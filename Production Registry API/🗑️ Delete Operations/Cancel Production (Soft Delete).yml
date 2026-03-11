@@ -1,0 +1,27 @@
+info:
+  name: Cancel Production (Soft Delete)
+  type: http
+  seq: 1
+
+http:
+  method: DELETE
+  url: "{{base_url}}/api/productionplans/production-registries/?pr_id={{production_registry_id}}&action=cancel_production"
+  headers:
+    - name: Authorization
+      value: Bearer {{jwt_token}}
+  params:
+    - name: pr_id
+      value: "{{production_registry_id}}"
+      type: query
+    - name: action
+      value: cancel_production
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Cancel production (soft delete - sets status to cancelled)

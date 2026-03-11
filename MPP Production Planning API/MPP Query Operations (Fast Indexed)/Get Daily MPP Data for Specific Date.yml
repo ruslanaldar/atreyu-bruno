@@ -1,0 +1,21 @@
+info:
+  name: Get Daily MPP Data for Specific Date
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/mpp/daily/?date={{planning_date}}"
+  params:
+    - name: date
+      value: "{{planning_date}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get daily MPP data for specific date

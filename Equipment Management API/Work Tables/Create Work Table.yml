@@ -1,0 +1,32 @@
+info:
+  name: Create Work Table
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/{{api_prefix}}/work-tables/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Assembly Table 1",
+        "name_cn": "装配台1",
+        "workcenter": "", // id
+        "worksection": "", // id
+        "st_no": 1,
+        "dimension_x": 200,
+        "dimension_y": 150,
+        "dimension_z": 80,
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,36 @@
+info:
+  name: Update Production Status
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/productionplans/production-registries/?pr_id={{production_registry_id}}&action=update_status"
+  headers:
+    - name: Authorization
+      value: Bearer {{jwt_token}}
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: pr_id
+      value: "{{production_registry_id}}"
+      type: query
+    - name: action
+      value: update_status
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "status": "completed",
+        "notes": "Production completed successfully on schedule"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update production registry status (in_process, completed, cancelled)

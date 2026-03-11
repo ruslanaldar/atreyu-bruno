@@ -1,0 +1,17 @@
+info:
+  name: Get Latest MPP for Today
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/mpp/latest/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get the latest MPP for today

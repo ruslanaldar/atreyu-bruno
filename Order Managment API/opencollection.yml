@@ -1,0 +1,19 @@
+opencollection: 1.0.0
+
+info:
+  name: Order Managment API
+
+request:
+  variables:
+    - name: token
+      value: ""
+    - name: baseUrl
+      value: http://27.223.82.66:18080
+    - name: prefix
+      value: api/orders
+bundled: false
+extensions:
+  bruno:
+    ignore:
+      - node_modules
+      - .git

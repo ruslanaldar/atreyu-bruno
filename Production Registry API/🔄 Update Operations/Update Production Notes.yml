@@ -1,0 +1,35 @@
+info:
+  name: Update Production Notes
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: "{{base_url}}/api/productionplans/production-registries/?pr_id={{production_registry_id}}&action=update_notes"
+  headers:
+    - name: Authorization
+      value: Bearer {{jwt_token}}
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: pr_id
+      value: "{{production_registry_id}}"
+      type: query
+    - name: action
+      value: update_notes
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "notes": "Updated production notes with new requirements and delivery schedule changes"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update production registry notes

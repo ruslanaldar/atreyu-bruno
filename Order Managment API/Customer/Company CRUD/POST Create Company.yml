@@ -1,0 +1,63 @@
+info:
+  name: POST Create Company
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{baseUrl}}/{{prefix}}/companies/"
+  body:
+    type: multipart-form
+    data:
+      - name: short_name
+        type: text
+        value: ExCo
+        description: Short name for the company
+      - name: full_name
+        type: text
+        value: Example Coorporation Ltd
+        description: Full name for the company
+      - name: country
+        type: text
+        value: MN
+        description: Selection field two character code for the country
+      - name: industry
+        type: text
+        value: Technology
+        description: Which industry is current company is related to
+      - name: inquiry_number_cssc
+        type: text
+        value: "9999"
+        description: "Company Number for the CSSC "
+      - name: customer_number
+        type: text
+        value: "8888"
+        description: Registration related number
+      - name: abbreviation
+        type: text
+        value: EC
+        description: Container naming related number
+      - name: status
+        type: text
+        value: active
+        description: Company status
+      - name: classification
+        type: text
+        value: X
+        description: from A-F, X is lowest or unassigned
+      - name: currency
+        type: text
+        value: USD
+        description: 3 letter code for the currency preffered for the customer
+      - name: logo
+        type: file
+        value:
+          - postman-cloud:///1f06affc-37eb-40b0-895c-2bef7ae0d506
+        description: Company logo
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

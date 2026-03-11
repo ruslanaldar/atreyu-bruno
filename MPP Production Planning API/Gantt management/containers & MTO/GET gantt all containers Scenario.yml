@@ -1,0 +1,19 @@
+info:
+  name: GET gantt all containers Scenario
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?scenario_id=recommended"
+  params:
+    - name: scenario_id
+      value: recommended
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

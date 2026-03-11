@@ -1,0 +1,27 @@
+info:
+  name: 08. Update by Data
+  type: http
+  seq: 9
+
+http:
+  method: PUT
+  url: "{{base_url}}/inquiries/container-types/"
+  body:
+    type: json
+    data: |+
+      {
+              "id": 27,
+              "name": "Updated Container Type",
+              "category": "standard_container",
+              "external_dimensions": "20' x 8' x 8.5'",
+              "max_weight": 40000,
+              "is_active": true
+      }
+
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

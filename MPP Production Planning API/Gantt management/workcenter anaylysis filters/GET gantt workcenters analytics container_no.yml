@@ -1,0 +1,19 @@
+info:
+  name: GET gantt workcenters analytics container_no
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/gantt/workcenter_analysis/?container_no=ed-0174"
+  params:
+    - name: container_no
+      value: ed-0174
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

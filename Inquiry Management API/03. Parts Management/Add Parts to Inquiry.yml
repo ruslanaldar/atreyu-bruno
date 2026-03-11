@@ -1,0 +1,41 @@
+info:
+  name: Add Parts to Inquiry
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/inquiries/?inquiry_id={{inquiry_id}}&action=add_parts"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: inquiry_id
+      value: "{{inquiry_id}}"
+      type: query
+    - name: action
+      value: add_parts
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "parts": [
+          {
+            "part_id": "2",
+            "total_quantity": "100",
+            "notes": "High priority part"
+          },
+          {
+            "part_id": "3",
+            "total_quantity": "50"
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

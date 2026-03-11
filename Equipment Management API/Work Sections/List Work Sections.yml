@@ -1,0 +1,32 @@
+info:
+  name: List Work Sections
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/{{api_prefix}}/work-sections?ordering=name&search="
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: ordering
+      value: name
+      type: query
+      description: "Order by: name, created_at, updated_at"
+    - name: search
+      value: ""
+      type: query
+      description: Search in name, description
+    - name: name
+      value: ""
+      type: query
+      description: Filter by name
+      disabled: true
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

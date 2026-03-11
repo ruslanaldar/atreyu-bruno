@@ -1,0 +1,32 @@
+info:
+  name: Bulk Create Registries
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/api/productionplans/production-registries/"
+  headers:
+    - name: Authorization
+      value: Bearer {{jwt_token}}
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "inquiry_ids": [
+          "I-001-0001",
+          "I-001-0002",
+          "I-001-0003"
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create multiple production registries for multiple inquiries

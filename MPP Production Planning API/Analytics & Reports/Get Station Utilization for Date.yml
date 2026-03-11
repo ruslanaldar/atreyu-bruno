@@ -1,0 +1,21 @@
+info:
+  name: Get Station Utilization for Date
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/station-utilization/?date={{planning_date}}"
+  params:
+    - name: date
+      value: "{{planning_date}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get station utilization for a specific date

@@ -1,0 +1,19 @@
+info:
+  name: Get Company Specific Summary
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/summary/?company_id={{company_id}}"
+  params:
+    - name: company_id
+      value: "{{company_id}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

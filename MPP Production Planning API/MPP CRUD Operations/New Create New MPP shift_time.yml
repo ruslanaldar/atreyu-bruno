@@ -1,0 +1,29 @@
+info:
+  name: New Create New MPP shift_time
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/mpp/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |
+      {
+          "async": true,
+          "trigger_reason": "manual_creation",
+          "status": "produce",
+          "shift_time": 8
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create new MPP - automatically runs production planning to generate production_plan and remaining_capacity

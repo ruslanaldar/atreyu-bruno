@@ -1,0 +1,24 @@
+info:
+  name: Get MPP History
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/mpp/history/?date={{planning_date}}&limit=5"
+  params:
+    - name: date
+      value: "{{planning_date}}"
+      type: query
+    - name: limit
+      value: "5"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get MPP version history for a specific date

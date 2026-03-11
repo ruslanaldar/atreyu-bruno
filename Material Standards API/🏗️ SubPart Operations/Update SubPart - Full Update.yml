@@ -1,0 +1,40 @@
+info:
+  name: Update SubPart - Full Update
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{baseUrl}}/parts/sub-parts/update_by_query?subpart_id={{subPart}}"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+  params:
+    - name: subpart_id
+      value: "{{subPart}}"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "material_standard_id": 123,
+        "standard_shape_id": 456,
+        "name": "Updated Part Name",
+        "serial": "SP-2024-001",
+        "description": "Updated description",
+        "drawing_no": "DWG-001-Rev2",
+        "quantity": 5,
+        "unit_time": 45.5,
+        "active_part": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update multiple fields at once

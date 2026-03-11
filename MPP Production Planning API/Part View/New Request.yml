@@ -1,0 +1,19 @@
+info:
+  name: New Request
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/gantt/parts/?container_no=wk-0022-wk30"
+  params:
+    - name: container_no
+      value: wk-0022-wk30
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

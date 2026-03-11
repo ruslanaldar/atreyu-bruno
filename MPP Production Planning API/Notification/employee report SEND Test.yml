@@ -1,0 +1,19 @@
+info:
+  name: employee report SEND Test
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://27.223.82.66:18080/api/organization/categories/hr/employeeReports/?scenario_id=recommended
+  params:
+    - name: scenario_id
+      value: recommended
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

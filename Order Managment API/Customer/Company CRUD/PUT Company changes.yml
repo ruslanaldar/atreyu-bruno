@@ -1,0 +1,24 @@
+info:
+  name: PUT Company changes
+  type: http
+  seq: 2
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/{{prefix}}/companies/?id=69"
+  params:
+    - name: id
+      value: "69"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+          "status": "active"
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

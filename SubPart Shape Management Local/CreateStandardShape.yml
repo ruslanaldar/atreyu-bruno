@@ -1,0 +1,29 @@
+info:
+  name: CreateStandardShape
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/api/parts/standard-shapes/"
+  body:
+    type: json
+    data: |
+      {
+          "name": "Custom Shape - Part 59506954",
+          "description": "Custom shape for Part 59506954",
+          "shape_type": 643,
+          "is_standard": false,
+          "dimension_data": {
+              "width": 10,
+              "outer_diameter": 100,
+              "inner_diameter": 90
+          }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,18 @@
+info:
+  name: Get Work Station
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{base_url}}/{{api_prefix}}/work-stations/e7c2e330-881b-4f69-aec9-cb8e82131588/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

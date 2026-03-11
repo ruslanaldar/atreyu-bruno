@@ -1,0 +1,31 @@
+info:
+  name: Update Station Capacity
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/productionplans/capacity/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "planning_date": "{{planning_date}}",
+          "station_id": "w0601",
+          "capacity_update": {
+              "cap": 500,
+              "shift": "overtime"
+          }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update station capacity (triggers replanning)

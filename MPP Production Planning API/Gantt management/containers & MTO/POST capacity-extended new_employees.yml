@@ -1,0 +1,28 @@
+info:
+  name: POST capacity-extended new_employees
+  type: http
+  seq: 13
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/capacity-extended/"
+  body:
+    type: json
+    data: |-
+      {  
+        "scenario_id": "scenario-1770324175497-nbcbnvk4h",
+        "new_employees": [
+          {
+            "wc_code": "W05",
+            "quantity": 1,
+            "date_from": "2026-03-10"
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

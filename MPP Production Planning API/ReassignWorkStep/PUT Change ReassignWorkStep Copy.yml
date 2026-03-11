@@ -1,0 +1,19 @@
+info:
+  name: PUT Change ReassignWorkStep Copy
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{base_url}}/productionplans/reassign-worksteps/?id=77d07eda-aafd-4af7-b19f-879259a10d69"
+  params:
+    - name: id
+      value: 77d07eda-aafd-4af7-b19f-879259a10d69
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

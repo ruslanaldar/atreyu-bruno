@@ -1,0 +1,23 @@
+info:
+  name: Update Skill
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{base_url}}/employee-skills/remove_skills/"
+  body:
+    type: json
+    data: |-
+      {
+          "user_id": {{user_id}},
+          "skill_name": "l07",
+          "level": 3
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

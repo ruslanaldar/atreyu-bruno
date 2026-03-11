@@ -1,0 +1,19 @@
+info:
+  name: Get Delivery Schedule by ID
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{base_url}}/inquiries/delivery-schedules/?id=1"
+  params:
+    - name: id
+      value: "1"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

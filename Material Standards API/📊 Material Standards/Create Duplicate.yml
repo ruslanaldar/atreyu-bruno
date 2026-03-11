@@ -1,0 +1,485 @@
+info:
+  name: Create Duplicate
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{baseUrl}}/basics/materials/material-standards/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+  body:
+    type: json
+    data: |-
+      {
+          "material_group_id": 27,
+          "material_subgroup_id": 109,
+          "hierarchical_path": "Stainless Steel > Austenitic Stainless Steel > EN 1.4350",
+          "country": "European Union",
+          "organization_id": 33,
+          "standard_number": "1.4350",
+          "full_designation": "EN 1.4350",
+          "description": "Low carbon austenitic stainless steel with copper addition for enhanced corrosion resistance",
+          "material_price_kg": "9.8000",
+          "density_kg_m3": "8000.0000",
+          "density_g_cm3": 8.0,
+          "price_per_volume_m3": 78400.0,
+          "is_active": true,
+          "chemical_composition": {
+              "carbon": {
+                  "name": "Carbon",
+                  "symbol": "C",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 2.0
+                  },
+                  "effect": "Increases hardness and strength, reduces ductility. Forms carbides.",
+                  "value": null,
+                  "specification": "0.030 max",
+                  "test_method": "EN ISO 14284"
+              },
+              "silicon": {
+                  "name": "Silicon",
+                  "symbol": "Si",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 1.5
+                  },
+                  "effect": "Deoxidizer, strengthening agent, improves corrosion resistance.",
+                  "value": null,
+                  "specification": "1.00 max",
+                  "test_method": "EN ISO 14284"
+              },
+              "manganese": {
+                  "name": "Manganese",
+                  "symbol": "Mn",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 2.0
+                  },
+                  "effect": "Deoxidizer, desulfurizer, increases strength and hardenability.",
+                  "value": null,
+                  "specification": "2.00 max",
+                  "test_method": "EN ISO 14284"
+              },
+              "phosphorus": {
+                  "name": "Phosphorus",
+                  "symbol": "P",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 0.05
+                  },
+                  "effect": "Generally harmful. Increases brittleness, reduces impact toughness.",
+                  "value": null,
+                  "specification": "0.045 max",
+                  "test_method": "EN ISO 14284"
+              },
+              "sulfur": {
+                  "name": "Sulfur",
+                  "symbol": "S",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 0.05
+                  },
+                  "effect": "Generally harmful. Reduces ductility, can improve machinability.",
+                  "value": null,
+                  "specification": "0.030 max",
+                  "test_method": "EN ISO 14284"
+              },
+              "chromium": {
+                  "name": "Chromium",
+                  "symbol": "Cr",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 30.0
+                  },
+                  "effect": "Increases hardenability, wear resistance, corrosion resistance.",
+                  "value": null,
+                  "specification": "17.5-19.5",
+                  "test_method": "EN ISO 14284"
+              },
+              "nickel": {
+                  "name": "Nickel",
+                  "symbol": "Ni",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 50.0
+                  },
+                  "effect": "Increases toughness, strength, corrosion resistance.",
+                  "value": null,
+                  "specification": "8.5-10.5",
+                  "test_method": "EN ISO 14284"
+              },
+              "molybdenum": {
+                  "name": "Molybdenum",
+                  "symbol": "Mo",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 5.0
+                  },
+                  "effect": "Increases hardenability, high-temperature strength, creep resistance.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "EN ISO 14284"
+              },
+              "copper": {
+                  "name": "Copper",
+                  "symbol": "Cu",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 2.0
+                  },
+                  "effect": "Improves corrosion resistance, precipitation hardening.",
+                  "value": null,
+                  "specification": "1.0-2.5",
+                  "test_method": "EN ISO 14284"
+              },
+              "aluminum": {
+                  "name": "Aluminum",
+                  "symbol": "Al",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 2.0
+                  },
+                  "effect": "Deoxidizer, grain refiner, increases strength.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "EN ISO 14284"
+              },
+              "titanium": {
+                  "name": "Titanium",
+                  "symbol": "Ti",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 1.0
+                  },
+                  "effect": "Strong carbide former, grain refiner, increases strength.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "EN ISO 14284"
+              },
+              "vanadium": {
+                  "name": "Vanadium",
+                  "symbol": "V",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 1.0
+                  },
+                  "effect": "Strong carbide former, increases hardenability and strength.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "EN ISO 14284"
+              },
+              "tungsten": {
+                  "name": "Tungsten",
+                  "symbol": "W",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 20.0
+                  },
+                  "effect": "Increases high-temperature strength, wear resistance.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "EN ISO 14284"
+              },
+              "niobium": {
+                  "name": "Niobium",
+                  "symbol": "Nb",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 1.0
+                  },
+                  "effect": "Strong carbide former, grain refiner, increases strength.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "EN ISO 14284"
+              },
+              "cobalt": {
+                  "name": "Cobalt",
+                  "symbol": "Co",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 20.0
+                  },
+                  "effect": "Increases high-temperature strength and hardness.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "EN ISO 14284"
+              },
+              "boron": {
+                  "name": "Boron",
+                  "symbol": "B",
+                  "unit": "ppm",
+                  "typical_range": {
+                      "min": 0,
+                      "max": 100
+                  },
+                  "effect": "Powerful hardenability agent in small quantities.",
+                  "value": null,
+                  "specification": null,
+                  "test_method": "EN ISO 14284"
+              },
+              "nitrogen": {
+                  "name": "Nitrogen",
+                  "symbol": "N",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 0.0,
+                      "max": 0.5
+                  },
+                  "effect": "Strengthening agent in austenitic stainless steels.",
+                  "value": null,
+                  "specification": "0.10 max",
+                  "test_method": "EN ISO 14284"
+              },
+              "iron": {
+                  "name": "Iron",
+                  "symbol": "Fe",
+                  "unit": "% (wt)",
+                  "typical_range": {
+                      "min": 50.0,
+                      "max": 100.0
+                  },
+                  "effect": "Base metal for ferrous alloys.",
+                  "value": null,
+                  "specification": "Balance",
+                  "test_method": "Calculated"
+              }
+          },
+          "material_properties": {
+              "density": {
+                  "name": "Density",
+                  "symbol": "ρ",
+                  "unit": "kg/m³",
+                  "typical_range": {
+                      "min": 7600,
+                      "max": 8200
+                  },
+                  "effect": "Mass per unit volume, affects structural efficiency.",
+                  "value": 8000,
+                  "test_standard": "EN ISO 6892-1",
+                  "category": "physical"
+              },
+              "melting_point": {
+                  "name": "Melting Point",
+                  "symbol": "Tm",
+                  "unit": "°C",
+                  "typical_range": {
+                      "min": 1350,
+                      "max": 1600
+                  },
+                  "effect": "Temperature at which material melts.",
+                  "value": 1400,
+                  "test_standard": "EN ISO 11357",
+                  "category": "physical"
+              },
+              "thermal_conductivity": {
+                  "name": "Thermal Conductivity",
+                  "symbol": "k",
+                  "unit": "W/(m·K)",
+                  "typical_range": {
+                      "min": 15,
+                      "max": 80
+                  },
+                  "effect": "Heat conduction ability.",
+                  "value": 16.3,
+                  "test_standard": "EN 821-2",
+                  "category": "physical"
+              },
+              "thermal_expansion": {
+                  "name": "Thermal Expansion Coefficient",
+                  "symbol": "α",
+                  "unit": "10⁻⁶/K",
+                  "typical_range": {
+                      "min": 9,
+                      "max": 18
+                  },
+                  "effect": "Dimensional change with temperature.",
+                  "value": 17.3,
+                  "test_standard": "EN ISO 11359",
+                  "category": "physical"
+              },
+              "electrical_resistivity": {
+                  "name": "Electrical Resistivity",
+                  "symbol": "ρe",
+                  "unit": "μΩ·cm",
+                  "typical_range": {
+                      "min": 15,
+                      "max": 100
+                  },
+                  "effect": "Resistance to electrical current.",
+                  "value": 72,
+                  "test_standard": "EN 60468",
+                  "category": "physical"
+              },
+              "magnetic_permeability": {
+                  "name": "Magnetic Permeability",
+                  "symbol": "μr",
+                  "unit": "relative",
+                  "typical_range": {
+                      "min": 1,
+                      "max": 5000
+                  },
+                  "effect": "Response to magnetic field.",
+                  "value": 1.008,
+                  "test_standard": "EN 10282",
+                  "category": "physical"
+              },
+              "yield_strength": {
+                  "name": "Yield Strength",
+                  "symbol": "σy",
+                  "unit": "MPa",
+                  "typical_range": {
+                      "min": 200,
+                      "max": 2000
+                  },
+                  "effect": "Stress at which permanent deformation begins.",
+                  "value": 205,
+                  "test_standard": "EN ISO 6892-1",
+                  "category": "mechanical"
+              },
+              "ultimate_tensile_strength": {
+                  "name": "Ultimate Tensile Strength",
+                  "symbol": "σu",
+                  "unit": "MPa",
+                  "typical_range": {
+                      "min": 400,
+                      "max": 2500
+                  },
+                  "effect": "Maximum stress before fracture.",
+                  "value": 520,
+                  "test_standard": "EN ISO 6892-1",
+                  "category": "mechanical"
+              },
+              "elastic_modulus": {
+                  "name": "Elastic Modulus",
+                  "symbol": "E",
+                  "unit": "GPa",
+                  "typical_range": {
+                      "min": 190,
+                      "max": 220
+                  },
+                  "effect": "Stiffness of material.",
+                  "value": 200,
+                  "test_standard": "EN ISO 6892-1",
+                  "category": "mechanical"
+              },
+              "poisson_ratio": {
+                  "name": "Poisson's Ratio",
+                  "symbol": "ν",
+                  "unit": "dimensionless",
+                  "typical_range": {
+                      "min": 0.25,
+                      "max": 0.35
+                  },
+                  "effect": "Ratio of lateral to axial strain.",
+                  "value": 0.27,
+                  "test_standard": "EN ISO 6892-1",
+                  "category": "mechanical"
+              },
+              "elongation": {
+                  "name": "Elongation at Break",
+                  "symbol": "εf",
+                  "unit": "%",
+                  "typical_range": {
+                      "min": 2,
+                      "max": 80
+                  },
+                  "effect": "Ductility measure.",
+                  "value": 40,
+                  "test_standard": "EN ISO 6892-1",
+                  "category": "mechanical"
+              },
+              "reduction_of_area": {
+                  "name": "Reduction of Area",
+                  "symbol": "RA",
+                  "unit": "%",
+                  "typical_range": {
+                      "min": 10,
+                      "max": 85
+                  },
+                  "effect": "Ductility measure.",
+                  "value": 60,
+                  "test_standard": "EN ISO 6892-1",
+                  "category": "mechanical"
+              },
+              "hardness_brinell": {
+                  "name": "Brinell Hardness",
+                  "symbol": "HB",
+                  "unit": "HB",
+                  "typical_range": {
+                      "min": 100,
+                      "max": 650
+                  },
+                  "effect": "Resistance to indentation.",
+                  "value": 201,
+                  "test_standard": "EN ISO 6506-1",
+                  "category": "mechanical"
+              },
+              "hardness_rockwell_c": {
+                  "name": "Rockwell C Hardness",
+                  "symbol": "HRC",
+                  "unit": "HRC",
+                  "typical_range": {
+                      "min": 20,
+                      "max": 70
+                  },
+                  "effect": "Hardness for hardened steels.",
+                  "value": null,
+                  "test_standard": "EN ISO 6508-1",
+                  "category": "mechanical"
+              },
+              "impact_toughness": {
+                  "name": "Charpy Impact Toughness",
+                  "symbol": "KV",
+                  "unit": "J",
+                  "typical_range": {
+                      "min": 5,
+                      "max": 300
+                  },
+                  "effect": "Energy absorbed during fracture.",
+                  "value": 300,
+                  "test_standard": "EN ISO 148-1",
+                  "category": "mechanical"
+              },
+              "fatigue_strength": {
+                  "name": "Fatigue Strength",
+                  "symbol": "σf",
+                  "unit": "MPa",
+                  "typical_range": {
+                      "min": 100,
+                      "max": 800
+                  },
+                  "effect": "Stress for specified cycles.",
+                  "value": 240,
+                  "test_standard": "EN 6072",
+                  "category": "mechanical"
+              }
+          }
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a new material standard

@@ -1,0 +1,26 @@
+info:
+  name: DailyCapacity
+  type: folder
+  seq: 17
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    capacity types:  
+    "normal": _("Normal 8h")
+
+    "extended": _("Extended 10h")
+
+    "normal_late": _("Normal and Late 16h")
+
+    "extended_late": _("Extended and Late 18h")
+
+    "extended_late_extended": _("Extended, Late and Extended Late 20h")
+
+    Station quantity:  
+    Qantity for the stations which will be required for the extend or late capacities.
+
+    station_qty
+  type: text/markdown

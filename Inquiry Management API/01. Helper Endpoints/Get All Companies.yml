@@ -1,0 +1,39 @@
+info:
+  name: Get All Companies
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/companies/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+examples:
+  - name: Success Response
+    request:
+      url: "{{base_url}}/companies/"
+      method: GET
+    response:
+      statusText: "200"
+      body:
+        type: text
+        data: |-
+          {
+            "companies": [
+              {
+                "id": 1,
+                "name": "TechCorp Solutions",
+                "inquiry_number_cssc": "TC001",
+                "email": "contact@techcorp.com",
+                "phone": "+1-555-0101",
+                "is_active": true
+              }
+            ],
+            "total": 1
+          }

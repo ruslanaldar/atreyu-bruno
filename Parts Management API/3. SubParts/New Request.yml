@@ -1,0 +1,26 @@
+info:
+  name: New Request
+  type: http
+  seq: 8
+
+http:
+  method: PATCH
+  url: "{{base_url}}/sub-parts/{{subpart_id}}/update_subpart_by_path/"
+  body:
+    type: json
+    data: |-
+      {
+          "name": "Updated Base Plate",
+          "quantity": 2,
+          "unit_time": 60.0,
+          "material_standard_id": 2,
+          "standard_shape_id": 3,
+          "active_part": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

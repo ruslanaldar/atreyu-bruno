@@ -1,0 +1,32 @@
+info:
+  name: Create Standard Equivalency
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{baseUrl}}/basics/materials/standard-equivalencies/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+  body:
+    type: json
+    data: |-
+      {
+        "standard_1_id": 123,
+        "standard_2_id": 124,
+        "equivalency_type": "approximate",
+        "confidence_level": 90,
+        "notes": "Similar properties for structural applications"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a new equivalency relationship

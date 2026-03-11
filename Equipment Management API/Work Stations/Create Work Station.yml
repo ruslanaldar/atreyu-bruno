@@ -1,0 +1,38 @@
+info:
+  name: Create Work Station
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/{{api_prefix}}/work-stations/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "workcenter_id": "",
+          "worksection_id": "",
+          "name": "CNC Machine Station 1",
+          "name_cn": "CNC机床站1",
+          "model": "CNC-2000X",
+          "brand": "Industrial Tech",
+          "manufacturer": "Tech Manufacturing Co.",
+          "material_type": "metal",
+          "material": "aluminum",
+          "processing_size": "500x300x200",
+          "thickness": 25.0,
+          "epc": "EPC001",
+          "st_no": 1,
+          "specifications": "High precision CNC machine for metal processing",
+          "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

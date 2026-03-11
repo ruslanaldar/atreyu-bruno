@@ -1,0 +1,28 @@
+info:
+  name: Update MPP (Smart Logic)
+  type: http
+  seq: 10
+
+http:
+  method: PUT
+  url: "{{base_url}}/productionplans/mpp/{{mpp_id}}/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "status": "confirmed",
+          "notes": "Updated status to confirmed",
+          "approved_by": "manager_user"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: "Smart update: metadata changes update in-place, production changes check containers first"

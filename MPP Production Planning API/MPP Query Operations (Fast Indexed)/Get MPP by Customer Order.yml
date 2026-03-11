@@ -1,0 +1,21 @@
+info:
+  name: Get MPP by Customer Order
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/mpp/by_customer/?mo_no=INQ-20250617-0001"
+  params:
+    - name: mo_no
+      value: INQ-20250617-0001
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Get MPP data for specific customer order

@@ -1,0 +1,36 @@
+info:
+  name: Edit by Query
+  type: http
+  seq: 8
+
+http:
+  method: PATCH
+  url: "{{base_url}}/parts/update_part/?part_id=472"
+  params:
+    - name: part_id
+      value: "472"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+          "id": 472,
+          "company": 67,
+          "part_number": "60001927",
+          "revision_number": 0,
+          "description": "Updated by the queryset.",
+          "sub_part_qty": 17,
+          "bom_status": true,
+          "status": "Inquiry",
+          "bill_of_material": {
+              "id": 472,
+              "part": 472
+          }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,25 @@
+info:
+  name: POST daily capacity with range
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/daily-capacity/"
+  body:
+    type: json
+    data: |-
+      {
+          "center_code": "w06",
+          "shift_date": "2025-12-03",
+          "end_date": "2025-12-13",
+          "station_qty": 3,
+          "shift_type": "extended"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

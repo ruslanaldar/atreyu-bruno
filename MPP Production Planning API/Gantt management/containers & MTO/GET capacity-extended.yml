@@ -1,0 +1,15 @@
+info:
+  name: GET capacity-extended
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/capacity-extended"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,49 @@
+info:
+  name: Create New Part
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: multipart-form
+    data:
+      - name: image
+        type: file
+        value:
+          - postman-cloud:///1f06affc-37eb-40b0-895c-2bef7ae0d506
+      - name: company
+        type: text
+        value: "67"
+      - name: part_number
+        type: text
+        value: P001
+      - name: drawing_no
+        type: text
+        value: DWG-001
+      - name: revision_number
+        type: text
+        value: "1"
+      - name: description
+        type: text
+        value: Main assembly part
+      - name: status
+        type: text
+        value: Inquiry
+      - name: bom_status
+        type: text
+        value: "false"
+      - name: ""
+        type: text
+        value: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

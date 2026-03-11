@@ -1,0 +1,23 @@
+info:
+  name: ReassignSubPartDate
+  type: folder
+  seq: 14
+
+request:
+  auth: inherit
+
+docs:
+  content: |-
+    Assign SubPart finishing date.
+
+    Registration require:  
+    container_no, part_no, subpart_no, reassign_date,
+
+    container_no = container_no,
+
+    part_no = pp_no,
+
+    subpart_no = erp_no,
+
+    reassign_date = str('YYYY-MM-DD')
+  type: text/markdown

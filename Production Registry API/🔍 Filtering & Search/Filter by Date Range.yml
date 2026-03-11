@@ -1,0 +1,27 @@
+info:
+  name: Filter by Date Range
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/api/productionplans/production-registries/?date_from=2025-01-01&date_to=2025-12-31"
+  headers:
+    - name: Authorization
+      value: Bearer {{jwt_token}}
+  params:
+    - name: date_from
+      value: 2025-01-01
+      type: query
+    - name: date_to
+      value: 2025-12-31
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Filter registries by date range

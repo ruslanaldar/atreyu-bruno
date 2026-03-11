@@ -1,0 +1,49 @@
+info:
+  name: Validate Capacity Constraints
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/validate-capacity/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "plan_data": {
+              "{{planning_date}}": {
+                  "{{container_no}}": {
+                      "w06": {
+                          "w0601": [
+                              {
+                                  "otn": "200.00",
+                                  "station": "w06"
+                              }
+                          ]
+                      }
+                  }
+              }
+          },
+          "capacity_data": {
+              "{{planning_date}}": {
+                  "w06": {
+                      "w0601": {
+                          "cap": 480,
+                          "used": "300.00"
+                      }
+                  }
+              }
+          }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Validate production plan against capacity constraints

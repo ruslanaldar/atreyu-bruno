@@ -1,0 +1,26 @@
+info:
+  name: Verify OTP
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: http://27.223.82.66:18080/api/organization/categories/otp/verify-otp/
+  body:
+    type: multipart-form
+    data:
+      - name: email
+        type: text
+        value: ruslan.aldar@gmail.com
+      - name: porpose
+        type: text
+        value: login
+      - name: otp
+        type: text
+        value: "123456"
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

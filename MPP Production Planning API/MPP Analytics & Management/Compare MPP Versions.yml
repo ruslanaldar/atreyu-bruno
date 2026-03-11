@@ -1,0 +1,27 @@
+info:
+  name: Compare MPP Versions
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/mpp/compare_versions/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+          "mpp_id1": "MPP20250822",
+          "mpp_id2": "MPP20250824"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Compare two MPP versions to see differences

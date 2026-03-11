@@ -1,0 +1,28 @@
+info:
+  name: Compare Material Properties
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{baseUrl}}/basics/materials/material-standards/compare_properties/"
+  headers:
+    - name: Content-Type
+      value: application/json
+    - name: Authorization
+      value: Bearer {{authToken}}
+  body:
+    type: json
+    data: |-
+      {
+        "material_standard_ids": [98, 99, 97]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Compare properties between multiple standards

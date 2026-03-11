@@ -1,0 +1,33 @@
+info:
+  name: Create Employee
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/factory/employees/"
+  headers:
+    - name: Accept
+      value: application/json
+  body:
+    type: json
+    data: |2-
+       {
+        "name_cn": "测试用户",
+        "name_en": "Test User",
+        "department": "Technical",
+        "team": "sample",
+        "position": "tooling_locksmith",
+        "workcenters": {
+          "c01": 3,
+          "m05": 1,
+          "m06": 2,
+          "p01": 4
+        }
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
