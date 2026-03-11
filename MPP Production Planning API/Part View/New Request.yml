@@ -5,12 +5,17 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/gantt/parts/?container_no=wk-0022-wk30"
+  url: "{{base_url}}/productionplans/gantt/parts/?container_no=eve-1500"
   params:
     - name: container_no
-      value: wk-0022-wk30
+      value: eve-1500
       type: query
   auth: inherit
+
+runtime:
+  variables:
+    - name: base_url
+      value: http://27.223.82.66:18080/api
 
 settings:
   encodeUrl: true

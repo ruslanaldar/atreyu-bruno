@@ -1,0 +1,14 @@
+name: local
+variables:
+  - name: base_url
+    value: http://27.223.82.66:18080/api
+    enabled: true
+    secret: false
+  - name: token
+    value: ""
+    enabled: true
+    secret: true
+  - name: refresh_token
+    value: ""
+    enabled: true
+    secret: true

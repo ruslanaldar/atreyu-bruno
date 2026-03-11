@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: http://27.223.82.66:18080/api/organization/categories/otp/verify-otp/
+  url: "{{base_url}}/organization/categories/otp/verify-otp/"
   body:
     type: multipart-form
     data:
@@ -18,6 +18,18 @@ http:
       - name: otp
         type: text
         value: "123456"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.access) {
+            bru.setEnvVar("token", data.access);
+        }
+        if (data.refresh) {
+            bru.setEnvVar("refresh_token", data.refresh);
+        }
 
 settings:
   encodeUrl: true
