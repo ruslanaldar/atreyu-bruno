@@ -13,7 +13,8 @@ http:
           "user": 265,
           "skill_set":{
               "f01": 1,
-              "f02": 2
+              "f02": 2,
+              "f03": 3,
           }
       }
   auth: inherit
