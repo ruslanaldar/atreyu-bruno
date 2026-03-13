@@ -5,13 +5,13 @@ info:
 
 http:
   method: DELETE
-  url: "{{base_url}}/factory/employees/?employee_id=6898d972c8e6d556b5bc2d0f"
+  url: "{{base_url}}/organization/categories/hr/factory/employees/?employee_id=69b37ba1a8990b45e0599922"
   headers:
     - name: Accept
       value: application/json
   params:
     - name: employee_id
-      value: 6898d972c8e6d556b5bc2d0f
+      value: 69b37ba1a8990b45e0599922
       type: query
   body:
     type: json

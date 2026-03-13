@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{base_url}}/employee-skills/"
+  url: "{{base_url}}/organization/categories/hr/employee-skills/"
   body:
     type: json
     data: |-

@@ -10,13 +10,14 @@ http:
     type: json
     data: |-
       {
-        "container_no": "s-0348",
+        "container_no": "sny38",
+        "scenario_id": "scenario-1770324175497-nbcbnvk4h",
         "set_capacity":[
           {
-          "wc_code": "d04",
-          "date_from": "2025-12-23",
-          "date_to": "2026-02-16",
-          "extended_overtime_hours": 20,
+          "wc_code": "w04",
+          "date_from": "2026-03-14",
+          "date_to": "2026-03-21",
+          "extended_overtime_hours": 10,
           "equipment_qty": 0
           }
       ]

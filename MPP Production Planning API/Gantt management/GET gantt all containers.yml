@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/gantt/containers/?container_no=eve-1500&scenario_id=no_limit"
+  url: "{{base_url}}/productionplans/gantt/containers/?container_no=sny38&scenario_id=no_limit"
   params:
     - name: container_no
-      value: eve-1500
+      value: sny38
       type: query
     - name: scenario_id
       value: no_limit

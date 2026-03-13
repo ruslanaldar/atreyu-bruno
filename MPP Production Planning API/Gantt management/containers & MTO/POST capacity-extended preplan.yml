@@ -1,15 +1,18 @@
 info:
-  name: GET gantt all containers Scenario
+  name: POST capacity-extended preplan
   type: http
-  seq: 8
+  seq: 16
 
 http:
-  method: GET
-  url: "{{base_url}}/productionplans/gantt/containers_overview/?scenario_id=scenario-1770324175497-nbcbnvk4h"
+  method: POST
+  url: "{{base_url}}/productionplans/capacity-extended/?scenario_id=scenario-1770324175497-nbcbnvk4h"
   params:
     - name: scenario_id
       value: scenario-1770324175497-nbcbnvk4h
       type: query
+  body:
+    type: json
+    data: ""
   auth: inherit
 
 settings:

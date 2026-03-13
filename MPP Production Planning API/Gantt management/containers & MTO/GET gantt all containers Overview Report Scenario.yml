@@ -5,13 +5,13 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/gantt/containers_overview/?get_report=true&scenario_id=scenario-1769073296956-liqe8coh0"
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?get_report=true&scenario_id=scenario-1770324175497-nbcbnvk4h"
   params:
     - name: get_report
       value: "true"
       type: query
     - name: scenario_id
-      value: scenario-1769073296956-liqe8coh0
+      value: scenario-1770324175497-nbcbnvk4h
       type: query
   auth: inherit
 

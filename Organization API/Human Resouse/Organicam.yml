@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/organicams/"
+  url: "{{base_url}}/organization/categories/hr/organicams/"
   auth: inherit
 
 settings:

@@ -5,7 +5,7 @@ info:
 
 http:
   method: PATCH
-  url: "{{base_url}}/employee-skills/add_skills/?user_id=217"
+  url: "{{base_url}}/organization/categories/hr/employee-skills/add_skills/?user_id=217"
   params:
     - name: user_id
       value: "217"

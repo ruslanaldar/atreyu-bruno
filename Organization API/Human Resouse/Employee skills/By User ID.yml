@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/employee-skills/by_user/?user_id=207"
+  url: "{{base_url}}/organization/categories/hr/employee-skills/by_user/?user_id=181"
   params:
     - name: user_id
-      value: "207"
+      value: "181"
       type: query
   auth: inherit
 

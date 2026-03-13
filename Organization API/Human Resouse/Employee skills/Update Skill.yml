@@ -5,7 +5,7 @@ info:
 
 http:
   method: PATCH
-  url: "{{base_url}}/employee-skills/remove_skills/"
+  url: "{{base_url}}/organization/categories/hr/employee-skills/remove_skills/"
   body:
     type: json
     data: |-

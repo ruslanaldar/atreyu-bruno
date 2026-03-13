@@ -1,7 +1,7 @@
 info:
   name: Gantt management
   type: folder
-  seq: 10
+  seq: 1
 
 request:
   auth: inherit
