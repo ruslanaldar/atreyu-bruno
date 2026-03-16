@@ -1,0 +1,27 @@
+info:
+  name: POST containers_overview scenario->preplan
+  type: http
+  seq: 17
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?scenario_id=recommended"
+  params:
+    - name: scenario_id
+      value: recommended
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "senderUserId": 1,
+        "recipientUserId": 1,
+        "sendEmail": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

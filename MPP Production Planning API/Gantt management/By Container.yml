@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/gantt/containers/?container_no=eve-1500-2"
+  url: "{{base_url}}/productionplans/gantt/containers/?container_no=s354"
   params:
     - name: container_no
-      value: eve-1500-2
+      value: s354
       type: query
   auth: inherit
 
