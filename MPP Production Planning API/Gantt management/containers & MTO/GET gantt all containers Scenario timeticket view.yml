@@ -1,0 +1,25 @@
+info:
+  name: GET gantt all containers Scenario timeticket view
+  type: http
+  seq: 11
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?scenario_id=recommended-8&emp_tickets=true&ticket_date=2026-03-20"
+  params:
+    - name: scenario_id
+      value: recommended-8
+      type: query
+    - name: emp_tickets
+      value: "true"
+      type: query
+    - name: ticket_date
+      value: 2026-03-20
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
