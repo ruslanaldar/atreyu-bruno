@@ -1,0 +1,41 @@
+info:
+  name: GET gantt all containers Scenario timeticket download
+  type: http
+  seq: 10
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?scenario_id=recommended-8&is_tickets=true"
+  params:
+    - name: scenario_id
+      value: recommended-8
+      type: query
+    - name: is_tickets
+      value: "true"
+      type: query
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var responseBody = res.getBody();
+        bru.runner.file.save(responseBody, "time_tickets.pdf");
+        ```
+
+        **Also in Bruno request**, add `Accept` header:
+        ```
+        Accept: application/pdf
+        ```
+
+        ---
+
+        **To verify it's working before Bruno download** — just paste this directly in your browser while your dev server is running:
+        ```
+        {{base_url}}/productionplans/gantt/containers_overview/?scenario_id=recommended-8&is_tickets=true
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,7 +1,7 @@
 info:
   name: POST capacity-extended wc_swap
   type: http
-  seq: 11
+  seq: 12
 
 http:
   method: POST

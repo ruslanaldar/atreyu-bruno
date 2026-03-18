@@ -5,13 +5,13 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/mpp/task_status/?task_id=77158b5f-7fd9-4c2b-959b-7e92f7da49d2"
+  url: "{{base_url}}/productionplans/mpp/task_status/?task_id=72700649-68cc-4df8-96cb-d6834b21a6a5"
   headers:
     - name: Content-Type
       value: application/json
   params:
     - name: task_id
-      value: 77158b5f-7fd9-4c2b-959b-7e92f7da49d2
+      value: 72700649-68cc-4df8-96cb-d6834b21a6a5
       type: query
   body:
     type: json
