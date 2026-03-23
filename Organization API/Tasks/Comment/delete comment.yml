@@ -1,0 +1,23 @@
+info:
+  name: delete comment
+  type: http
+  seq: 5
+
+http:
+  method: DELETE
+  url: "{{base_url}}{{prefix}}nested/"
+  body:
+    type: json
+    data: |-
+      {
+        "action": "delete_comment",
+        "taskId": 3,
+        "commentId": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

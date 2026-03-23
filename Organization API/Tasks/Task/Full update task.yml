@@ -1,0 +1,47 @@
+info:
+  name: Full update task
+  type: http
+  seq: 1
+
+http:
+  method: PUT
+  url: "{{base_url}}{{prefix}}"
+  body:
+    type: json
+    data: |-
+      {
+        "taskId":1,
+        "title": "Sprint planning updated",
+        "startDate": "2026-03-17",
+        "startTime": "09:00",
+        "endTime": "10:30",
+        "type": "timeRange",
+        "category": "meeting",
+        "priority": "urgent",
+        "status": "completed",
+        "assignedTo": 1
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: page
+      value: "1"
+    - name: limit
+      value: "20"
+    - name: sortBy
+      value: desc
+    - name: status
+      value: pending
+    - name: status
+      value: in_progress
+    - name: priority
+      value: high
+    - name: search
+      value: sprint
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

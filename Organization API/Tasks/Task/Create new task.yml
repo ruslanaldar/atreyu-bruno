@@ -1,0 +1,50 @@
+info:
+  name: Create new task
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}{{prefix}}"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Sprint planning",
+        "startDate": "2026-03-17",
+        "startTime": "09:00",
+        "endTime": "10:30",
+        "type": "timeRange",
+        "category": "meeting",
+        "priority": "high",
+        "status": "pending",
+        "assignedTo": 1,
+        "assignees": [176, 177],
+        "tags": ["sprint"],
+        "dueDate": "2026-03-17",
+        "estimatedHours": 1.5
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: page
+      value: "1"
+    - name: limit
+      value: "20"
+    - name: sortBy
+      value: desc
+    - name: status
+      value: pending
+    - name: status
+      value: in_progress
+    - name: priority
+      value: high
+    - name: search
+      value: sprint
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

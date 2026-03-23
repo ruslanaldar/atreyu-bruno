@@ -1,0 +1,23 @@
+info:
+  name: create comment
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}{{prefix}}nested/"
+  body:
+    type: json
+    data: |-
+      {
+        "action": "add_comment",
+        "taskId": 3,
+        "text": "Agenda is ready for review."
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

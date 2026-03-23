@@ -1,0 +1,46 @@
+info:
+  name: Create Child task
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}{{prefix}}"
+  body:
+    type: json
+    data: |-
+      {
+        "title": "Write test cases",
+        "startDate": "2026-03-18",
+        "startTime": "10:00",
+        "type": "specificTime",
+        "category": "task",
+        "priority": "medium",
+        "status": "pending",
+        "assignedTo": 177,
+        "parentId": 3
+      }
+  auth: inherit
+
+runtime:
+  variables:
+    - name: page
+      value: "1"
+    - name: limit
+      value: "20"
+    - name: sortBy
+      value: desc
+    - name: status
+      value: pending
+    - name: status
+      value: in_progress
+    - name: priority
+      value: high
+    - name: search
+      value: sprint
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

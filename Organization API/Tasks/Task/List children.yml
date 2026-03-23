@@ -1,0 +1,36 @@
+info:
+  name: List children
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}{{prefix}}?parentId=1"
+  params:
+    - name: parentId
+      value: "1"
+      type: query
+  auth: inherit
+
+runtime:
+  variables:
+    - name: page
+      value: "1"
+    - name: limit
+      value: "20"
+    - name: sortBy
+      value: desc
+    - name: status
+      value: pending
+    - name: status
+      value: in_progress
+    - name: priority
+      value: high
+    - name: search
+      value: sprint
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
