@@ -5,11 +5,8 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/gantt/containers_overview/?scenario_id=recommended-8&is_tickets=true&ticket_date=2026-03-25"
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?is_tickets=true&ticket_date=2026-03-25"
   params:
-    - name: scenario_id
-      value: recommended-8
-      type: query
     - name: is_tickets
       value: "true"
       type: query

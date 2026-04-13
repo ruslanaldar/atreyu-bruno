@@ -1,0 +1,28 @@
+info:
+  name: create custom user
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/organization/categories/hr/custom-users/"
+  body:
+    type: json
+    data: |-
+      {
+        "role": "EMPLOYEE",
+        "first_name": "colin",
+        "last_name": "zhai",
+        "is_verified": true,
+        "email": "colin.zhai@cssc-tp.com",
+        "gender": "MALE",
+        "nationality": "CN",
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
