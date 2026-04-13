@@ -11,7 +11,8 @@ http:
     data: |-
       {
         "container_no": "sny38",
-        "scenario_id": "scenario-1770324175497-nbcbnvk4h",
+        "scenario_id": "scenario-1102021_20303df",
+        "recommended_id": "recommended-8",
         "set_capacity":[
           {
           "wc_code": "w04",

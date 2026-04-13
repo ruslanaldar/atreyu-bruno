@@ -1,0 +1,30 @@
+info:
+  name: GET gantt all containers Scenario timeticket base plan excel next five days
+  type: http
+  seq: 22
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?is_tickets=true&is_excel=true"
+  params:
+    - name: scenario_id
+      value: recommended
+      type: query
+      disabled: true
+    - name: is_tickets
+      value: "true"
+      type: query
+    - name: ticket_date
+      value: 2026-04-03
+      type: query
+      disabled: true
+    - name: is_excel
+      value: "true"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

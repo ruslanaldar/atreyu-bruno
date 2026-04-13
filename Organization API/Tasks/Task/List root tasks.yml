@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}{{prefix}}?page=1&limit=20&sortBy=createdAt&sortOrder=desc&status=pending&status=in_progress&priority=high&search=sprint"
+  url: "{{base_url}}{{prefix}}?page=1&limit=20&sortBy=createdAt&sortOrder=desc&status=pending&status=in_progress&priority=high&priority=urgent"
   params:
     - name: page
       value: "1"
@@ -30,6 +30,10 @@ http:
       type: query
     - name: search
       value: sprint
+      type: query
+      disabled: true
+    - name: priority
+      value: urgent
       type: query
   auth: inherit
 

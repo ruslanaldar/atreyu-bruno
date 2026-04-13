@@ -5,14 +5,15 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/gantt/containers/?container_no=sny38&scenario_id=no_limit"
+  url: "{{base_url}}/productionplans/gantt/containers/?container_no=sny39"
   params:
     - name: container_no
-      value: sny38
+      value: sny39
       type: query
     - name: scenario_id
       value: no_limit
       type: query
+      disabled: true
   auth: inherit
 
 settings:

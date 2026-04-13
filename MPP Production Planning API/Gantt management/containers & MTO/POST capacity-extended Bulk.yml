@@ -10,24 +10,20 @@ http:
     type: json
     data: |-
       {
-        "container_no": "fer-0002",
-        "wc_code": "d04",
-        "date_from": "2025-12-23",
-        "date_to": "2025-01-18",
-        "extended_overtime_hours": 20,
-        "equipment_qty": 1,
-        "wc_swaps": [
+        "scenario_id": "scenario-1102021_20303df",
+        
+        "set_capacity": [
           {
-            "pp_no": "60001729",
-            "erp_no": "59506310",
-            "from": "d03",
-            "to": "d02",
-            "sp_otn": 9.5
-          }
-        ],
+          "wc_code": "D04",
+          "date_from": "2026-01-23",
+          "date_to": "2025-02-18",
+          "extended_overtime_hours": 20,
+          "equipment_qty": 1
+        }],
+
         "extra_stations": [
           {
-            "wc_code": "l02",
+            "wc_code": "L02",
             "quantity": 2,
             "days": 2
           }

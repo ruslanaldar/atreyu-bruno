@@ -5,13 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/gantt/containers/?container_no=wk22-wk30&scenario_id=scenario-1770324597641-9z8xiz507"
+  url: "{{base_url}}/productionplans/gantt/containers/?container_no=l95"
   params:
     - name: container_no
-      value: wk22-wk30
-      type: query
-    - name: scenario_id
-      value: scenario-1770324597641-9z8xiz507
+      value: l95
       type: query
   auth: inherit
 

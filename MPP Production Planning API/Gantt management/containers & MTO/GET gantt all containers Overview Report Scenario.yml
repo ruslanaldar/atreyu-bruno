@@ -13,6 +13,10 @@ http:
     - name: scenario_id
       value: recommended-8
       type: query
+    - name: scenario_id
+      value: ""
+      type: query
+      disabled: true
   auth: inherit
 
 settings:

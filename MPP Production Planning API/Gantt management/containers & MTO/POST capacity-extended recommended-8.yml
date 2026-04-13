@@ -1,7 +1,7 @@
 info:
-  name: POST capacity-extended new_employees
+  name: POST capacity-extended recommended-8
   type: http
-  seq: 15
+  seq: 20
 
 http:
   method: POST
@@ -10,12 +10,13 @@ http:
     type: json
     data: |-
       {  
-        "scenario_id": "scenario-1774942669151-plisq55",
-        "new_employees": [
+        "scenario_id": "we_recomend",
+        "recommended_id": "recommended-8",
+        "extra_stations": [
           {
-            "wc_code": "d03",
-            "quantity": 10,
-            "date_from": "2026-03-31"
+            "wc_code": "l02",
+            "quantity": 1,
+            "days" : 1
           }
         ]
       }

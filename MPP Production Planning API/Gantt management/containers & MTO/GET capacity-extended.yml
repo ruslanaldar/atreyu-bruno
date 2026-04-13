@@ -5,7 +5,11 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/capacity-extended"
+  url: "{{base_url}}/productionplans/capacity-extended/?scenario_id=scenario-1102021_20303df"
+  params:
+    - name: scenario_id
+      value: scenario-1102021_20303df
+      type: query
   auth: inherit
 
 settings:

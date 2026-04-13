@@ -5,13 +5,13 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/gantt/containers_overview/?get_report=true&scenario_id=scenario-1768194374030-zo22u3pc6"
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?get_report=true&scenario_id=scenario-1774983298419-rtq7a89"
   params:
     - name: get_report
       value: "true"
       type: query
     - name: scenario_id
-      value: scenario-1768194374030-zo22u3pc6
+      value: scenario-1774983298419-rtq7a89
       type: query
   auth: inherit
 
@@ -20,3 +20,484 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  # Action Report API Response Guide
+
+  ## Overview
+
+  The `action_report` object is returned from the production reports endpoint. It contains a complete analysis of production bottlenecks, recommended fixes, and predicted outcomes — all structured for direct UI rendering.
+
+  Every actionable item includes an `action_text` string ready to display. Numeric data is provided alongside for charts, cards, or custom formatting.
+
+  ---
+
+  ## Top-Level Structure
+
+  ```
+  action_report
+  ├── totals                    → Summary numbers + summary_text
+  ├── by_workcenter             → Main section: all actions grouped per workcenter
+  ├── unassigned_transitions    → Transitions not linked to any bottleneck workcenter
+  ├── unassigned_outsourcing    → Outsourcing issues not linked to any bottleneck workcenter
+  ├── unassigned_employees      → Employee issues not linked to any bottleneck workcenter
+  └── container_overview        → Per-container view: how all fixes affect each container
+  ```
+
+  ---
+
+  ## 1. `totals`
+
+  Top-level KPIs for dashboard cards or summary banner.
+
+  ```json
+  {
+    "total_bottleneck_workcenters": 12,
+    "total_extra_workers_needed": 8,
+    "total_extra_machines_needed": 3,
+    "total_gap_days_to_resolve": 340,
+    "total_late_containers": 8,
+    "predicted_total_days_recoverable": 204.0,
+    "predicted_containers_on_time": 5,
+    "predicted_containers_still_late": 3,
+    "summary_text": "12 bottleneck workcenters identified. 8 containers late. 340 gap days to resolve requiring 8 extra workers and 3 extra machines. Predicted recovery: ~204 days across 8 containers — 5 can meet deadline, 3 remain late and need further action."
+  }
+  ```
+
+  **UI suggestion:** Show `summary_text` as a banner. Use the numeric fields for KPI cards (e.g. workers needed, containers fixable, etc).
+
+  ---
+
+  ## 2. `by_workcenter`
+
+  **This is the main section.** Each key is a workcenter name. Each workcenter contains everything needed to render a full action card.
+
+  ```
+  by_workcenter
+  └── "welding"
+      ├── info                → identity, rank, severity, date range
+      ├── problem             → what's wrong (capacity, utilization, gaps)
+      ├── resolution          → recommended fix (shift, workers, machines) — ONLY the recommended option
+      ├── action_text         → ready-to-display summary of the entire action
+      ├── transitions[]       → workflow transitions causing gaps at this workcenter
+      ├── outsourcing[]       → outsourced stations affecting this workcenter
+      ├── employees[]         → employees with scheduling issues at this workcenter
+      ├── container_effects[] → per-container prediction if THIS workcenter is fixed
+      └── prediction          → aggregate prediction for fixing this workcenter
+  ```
+
+  ### 2.1 `info`
+
+  ```json
+  {
+    "workcenter": "welding",
+    "rank": 1,
+    "severity": "critical",
+    "dates": {
+      "action_start": "2026-04-01",
+      "action_end": "2026-07-15",
+      "earliest_gap": "2026-04-06",
+      "latest_gap": "2026-07-08",
+      "span_days": 105
+    }
+  }
+  ```
+
+  - `rank` — priority order (1 = most critical)
+  - `severity` — one of: `"critical"`, `"high"`, `"medium"`, `"low"`
+  - `dates.action_start` / `dates.action_end` — when the fix should be active
+  - `dates.earliest_gap` / `dates.latest_gap` — actual gap date range driving the action
+  - `dates.span_days` — duration of the action period
+
+  **UI suggestion:** Use `severity` for color-coding (red/orange/yellow/green). Use `rank` for sort order. Show dates as a timeline bar.
+
+  ### 2.2 `problem`
+
+  ```json
+  {
+    "current_capacity_minutes": 480.0,
+    "avg_daily_usage_minutes": 520.0,
+    "utilization_pct": 108.3,
+    "bottleneck_utilization_pct": 125.0,
+    "bottleneck_work_pct": 35.2,
+    "total_load_minutes": 15600.0,
+    "total_usage_minutes": 44200.0,
+    "affected_containers_count": 5,
+    "late_containers": ["C-2025-001", "C-2025-003", "C-2025-007"],
+    "gap_days": 89,
+    "gap_count": 12
+  }
+  ```
+
+  - `current_capacity_minutes` — what this workcenter can handle per day
+  - `avg_daily_usage_minutes` — what's actually being scheduled per day
+  - `utilization_pct` — overall utilization (can exceed 100% = overloaded)
+  - `bottleneck_utilization_pct` — utilization during bottleneck/late periods only
+  - `bottleneck_work_pct` — percentage of total work that happens past deadlines
+  - `late_containers` — list of container names that are late at this workcenter
+  - `gap_days` / `gap_count` — total idle gap days and number of gaps
+
+  **UI suggestion:** Show utilization as a gauge or progress bar (red if >100%). List late containers as clickable links to `container_overview`.
+
+  ### 2.3 `resolution`
+
+  Only the recommended option. No rejected alternatives.
+
+  ```json
+  {
+    "total_deficit_minutes": 12600.0,
+    "daily_extra_minutes_needed": 120.0,
+    "planning_horizon_days": 105,
+    "recommended_shift": "10h",
+    "recommended_workers": 1,
+    "recommended_extra_machines": 0,
+    "recommended_coverage_pct": 100.0,
+    "recommended_surplus_minutes": 480.0,
+    "recommendation_text": "Add 1.2 worker(s) to cover 89 gap-days. Focus on 'painting → welding' transition (45 days lost, 8 occurrences)."
+  }
+  ```
+
+  - `recommended_shift` — shift duration to adopt (e.g. "8h", "10h", "12h", "16h", "18h", "20h")
+  - `recommended_workers` — number of workers needed at this shift level
+  - `recommended_extra_machines` — additional machines beyond current (0 = existing machine is enough)
+  - `recommended_coverage_pct` — how much of the deficit this recommendation covers
+  - `recommended_surplus_minutes` — extra capacity beyond what's needed (buffer)
+  - `recommendation_text` — human-readable recommendation with specifics
+
+  **UI suggestion:** Show as an action card: "Switch to 10h shifts, add 1 worker". Use `recommendation_text` as the detail paragraph.
+
+  ### 2.4 `action_text`
+
+  Single string combining problem + resolution + dates. Ready to display as-is.
+
+  ```
+  "WELDING is at 108% utilization (520/480 min/day), peaking at 125% during bottleneck periods. 5 containers affected with 89 gap days across 12 gaps. Expand to 10h shifts with 1 worker(s) to cover 120 extra min/day (12600 min total over 105 days). Action period: 2026-04-01 to 2026-07-15 (105 days). Add 1.2 worker(s) to cover 89 gap-days."
+  ```
+
+  **UI suggestion:** Display in a summary section or tooltip. For more detailed views, use the structured fields from `problem` and `resolution`.
+
+  ### 2.5 `transitions[]`
+
+  Workflow transitions (workcenter → workcenter) that cause gaps at this workcenter.
+
+  ```json
+  [
+    {
+      "transition": "painting → welding",
+      "from_wc": "painting",
+      "to_wc": "welding",
+      "direction": "incoming",
+      "occurrences": 8,
+      "total_gap_days": 45,
+      "avg_gap_days": 5.6,
+      "affected_containers": 4,
+      "dates": {
+        "action_start": "2026-04-10",
+        "action_end": "2026-06-20",
+        "earliest_gap": "2026-04-15",
+        "latest_gap": "2026-06-13",
+        "span_days": 71
+      },
+      "recovery": {
+        "daily_minutes_needed": 304.0,
+        "recommended_shift": "10h",
+        "workers_needed": 1,
+        "extra_machines_needed": 0
+      },
+      "action_type": "add_buffer_capacity",
+      "action_text": "painting → welding: 45 gap days across 8 occurrences (4 containers). Add buffer capacity or workers at receiving workcenter to absorb delays. Requires 10h shift with 1 worker(s). Period: 2026-04-10 to 2026-06-20."
+    }
+  ]
+  ```
+
+  - `direction` — `"incoming"` (gaps before arriving at this wc) or `"outgoing"` (gaps after leaving this wc)
+  - `action_type` — one of: `"schedule_overlap"`, `"add_buffer_capacity"`, `"restructure_workflow"`
+
+  **UI suggestion:** Show as sub-items under the workcenter card. Use `direction` for arrow icons (→ incoming, ← outgoing).
+
+  ### 2.6 `outsourcing[]`
+
+  Outsourced work stations causing delays at this workcenter.
+
+  ```json
+  [
+    {
+      "station": "K-Outsource-Plating",
+      "occurrence_count": 7,
+      "affected_containers": ["C-2025-001", "C-2025-003"],
+      "dates": {
+        "action_start": "2026-04-05",
+        "action_end": "2026-05-20",
+        "span_days": 45
+      },
+      "action_type": "consider_insourcing",
+      "action_text": "K-Outsource-Plating: 7 occurrences affecting 2 containers. High frequency — evaluate bringing this work in-house. Period: 2026-04-05 to 2026-05-20."
+    }
+  ]
+  ```
+
+  - `action_type` — `"review_lead_times"` (low frequency) or `"consider_insourcing"` (high frequency, 5+ occurrences)
+
+  ### 2.7 `employees[]`
+
+  Employees with scheduling issues at this workcenter.
+
+  ```json
+  [
+    {
+      "emp_id": "E-042",
+      "emp_name": "Batbold",
+      "at_this_wc": {
+        "total_minutes": 2400.0,
+        "days_worked": 45,
+        "late_minutes": 1600.0,
+        "late_pct": 66.7
+      },
+      "overall_late_pct": 55.0,
+      "action_type": "redistribute_workload",
+      "action_text": "Batbold: 67% late at welding (1600 min over 30 days). Redistribute workload — employee overloaded on late work, reassign tasks."
+    }
+  ]
+  ```
+
+  - `at_this_wc` — employee stats specifically at this workcenter
+  - `action_type` — `"redistribute_workload"` (>60% late) or `"schedule_adjustment"` (30-60% late)
+
+  ### 2.8 `container_effects[]`
+
+  What happens to each container IF this workcenter is fixed.
+
+  ```json
+  [
+    {
+      "container": "C-2025-001",
+      "gap_days_at_this_wc": 15,
+      "total_gap_days": 40,
+      "recovery_pct": 37.5,
+      "estimated_days_recovered": 9.0,
+      "remaining_late_days": 3.0,
+      "on_time_possible": false,
+      "impact": "medium",
+      "deadline": "2026-05-01",
+      "status": "Late by 12 days",
+      "effect_text": "C-2025-001: 9 days recoverable (38% of 40 total gap days). Still 3 days late after fix."
+    }
+  ]
+  ```
+
+  - `impact` — `"high"` (recovery ≥80%), `"medium"` (≥40%), `"low"` (<40%)
+  - `on_time_possible` — whether fixing this workcenter alone is enough
+  - `estimated_days_recovered` — conservative estimate (60% of gap days)
+  - Sorted by impact desc, then gap_days desc
+
+  **UI suggestion:** Show as a mini-table or list under the workcenter. Color-code by `impact`. Use `effect_text` for tooltips.
+
+  ### 2.9 `prediction`
+
+  Aggregate prediction if this workcenter action is executed.
+
+  ```json
+  {
+    "total_containers_affected": 5,
+    "total_days_recoverable": 27.0,
+    "containers_can_be_on_time": 3,
+    "containers_still_late": 2,
+    "prediction_text": "Fixing welding recovers ~27 days across 5 containers. 3 can meet deadline, 2 remain late."
+  }
+  ```
+
+  **UI suggestion:** Show as a prediction badge on the workcenter card.
+
+  ---
+
+  ## 3. `unassigned_transitions` / `unassigned_outsourcing` / `unassigned_employees`
+
+  Same structure as the items nested under `by_workcenter`, but these are not linked to any bottleneck workcenter. They still have `action_text` and all relevant fields.
+
+  Show these in a separate "Other Issues" section or at the bottom of the report.
+
+  ---
+
+  ## 4. `container_overview`
+
+  The flip side of `by_workcenter`. For each container, shows:
+  - Current status (late days, deadline)
+  - All gaps
+  - Which workcenters affect it
+  - Combined prediction if ALL workcenter fixes are applied
+
+  ```
+  container_overview
+  └── "C-2025-001"
+      ├── info                       → container identity, deadline, status, late days
+      ├── gap_summary                → total gaps, counts, averages
+      ├── top_gaps[]                 → biggest individual gaps with dates and workcenters
+      ├── affected_by_workcenters[]  → which wc fixes help this container (with effect_text)
+      ├── combined_prediction        → what happens if ALL relevant fixes are applied
+      └── prediction_text            → ready-to-display combined prediction
+  ```
+
+  ### 4.1 `info`
+
+  ```json
+  {
+    "container": "C-2025-001",
+    "deadline": "2026-05-01",
+    "status": "Late by 12 days",
+    "late_days": 12,
+    "priority": "high",
+    "dates": {
+      "action_start": "2026-04-01",
+      "action_end": "2026-05-15",
+      "earliest_gap": "2026-04-06",
+      "latest_gap": "2026-05-08",
+      "span_days": 44
+    }
+  }
+  ```
+
+  - `priority` — `"critical"` (>50 gap days), `"high"` (>20), `"medium"` (rest)
+
+  ### 4.2 `gap_summary`
+
+  ```json
+  {
+    "total_gap_days": 40,
+    "gap_count": 6,
+    "avg_gap_days": 6.7,
+    "largest_gap_days": 15
+  }
+  ```
+
+  ### 4.3 `top_gaps[]`
+
+  ```json
+  [
+    {
+      "from_wc": "painting",
+      "to_wc": "welding",
+      "days": 15,
+      "start_date": "2026-04-10",
+      "end_date": "2026-04-25",
+      "pp_no": "PP-001",
+      "erp_no": "ERP-4421"
+    }
+  ]
+  ```
+
+  ### 4.4 `affected_by_workcenters[]`
+
+  Which workcenter fixes contribute to this container's recovery.
+
+  ```json
+  [
+    {
+      "workcenter": "welding",
+      "severity": "critical",
+      "gap_days_at_wc": 15,
+      "estimated_days_recovered": 9.0,
+      "recovery_pct": 37.5,
+      "impact": "medium",
+      "effect_text": "C-2025-001: 9 days recoverable (38% of 40 total gap days). Still 3 days late after fix."
+    },
+    {
+      "workcenter": "painting",
+      "severity": "high",
+      "gap_days_at_wc": 12,
+      "estimated_days_recovered": 7.2,
+      "recovery_pct": 30.0,
+      "impact": "low",
+      "effect_text": "C-2025-001: 7 days recoverable (30% of 40 total gap days). Can meet deadline."
+    }
+  ]
+  ```
+
+  Sorted by `gap_days_at_wc` descending.
+
+  **UI suggestion:** Show as stacked bars or a breakdown chart showing each workcenter's contribution to recovery.
+
+  ### 4.5 `combined_prediction`
+
+  What happens if ALL workcenter fixes are applied for this container.
+
+  ```json
+  {
+    "total_days_recoverable": 16.2,
+    "current_late_days": 12,
+    "remaining_late_days": 0,
+    "on_time_possible": true,
+    "workcenters_count": 2,
+    "recovery_pct": 40.5
+  }
+  ```
+
+  ### 4.6 `prediction_text`
+
+  ```
+  "C-2025-001 is 12 days late (deadline: 2026-05-01). Fixing welding, painting recovers ~16 days. Container can meet deadline after all fixes applied. Largest gap: painting → welding (15d, 2026-04-10 to 2026-04-25)."
+  ```
+
+  **UI suggestion:** Show as the main description text on a container detail card.
+
+  ---
+
+  ## Rendering Approach
+
+  ### Option A: Summary View (Dashboard)
+  1. Render `totals` as KPI cards + `summary_text` as banner
+  2. List `by_workcenter` as cards sorted by `info.rank`, showing `action_text` + `prediction.prediction_text`
+  3. Show `container_overview` as a table with status colors
+
+  ### Option B: Detail View (Per Workcenter)
+  1. Workcenter header with `info.severity` badge + `info.dates` timeline
+  2. Problem section from `problem` fields
+  3. Resolution section from `resolution` fields
+  4. Sub-sections for `transitions`, `outsourcing`, `employees` — each with `action_text`
+  5. Container effects table from `container_effects` with `effect_text`
+  6. Prediction summary from `prediction.prediction_text`
+
+  ### Option C: Detail View (Per Container)
+  1. Container header with `info.deadline`, `info.status`, `info.priority` badge
+  2. Gap summary from `gap_summary`
+  3. Gap list from `top_gaps`
+  4. Workcenter breakdown from `affected_by_workcenters` with `effect_text`
+  5. Combined prediction from `prediction_text`
+
+  ---
+
+  ## Key Enums
+
+  | Field | Values |
+  |---|---|
+  | `severity` | `"critical"`, `"high"`, `"medium"`, `"low"` |
+  | `impact` | `"high"`, `"medium"`, `"low"` |
+  | `priority` | `"critical"`, `"high"`, `"medium"` |
+  | `action_type` (transition) | `"schedule_overlap"`, `"add_buffer_capacity"`, `"restructure_workflow"` |
+  | `action_type` (outsourcing) | `"review_lead_times"`, `"consider_insourcing"` |
+  | `action_type` (employee) | `"redistribute_workload"`, `"schedule_adjustment"` |
+  | `direction` (transition) | `"incoming"`, `"outgoing"` |
+  | `recommended_shift` | `"8h"`, `"10h"`, `"12h"`, `"16h"`, `"18h"`, `"20h"` |
+
+  ---
+
+  ## Date Format
+
+  All dates are ISO strings: `"2026-04-01"` or `null` if not available.
+
+  ---
+
+  ## Text Fields Summary
+
+  Every actionable item has a text field ready for display:
+
+  | Location | Field | Content |
+  |---|---|---|
+  | `totals` | `summary_text` | Overall report summary |
+  | `by_workcenter[wc]` | `action_text` | Full workcenter action (problem + fix + dates) |
+  | `by_workcenter[wc].transitions[]` | `action_text` | Transition-specific action |
+  | `by_workcenter[wc].outsourcing[]` | `action_text` | Outsourcing-specific action |
+  | `by_workcenter[wc].employees[]` | `action_text` | Employee-specific action |
+  | `by_workcenter[wc].container_effects[]` | `effect_text` | Per-container effect at this workcenter |
+  | `by_workcenter[wc].prediction` | `prediction_text` | Aggregate workcenter prediction |
+  | `container_overview[con]` | `prediction_text` | Combined container prediction |
+  | `container_overview[con].affected_by_workcenters[]` | `effect_text` | Per-workcenter effect on this container |

@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/gantt/containers_overview/?scenario_id=recommended"
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?scenario_id=recommended-12"
   params:
     - name: scenario_id
-      value: recommended
+      value: recommended-12
       type: query
   auth: inherit
 
