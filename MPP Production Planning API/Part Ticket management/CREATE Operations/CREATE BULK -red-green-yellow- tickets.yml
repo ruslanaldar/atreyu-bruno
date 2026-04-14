@@ -1,0 +1,68 @@
+info:
+  name: CREATE BULK /red/green/yellow/ tickets
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/part-tickets/all/"
+  body:
+    type: json
+    data: |-
+      [
+        {
+          "container_no": "fer01",
+          "pp_no": "60002313",
+          "erp_no": "60002313",
+          "station": "M05",
+          "sub_station": "M0503",
+          "completed_qty": 12,
+          "status": "green",
+          "emp_id": "335",
+          "emp_name": "Jiang Xiugang",
+          "unit_processing_time": 108,
+          "created_by": "Ruslan Aldar",
+          "drawing_no": "613-81-11000-9-01",
+          "man_seq": 8,
+          "notes": "testing creation of the green time ticket"
+        },
+        {
+          "container_no": "fer01",
+          "pp_no": "60002313",
+          "erp_no": "60002313",
+          "station": "M05",
+          "sub_station": "M0503",
+          "completed_qty": 2,
+          "status": "red",
+          "emp_id": "335",
+          "emp_name": "Jiang Xiugang",
+          "unit_processing_time": 108,
+          "created_by": "Ruslan Aldar",
+          "drawing_no": "613-81-11000-9-01",
+          "man_seq": 8,
+          "notes": "testing creation of the red time ticket"
+        },
+        {
+          "container_no": "fer01",
+          "pp_no": "60002313",
+          "erp_no": "60002313",
+          "station": "M05",
+          "sub_station": "M0503",
+          "completed_qty": 2,
+          "status": "yellow",
+          "emp_id": "335",
+          "emp_name": "Jiang Xiugang",
+          "unit_processing_time": 108,
+          "created_by": "Ruslan Aldar",
+          "drawing_no": "613-81-11000-9-01",
+          "man_seq": 8,
+          "notes": "testing creation of the yellow time ticket"
+        }
+      ]
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

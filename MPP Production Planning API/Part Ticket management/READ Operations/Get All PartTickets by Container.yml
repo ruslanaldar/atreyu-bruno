@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/api/productionplans/part-tickets/?container_no=wk-0002"
+  url: "{{base_url}}/productionplans/part-tickets/?container_no=wk-0002"
   headers:
     - name: Authorization
       value: Bearer {{access_token}}
