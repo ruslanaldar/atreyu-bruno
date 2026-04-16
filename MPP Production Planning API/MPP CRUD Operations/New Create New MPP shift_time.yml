@@ -16,7 +16,7 @@ http:
           "async": true,
           "trigger_reason": "manual_creation",
           "status": "produce",
-          "shift_time": 10,
+          "shift_time": 8,
           "week_no": 4
       }
   auth: inherit

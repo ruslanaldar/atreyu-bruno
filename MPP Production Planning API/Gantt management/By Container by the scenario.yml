@@ -1,0 +1,25 @@
+info:
+  name: By Container by the scenario
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/gantt/containers/?container_no=l95"
+  params:
+    - name: container_no
+      value: l95
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Scenario options for the container view:
+  no_limit, recommended, recommended-8, recommended-10, recommended-12,
+  base scenario view:
+  8h, 8h_sat, 10h, 10h_sat, 12h, 12h_sat,

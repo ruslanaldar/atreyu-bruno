@@ -1,0 +1,26 @@
+info:
+  name: GET gantt all containers Scenario Base plan
+  type: http
+  seq: 24
+
+http:
+  method: GET
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?scenario_id="
+  params:
+    - name: scenario_id
+      value: ""
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Base plan scenario options :
+  8h, 8h_sat, 10h, 10h_sat, 12h, 12h_sat,
+
+  send request as the scenario_id:
+  http:27.223.82.66:18080/api/productionplans/gantt/containers_overview/?scenario_id=8h
