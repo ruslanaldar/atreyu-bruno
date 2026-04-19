@@ -1,0 +1,37 @@
+info:
+  name: Patch Part Coating
+  type: http
+  seq: 8
+
+http:
+  method: PATCH
+  url: "{{base_url}}/parts/coating/part-coatings/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": {{part_coating_id}},
+        "corrosion_class": "C4",
+        "notes": "Updated notes"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Partially update a part coating using body id on the collection URL.
+  
+  Current Bruno request:
+  - Method: PATCH
+  - URL: `{{base_url}}/parts/coating/part-coatings/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST, PUT, PATCH
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - This request uses `id` in the JSON body because the list endpoint now accepts update operations.

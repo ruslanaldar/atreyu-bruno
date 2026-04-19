@@ -1,0 +1,42 @@
+info:
+  name: Update Coating Method
+  type: http
+  seq: 8
+
+http:
+  method: PUT
+  url: "{{base_url}}/parts/coating/coating-methods/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": {{method_id}},
+        "process": {{process_id}},
+        "name": "TEST METHOD",
+        "order": 0,
+        "system_single_layer": true,
+        "thickness_min_um": "8.00",
+        "thickness_max_um": "20.00",
+        "thickness_raw": "8–20 µm"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Replace a coating method using body id on the collection URL.
+  
+  Current Bruno request:
+  - Method: PUT
+  - URL: `{{base_url}}/parts/coating/coating-methods/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST, PUT, PATCH
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - This request uses `id` in the JSON body because the list endpoint now accepts update operations.

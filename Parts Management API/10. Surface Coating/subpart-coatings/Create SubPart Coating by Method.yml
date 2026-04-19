@@ -1,0 +1,38 @@
+info:
+  name: Create SubPart Coating by Method
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/coating/subpart-coatings/"
+  body:
+    type: json
+    data: |-
+      {
+        "subpart": {{subpart_id}},
+        "method": {{method_id}},
+        "thickness_specified_um": "0.30",
+        "notes": "Test subpart coating assignment via method"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Create a subpart coating using a method leaf.
+  
+  Current Bruno request:
+  - Method: POST
+  - URL: `{{base_url}}/parts/coating/subpart-coatings/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST, PUT, PATCH, DELETE
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - This request uses the collection URL for creation.

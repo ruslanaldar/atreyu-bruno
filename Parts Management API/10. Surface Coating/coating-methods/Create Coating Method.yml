@@ -1,0 +1,41 @@
+info:
+  name: Create Coating Method
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/coating/coating-methods/"
+  body:
+    type: json
+    data: |-
+      {
+        "process": {{process_id}},
+        "name": "TEST METHOD",
+        "order": 0,
+        "system_single_layer": true,
+        "thickness_min_um": "5.00",
+        "thickness_max_um": "15.00",
+        "thickness_raw": "5–15 µm"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Create a coating method.
+  
+  Current Bruno request:
+  - Method: POST
+  - URL: `{{base_url}}/parts/coating/coating-methods/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - Some GET requests in this collection intentionally show body-based lookup by `id` because the current backend accepts merged query/body filters.

@@ -1,0 +1,18 @@
+info:
+  name: coating-processes
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs: |-
+  Top-level coating process endpoints.
+  
+  Resource URLs:
+  - {{base_url}}/parts/coating/coating-processes/
+  - {{base_url}}/parts/coating/coating-processes/{id}/
+  
+  Supported methods:
+  - Collection: GET, POST, PUT, PATCH
+  - Detail: GET, PUT, PATCH, DELETE

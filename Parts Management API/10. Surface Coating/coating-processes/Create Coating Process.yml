@@ -1,0 +1,36 @@
+info:
+  name: Create Coating Process
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/coating/coating-processes/"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "TEST PROCESS",
+        "order": 99
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Create a coating process.
+  
+  Current Bruno request:
+  - Method: POST
+  - URL: `{{base_url}}/parts/coating/coating-processes/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - Some GET requests in this collection intentionally show body-based lookup by `id` because the current backend accepts merged query/body filters.

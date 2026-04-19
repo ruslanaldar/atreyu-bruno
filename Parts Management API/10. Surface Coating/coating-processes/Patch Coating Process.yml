@@ -1,0 +1,36 @@
+info:
+  name: Patch Coating Process
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{base_url}}/parts/coating/coating-processes/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": {{process_id}},
+        "order": 50
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Partially update a coating process using body id on the collection URL.
+  
+  Current Bruno request:
+  - Method: PATCH
+  - URL: `{{base_url}}/parts/coating/coating-processes/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST, PUT, PATCH
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - This request uses `id` in the JSON body because the list endpoint now accepts update operations.

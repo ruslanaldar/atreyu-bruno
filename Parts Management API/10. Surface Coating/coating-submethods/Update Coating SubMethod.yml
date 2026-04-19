@@ -1,0 +1,47 @@
+info:
+  name: Update Coating SubMethod
+  type: http
+  seq: 9
+
+http:
+  method: PUT
+  url: "{{base_url}}/parts/coating/coating-submethods/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": {{submethod_id}},
+        "process": {{process_id}},
+        "method": {{method_id}},
+        "name": "TEST SUBMETHOD",
+        "order": 0,
+        "system_single_layer": true,
+        "thickness_min_um": "0.10",
+        "thickness_max_um": "0.50",
+        "thickness_raw": "0.1 – 0.5 µm",
+        "corrosion_c2": true,
+        "corrosion_c3": true,
+        "pretreat_sand_blasting": true,
+        "pretreat_as_machined": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Replace a coating submethod using body id on the collection URL.
+  
+  Current Bruno request:
+  - Method: PUT
+  - URL: `{{base_url}}/parts/coating/coating-submethods/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST, PUT, PATCH
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - This request uses `id` in the JSON body because the list endpoint now accepts update operations.

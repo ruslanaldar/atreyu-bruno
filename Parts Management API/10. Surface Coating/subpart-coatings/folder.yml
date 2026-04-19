@@ -1,0 +1,24 @@
+info:
+  name: subpart-coatings
+  type: folder
+  seq: 7
+
+request:
+  auth: inherit
+
+docs: |-
+  Subpart coating endpoints.
+  
+  Resource URLs:
+  - {{base_url}}/parts/coating/subpart-coatings/
+  - {{base_url}}/parts/coating/subpart-coatings/{id}/
+  
+  Supported methods in the API:
+  - Collection: GET, POST, PUT, PATCH, DELETE
+  - Detail: GET, PUT, PATCH, DELETE
+  
+  Included in this Bruno folder:
+  - GET list and lookup requests
+  - POST create requests
+  - PUT/PATCH update requests using body `id`
+  - DELETE request using body `id`

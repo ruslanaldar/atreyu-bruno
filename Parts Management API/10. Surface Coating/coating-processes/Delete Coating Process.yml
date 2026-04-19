@@ -1,0 +1,29 @@
+info:
+  name: Delete Coating Process
+  type: http
+  seq: 8
+
+http:
+  method: DELETE
+  url: "{{base_url}}/parts/coating/coating-processes/{{process_id}}/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Delete a coating process.
+  
+  Current Bruno request:
+  - Method: DELETE
+  - URL: `{{base_url}}/parts/coating/coating-processes/{id}/`
+  
+  Methods accepted by this URL in the API:
+  - GET, PUT, PATCH, DELETE
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - Some GET requests in this collection intentionally show body-based lookup by `id` because the current backend accepts merged query/body filters.

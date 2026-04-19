@@ -1,0 +1,29 @@
+info:
+  name: Delete Anodizing Color
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{base_url}}/parts/coating/anodizing-colors/{{anodizing_color_id}}/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Delete an anodizing color.
+  
+  Current Bruno request:
+  - Method: DELETE
+  - URL: `{{base_url}}/parts/coating/anodizing-colors/{id}/`
+  
+  Methods accepted by this URL in the API:
+  - GET, PUT, PATCH, DELETE
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - Some GET requests in this collection intentionally show body-based lookup by `id` because the current backend accepts merged query/body filters.

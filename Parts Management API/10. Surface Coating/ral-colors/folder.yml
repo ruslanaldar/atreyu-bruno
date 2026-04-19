@@ -1,0 +1,18 @@
+info:
+  name: ral-colors
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs: |-
+  RAL color catalog endpoints.
+  
+  Resource URLs:
+  - {{base_url}}/parts/coating/ral-colors/
+  - {{base_url}}/parts/coating/ral-colors/{id}/
+  
+  Supported methods:
+  - Collection: GET, POST, PUT, PATCH
+  - Detail: GET, PUT, PATCH

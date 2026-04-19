@@ -1,0 +1,18 @@
+info:
+  name: anodizing-colors
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+
+docs: |-
+  Anodizing color catalog endpoints.
+  
+  Resource URLs:
+  - {{base_url}}/parts/coating/anodizing-colors/
+  - {{base_url}}/parts/coating/anodizing-colors/{id}/
+  
+  Supported methods:
+  - Collection: GET, POST, PUT, PATCH
+  - Detail: GET, PUT, PATCH, DELETE

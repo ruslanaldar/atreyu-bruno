@@ -1,0 +1,39 @@
+info:
+  name: Update Anodizing Color
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/parts/coating/anodizing-colors/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": {{anodizing_color_id}},
+        "name": "Matte Grey",
+        "description": "Updated description",
+        "hex_color": "#707070",
+        "order": 99
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Replace an anodizing color using body id on the collection URL.
+  
+  Current Bruno request:
+  - Method: PUT
+  - URL: `{{base_url}}/parts/coating/anodizing-colors/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST, PUT, PATCH
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - This request uses `id` in the JSON body because the list endpoint now accepts update operations.

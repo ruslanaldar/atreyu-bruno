@@ -1,0 +1,18 @@
+info:
+  name: coating-methods
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit
+
+docs: |-
+  Coating method endpoints under a process.
+  
+  Resource URLs:
+  - {{base_url}}/parts/coating/coating-methods/
+  - {{base_url}}/parts/coating/coating-methods/{id}/
+  
+  Supported methods:
+  - Collection: GET, POST, PUT, PATCH
+  - Detail: GET, PUT, PATCH, DELETE

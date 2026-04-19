@@ -1,0 +1,39 @@
+info:
+  name: Update SubPart Coating
+  type: http
+  seq: 8
+
+http:
+  method: PUT
+  url: "{{base_url}}/parts/coating/subpart-coatings/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": {{subpart_coating_id}},
+        "subpart": {{subpart_id}},
+        "submethod": {{submethod_id}},
+        "thickness_specified_um": "0.40",
+        "notes": "Final updated subpart coating notes"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Replace a subpart coating using body id on the collection URL.
+  
+  Current Bruno request:
+  - Method: PUT
+  - URL: `{{base_url}}/parts/coating/subpart-coatings/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST, PUT, PATCH, DELETE
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - This request uses `id` in the JSON body because the list endpoint now accepts update operations.

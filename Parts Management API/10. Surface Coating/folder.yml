@@ -1,0 +1,22 @@
+info:
+  name: 10. Surface Coating
+  type: folder
+  seq: 9
+
+request:
+  auth: inherit
+
+docs: |-
+  Surface coating endpoints for parts and subparts.
+  
+  Included groups:
+  - RAL color catalog
+  - Anodizing color catalog
+  - Coating processes
+  - Coating methods
+  - Coating submethods
+  - Part coatings
+  - Subpart coating lookup requests
+  
+  Base prefix:
+  - {{base_url}}/parts/coating

@@ -1,0 +1,33 @@
+info:
+  name: Search Anodizing Colors
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/parts/coating/anodizing-colors/?search=black"
+  params:
+    - name: search
+      value: "black"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Search anodizing colors by name.
+  
+  Current Bruno request:
+  - Method: GET
+  - URL: `{{base_url}}/parts/coating/anodizing-colors/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - Some GET requests in this collection intentionally show body-based lookup by `id` because the current backend accepts merged query/body filters.

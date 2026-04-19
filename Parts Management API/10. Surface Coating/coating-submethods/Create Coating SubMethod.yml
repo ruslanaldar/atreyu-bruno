@@ -1,0 +1,44 @@
+info:
+  name: Create Coating SubMethod
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/coating/coating-submethods/"
+  body:
+    type: json
+    data: |-
+      {
+        "process": {{process_id}},
+        "method": {{method_id}},
+        "name": "TEST SUBMETHOD",
+        "order": 0,
+        "system_single_layer": true,
+        "thickness_min_um": "0.10",
+        "thickness_max_um": "0.50",
+        "thickness_raw": "0.1 – 0.5 µm",
+        "pretreat_sand_blasting": true,
+        "pretreat_as_machined": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Create a coating submethod.
+  
+  Current Bruno request:
+  - Method: POST
+  - URL: `{{base_url}}/parts/coating/coating-submethods/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - Some GET requests in this collection intentionally show body-based lookup by `id` because the current backend accepts merged query/body filters.

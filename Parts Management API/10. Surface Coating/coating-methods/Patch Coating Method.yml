@@ -1,0 +1,37 @@
+info:
+  name: Patch Coating Method
+  type: http
+  seq: 7
+
+http:
+  method: PATCH
+  url: "{{base_url}}/parts/coating/coating-methods/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": {{method_id}},
+        "thickness_min_um": "8.00",
+        "thickness_max_um": "20.00"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Partially update a coating method using body id on the collection URL.
+  
+  Current Bruno request:
+  - Method: PATCH
+  - URL: `{{base_url}}/parts/coating/coating-methods/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST, PUT, PATCH
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - This request uses `id` in the JSON body because the list endpoint now accepts update operations.

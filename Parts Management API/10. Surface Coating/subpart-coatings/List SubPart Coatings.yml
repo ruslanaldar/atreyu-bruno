@@ -1,0 +1,29 @@
+info:
+  name: List SubPart Coatings
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/parts/coating/subpart-coatings/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  List subpart coatings.
+  
+  Current Bruno request:
+  - Method: GET
+  - URL: `{{base_url}}/parts/coating/subpart-coatings/`
+  
+  Methods accepted by this URL in the API:
+  - GET, POST, PUT, PATCH, DELETE
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - The current backend also supports create/update/delete on the collection URL.

@@ -1,0 +1,29 @@
+info:
+  name: Get Coating Method by ID
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/parts/coating/coating-methods/{{method_id}}/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Get one coating method with nested submethods and color options.
+  
+  Current Bruno request:
+  - Method: GET
+  - URL: `{{base_url}}/parts/coating/coating-methods/{id}/`
+  
+  Methods accepted by this URL in the API:
+  - GET, PUT, PATCH, DELETE
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - Some GET requests in this collection intentionally show body-based lookup by `id` because the current backend accepts merged query/body filters.

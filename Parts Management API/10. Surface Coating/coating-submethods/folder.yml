@@ -1,0 +1,18 @@
+info:
+  name: coating-submethods
+  type: folder
+  seq: 5
+
+request:
+  auth: inherit
+
+docs: |-
+  Coating submethod endpoints under a method.
+  
+  Resource URLs:
+  - {{base_url}}/parts/coating/coating-submethods/
+  - {{base_url}}/parts/coating/coating-submethods/{id}/
+  
+  Supported methods:
+  - Collection: GET, POST, PUT, PATCH
+  - Detail: GET, PUT, PATCH, DELETE

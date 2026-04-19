@@ -1,0 +1,29 @@
+info:
+  name: List Ral Colors
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/parts/coating/ral-colors/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  List all RAL colors.
+  
+  Current Bruno request:
+  - Method: GET
+  - URL: `{{base_url}}/parts/coating/ral-colors/`
+  
+  Methods accepted by this URL in the API:
+  - GET
+  
+  Notes:
+  - Base API prefix is provided through `{{base_url}}`.
+  - Some GET requests in this collection intentionally show body-based lookup by `id` because the current backend accepts merged query/body filters.
