@@ -25,14 +25,24 @@ settings:
 
 docs: |-
   Create a part coating using a method leaf.
-  
+
   Current Bruno request:
   - Method: POST
   - URL: `{{base_url}}/parts/coating/part-coatings/`
-  
+
+  Fields to fill:
+  - subpart (id) subpart_id
+  - method (id) method_id
+  - submethod (id) submethod_id
+  - ral_color (id) ral_color_id
+  - anodizing_color (id) anodizing_color_id
+  - corrosion_class (c2, c3, c4, c5)
+  - notes (text)
+
+
   Methods accepted by this URL in the API:
   - GET, POST
-  
+
   Notes:
   - Base API prefix is provided through `{{base_url}}`.
   - Some GET requests in this collection intentionally show body-based lookup by `id` because the current backend accepts merged query/body filters.
