@@ -5,13 +5,13 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/sub-parts/?main_part_id=483"
+  url: "{{base_url}}/parts/sub-parts/?main_part_id=2498"
   headers:
     - name: Accept
       value: application/json
   params:
     - name: main_part_id
-      value: "483"
+      value: "2498"
       type: query
 
 settings:

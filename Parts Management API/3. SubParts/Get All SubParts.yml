@@ -5,14 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/sub-parts/?main_part_id={{part_id}}"
+  url: "{{base_url}}/parts/sub-parts/"
   headers:
     - name: Accept
       value: application/json
-  params:
-    - name: main_part_id
-      value: "{{part_id}}"
-      type: query
   auth: inherit
 
 settings:

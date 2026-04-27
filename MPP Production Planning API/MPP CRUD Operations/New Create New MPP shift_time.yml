@@ -22,6 +22,24 @@ http:
       }
   auth: inherit
 
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.task_id) {
+            bru.setEnvVar("task_id", data.task_id);
+        }
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: ""
+        method: jsonq
+      variable:
+        name: task_id
+        scope: runtime
+
 settings:
   encodeUrl: true
   timeout: 0
