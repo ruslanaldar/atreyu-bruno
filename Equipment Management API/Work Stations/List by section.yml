@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/{{api_prefix}}/work-stations/?section_id={{section_id}}"
+  url: "{{base_url}}/{{api_prefix}}/work-stations/?section_id=c44f076f-095e-4e88-bc3a-a9f96cdf5ad4"
   headers:
     - name: Content-Type
       value: application/json
@@ -16,7 +16,7 @@ http:
       description: Filter by status (active/inactive)
       disabled: true
     - name: section_id
-      value: "{{section_id}}"
+      value: c44f076f-095e-4e88-bc3a-a9f96cdf5ad4
       type: query
   auth: inherit
 

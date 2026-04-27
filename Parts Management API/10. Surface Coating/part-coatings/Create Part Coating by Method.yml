@@ -37,6 +37,7 @@ docs: |-
   - ral_color (id) ral_color_id
   - anodizing_color (id) anodizing_color_id
   - corrosion_class (c2, c3, c4, c5)
+  - gloss_gu (add gloss level 0-100)
   - notes (text)
 
 

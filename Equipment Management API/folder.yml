@@ -1,10 +1,9 @@
 info:
-  name: Work Stations
+  name: Equipment Management API
   type: folder
   seq: 1
 
 request:
-  auth: inherit
   variables:
     - name: api_prefix
       value: basics/equipments

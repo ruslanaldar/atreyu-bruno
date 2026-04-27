@@ -25,14 +25,24 @@ settings:
 
 docs: |-
   Create a subpart coating using a method leaf.
-  
+
   Current Bruno request:
   - Method: POST
   - URL: `{{base_url}}/parts/coating/subpart-coatings/`
-  
+
   Methods accepted by this URL in the API:
   - GET, POST, PUT, PATCH, DELETE
-  
+
+  Fields to fill:
+  - subpart (id) subpart_id
+  - method (id) method_id
+  - submethod (id) submethod_id
+  - ral_color (id) ral_color_id
+  - anodizing_color (id) anodizing_color_id
+  - corrosion_class (c2, c3, c4, c5)
+  - gloss_gu (add gloss level 0-100)
+  - notes (text)
+
   Notes:
   - Base API prefix is provided through `{{base_url}}`.
   - This request uses the collection URL for creation.

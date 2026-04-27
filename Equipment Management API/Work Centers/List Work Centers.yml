@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/{{api_prefix}}/work-centers/?ordering=name"
+  url: "{{base_url}}/basics/equipments/work-centers/?ordering=name"
   headers:
     - name: Content-Type
       value: application/json
@@ -13,7 +13,6 @@ http:
     - name: ordering
       value: name
       type: query
-      description: "Order by: name, abbreviation, starting_code, code_string"
     - name: name
       value: ""
       type: query

@@ -5,11 +5,17 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/{{api_prefix}}/work-stations/?workcenter_id={{workcenter_id}}"
+  url: "{{base_url}}/{{api_prefix}}/work-stations/?workcenter_id=d7672f7d-58a4-4481-8ea6-f3c5d2f50c50&ordering=name"
   headers:
     - name: Content-Type
       value: application/json
   params:
+    - name: workcenter_id
+      value: d7672f7d-58a4-4481-8ea6-f3c5d2f50c50
+      type: query
+    - name: ordering
+      value: name
+      type: query
     - name: section
       value: ""
       type: query
@@ -20,9 +26,6 @@ http:
       type: query
       description: Filter by status (active/inactive)
       disabled: true
-    - name: workcenter_id
-      value: "{{workcenter_id}}"
-      type: query
   auth: inherit
 
 settings:
