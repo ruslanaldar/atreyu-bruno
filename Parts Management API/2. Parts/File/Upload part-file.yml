@@ -1,0 +1,28 @@
+info:
+  name: Upload part-file
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/part-files/"
+  params:
+    - name: ""
+      value: ""
+      type: query
+  body:
+    type: json
+    data: |-
+      {"part": 123,
+       "title": "Main assembly STEP",
+       "category_name_input": "STEP",
+       "descrition": "Customer supplied assembly file",
+       "file": "{{File}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

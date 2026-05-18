@@ -5,13 +5,17 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/mpp/task_status/?task_id={{task_id}}"
+  url: "{{base_url}}/productionplans/mpp/task_status/?task_id=e386e032-53e7-4c8a-902f-037f33ab1d90"
   headers:
     - name: Content-Type
       value: application/json
   params:
     - name: task_id
       value: "{{task_id}}"
+      type: query
+      disabled: true
+    - name: task_id
+      value: e386e032-53e7-4c8a-902f-037f33ab1d90
       type: query
   body:
     type: json

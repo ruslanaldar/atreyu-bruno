@@ -1,0 +1,63 @@
+info:
+  name: Batch Upload
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/parts/batch_upload/"
+  body:
+    type: json
+    data: |
+      {
+        "strict_mode": false,
+        "part_files": [
+          {
+            "file_key": "part_file_0",
+            "title": "Main assembly STEP",
+            "category_name": "STEP",
+            "description": "Customer supplied assembly file"
+          }
+        ],
+        "subparts": [
+          {
+            "serial": "SP001",
+            "name": "Subpart 1",
+            "description": "Laser cut plate",
+            "drawing_no": "DWG001",
+            "quantity": 2,
+            "files": [
+              {
+                "file_key": "subpart_0_file_0",
+                "title": "Subpart drawing",
+                "category_name": "Drawing",
+                "description": "Drawing for subpart 1"
+              }
+            ],
+            "worksteps": [
+              {
+                "center_id": "14c178f5-0e0c-4409-8ade-ae32802036c8",
+                "station_id": "187d75d3-1145-43d7-b852-e2b8e92ab74e",
+                "sequence": 10,
+                "production_time_minutes": "30.5",
+                "description": "Cutting operation",
+                "files": [
+                  {
+                    "file_key": "subpart_0_workstep_0_file_0",
+                    "title": "Cutting instruction",
+                    "category_name": "Instruction",
+                    "description": "Instruction for cutting operation"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

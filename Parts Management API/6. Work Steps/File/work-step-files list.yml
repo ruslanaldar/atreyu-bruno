@@ -1,0 +1,15 @@
+info:
+  name: work-step-files list
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/parts/work-step-files/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -5,13 +5,14 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/basics/materials/material-standards/?search=s235"
+  url: "{{base_url}}/basics/materials/material-standards/?search=5a03"
   headers:
     - name: Authorization
       value: Bearer {{authToken}}
+      disabled: true
   params:
     - name: search
-      value: s235
+      value: 5a03
       type: query
 
 settings:

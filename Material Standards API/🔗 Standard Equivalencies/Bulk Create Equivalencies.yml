@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/basics/materials/standard-equivalencies/bulk_create/"
+  url: "{{base_url}}/basics/materials/standard-equivalencies/bulk_create/"
   headers:
     - name: Content-Type
       value: application/json
@@ -13,20 +13,106 @@ http:
       value: Bearer {{authToken}}
   body:
     type: json
-    data: |-
+    data: |
       {
         "equivalencies": [
           {
-            "standard_1_id": 123,
-            "standard_2_id": 124,
-            "equivalency_type": "approximate",
-            "confidence_level": 90
+            "standard_1_id": 360,
+            "standard_2_id": 463,
+            "equivalency_type": "exact",
+            "confidence_level": 95,
+            "notes": "GB 5754 H22 is the Chinese equivalent to DIN AlMg3 F22 (3.3535). GB/T 3880 aligned to international 5754 numbering (formerly 5A03); Mg range (2.6–3.6%), Cr and temper requirements are identical. Fully interchangeable for structural and marine fabrication."
           },
           {
-            "standard_1_id": 125,
-            "standard_2_id": 126,
+            "standard_1_id": 463,
+            "standard_2_id": 360,
             "equivalency_type": "exact",
-            "confidence_level": 100
+            "confidence_level": 95,
+            "notes": "DIN AlMg3 F22 (3.3535) is the German equivalent to GB 5754 H22. Same composition limits and F22/H22 temper mechanical requirements. Use GB 5754 for Chinese-certified documentation; DIN 3.3535 for German/legacy documentation."
+          },
+          {
+            "standard_1_id": 360,
+            "standard_2_id": 464,
+            "equivalency_type": "exact",
+            "confidence_level": 95,
+            "notes": "EN AW-5754 H22 is the European equivalent to GB 5754 H22. Both adopt the same international 5754 alloy designation; composition and H22 temper requirements are identical under their respective standards. Fully interchangeable."
+          },
+          {
+            "standard_1_id": 464,
+            "standard_2_id": 360,
+            "equivalency_type": "exact",
+            "confidence_level": 95,
+            "notes": "GB 5754 H22 is the Chinese equivalent to EN AW-5754 H22. Same alloy designation, same Mg range (2.6–3.6%) and H22 temper. Use GB 5754 for Chinese procurement and certification; EN AW-5754 for EU/EEA documentation."
+          },
+          {
+            "standard_1_id": 463,
+            "standard_2_id": 464,
+            "equivalency_type": "exact",
+            "confidence_level": 95,
+            "notes": "EN AW-5754 H22 is the direct European successor to DIN AlMg3 F22 (3.3535) under EN 573-3/EN 485-2. DIN designation withdrawn at harmonisation to EN; composition and H22/F22 temper requirements are identical. Fully interchangeable."
+          },
+          {
+            "standard_1_id": 464,
+            "standard_2_id": 463,
+            "equivalency_type": "exact",
+            "confidence_level": 95,
+            "notes": "DIN AlMg3 F22 (3.3535) is the predecessor to EN AW-5754 H22. Use EN AW-5754 for all new designs; DIN designation retained for legacy documentation and older certification cross-reference only."
+          },
+          {
+            "standard_1_id": 466,
+            "standard_2_id": 465,
+            "equivalency_type": "exact",
+            "confidence_level": 95,
+            "notes": "DIN AlMg4.5Mn (3.3547) is the German equivalent to GB 5083 H111. Same Mg (4.0–4.9%) and Mn (0.4–1.0%) composition; DIN 3.3547 is the predecessor standard harmonised to EN AW-5083, which shares composition with GB 5083. Fully interchangeable for marine and pressure vessel applications."
+          },
+          {
+            "standard_1_id": 465,
+            "standard_2_id": 466,
+            "equivalency_type": "exact",
+            "confidence_level": 95,
+            "notes": "GB 5083 H111 is the Chinese equivalent to DIN AlMg4.5Mn (3.3547). Both are non-heat-treatable Al-Mg-Mn alloys with identical composition class. Use GB 5083 for Chinese-certified marine/pressure vessel documentation; DIN 3.3547 for legacy German documentation."
+          },
+          {
+            "standard_1_id": 463,
+            "standard_2_id": 465,
+            "equivalency_type": "better",
+            "confidence_level": 80,
+            "notes": "DIN AlMg4.5Mn (3.3547) is one grade above DIN AlMg3 F22 (3.3535). Mg increases from 2.6–3.6% to 4.0–4.9% with added Mn (0.4–1.0%), delivering UTS ≥305 MPa vs ≥270 MPa. Same non-heat-treatable, weldable family; use 3.3547 when higher structural loads, ship hull or pressure vessel certification is required."
+          },
+          {
+            "standard_1_id": 465,
+            "standard_2_id": 463,
+            "equivalency_type": "similar",
+            "confidence_level": 75,
+            "notes": "DIN AlMg3 F22 (3.3535) is a lower-strength alternative to DIN AlMg4.5Mn (3.3547). Better cold formability and lower work-hardening rate. Not a direct substitute in applications requiring 3.3547 marine or pressure vessel certification."
+          },
+          {
+            "standard_1_id": 360,
+            "standard_2_id": 466,
+            "equivalency_type": "better",
+            "confidence_level": 80,
+            "notes": "GB 5083 H111 is one grade above GB 5754 H22 in the Chinese 5xxx series. Mg increases from 2.6–3.6% to 4.0–4.9% with added Mn, delivering UTS ≥305 MPa vs 270–340 MPa. Preferred upgrade for higher structural loads, marine hull plating and pressure vessel applications under GB certification."
+          },
+          {
+            "standard_1_id": 466,
+            "standard_2_id": 360,
+            "equivalency_type": "similar",
+            "confidence_level": 75,
+            "notes": "GB 5754 H22 is a lower-strength alternative to GB 5083 H111. Suitable when full 5083 strength is not required; improved cold formability. Not suitable as direct replacement in pressure vessel or certified marine hull applications requiring GB 5083."
+          },
+          {
+            "standard_1_id": 464,
+            "standard_2_id": 466,
+            "equivalency_type": "better",
+            "confidence_level": 80,
+            "notes": "GB 5083 H111 is one grade above EN AW-5754 H22. Higher Mg (4.0–4.9%) and Mn (0.4–1.0%) deliver UTS ≥305 MPa vs 270–340 MPa, with superior marine and cryogenic corrosion resistance. Same non-heat-treatable weldable family; GB 5083 is the preferred upgrade for Chinese-certified projects."
+          },
+          {
+            "standard_1_id": 466,
+            "standard_2_id": 464,
+            "equivalency_type": "similar",
+            "confidence_level": 75,
+            "notes": "EN AW-5754 H22 is a lower-strength alternative to GB 5083 H111. Suitable where 5083-level strength is not required; better cold formability. Not suitable as direct replacement in DNV/Lloyd's or GB-certified marine hull or pressure vessel applications requiring 5083."
           }
         ]
       }

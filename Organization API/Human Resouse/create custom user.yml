@@ -11,10 +11,10 @@ http:
     data: |-
       {
         "role": "EMPLOYEE",
-        "first_name": "colin",
-        "last_name": "zhai",
+        "first_name": "hank",
+        "last_name": "mu",
         "is_verified": true,
-        "email": "colin.zhai@cssc-tp.com",
+        "email": "hank.mu@cssc-tp.com",
         "gender": "MALE",
         "nationality": "CN",
         "status": "active"

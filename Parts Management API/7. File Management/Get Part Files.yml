@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/part-files/?part_id=484"
+  url: "{{base_url}}/parts/part-files/?part_id=484"
   headers:
     - name: Accept
       value: application/json

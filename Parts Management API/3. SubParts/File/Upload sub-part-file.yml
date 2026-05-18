@@ -1,0 +1,24 @@
+info:
+  name: Upload sub-part-file
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/sub-part-files/"
+  body:
+    type: json
+    data: |-
+      {"sub_part": 123,
+       "title": "Subpart drawing",
+       "category_name_input": "Drawing",
+       "descrition": "Laser cutting Drawing",
+       "file": "{{File}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

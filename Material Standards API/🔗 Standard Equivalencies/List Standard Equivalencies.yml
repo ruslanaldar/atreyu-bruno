@@ -5,10 +5,11 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/basics/materials/standard-equivalencies/"
+  url: "{{base_url}}/basics/materials/standard-equivalencies/"
   headers:
     - name: Authorization
       value: Bearer {{authToken}}
+      disabled: true
   auth: inherit
 
 settings:

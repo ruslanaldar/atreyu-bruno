@@ -1,0 +1,26 @@
+info:
+  name: Delete Material
+  type: http
+  seq: 8
+
+http:
+  method: DELETE
+  url: "{{base_url}}/basics/materials/material-standards/457/"
+  headers:
+    - name: Content-Type
+      value: application/json
+      disabled: true
+    - name: Authorization
+      value: Bearer {{authToken}}
+      disabled: true
+  body:
+    type: json
+    data: ""
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a new material standard
