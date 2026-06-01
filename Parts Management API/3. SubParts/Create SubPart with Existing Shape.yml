@@ -20,6 +20,7 @@ http:
           "drawing_no": "BP-001",
           "quantity": 1,
           "material_standard": 326,
+          "selected_material": 326,
           "use_existing_shape": true,
           "standard_shape_id": 1,
           "active_part": true

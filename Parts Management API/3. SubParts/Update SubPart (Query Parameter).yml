@@ -21,6 +21,7 @@ http:
           "quantity": 2,
           "unit_time": 60.0,
           "material_standard_id": 2,
+          "selected_material_id": 2,
           "standard_shape_id": 3,
           "active_part": true
       }

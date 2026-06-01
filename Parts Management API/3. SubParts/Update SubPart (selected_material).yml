@@ -1,0 +1,30 @@
+info:
+  name: Update SubPart (selected_material)
+  type: http
+  seq: 12
+
+http:
+  method: PATCH
+  url: "{{base_url}}/parts/sub-parts/update_by_query/?subpart_id=36619"
+  headers:
+    - name: Content-Type
+      value: application/json
+  params:
+    - name: subpart_id
+      value: "36619"
+      type: query
+  body:
+    type: json
+    data: |
+      {
+          "material_standard_id": 326,
+          "selected_material_id": 240
+        
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
