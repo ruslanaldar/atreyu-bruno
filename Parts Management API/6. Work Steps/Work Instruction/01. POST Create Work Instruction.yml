@@ -1,0 +1,52 @@
+info:
+  name: POST Create Work Instruction
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/work-steps/271498/work-instruction/"
+  body:
+    type: multipart-form
+    data:
+      - name: title
+        type: text
+        value: WI-2024-001
+      - name: location
+        type: text
+        value: Section A
+      - name: material
+        type: text
+        value: S235JR
+      - name: stock
+        type: text
+        value: SP-0001
+      - name: tools
+        type: text
+        value: W01-ST01
+      - name: description
+        type: text
+        value: '{"format":"work_instruction_sheet_v1","version":1,"sections":{}}'
+      - name: work_instruction
+        type: text
+        value: '{"format":"work_instruction_sheet_v1","version":1,"sections":{"document":{"documentType":"Work Instruction","department":"Manufacturing","workcenter":"W01","documentNo":"WI-2024-001","revision":"1","date":"2024-01-15","createdBy":"John Doe","approvedBy":"","effectiveDateFrom":"2024-01-15","effectiveDateTo":"2025-01-15"},"purposeHtml":"<p>Define procedures.</p>","scopeHtml":"<p>Applies to all operators.</p>","responsibilities":[{"function":"Operator","responsibility":"Follow instructions"}],"safetyHtml":"<p>Wear PPE.</p>","checkArea":[{"step":"Check equipment","result":""}],"procedure":{"preparationHtml":"<p>Prepare workstation.</p>","operationHtml":"<p>Execute operation.</p>"},"qualityRequirements":["Dimensions within tolerance"],"nonConformities":["Reject if crack visible"],"documentationHtml":"<p>Record results.</p>","approval":{"createdBy":"John Doe","checkedBy":"","approvedBy":""},"revisionHistory":[{"revision":"1","date":"2024-01-15","description":"Initial release","author":"John Doe"}],"fieldHtml":{"purpose":"<p>Define procedures.</p>","scope":"<p>Applies to all operators.</p>","safety":"<p>Wear PPE.</p>","documentation":"<p>Record results.</p>","preparation":"<p>Prepare workstation.</p>","operation":"<p>Execute operation.</p>"}}}'
+      - name: work_instruction_html
+        type: text
+        value: <article class="wi-work-instruction-sheet"><p>Test instruction</p></article>
+      - name: blob_map
+        type: text
+        value: "{}"
+      - name: media_files
+        type: file
+        value:
+          - Parts Management API/6. Work Steps/Work Instruction/Media/image1.jpg
+      - name: media_files
+        type: text
+        value: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

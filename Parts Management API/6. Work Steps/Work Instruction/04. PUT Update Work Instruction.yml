@@ -1,0 +1,49 @@
+info:
+  name: PUT Update Work Instruction
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/parts/work-steps/271498/work-instruction/"
+  body:
+    type: multipart-form
+    data:
+      - name: title
+        type: text
+        value: WI-2024-001-REV2
+      - name: location
+        type: text
+        value: Section B
+      - name: material
+        type: text
+        value: S355JR
+      - name: stock
+        type: text
+        value: SP-0001
+      - name: tools
+        type: text
+        value: W01-ST02
+      - name: description
+        type: text
+        value: '{"format":"work_instruction_sheet_v1","version":2,"sections":{}}'
+      - name: work_instruction
+        type: text
+        value: '{"format":"work_instruction_sheet_v1","version":2,"sections":{"document":{"documentType":"Work Instruction","department":"Manufacturing","workcenter":"W01","documentNo":"WI-2024-001","revision":"2","date":"2024-02-01","createdBy":"John Doe","approvedBy":"Jane Smith","effectiveDateFrom":"2024-02-01","effectiveDateTo":"2025-02-01"},"purposeHtml":"<p>Updated purpose.</p>","scopeHtml":"<p>Applies to all operators.</p>","responsibilities":[{"function":"Operator","responsibility":"Follow updated instructions"}],"safetyHtml":"<p>Wear PPE at all times.</p>","checkArea":[{"step":"Check equipment","result":""},{"step":"Check material","result":""}],"procedure":{"preparationHtml":"<p>Prepare updated workstation.</p>","operationHtml":"<p>Execute updated operation.</p>"},"qualityRequirements":["Dimensions within tolerance","Surface finish Ra 1.6"],"nonConformities":["Reject if crack visible"],"documentationHtml":"<p>Record results in updated logbook.</p>","approval":{"createdBy":"John Doe","checkedBy":"Jane Smith","approvedBy":"Jane Smith"},"revisionHistory":[{"revision":"1","date":"2024-01-15","description":"Initial release","author":"John Doe"},{"revision":"2","date":"2024-02-01","description":"Updated procedure","author":"John Doe"}],"fieldHtml":{"purpose":"<p>Updated purpose.</p>","scope":"<p>Applies to all operators.</p>","safety":"<p>Wear PPE.</p>","documentation":"<p>Record results.</p>","preparation":"<p>Prepare updated workstation.</p>","operation":"<p>Execute updated operation.</p>"}}}'
+      - name: work_instruction_html
+        type: text
+        value: <article class="wi-work-instruction-sheet"><p>Updated instruction</p></article>
+      - name: blob_map
+        type: text
+        value: "{}"
+      - name: media_files
+        type: file
+        value:
+          - Parts Management API/6. Work Steps/Work Instruction/Media/image1.jpg
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

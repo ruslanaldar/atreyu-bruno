@@ -17,7 +17,7 @@ http:
         value: login
       - name: otp
         type: text
-        value: "123456"
+        value: "292929"
 
 runtime:
   scripts:

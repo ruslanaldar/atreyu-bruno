@@ -1,0 +1,15 @@
+info:
+  name: DELETE Work Instruction
+  type: http
+  seq: 6
+
+http:
+  method: DELETE
+  url: "{{base_url}}/parts/work-steps/271498/work-instruction/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
