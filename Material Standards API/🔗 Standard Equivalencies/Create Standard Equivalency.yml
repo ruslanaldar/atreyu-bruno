@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/basics/materials/standard-equivalencies/"
+  url: "{{base_url}}/basics/materials/standard-equivalencies/"
   headers:
     - name: Content-Type
       value: application/json
@@ -13,14 +13,14 @@ http:
       value: Bearer {{authToken}}
   body:
     type: json
-    data: |-
+    data: |
       {
-        "standard_1_id": 123,
-        "standard_2_id": 124,
-        "equivalency_type": "approximate",
-        "confidence_level": 90,
-        "notes": "Similar properties for structural applications"
-      }
+            "standard_1_id": 69,
+            "standard_2_id": 2462,
+            "equivalency_type": "exact",
+            "confidence_level": 97,
+            "notes": "GB SUS 316L and ASTM 316L are both extra-low carbon (≤0.03% C) austenitic chromium-nickel-molybdenum stainless steels. Identical alloy composition class: Cr 16-18%, Ni 10-14%, Mo 2-3%, C ≤0.03%. The low carbon content prevents sensitization during welding, making both grades interchangeable for welded fabrication in chloride-containing environments. Minor difference: ASTM and GB reference different product and test standards but material requirements are equivalent."
+          }
   auth: inherit
 
 settings:

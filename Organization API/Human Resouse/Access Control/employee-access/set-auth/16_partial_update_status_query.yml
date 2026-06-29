@@ -1,0 +1,22 @@
+info:
+  name: Partial Update Employee Status by Query Param
+  type: http
+  seq: 16
+http:
+  method: PATCH
+  url: "{{base_url}}/organization/categories/hr/employee-access/update/?id={{employee_id}}"
+  auth: inherit
+  body:
+    type: multipart-form
+    data:
+      - name: status
+        type: text
+        value: Active
+      - name: sync_groups
+        type: text
+        value: "false"
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

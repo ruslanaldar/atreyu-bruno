@@ -5,13 +5,13 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/basics/materials/material-standards/search_equivalents?q=GB S235JR"
+  url: "{{base_url}}/basics/materials/material-standards/search_equivalents/?q=DIN 1.4310/x10crni18-8"
   headers:
     - name: Authorization
-      value: Bearer {{authToken}}
+      value: Bearer {{token}}
   params:
     - name: q
-      value: GB S235JR
+      value: DIN 1.4310/x10crni18-8
       type: query
 
 settings:

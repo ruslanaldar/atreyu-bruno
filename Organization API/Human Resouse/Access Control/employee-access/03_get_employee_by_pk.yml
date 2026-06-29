@@ -1,0 +1,15 @@
+info:
+  name: get employee by URL pk
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/organization/categories/hr/employee-access/{{employee_id}}/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

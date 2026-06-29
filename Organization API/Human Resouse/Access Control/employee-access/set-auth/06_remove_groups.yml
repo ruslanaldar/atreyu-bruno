@@ -1,0 +1,22 @@
+info:
+  name: Set-Auth Remove Group
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/organization/categories/hr/employee-access/{{employee_id}}/set-auth/"
+  body:
+    type: json
+    data: |-
+      {
+        "mode": "remove",
+        "groups": [{{group_id}}]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

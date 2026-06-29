@@ -1,0 +1,18 @@
+info:
+  name: Smoke Test set-auth via query param
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/organization/categories/hr/employee-access/set-auth/?id={{employee_id}}&&mode=add"
+  auth: inherit
+  body:
+    type: multipart-form
+    data: []
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

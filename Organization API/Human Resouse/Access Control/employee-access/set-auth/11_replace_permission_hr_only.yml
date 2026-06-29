@@ -1,0 +1,22 @@
+info:
+  name: Set-Auth Replace Permissions with HR Only
+  type: http
+  seq: 11
+
+http:
+  method: POST
+  url: "{{base_url}}/organization/categories/hr/employee-access/{{employee_id}}/set-auth/"
+  body:
+    type: json
+    data: |-
+      {
+        "mode":"replace",
+        "user_permissions":[{{view_customuser_permission_id}}]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

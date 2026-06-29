@@ -1,0 +1,15 @@
+info:
+  name: List auth permissions
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/organization/categories/hr/auth-permissions/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

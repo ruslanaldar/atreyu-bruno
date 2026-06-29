@@ -1,0 +1,19 @@
+info:
+  name: get employee by query param
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/organization/categories/hr/employee-access/?user_id={{employee_id}}"
+  # params:
+  #   - name: user_id
+  #     value: "{{employee_id}}"
+  #     type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

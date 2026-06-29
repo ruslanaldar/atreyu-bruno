@@ -1,0 +1,22 @@
+info:
+  name: Set-Auth Replace Groups
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/organization/categories/hr/employee-access/{{employee_id}}/set-auth/"
+  body:
+    type: json
+    data: |-
+      {
+        "mode": "replace",
+        "groups": [{{group_id}}]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

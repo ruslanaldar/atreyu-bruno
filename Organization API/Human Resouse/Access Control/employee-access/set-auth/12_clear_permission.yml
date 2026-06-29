@@ -1,0 +1,21 @@
+info:
+  name: Set-Auth Clear All Permissions
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: "{{base_url}}/organization/categories/hr/employee-access/{{employee_id}}/set-auth/"
+  body:
+    type: json
+    data: |-
+      {
+        "mode": "replace"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

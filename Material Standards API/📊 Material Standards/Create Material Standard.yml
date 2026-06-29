@@ -13,173 +13,177 @@ http:
       value: Bearer {{authToken}}
   body:
     type: json
-    data: |
+    data: |-
       {
-        "organization_id": 33,
-        "material_group_id": 14,
-        "material_subgroup_id": 34,
-        "standard_number": "AW-5754",
-        "description": "EN AW-5754 H22 wrought aluminum-magnesium alloy, non-heat-treatable, direct European successor to DIN AlMg3 (3.3535) per EN 573-3/EN 485-2, for marine, transport and structural applications",
-        "material_price_kg": 3.25,
-        "density_kg_m3": 2660.0,
+        "material_group_id": 16,
+        "material_subgroup_id": 46,
+        "organization_id": 7,
+        "standard_number": "HT200",
+        "description": "Grey lamellar graphite cast iron per GB/T 9439; minimum tensile strength 200 MPa on Ø30 mm test bar. One strength class above HT150; the most widely used engineering grey iron grade in China. Used in cylinder blocks, machine tool beds, gear housings, brake components, and general structural castings.",
+        "material_price_kg": 0.65,
+        "density_kg_m3": 7200.0,
         "chemical_composition": {
-          "aluminum": {
-            "name": "Aluminum", "symbol": "Al", "unit": "% (wt)",
-            "typical_range": { "max": 100.0, "min": 85.0 },
-            "effect": "Base metal, provides lightweight and corrosion resistance.",
-            "value": "Balance", "specification": "Balance", "test_method": "Calculated"
+          "carbon": {
+            "name": "Carbon",
+            "symbol": "C",
+            "unit": "% (wt)",
+            "typical_range": { "min": 3.0, "max": 3.5 },
+            "effect": "Lamellar graphite source; tighter range than HT150 for higher strength.",
+            "value": "3.0–3.5%",
+            "specification": "controlled via CE",
+            "test_method": "GB/T 4336"
           },
           "silicon": {
-            "name": "Silicon", "symbol": "Si", "unit": "% (wt)",
-            "typical_range": { "max": 13.0, "min": 0.0 },
-            "effect": "Minor impurity element.",
-            "value": "≤0.40%", "specification": null, "test_method": "EN ISO 11438"
-          },
-          "iron": {
-            "name": "Iron", "symbol": "Fe", "unit": "% (wt)",
-            "typical_range": { "max": 2.0, "min": 0.0 },
-            "effect": "Usually impurity, reduces ductility and corrosion resistance.",
-            "value": "≤0.40%", "specification": null, "test_method": "EN ISO 11438"
-          },
-          "copper": {
-            "name": "Copper", "symbol": "Cu", "unit": "% (wt)",
-            "typical_range": { "max": 6.0, "min": 0.0 },
-            "effect": "Impurity; kept low to preserve corrosion resistance.",
-            "value": "≤0.10%", "specification": null, "test_method": "EN ISO 11438"
+            "name": "Silicon",
+            "symbol": "Si",
+            "unit": "% (wt)",
+            "typical_range": { "min": 1.4, "max": 2.5 },
+            "effect": "Graphitiser contributing to CE; controlled for 200 MPa class.",
+            "value": "1.4–2.5%",
+            "specification": null,
+            "test_method": "GB/T 4336"
           },
           "manganese": {
-            "name": "Manganese", "symbol": "Mn", "unit": "% (wt)",
-            "typical_range": { "max": 2.0, "min": 0.0 },
-            "effect": "Grain refiner, improves strength and corrosion resistance.",
-            "value": "≤0.50%", "specification": null, "test_method": "EN ISO 11438"
+            "name": "Manganese",
+            "symbol": "Mn",
+            "unit": "% (wt)",
+            "typical_range": { "min": 0.6, "max": 1.0 },
+            "effect": "Pearlite promoter; higher Mn vs HT150 aids strength increase.",
+            "value": "0.6–1.0%",
+            "specification": null,
+            "test_method": "GB/T 4336"
           },
-          "magnesium": {
-            "name": "Magnesium", "symbol": "Mg", "unit": "% (wt)",
-            "typical_range": { "max": 6.0, "min": 0.0 },
-            "effect": "Primary alloying element; solid solution strengthening, excellent corrosion resistance.",
-            "value": "2.6–3.6%", "specification": null, "test_method": "EN ISO 11438"
+          "phosphorus": {
+            "name": "Phosphorus",
+            "symbol": "P",
+            "unit": "% (wt)",
+            "typical_range": { "min": 0.0, "max": 0.3 },
+            "effect": "Steadite; controlled same as HT150.",
+            "value": "≤0.3%",
+            "specification": "≤0.3%",
+            "test_method": "GB/T 4336"
           },
-          "chromium": {
-            "name": "Chromium", "symbol": "Cr", "unit": "% (wt)",
-            "typical_range": { "max": 0.5, "min": 0.0 },
-            "effect": "Controls grain structure, improves corrosion resistance.",
-            "value": "0.05–0.25%", "specification": null, "test_method": "EN ISO 11438"
+          "sulfur": {
+            "name": "Sulphur",
+            "symbol": "S",
+            "unit": "% (wt)",
+            "typical_range": { "min": 0.0, "max": 0.12 },
+            "effect": "Low to promote graphitisation.",
+            "value": "≤0.12%",
+            "specification": "≤0.12%",
+            "test_method": "GB/T 4336"
           },
-          "zinc": {
-            "name": "Zinc", "symbol": "Zn", "unit": "% (wt)",
-            "typical_range": { "max": 8.0, "min": 0.0 },
-            "effect": "Impurity; kept low to avoid stress corrosion cracking.",
-            "value": "≤0.20%", "specification": null, "test_method": "EN ISO 11438"
-          },
-          "titanium": {
-            "name": "Titanium", "symbol": "Ti", "unit": "% (wt)",
-            "typical_range": { "max": 0.2, "min": 0.0 },
-            "effect": "Grain refiner during solidification.",
-            "value": "≤0.15%", "specification": null, "test_method": "EN ISO 11438"
-          },
-          "zirconium": {
-            "name": "Zirconium", "symbol": "Zr", "unit": "% (wt)",
-            "typical_range": { "max": 0.3, "min": 0.0 },
-            "effect": "Grain refiner, recrystallization control.",
-            "value": null, "specification": null, "test_method": "EN ISO 11438"
-          },
-          "lithium": {
-            "name": "Lithium", "symbol": "Li", "unit": "% (wt)",
-            "typical_range": { "max": 3.0, "min": 0.0 },
-            "effect": "Reduces density, increases stiffness.",
-            "value": null, "specification": null, "test_method": "EN ISO 11438"
-          },
-          "scandium": {
-            "name": "Scandium", "symbol": "Sc", "unit": "% (wt)",
-            "typical_range": { "max": 1.0, "min": 0.0 },
-            "effect": "Grain refiner, prevents recrystallization.",
-            "value": null, "specification": null, "test_method": "EN ISO 11438"
+          "iron": {
+            "name": "Iron",
+            "symbol": "Fe",
+            "unit": "% (wt)",
+            "typical_range": { "min": 92.5, "max": 95.0 },
+            "effect": "Base metal; predominantly pearlitic matrix for HT200.",
+            "value": "Balance",
+            "specification": "Balance",
+            "test_method": "Calculated"
           }
         },
         "material_properties": {
-          "density": {
-            "name": "Density", "symbol": "ρ", "unit": "kg/m³",
-            "typical_range": { "max": 2900, "min": 2600 },
-            "effect": "Mass per unit volume.", "value": "2660 kg/m³",
-            "test_standard": "EN ISO 1183", "category": "physical"
-          },
-          "melting_point": {
-            "name": "Melting Point", "symbol": "Tm", "unit": "°C",
-            "typical_range": { "max": 660, "min": 475 },
-            "effect": "Temperature at which alloy melts.", "value": "605–655°C",
-            "test_standard": "ASTM E794", "category": "physical"
-          },
-          "thermal_conductivity": {
-            "name": "Thermal Conductivity", "symbol": "k", "unit": "W/(m·K)",
-            "typical_range": { "max": 237, "min": 80 },
-            "effect": "Excellent heat conductor.", "value": "130 W/(m·K)",
-            "test_standard": "ASTM E1461", "category": "physical"
-          },
-          "thermal_expansion": {
-            "name": "Thermal Expansion Coefficient", "symbol": "α", "unit": "10⁻⁶/K",
-            "typical_range": { "max": 25, "min": 20 },
-            "effect": "Relatively high thermal expansion vs steel.", "value": "23.7×10⁻⁶/°C",
-            "test_standard": "ASTM E228", "category": "physical"
-          },
-          "electrical_conductivity": {
-            "name": "Electrical Conductivity", "symbol": "σ", "unit": "% IACS",
-            "typical_range": { "max": 65, "min": 20 },
-            "effect": "Good electrical conductor.", "value": "29% IACS",
-            "test_standard": "ASTM B193", "category": "physical"
-          },
-          "specific_heat": {
-            "name": "Specific Heat Capacity", "symbol": "Cp", "unit": "J/(kg·K)",
-            "typical_range": { "max": 920, "min": 880 },
-            "effect": "Heat capacity per unit mass.", "value": "900 J/(kg·K)",
-            "test_standard": "ASTM E1269", "category": "physical"
-          },
           "yield_strength": {
-            "name": "Yield Strength", "symbol": "σy", "unit": "MPa",
-            "typical_range": { "max": 600, "min": 35 },
-            "effect": "Stress at which permanent deformation begins.", "value": "≥220 MPa",
-            "test_standard": "EN ISO 6892-1", "category": "mechanical"
+            "name": "Yield Strength (0.1% proof)",
+            "symbol": "Rp0.1",
+            "unit": "MPa",
+            "typical_range": { "min": 130, "max": 160 },
+            "effect": "Higher than HT150; pearlitic matrix raises proof stress.",
+            "value": "~130 MPa",
+            "test_standard": "GB/T 228.1",
+            "category": "mechanical"
           },
           "ultimate_tensile_strength": {
-            "name": "Ultimate Tensile Strength", "symbol": "σu", "unit": "MPa",
-            "typical_range": { "max": 700, "min": 90 },
-            "effect": "Maximum stress before fracture.", "value": "270–340 MPa",
-            "test_standard": "EN ISO 6892-1", "category": "mechanical"
-          },
-          "elastic_modulus": {
-            "name": "Elastic Modulus", "symbol": "E", "unit": "GPa",
-            "typical_range": { "max": 72, "min": 68 },
-            "effect": "Stiffness, about 1/3 of steel.", "value": "70 GPa",
-            "test_standard": "ASTM E111", "category": "mechanical"
-          },
-          "poisson_ratio": {
-            "name": "Poisson's Ratio", "symbol": "ν", "unit": "dimensionless",
-            "typical_range": { "max": 0.36, "min": 0.31 },
-            "effect": "Ratio of lateral to axial strain.", "value": "0.33",
-            "test_standard": "ASTM E132", "category": "mechanical"
-          },
-          "elongation": {
-            "name": "Elongation at Break", "symbol": "εf", "unit": "%",
-            "typical_range": { "max": 45, "min": 1 },
-            "effect": "Ductility measure.", "value": "≥10%",
-            "test_standard": "EN ISO 6892-1", "category": "mechanical"
+            "name": "Tensile Strength (min)",
+            "symbol": "Rm",
+            "unit": "MPa",
+            "typical_range": { "min": 200, "max": 280 },
+            "effect": "Grade-defining 200 MPa per GB/T 9439.",
+            "value": "≥200 MPa",
+            "test_standard": "GB/T 228.1",
+            "category": "mechanical"
           },
           "hardness_brinell": {
-            "name": "Brinell Hardness", "symbol": "HB", "unit": "HB",
-            "typical_range": { "max": 150, "min": 15 },
-            "effect": "Resistance to indentation.", "value": "65–75 HB",
-            "test_standard": "EN ISO 6506-1", "category": "mechanical"
+            "name": "Brinell Hardness",
+            "symbol": "HB",
+            "unit": "HB",
+            "typical_range": { "min": 180, "max": 240 },
+            "effect": "Higher pearlite content raises hardness over HT150.",
+            "value": "180–240 HB",
+            "test_standard": "GB/T 231.1",
+            "category": "mechanical"
           },
-          "fatigue_strength": {
-            "name": "Fatigue Strength", "symbol": "σf", "unit": "MPa",
-            "typical_range": { "max": 200, "min": 50 },
-            "effect": "Stress for specified cycles.", "value": "~95 MPa",
-            "test_standard": "ASTM D7791", "category": "mechanical"
+          "elastic_modulus": {
+            "name": "Elastic Modulus",
+            "symbol": "E",
+            "unit": "GPa",
+            "typical_range": { "min": 88, "max": 113 },
+            "effect": "Slightly stiffer than HT150.",
+            "value": "88–113 GPa",
+            "test_standard": "GB/T 22315",
+            "category": "mechanical"
           },
-          "fracture_toughness": {
-            "name": "Fracture Toughness", "symbol": "KIC", "unit": "MPa·m^0.5",
-            "typical_range": { "max": 45, "min": 15 },
-            "effect": "Resistance to crack propagation.", "value": null,
-            "test_standard": "ASTM E399", "category": "mechanical"
+          "compressive_strength": {
+            "name": "Compressive Strength",
+            "symbol": "σc",
+            "unit": "MPa",
+            "typical_range": { "min": 700, "max": 800 },
+            "effect": "Higher compressive load capacity vs HT150.",
+            "value": "~720 MPa",
+            "test_standard": "GB/T 228.1",
+            "category": "mechanical"
+          },
+          "elongation": {
+            "name": "Elongation at Break",
+            "symbol": "A",
+            "unit": "%",
+            "typical_range": { "min": 0.0, "max": 0.8 },
+            "effect": "Brittle; no meaningful elongation.",
+            "value": "<0.8%",
+            "test_standard": "GB/T 228.1",
+            "category": "mechanical"
+          },
+          "thermal_conductivity": {
+            "name": "Thermal Conductivity",
+            "symbol": "k",
+            "unit": "W/(m·K)",
+            "typical_range": { "min": 44, "max": 50 },
+            "effect": "Slightly reduced vs HT150 due to pearlite matrix.",
+            "value": "44–50 W/m·K",
+            "test_standard": "GB/T 22588",
+            "category": "physical"
+          },
+          "thermal_expansion": {
+            "name": "Thermal Expansion Coefficient",
+            "symbol": "α",
+            "unit": "10⁻⁶/K",
+            "typical_range": { "min": 10.5, "max": 12.0 },
+            "effect": "Similar to HT150.",
+            "value": "10.5–12.0×10⁻⁶/°C",
+            "test_standard": "GB/T 4339",
+            "category": "physical"
+          },
+          "weldability": {
+            "name": "Weldability",
+            "symbol": null,
+            "unit": "qualitative",
+            "typical_range": null,
+            "effect": "Poor; identical constraints to HT150. Nickel-electrode repair welding.",
+            "value": "Poor",
+            "test_standard": null,
+            "category": "process"
+          },
+          "availability_china": {
+            "name": "Availability in China",
+            "symbol": null,
+            "unit": "qualitative",
+            "typical_range": null,
+            "effect": "Most common grey iron grade in Chinese foundries; ubiquitous domestic supply.",
+            "value": "Very High",
+            "test_standard": null,
+            "category": "commercial"
           }
         },
         "is_active": true
