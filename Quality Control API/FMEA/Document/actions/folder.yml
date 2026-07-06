@@ -1,0 +1,12 @@
+info:
+  name: actions
+  type: folder
+  seq: 6
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Corrective action requests for FMEA entries. Actions track action_taken, responsible user, status, completion date, and improved S/O/D scores. Status choices are Open, In Progress, Completed, and Verified.
+  type: text/markdown

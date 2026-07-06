@@ -1,0 +1,27 @@
+info:
+  name: filter entries for a specific part across all document
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/fmea/entries/?part={{part_id}}"
+  params:
+    - name: part
+      value: "{{part_id}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: list FMEA entries across documents for one part.
+  Backend: GET /qcs/fmea/entries/?part=<part_id> handled by FMEAEntryListView.
+  Filters: document, work_step, part, inquiry_part, sub_part, ap, and is_customized are supported. part may also resolve an InquiryPart id for compatibility.
+  Returned list fields: id, document, work_step, sub_part fields, process_name, sequence_no, potential_failure, severity, occurrence, detection, rpn, action_priority, inspection_rate, is_customized.
+  Frontend note: use this for part-level risk summaries; use document filter for a single document table.
+  Response: success/message/data array.

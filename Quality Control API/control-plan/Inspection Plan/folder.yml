@@ -1,0 +1,12 @@
+info:
+  name: Inspection Plan
+  type: folder
+  seq: 7
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Inspection Plan requests. A plan connects one Control Plan entry with one InquiryPart. Backend validates that the InquiryPart part matches the Control Plan part. AQL choices are 1.0, 1.5, 2.5, and 4.0.
+  type: text/markdown

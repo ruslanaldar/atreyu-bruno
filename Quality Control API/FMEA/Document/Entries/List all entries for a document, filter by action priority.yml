@@ -1,0 +1,30 @@
+info:
+  name: List all entries for a document, filter by action priority
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/fmea/entries/?document={{fmea_doc_id}}&ap=H"
+  params:
+    - name: document
+      value: "{{fmea_doc_id}}"
+      type: query
+    - name: ap
+      value: H
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: list entries in one FMEA document, optionally narrowed by action priority.
+  Backend: GET /qcs/fmea/entries/?document=<id>&ap=<L|M|H> handled by FMEAEntryListView.
+  Filters: document limits rows to one FMEA document. ap is computed from each entry's RPN and filtered in Python after serialization.
+  RPN tiers: 0-99 = L / 10%; 100-149 = M / 25%; 150-199 = H / 50%; 200+ = H / 100%. check_time is 5 minutes per piece.
+  Frontend note: AP is computed, not stored. Re-fetch after score changes or inspection batch close.
+  Response: success/message/data array.

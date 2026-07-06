@@ -1,0 +1,25 @@
+info:
+  name: get single plan detail
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/control-plan/inspection-plans/1/"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: fetch one Inspection Plan with current AQL/switching state.
+  Backend: GET /qcs/control-plan/inspection-plans/{id}/ handled by InspectionPlanDetailView.
+  Returned fields: control_plan_entry, inquiry_part, planned_batch_quantity, aql_level, inspection_level, consecutive clean/failed counters, is_active, timestamps.
+  Switching rules: failures move Reduced -> Normal or Normal -> Tightened; five failed batches on Tightened deactivate the plan. Clean batches can move Tightened -> Normal and Normal -> Reduced after five clean batches.
+  Response: success/message/data object.

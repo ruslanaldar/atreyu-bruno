@@ -1,0 +1,39 @@
+info:
+  name: create a manual cross-cutting entry
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/fmea/entries/"
+  body:
+    type: json
+    data: |-
+      {
+        "document": {{fmea_doc_id}},
+      "sequence_no": 997,
+      "process_name": "Raw Material Incoming",
+      "potential_effects": "Batch scrap / Affect parts capability",
+      "potential_failure": "Raw Material Error",
+      "potential_causes": "Purchase error/ Mixed material",
+      "current_controls": "IQC check material Certificate",
+      "recommended_actions": "PD, Store, QC overlapping control",
+      "severity": 8,
+      "occurrence": 3,
+      "detection": 4
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: create a manual FMEA row that is not tied to a WorkStep, such as raw material, packaging, or labeling risk.
+  Backend: POST /qcs/fmea/entries/ handled by FMEAEntryListView.
+  Required: document, sequence_no, potential_failure, potential_effects, potential_causes, severity, occurrence, detection, plus either work_step or process_name. For cross-cutting entries, provide process_name and omit work_step.
+  Validation: sequence_no is unique within document. Scores must be 1-10. WorkStep, when supplied, must belong to the document Part/SubPart scope.
+  Computed fields: rpn, action_priority, inspection_rate, and check_time_minutes are returned/read-only.
+  Response: success/message/data object or errors.

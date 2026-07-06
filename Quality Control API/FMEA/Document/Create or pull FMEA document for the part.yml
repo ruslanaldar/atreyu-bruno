@@ -1,0 +1,37 @@
+info:
+  name: Create or pull FMEA document for the part
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/fmea/documents/?part=5732"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data[0]) {
+          bru.setEnvVar('fmea_doc_id', data.data[0].id),
+          bru.setEnvVar('part_id', data.data[0].part)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: get the active FMEA document for a part; if none exists for a single resolved part, the backend auto-creates it and populates entries from WorkSteps.
+  Backend: GET /qcs/fmea/documents/?part=<part_id> handled by FMEADocumentListView.
+  Filters: part=<Part.id> is preferred. Backend also accepts inquiry_part=<InquiryPart.id>, sub_part=<SubPart.id>, scope=Part|SubPart, and is_active=true|false. If part accidentally contains an InquiryPart id, backend also tries to resolve its linked part.
+  Auto behavior: when exactly one part is resolved and no matching active document exists, get_or_create_fmea_document creates the document and entries. Response includes auto_created and entries_created.
+  Returned list fields: id, part, sub_part, scope, scope_label, fmea_number, revision, is_active, entry_count, created_at.
+  Frontend note: this endpoint is safe as a "get or initialize" action for a part-level FMEA screen. Store the returned document id for entry/detail calls.
+  Response: success/message/auto_created/entries_created/data array.

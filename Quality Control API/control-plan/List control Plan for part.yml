@@ -1,0 +1,27 @@
+info:
+  name: List control Plan for part
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/control-plan/documents/?part=5732"
+  params:
+    - name: part
+      value: "5732"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: list Control Plan documents for one part.
+  Backend: GET /qcs/control-plan/documents/?part=<part_id> handled by ControlPlanDocumentListView.
+  Filters: part, inquiry_part, sub_part, scope=Part|SubPart, and is_active=true|false.
+  Returned list fields: id, part, sub_part, scope, scope_label, control_plan_number, revision, is_active, entry_count, created_at.
+  Frontend note: unlike FMEA document GET, Control Plan list does not auto-create a document.
+  Response: success/message/data array.

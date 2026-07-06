@@ -1,0 +1,33 @@
+info:
+  name: update ControlPlan entry - fll inspection method details
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/qcs/control-plan/entries/1/"
+  body:
+    type: json
+    data: |-
+      {
+        "specification_tolerance": "Per drawing DIN ISO 2768-m",
+        "evaluation_method": "Visual + Height gauge",
+        "control_method": "Height gauge, Micrometer",
+        "reaction_plan": "Stop production, tag defective parts, inform QC supervisor",
+        "sample_frequency": "Each batch"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: update the inspection/control method fields for one Control Plan entry.
+  Backend: PUT /qcs/control-plan/entries/{id}/ handled by ControlPlanEntryDetailView.
+  Common editable fields: machine_device_tool, product_feature, process_feature, classification, specification_tolerance, evaluation_method, sample_volume, sample_frequency, control_method, reaction_plan, process_name, fmea_entry.
+  Backend-derived fields: effective_inspection_rate and effective_check_time come from linked FMEA entry RPN tier, falling back to 25% and 5 minutes if no FMEA entry is linked.
+  Validation: either work_step or process_name is required; linked FMEA entry must match the WorkStep and document scope.
+  Response: success/message/data object or errors.

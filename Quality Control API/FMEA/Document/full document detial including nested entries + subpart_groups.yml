@@ -1,0 +1,32 @@
+info:
+  name: full document detial including nested entries + subpart_groups
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/fmea/documents/{{fmea_doc_id}}/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data[0]){
+          bru.getEnvVar('part_id', data.data[0].part)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: fetch one full FMEA document for the detail screen.
+  Backend: GET /qcs/fmea/documents/{id}/ handled by FMEADocumentDetailView.
+  Returned fields: document header plus entries and subpart_groups. Entries include computed rpn, action_priority, inspection_rate, and sub-part display fields.
+  Model options: scope is Part or SubPart and is set automatically from whether sub_part is present. The document number is auto-generated as FMEA-<part number> or FMEA-<part number>-SP<sub_part id> when omitted.
+  Frontend note: use subpart_groups for grouped UI by SubPart; use entries for a flat table.
+  Response: success/message/data object.

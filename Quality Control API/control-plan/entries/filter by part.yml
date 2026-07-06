@@ -1,0 +1,26 @@
+info:
+  name: filter by part
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/control-plan/entries/?part=5732"
+  params:
+    - name: part
+      value: "5732"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: list Control Plan entries across documents for a part.
+  Backend: GET /qcs/control-plan/entries/?part=<part_id> handled by ControlPlanEntryListView.
+  Filters: part can also resolve an InquiryPart id for compatibility. sub_part narrows to a SubPart-scoped document.
+  Frontend note: useful for part-level quality overview or selecting an entry before creating an Inspection Plan.
+  Response: success/message/data array.

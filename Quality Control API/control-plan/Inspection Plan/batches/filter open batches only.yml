@@ -1,0 +1,33 @@
+info:
+  name: filter open batches only
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/control-plan/inspection-batches/?plan=1&status=Open"
+  params:
+    - name: plan
+      value: "1"
+      type: query
+    - name: status
+      value: Open
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: list open Inspection Batches for one Inspection Plan.
+  Backend: GET /qcs/control-plan/inspection-batches/?plan=<id>&status=Open handled by InspectionBatchListView.
+  Filters: plan, status, and inquiry_part are supported.
+  Status choices: Pending, Open, Passed, Failed.
+  Returned list fields: id, plan, batch_quantity, sample_count, inspection_rate_pct, estimated_check_time_min, status, rpn_at_creation, failure_count, inspected_count, remaining_count, batch_passed, opened_at, closed_at, created_at.
+  Response note: this endpoint currently returns a raw array, unlike many other QCS endpoints that wrap success/message/data.

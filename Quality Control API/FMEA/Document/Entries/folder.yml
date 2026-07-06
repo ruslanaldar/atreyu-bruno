@@ -1,0 +1,12 @@
+info:
+  name: Entries
+  type: folder
+  seq: 5
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    FMEA entry requests. Entries are rows in an FMEA document, usually tied to WorkStep; manual cross-cutting rows may use process_name without work_step. Entry scores drive computed RPN, AP, inspection_rate, and check_time_minutes.
+  type: text/markdown

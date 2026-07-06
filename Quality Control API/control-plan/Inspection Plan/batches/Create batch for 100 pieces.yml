@@ -1,0 +1,30 @@
+info:
+  name: Create batch for 100 pieces
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/control-plan/inspection-batches/"
+  body:
+    type: json
+    data: |-
+      {
+        "plan_id": 1,
+        "batch_quantity": 100
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: create an Inspection Batch and generate sample positions for a production quantity.
+  Backend: POST /qcs/control-plan/inspection-batches/ handled by InspectionBatchListView.
+  Accepted body/query fields: plan_id, batch_quantity, inspected_by optional, notes optional.
+  Behavior: if batch_quantity is omitted, backend uses plan.planned_batch_quantity. It calculates sample_count from max(RPN-rate sample, AQL table sample), caps at batch quantity, stores accept/reject numbers, sample_positions, RPN snapshot, inspection rate percent, and estimated check time. Status becomes Open.
+  Model options: batch status values are Pending, Open, Passed, Failed.
+  Response: success/message/data object with nested records array.

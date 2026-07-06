@@ -1,0 +1,32 @@
+info:
+  name: Submit first piece - position 1 is always in sample_position
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/control-plan/inspection-records/"
+  body:
+    type: json
+    data: |-
+      {
+        "batch": 1,
+        "piece_sequence_no": 1,
+        "result": "Pass",
+        "notes": "First piece check OK"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: submit a single inspection record, typically the first sampled piece.
+  Backend: POST /qcs/control-plan/inspection-records/ handled by InspectionRecordListView.
+  Required: batch, piece_sequence_no, result. Optional: defect_description and notes. inspected_by is set to the authenticated user; inspected_at is read-only.
+  Validation: piece_sequence_no must exist in the batch's generated sample_positions. sample_positions always include first piece 1 and last piece batch_quantity.
+  Result choices: Pass, Fail, Rework. Completing all sample positions can auto-close the batch.
+  Response: success/message/data object or errors.

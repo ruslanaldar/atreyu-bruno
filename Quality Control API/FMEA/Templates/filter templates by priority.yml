@@ -1,0 +1,44 @@
+info:
+  name: filter templates by priority
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/fmea/rpn-templates/?ap=H"
+  params:
+    - name: ap
+      value: H
+      type: query
+    - name: ap
+      value: M
+      type: query
+      disabled: true
+    - name: ap
+      value: L
+      type: query
+      disabled: true
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data[0]) {
+          bru.setEnvVar('rpn_template_id', data.data[0].id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: list RPN templates by action priority for risk-based template browsing.
+  Backend: GET /qcs/fmea/rpn-templates/?ap=<value> handled by RPNTemplateListView.
+  Filters: ap accepts L, M, or H and is matched against default_action_priority. The backend uppercases the supplied value.
+  Model options: L = Low, M = Medium, H = High. Templates also include default S/O/D scores and computed default_rpn/default_rpn_tier.
+  Frontend note: expose AP as a segmented filter or dropdown. Combine with is_active=true if inactive templates should be hidden.
+  Response: success/message/data array.

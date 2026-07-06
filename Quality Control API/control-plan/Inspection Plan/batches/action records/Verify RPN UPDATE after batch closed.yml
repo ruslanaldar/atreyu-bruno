@@ -1,0 +1,25 @@
+info:
+  name: Verify RPN UPDATE after batch closed
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/fmea/entries/1/"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: verify the linked FMEA entry after an inspection batch has closed.
+  Backend: GET /qcs/fmea/entries/{id}/ handled by FMEAEntryDetailView.
+  Why this matters: InspectionBatch.close_batch can update the linked FMEAEntry occurrence score. Failing batches increase occurrence based on defect rate; passing batches may reduce occurrence when switching rules move down a level.
+  Frontend note: re-fetch this entry after batch close if the UI displays occurrence, RPN, action_priority, or inspection_rate.
+  Response: success/message/data object from FMEA entry detail.

@@ -1,0 +1,30 @@
+info:
+  name: Update ControlPlan document header
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/qcs/control-plan/documents/1/"
+  body:
+    type: json
+    data: |-
+      {
+        "revision": 1,
+        "changed_index": 1
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: update Control Plan header fields such as revision, changed_index, release date, teams, and active state.
+  Backend: PUT /qcs/control-plan/documents/{id}/ handled by ControlPlanDocumentDetailView.
+  Accepted fields: part, sub_part, fmea_document, control_plan_number, revision, date_first_release, changed_index, team_qm, team_qc, team_production, is_active, created_by.
+  Read-only: id, scope, created_at, updated_at. scope is recalculated from sub_part.
+  Validation: fmea_document must match the same part/sub_part scope.
+  Response: success/message/data object or errors.

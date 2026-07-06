@@ -1,0 +1,12 @@
+info:
+  name: FMEA
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    FMEA requests for /qcs/fmea/. Covers RPN templates, FMEA documents, FMEA entries, and corrective actions. FMEA scores use S/O/D values from 1 to 10; RPN is severity * occurrence * detection and maps to AP values L, M, or H.
+  type: text/markdown

@@ -11,7 +11,7 @@ http:
       value: application/json
   body:
     type: json
-    data: |+
+    data: |-
       {
           "async": true,
           "trigger_reason": "manual_creation",
@@ -21,9 +21,6 @@ http:
           "week_no": 4
         
       }
-
-
-
   auth: inherit
 
 runtime:

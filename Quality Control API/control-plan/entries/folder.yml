@@ -1,0 +1,12 @@
+info:
+  name: entries
+  type: folder
+  seq: 6
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Control Plan entry requests. Entries represent process control rows and can be linked one-to-one to an FMEA entry for the same WorkStep. Linked FMEA risk drives effective inspection rate and check time.
+  type: text/markdown

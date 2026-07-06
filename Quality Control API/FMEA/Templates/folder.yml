@@ -1,0 +1,12 @@
+info:
+  name: Templates
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    RPN template library for default process risk data. Templates are seeded from rpn_stats.xlsx and contain process name, typical failure mode, default S/O/D scores, AP, control rate, check time, and active flag. Filter with is_active, ap, or work_center.
+  type: text/markdown

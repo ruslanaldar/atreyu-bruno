@@ -1,0 +1,47 @@
+info:
+  name: Update action = mark completed and add re-rated improved S/O/D scores
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/qcs/fmea/actions/1/"
+  params:
+    - name: status
+      value: In Progress
+      type: query
+      disabled: true
+  body:
+    type: json
+    data: |-
+      {
+        "status": "Completed",
+        "completion_date": "2026-07-10",
+        "severity_new": 10,
+        "occurrence_new": 2,
+        "detection_new": 3
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data[0]) {
+          bru.setEnvVar('action_id', data.data[0].id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: complete or update a corrective action and store improved S/O/D scores.
+  Backend: PUT /qcs/fmea/actions/{id}/ handled by FMEAActionDetailView.
+  Accepted fields: action_taken, status, responsible, completion_date, severity_new, occurrence_new, detection_new.
+  Status choices: Open, In Progress, Completed, Verified. Improved scores must be 1-10.
+  Computed fields: rpn_improved and rpn_improved_tier are returned when severity_new, occurrence_new, and detection_new are all set.
+  Response: success/message/data object or errors.

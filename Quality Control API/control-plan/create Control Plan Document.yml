@@ -1,0 +1,36 @@
+info:
+  name: create Control Plan Document
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/control-plan/documents/?part=5732"
+  params:
+    - name: part
+      value: "5732"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "part": 5732,
+        "fmea_document": {{fmea_doc_id}},
+        "revision": 0,
+      "date_first_release": "2026-06-29"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: create a Control Plan document for a part or sub_part, usually linked to the same-scope FMEA document.
+  Backend: POST /qcs/control-plan/documents/ handled by ControlPlanDocumentListView.
+  Accepted fields: part, sub_part, fmea_document, control_plan_number, revision, date_first_release, changed_index, team_qm, team_qc, team_production, is_active, created_by.
+  Auto behavior: control_plan_number auto-generates as CP-<part base> or CP-<part base>-SP<sub_part id> when omitted. scope is read-only and set from sub_part.
+  Validation: sub_part must belong to part; linked fmea_document must match part and sub_part. Active Control Plans are unique per part scope or part+sub_part scope.
+  Response: success/message/data object or errors.

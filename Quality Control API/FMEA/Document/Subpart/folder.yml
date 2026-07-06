@@ -1,0 +1,12 @@
+info:
+  name: Subpart
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    SubPart-scoped FMEA examples. Backend scope is controlled by part plus sub_part. The backend validates that the SubPart belongs to the selected Part and only includes worksteps under that SubPart.
+  type: text/markdown

@@ -1,0 +1,37 @@
+info:
+  name: list all active rpn-template
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/fmea/rpn-templates/?is_active=true"
+  params:
+    - name: is_active
+      value: "true"
+      type: query
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data[0]) {
+          bru.setEnvVar('rpn_template_id', data.data[0].id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: list active RPN templates for frontend template pickers and auto-suggestion screens.
+  Backend: GET /qcs/fmea/rpn-templates/ handled by RPNTemplateListView.
+  Filters: is_active=true keeps only templates available for auto-suggestion. Backend also supports work_center=<id> and ap=L|M|H.
+  Returned fields: id, work_center, process_name, typical_failure_mode, default_severity, default_occurrence, default_detection, default_rpn, default_action_priority, default_control_rate, check_time_minutes, default_rpn_tier, is_active, created_at, updated_at.
+  Model options: default_action_priority choices are L (Low), M (Medium), H (High). Score fields are 1-10. default_control_rate is usually 0.10, 0.25, 0.50, or 1.00. check_time_minutes defaults to 5.
+  Frontend note: use the first returned id only for Bruno chaining; production UI should let the user select by process_name/work_center.
+  Response: success/message/data array.

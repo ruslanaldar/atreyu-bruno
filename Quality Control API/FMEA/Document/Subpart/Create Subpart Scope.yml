@@ -1,0 +1,32 @@
+info:
+  name: Create Subpart Scope
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/fmea/documents/"
+  body:
+    type: json
+    data: |-
+      {
+        "part": 5732,
+        "sub_part": 54748,
+        "revision": 0,
+        "date": "2026-07-28"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: create or fetch a SubPart-scoped FMEA document.
+  Backend connection: the real FMEA document collection endpoint is /qcs/fmea/documents/ and supports part plus sub_part scope.
+  Important mismatch: this Bruno request is currently GET with a JSON body. Backend GET reads query params and request.data only when available, but frontend should use query params for GET or use POST if a create endpoint is added/implemented.
+  Required scope fields: part=<Part.id> and sub_part=<SubPart.id>. Backend validates that sub_part belongs to part. scope becomes SubPart automatically.
+  Model options: active SubPart FMEA documents are unique per part+sub_part. fmea_number can auto-generate as FMEA-<base>-SP<sub_part id>.
+  Response: expected success/message/data from FMEA document endpoints.

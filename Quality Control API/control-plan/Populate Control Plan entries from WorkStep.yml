@@ -1,0 +1,30 @@
+info:
+  name: Populate Control Plan entries from WorkStep
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/control-plan/documents/1/populate/"
+  body:
+    type: json
+    data: |-
+      {
+        "sequence_step": 10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: populate missing Control Plan entries from the document's target WorkSteps.
+  Backend: POST /qcs/control-plan/documents/{id}/populate/ handled by ControlPlanPopulateView.
+  Body: sequence_step controls numbering gap and defaults to 10.
+  Behavior: skips WorkSteps already present, creates entries with process_name=str(workstep), and links matching FMEA entries when the Control Plan document has fmea_document set.
+  Returned data: created count, skipped count, linked_fmea count, entries.
+  Frontend note: after populate, re-fetch the Control Plan document to edit inspection method details.
+  Response: success/message/data object.

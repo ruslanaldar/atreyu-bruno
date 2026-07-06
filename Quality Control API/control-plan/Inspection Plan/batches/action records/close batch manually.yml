@@ -1,0 +1,26 @@
+info:
+  name: close batch manually
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/control-plan/inspection-batches/1/close/"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: manually close an Inspection Batch before or after all sample records are submitted.
+  Backend: POST /qcs/control-plan/inspection-batches/{id}/close/ handled by InspectionBatchCloseView.
+  Allowed current statuses: Open or Pending. Already closed Passed/Failed batches cannot be closed again.
+  Close behavior: status becomes Passed when failure_count <= accept_number, otherwise Failed. Backend applies inspection-plan switching rules and may update linked FMEA occurrence score.
+  Frontend note: after close, re-fetch the batch, the inspection plan, and related FMEA entry if those values are displayed.
+  Response: success/message/data object.

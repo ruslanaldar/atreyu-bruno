@@ -1,0 +1,29 @@
+info:
+  name: filter entries not yet manually review
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/fmea/entries/?document={{fmea_doc_id}}&is_customized=false"
+  params:
+    - name: document
+      value: "{{fmea_doc_id}}"
+      type: query
+    - name: is_customized
+      value: "false"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: list generated FMEA entries that have not been manually customized.
+  Backend: GET /qcs/fmea/entries/?document=<id>&is_customized=false handled by FMEAEntryListView.
+  Field meaning: is_customized is false for generated/template-default rows. It becomes true when S/O/D are adjusted away from template defaults or when inspection batch close updates occurrence.
+  Frontend note: use this as a QC review inbox for baseline generated rows.
+  Response: success/message/data array.

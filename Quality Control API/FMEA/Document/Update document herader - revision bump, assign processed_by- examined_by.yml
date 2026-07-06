@@ -1,0 +1,30 @@
+info:
+  name: Update document herader - revision bump, assign processed_by/ examined_by
+  type: http
+  seq: 3
+
+http:
+  method: PUT
+  url: "{{base_url}}/qcs/fmea/documents/{{fmea_doc_id}}/?revision=1&date=2026-06-30"
+  params:
+    - name: revision
+      value: "1"
+      type: query
+    - name: date
+      value: 2026-06-30
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: update FMEA document header metadata such as revision, date, processed_by, examined_by, and active state.
+  Backend: PUT /qcs/fmea/documents/{id}/ handled by FMEADocumentDetailView.
+  Accepted body fields from serializer: part, sub_part, fmea_number, fmea_index, revision, date, processed_by, examined_by, is_active, created_by. scope is read-only and recalculated from sub_part.
+  Current Bruno example sends revision and date as query params; backend update serializer reads request body, so prefer JSON body for frontend implementation.
+  Validation: sub_part must belong to part. Active documents are unique per part scope or part+sub_part scope.
+  Response: success/message/data object or errors.

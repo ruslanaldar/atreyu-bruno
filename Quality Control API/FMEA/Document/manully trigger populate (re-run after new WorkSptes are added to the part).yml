@@ -1,0 +1,30 @@
+info:
+  name: manully trigger populate (re-run after new WorkSptes are added to the part)
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/fmea/documents/{{fmea_doc_id}}/populate/"
+  body:
+    type: json
+    data: |-
+      {
+        "sequence_step": 10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: manually populate missing FMEA entries from the document's target WorkSteps.
+  Backend: POST /qcs/fmea/documents/{id}/populate/ handled by FMEADocumentPopulateView.
+  Body: sequence_step controls numbering gaps and defaults to 10. Optional template_id applies one RPNTemplate to all newly created entries.
+  Behavior: skips WorkSteps that already have entries in this document, continues sequence_no from the current max, and creates entries with template scores or default S/O/D 5/5/5.
+  Returned data: created count, skipped count, and new entries.
+  Frontend note: run this after new WorkSteps are added, then re-fetch document detail.
+  Response: success/message/data object.

@@ -1,0 +1,12 @@
+info:
+  name: control-plan
+  type: folder
+  seq: 7
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Control Plan requests for /qcs/control-plan/. A Control Plan mirrors FMEA scope, can link to the same-scope FMEA document, and can populate entries from worksteps while linking matching FMEA entries.
+  type: text/markdown

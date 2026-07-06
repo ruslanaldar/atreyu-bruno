@@ -1,0 +1,29 @@
+info:
+  name: populate -only that subpart's worksteps
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/fmea/documents/2/populate/"
+  body:
+    type: json
+    data: |-
+      {
+        "sequence_step": 10
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: populate missing FMEA entries for a SubPart-scoped FMEA document.
+  Backend: POST /qcs/fmea/documents/{id}/populate/ handled by FMEADocumentPopulateView.
+  Behavior: because the document has scope=SubPart, get_target_worksteps only returns WorkSteps for that SubPart. Existing WorkStep entries are skipped.
+  Body: sequence_step defaults to 10. Optional template_id can force one RPNTemplate for all new entries.
+  Frontend note: after populate, fetch /qcs/fmea/documents/{id}/ to display subpart_groups and entries.
+  Response: success/message/data.created, data.skipped, data.entries.

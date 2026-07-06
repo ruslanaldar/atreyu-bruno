@@ -1,0 +1,25 @@
+info:
+  name: retrieve Control Plan Document
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/control-plan/documents/1/"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: fetch one full Control Plan document for the detail screen.
+  Backend: GET /qcs/control-plan/documents/{id}/ handled by ControlPlanDocumentDetailView.
+  Returned fields: header fields, entry_count, entries, and subpart_groups. Entries include sub-part display fields and effective_inspection_rate.
+  Frontend note: use subpart_groups for grouped display by SubPart and entries for a flat editable table.
+  Response: success/message/data object.

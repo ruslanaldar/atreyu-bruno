@@ -1,0 +1,46 @@
+info:
+  name: bulk submit all remaining records
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/control-plan/inspection-records/bulk/"
+  body:
+    type: json
+    data: |-
+      {
+        "batch": 1,
+        "records":[
+          {"piece_sequence_no": 15, "result": "Pass"},
+          {"piece_sequence_no": 30, "result": "Fail", "defect_description":"Surface crack depth 0.3"},
+          {
+            "piece_sequence_no": 50, "result": "Pass"
+          },
+          {
+            "piece_sequence_no": 70, "result": "Rework", "defect_description": "Minor burr on edge"
+          },
+          {
+            "piece_sequence_no": 85, "result": "Pass"
+          },
+          {
+            "piece_sequence_no":100, "result": "Pass"
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: submit multiple inspection records for one batch in a single request.
+  Backend: POST /qcs/control-plan/inspection-records/bulk/ handled by InspectionRecordBulkView.
+  Required: batch and non-empty records array. Each record needs piece_sequence_no and result; defect_description/notes are optional.
+  Validation: every piece_sequence_no must be in batch.sample_positions. If any record is invalid, the request fails and rolls back.
+  Result choices: Pass, Fail, Rework. Backend injects batch into every record and sets inspected_by to the authenticated user.
+  Returned data: created count, batch_status, batch_passed, and created records.
+  Response: success/message/data object or errors.

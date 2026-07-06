@@ -1,0 +1,41 @@
+info:
+  name: create corrective action for a high-RPN entry
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/fmea/actions/"
+  body:
+    type: json
+    data: |-
+      {
+        "entry": 7,
+        "action_taken": "Added 100% incoming inspection. Update work instruction WS-04.",
+        "status": "In Progress",
+        "due_date": "2026-07-15"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data[0]) {
+          bru.setEnvVar('action_id', data.data[0].id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: create a corrective action for an FMEA entry, commonly for high AP/H rows.
+  Backend: POST /qcs/fmea/actions/ handled by FMEAActionListView.
+  Required: entry and action_taken. Optional: status, responsible, completion_date, severity_new, occurrence_new, detection_new.
+  Status choices: Open, In Progress, Completed, Verified. Default is Open when omitted.
+  Score fields: improved S/O/D values are optional until completion and must be 1-10 when provided. rpn_improved is computed only when all three improved scores exist.
+  Response: success/message/data object or errors.

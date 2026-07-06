@@ -1,0 +1,12 @@
+info:
+  name: action records
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Inspection Record requests. Records submit results for sampled piece positions only. Valid result choices are Pass, Fail, and Rework. Completing all samples can auto-close the batch.
+  type: text/markdown

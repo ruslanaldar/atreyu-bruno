@@ -1,0 +1,30 @@
+info:
+  name: list inspection record batch detail
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/control-plan/inspection-records/?batch=1"
+  params:
+    - name: batch
+      value: "1"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: list inspection records submitted for a batch.
+  Backend: GET /qcs/control-plan/inspection-records/?batch=<id> handled by InspectionRecordListView.
+  Filters: batch and result.
+  Returned fields: id, batch, piece_sequence_no, result, defect_description, inspected_by, inspected_at, notes.
+  Frontend note: combine with batch.sample_positions from batch detail to show remaining required sample positions.
+  Response: success/message/data array.

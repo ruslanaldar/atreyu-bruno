@@ -1,0 +1,25 @@
+info:
+  name: get single record
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/control-plan/inspection-records/1/"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: fetch one inspection record.
+  Backend: GET /qcs/control-plan/inspection-records/{id}/ handled by InspectionRecordDetailView.
+  Returned fields: id, batch, piece_sequence_no, result, defect_description, inspected_by, inspected_at, notes.
+  Validation context: piece_sequence_no must be one of the batch.sample_positions when creating/updating through serializer validation.
+  Response: success/message/data object.

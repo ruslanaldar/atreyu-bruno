@@ -1,0 +1,12 @@
+info:
+  name: Quality Control API
+  type: folder
+  seq: 12
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Quality Control API collection for QCS backend routes under /qcs/. Main areas are FMEA, Control Plan, Inspection Plans, Inspection Batches, and Inspection Records. Use the request docs inside each file for backend-backed fields, filters, and model choices.
+  type: text/markdown

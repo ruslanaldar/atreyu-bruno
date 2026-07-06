@@ -1,0 +1,12 @@
+info:
+  name: Document
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    FMEA document requests. A document is scoped to a Part or a SubPart. Listing by one part can auto-create the active FMEA document and populate workstep entries if none exists yet.
+  type: text/markdown

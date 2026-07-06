@@ -1,0 +1,33 @@
+info:
+  name: update entry scores - qc engineer adjusts S/O/D after review
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: "{{base_url}}/qcs/fmea/entries/7/"
+  body:
+    type: json
+    data: |-
+      {
+        "severity": 8,
+        "occurrence": 5,
+        "detection": 4,
+        "potential_effects": "Batch scrap and production halt",
+        "recommended_actions": "100% inspection required before next process"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: update an FMEA entry after QC review, especially S/O/D scores and risk text fields.
+  Backend: PUT /qcs/fmea/entries/{id}/ handled by FMEAEntryDetailView.
+  Accepted fields: template, work_step, process_name, sequence_no, potential_failure, potential_effects, potential_causes, current_controls, recommended_actions, severity, occurrence, detection, responsible, due_date.
+  Rules: severity, occurrence, and detection must be 1-10. If a template is linked and scores differ from its defaults, backend marks is_customized=true.
+  Frontend note: re-render computed rpn/action_priority/inspection_rate from the response.
+  Response: success/message/data object or errors.

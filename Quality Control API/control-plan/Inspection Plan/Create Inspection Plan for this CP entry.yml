@@ -1,0 +1,32 @@
+info:
+  name: Create Inspection Plan for this CP entry
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/control-plan/inspection-plans/"
+  body:
+    type: json
+    data: |-
+      {
+        "control_plan_entry": 1,
+        "inquiry_part": 28018,
+        "aql_level": 2.5
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: create an Inspection Plan connecting one Control Plan entry to one InquiryPart.
+  Backend: POST /qcs/control-plan/inspection-plans/ handled by InspectionPlanListView.
+  Required: control_plan_entry and inquiry_part. Optional: aql_level.
+  Validation: InquiryPart must reference the same Part as the Control Plan Entry's document.
+  Model options: aql_level choices are 1.0 strictest, 1.5, 2.5 standard, and 4.0 relaxed. inspection_level defaults to Normal and is auto-managed by switching rules.
+  Computed/read-only: planned_batch_quantity = inquiry_part.total_quantity multiplied by SubPart BOM quantity chain.
+  Response: success/message/data object or errors.

@@ -1,0 +1,32 @@
+info:
+  name: Create matching Contorl Plan for the same Subpart scope
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/fmea/documents/2/populate/"
+  body:
+    type: json
+    data: |-
+      {
+        "part": 5732,
+        "sub_part": 54748,
+        "fmea_document": 2,
+        "revision": 0,
+        "date_first_release": "2026-06-29"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |
+  Purpose: intended to create a Control Plan document for the same SubPart scope as an FMEA document.
+  Backend connection: Control Plan documents are created at POST /qcs/control-plan/documents/, not /qcs/fmea/documents/{id}/populate/.
+  Important mismatch: this Bruno request currently posts Control Plan fields to an FMEA populate endpoint. Frontend should call /qcs/control-plan/documents/ with part, sub_part, fmea_document, revision, and date_first_release.
+  Validation: fmea_document must match the same part and sub_part scope. Control Plan scope is set automatically from sub_part.
+  Response from the correct endpoint: success/message/data object.
