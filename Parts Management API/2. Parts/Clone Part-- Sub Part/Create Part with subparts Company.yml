@@ -1,0 +1,29 @@
+info:
+  name: Create Part with subparts Company
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/parts/5648/clone"
+  body:
+    type: json
+    data: |-
+      {
+        "part_id": 5648,
+        "new_part_number": "diff_com_part_number_001",
+        "new_drawing_no": "diff_new_drawing_no_001",
+        "company_id": 67,
+        "sub_parts": [
+          {
+            "subpart_id": 54264
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

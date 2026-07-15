@@ -1,0 +1,15 @@
+info:
+  name: Part View Subparts
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/parts/parts/6828/clone"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

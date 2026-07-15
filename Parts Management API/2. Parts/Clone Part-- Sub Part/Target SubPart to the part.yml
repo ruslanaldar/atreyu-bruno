@@ -1,0 +1,32 @@
+info:
+  name: Target SubPart to the part
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/parts/5648/clone"
+  body:
+    type: json
+    data: |-
+      {
+        "part_id": 5648,
+        "target_part_id": 6828,
+        "new_part_number": "diff_com_part_number_001",
+        "new_drawing_no": "diff_new_drawing_no_001",
+        "company_id": 67,
+        "sub_parts": [
+          {
+            "subpart_id": 54265,
+            "serial": "60002456 new",
+            "drawing_no": "4875282 new"
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
