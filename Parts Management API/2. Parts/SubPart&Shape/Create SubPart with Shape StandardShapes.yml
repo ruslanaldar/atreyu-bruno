@@ -1,0 +1,29 @@
+info:
+  name: Create SubPart with Shape StandardShapes
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/sub-parts/with-shape/"
+  body:
+    type: json
+    data: |-
+      {
+        "part_id": 6930,
+        "serial": "SP004",
+        "name": "Fastener subparts",
+        "quantity": 6,
+        "shape": {
+          "use_existing_shape": true,
+          "shape_type_id": 138,
+          "standard_shape_id": 13
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

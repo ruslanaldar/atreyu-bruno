@@ -1,0 +1,36 @@
+info:
+  name: Create SubPart with Shape
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/sub-parts/with-shape/"
+  body:
+    type: json
+    data: |-
+      {
+        "part_id": 6930,
+        "serial": "SP003",
+        "name": "Fastener subparts",
+        "quantity": 4,
+        "shape": {
+          "use_existing_shape": false,
+          "shape_type_id": 91,
+          "name": "SP003 fastener shape",
+          "description": "Shape for SP003 fastener",
+          "dimension_data":{
+            "manufacturing_process": "Forged",
+            "diameter": 2.0,
+            "thickness": 2.0
+          },
+          "is_standard_shape": true
+        }
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/mpp/task_status/?task_id=3b40091c-7613-48da-b841-ec3ad46c99c8"
+  url: "{{base_url}}/productionplans/mpp/task_status/?task_id=b6b8be7f-71b2-4bc0-a94a-a947ec976085"
   headers:
     - name: Content-Type
       value: application/json
@@ -15,7 +15,7 @@ http:
       type: query
       disabled: true
     - name: task_id
-      value: 3b40091c-7613-48da-b841-ec3ad46c99c8
+      value: b6b8be7f-71b2-4bc0-a94a-a947ec976085
       type: query
   body:
     type: json
