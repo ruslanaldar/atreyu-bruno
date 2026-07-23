@@ -1,0 +1,7 @@
+info:
+  name: 12. Welding position
+  type: folder
+  seq: 12
+
+request:
+  auth: inherit

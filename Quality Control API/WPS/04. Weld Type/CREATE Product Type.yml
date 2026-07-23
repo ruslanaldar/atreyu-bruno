@@ -1,0 +1,32 @@
+info:
+  name: CREATE Product Type
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/weld-types/"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TXi",
+        "name": "Test Product Type",
+        "description": "Created by admin user"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("weld_type_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

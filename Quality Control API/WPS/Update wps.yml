@@ -1,0 +1,22 @@
+info:
+  name: Update wps
+  type: http
+  seq: 7
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "b535f242-3bcc-4109-9b51-73dca7c44c13",
+        "approved_by": "Test QA Manager (Re-approved)"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

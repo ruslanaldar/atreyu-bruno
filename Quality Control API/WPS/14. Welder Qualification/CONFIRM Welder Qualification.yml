@@ -1,0 +1,21 @@
+info:
+  name: CONFIRM Welder Qualification
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/welder-qualifications/confirm-continuity/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "{{welder_qualification_id}}"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

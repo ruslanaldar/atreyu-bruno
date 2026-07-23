@@ -1,0 +1,19 @@
+info:
+  name: SEARCH wps
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/?search=WPS-TEST-00001"
+  params:
+    - name: search
+      value: WPS-TEST-00001
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,46 @@
+info:
+  name: CREATE Welder Qualification
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/welder-qualifications/"
+  body:
+    type: json
+    data: |-
+      {
+        "employee": "1",
+        "standard": "{{standard_id}}",
+        "welding_process": "5bab117a-7126-4a2d-a49a-c29e4fe4dbee",
+        "product_type": "fe76598f-2bdd-4790-b12b-f13498bf31da",
+        "weld_type": "fdecbff4-1d13-4a6a-84f9-d09ba921f883",
+        "material_group": "5faef834-9605-4f88-b293-247cae9ed19d",
+        "filler_material_type": "{{filler_material_id}}",
+        "deposited_thickness": "3.6",
+        "outside_diameter": "60.0",
+        "welding_position": "{{welding_position_id}}",
+        "weld_detail": ["{{weld_detail_id}}"],
+        "certificate_number": "TEST-CERT-0001",
+        "examiner_body": "Test Examiner Body",
+        "wps_reference": "TEST-WPS-0001",
+        "date_of_test": "2026-01-17",
+        "valid_until": "2028-01-15",
+        "status": "active"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("welder_qualification_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

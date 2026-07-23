@@ -18,7 +18,7 @@ http:
           "status": "produce",
           "shift_time": 12,
           "is_saturday": true,
-          "week_no": 12
+          "week_no": 8
         
       }
   auth: inherit

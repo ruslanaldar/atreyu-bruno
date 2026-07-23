@@ -1,7 +1,7 @@
 info:
   name: control-plan
   type: folder
-  seq: 7
+  seq: 3
 
 request:
   auth: inherit

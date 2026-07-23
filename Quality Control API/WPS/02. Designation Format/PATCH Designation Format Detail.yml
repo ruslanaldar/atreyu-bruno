@@ -1,0 +1,21 @@
+info:
+  name: PATCH Designation Format Detail
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/designation-formats/{{designation_format_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "status": "inactive"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

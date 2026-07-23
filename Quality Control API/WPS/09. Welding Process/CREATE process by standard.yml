@@ -1,0 +1,33 @@
+info:
+  name: CREATE process by standard
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/welding-processes/"
+  body:
+    type: json
+    data: |-
+      {
+        "standard":"{{standard_id}}",
+        "code": "T99a",
+        "name":"Test Welding Process",
+        "description":"Created by admin user"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("welding_process_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

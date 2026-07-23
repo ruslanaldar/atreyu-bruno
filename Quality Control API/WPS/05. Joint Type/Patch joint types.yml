@@ -1,0 +1,21 @@
+info:
+  name: Patch joint types
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/joint-types/{{joint_type_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Patched description"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

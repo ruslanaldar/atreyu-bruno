@@ -1,0 +1,33 @@
+info:
+  name: CREATE Standard Family
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/standard-families/"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TESTAM4",
+        "name": "Test standard family 4",
+        "country_region": "Testland",
+        "description": "Used by CertificationStandard tests"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("std_family_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

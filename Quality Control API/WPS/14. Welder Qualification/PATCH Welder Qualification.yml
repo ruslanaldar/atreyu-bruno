@@ -1,0 +1,22 @@
+info:
+  name: PATCH Welder Qualification
+  type: http
+  seq: 7
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/welder-qualifications/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "{{welder_qualification_id}}",
+        "certificate_number": "TEST-CERT-0001-REV2"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,33 @@
+info:
+  name: CREATE Weld Detail
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/weld-details/"
+  body:
+    type: json
+    data: |-
+      {
+        "standard": "{{standard_id}}",
+        "symbol": "t ss nb",
+        "description": "Test single-side no backing",
+        "qualifies_range": "t ss nb"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("weld_detail_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,33 @@
+info:
+  name: CREATE joint type
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/joint-types/"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TEX",
+        "name": "Test Execution Type",
+        "description": "Created by admin",
+        "status": "active"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("joint_type_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

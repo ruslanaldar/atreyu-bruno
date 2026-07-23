@@ -1,0 +1,28 @@
+info:
+  name: PUT Standard Family detail by id query params update
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/basics/wps/standard-families/?id={{standard_family_id}}"
+  params:
+    - name: id
+      value: "{{standard_family_id}}"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TESTFAM2",
+        "name": "Test Standard Family2 (updated)",
+        "country_region": "Testland2",
+        "description": "Updated by admin collection"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,32 @@
+info:
+  name: CREATE Current Type
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/current-types/"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TCUR",
+        "name" : "Test Current Type",
+        "description": "Create by admin user"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("current_type_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

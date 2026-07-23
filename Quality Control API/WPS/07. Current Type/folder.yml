@@ -1,0 +1,7 @@
+info:
+  name: 07. Current Type
+  type: folder
+  seq: 7
+
+request:
+  auth: inherit

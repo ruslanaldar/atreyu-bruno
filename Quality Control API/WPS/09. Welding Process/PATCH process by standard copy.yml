@@ -1,0 +1,25 @@
+info:
+  name: PATCH process by standard copy
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/welding-processes/?id={{welding_process_id}}"
+  params:
+    - name: id
+      value: "{{welding_process_id}}"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "description":"Patched material group description"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

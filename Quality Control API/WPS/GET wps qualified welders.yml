@@ -1,0 +1,19 @@
+info:
+  name: GET wps qualified welders
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/qualified-welders/?id=b535f242-3bcc-4109-9b51-73dca7c44c13"
+  params:
+    - name: id
+      value: b535f242-3bcc-4109-9b51-73dca7c44c13
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

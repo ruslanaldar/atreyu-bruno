@@ -1,0 +1,21 @@
+info:
+  name: UPDATE partial Certification Standard
+  type: http
+  seq: 9
+
+http:
+  method: PUT
+  url: "{{base_url}}/basics/wps/standards/{{standard_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "material_scope": "Patched material scope"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,24 @@
+info:
+  name: PUT Designation Format Detail
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{base_url}}/basics/wps/designation-formats/{{designation_format_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TestFMT",
+        "name": "Test Designation Format (updated)",
+        "description": "Updated by admin user",
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

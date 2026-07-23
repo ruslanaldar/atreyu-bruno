@@ -1,0 +1,21 @@
+info:
+  name: PATCH Product Type
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/weld-types/{{weld_type_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Updated product Type by admin"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

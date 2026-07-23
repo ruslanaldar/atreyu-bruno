@@ -1,0 +1,37 @@
+info:
+  name: CREATE Filler material
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/filler-material-types/?standard=TESTSTD-1"
+  params:
+    - name: standard
+      value: TESTSTD-1
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "standard": "{{standard_id}}",
+        "symbol": "TFM1",
+        "description": "Test filler material type",
+        "qualifies_range": "TFM1"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("filler_material_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

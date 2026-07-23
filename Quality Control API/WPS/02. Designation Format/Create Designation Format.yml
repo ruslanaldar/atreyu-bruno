@@ -1,0 +1,33 @@
+info:
+  name: Create Designation Format
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/designation-formats/"
+  body:
+    type: json
+    data: |-
+      {
+        "code":"TestFMT",
+        "name":"Test Designation Format",
+        "description": "Created by admin user",
+        "status": "active"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("designation_format_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

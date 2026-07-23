@@ -1,0 +1,7 @@
+info:
+  name: 02. Designation Format
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit

@@ -1,0 +1,72 @@
+info:
+  name: PUT wps
+  type: http
+  seq: 6
+
+http:
+  method: PUT
+  url: "{{base_url}}/basics/wps/"
+  body:
+    type: json
+    data: |-
+      {
+        "id": "b535f242-3bcc-4109-9b51-73dca7c44c13",
+        "wps_number": "WPS-TEST-00001",
+        "revision": 0,
+        "is_pwps": false,
+        "standard": "{{standard_id}}",
+        "made_by": "Test Engineer1",
+        "approved_by": "Test QA Manager",
+        "date": "2026-01-10",
+        "work_step": "271298",
+        "examiner_body": "Test Examiner Body",
+        "supporting_pqr": "TEST-PQR-0001",
+        "welding_process": "5bab117a-7126-4a2d-a49a-c29e4fe4dbee",
+        "product_type": "fe76598f-2bdd-4790-b12b-f13498bf31da",
+        "weld_type": "fdecbff4-1d13-4a6a-84f9-d09ba921f883",
+        "material_group": "5faef834-9605-4f88-b293-247cae9ed19d",
+        "filler_material_type": "{{filler_material_id}}",
+        "deposited_thickness": "3.6",
+        "outside_diameter": "60.0",
+        "welding_position": "{{welding_position_id}}",
+        "weld_details": ["{{weld_detail_id}}"],
+        "joint_type": "ae8022c7-0e4b-406b-8744-3d1e5e6dbad3",
+        "execution_type": "7cde8cb4-902e-479d-adb4-30ddc7635c94",
+        "root_opening_mm": "0-0.5 MM",
+        "material_thickness": "T=4mm +2mm",
+        "electrode_type": "Tungsten-Cerium",
+        "electrode_diameter_mm": "2.4",
+        "base_material_spec": "TEST-SPEC-001",
+        "base_material_grade": "TEST-GRADE-001",
+        "shielding_gas": "100% Ar",
+        "gas_flow_rate": "10~15 L/min",
+        "flux": "",
+        "weld_cleanout": "SS BRUSH",
+        "welding_engineer": "Test Engineer",
+        "qa_qc_manager": "Test QA Manager",
+        "producer_gm": "Test GM",
+        "client": "Test Client",
+        "runs": [
+          {
+            "run_number": 1,
+            "process": "5bab117a-7126-4a2d-a49a-c29e4fe4dbee",
+            "freedom_mm": "1",
+            "swing_mm": "3",
+            "filler_material_type": "{{filler_material_id}}",
+            "filler_product_code": "ER316L",
+            "filler_diameter_mm": "2.0",
+            "current_type": "7c47d86d-e802-4082-a7bb-df21df9cf786",
+            "amps_min": 60,
+            "amps_max": 80,
+            "voltage_v": "12",
+            "travel_speed": "1-1.2"
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

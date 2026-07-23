@@ -1,0 +1,32 @@
+info:
+  name: CREATE Execution Type
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/execution-types/"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TCUR2",
+        "name": "Test current type2",
+        "description": "Created by the admin user2"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data) {
+          bru.setEnvVar("execution_type_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

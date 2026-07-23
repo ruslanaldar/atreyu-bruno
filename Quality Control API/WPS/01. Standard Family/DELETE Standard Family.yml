@@ -1,0 +1,22 @@
+info:
+  name: DELETE Standard Family
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{base_url}}/basics/wps/standard-families/?id={{standard_family_id}}"
+  params:
+    - name: id
+      value: "{{standard_family_id}}"
+      type: query
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

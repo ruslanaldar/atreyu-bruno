@@ -1,0 +1,25 @@
+info:
+  name: PATCH Weld Detail
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/weld-details/?id={{weld_detail_id}}"
+  params:
+    - name: id
+      value: "{{weld_detail_id}}"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Patched weld detail description"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

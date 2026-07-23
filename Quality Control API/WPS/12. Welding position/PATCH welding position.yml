@@ -1,0 +1,25 @@
+info:
+  name: PATCH welding position
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/welding-positions/?id={{welding_position_id}}"
+  params:
+    - name: id
+      value: "{{welding_position_id}}"
+      type: query
+  body:
+    type: json
+    data: |-
+      {
+        "equiv_other_std": "1G / 1F"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

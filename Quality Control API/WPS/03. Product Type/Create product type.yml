@@ -1,0 +1,33 @@
+info:
+  name: Create product type
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/product-types/"
+  body:
+    type: json
+    data: |-
+      {
+       "code": "TX",
+        "name": "Test Weld Type",
+        "description": "Created by admin user",
+        "status": "active"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("product_type_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

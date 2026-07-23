@@ -1,0 +1,24 @@
+info:
+  name: PUT product Type
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/basics/wps/product-types/{{product_type_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TX",
+        "name": "Test Weld Type (updated)",
+        "description": "Updated by admin user",
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

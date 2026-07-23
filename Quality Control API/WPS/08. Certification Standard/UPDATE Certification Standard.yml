@@ -1,0 +1,28 @@
+info:
+  name: UPDATE Certification Standard
+  type: http
+  seq: 8
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/standards/{{standard_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TESTSTD-1",
+        "name": "Test Standard 1:2026 (Updated)",
+        "family": "{{std_family_id}}",
+        "series": "1",
+        "designation_format": "{{std_format_id}}",
+        "material_scope": "Test materials updated",
+        "country_region": "Testland",
+        "status": "active"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

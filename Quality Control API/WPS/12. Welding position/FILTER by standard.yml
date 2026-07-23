@@ -1,0 +1,19 @@
+info:
+  name: FILTER by standard
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/welding-positions/?standard=TESTSTD-2"
+  params:
+    - name: standard
+      value: TESTSTD-2
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

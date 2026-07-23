@@ -1,0 +1,33 @@
+info:
+  name: CREATE Material Group Weld
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/material-group-welds/"
+  body:
+    type: json
+    data: |-
+      {
+        "standard": "{{standard_id}}",
+        "symbol": "TMG1",
+        "description": "Test material Group",
+        "qualifies_range": "TM1"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("material_group_weld_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

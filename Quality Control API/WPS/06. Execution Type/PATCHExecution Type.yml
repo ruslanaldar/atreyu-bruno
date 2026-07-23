@@ -1,0 +1,21 @@
+info:
+  name: PATCHExecution Type
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/execution-types/{{execution_type_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+       "status":"inactive" 
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
