@@ -76,3 +76,33 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  Request: Create WPS Record
+  Method: POST
+  URL: {{base_url}}/api/basics/wps/
+
+  Purpose:
+  Creates one WPS record for one workstep. work_step is required.
+
+  Required Fields:
+  wps_number, standard, work_step, welding_process, product_type, weld_type,
+  material_group, filler_material_type, welding_position, joint_type, execution_type
+
+  Optional Fields:
+  revision, is_pwps, made_by, approved_by, date, examiner_body, supporting_pqr,
+  weld_details, client, technical fields, runs
+
+  Important:
+  weld_details maps to the WPS model field weld_detail.
+  runs are nested. If omitted, WPS is created without run rows.
+
+  Capture:
+  wps_id = data.id
+
+  Success Response:
+  {
+    "success": true,
+    "message": "WPS created successfully.",
+    "data": {...}
+  }

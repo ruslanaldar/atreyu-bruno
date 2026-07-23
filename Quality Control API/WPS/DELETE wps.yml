@@ -1,10 +1,10 @@
 info:
-  name: DETAIL wps
+  name: DELETE wps
   type: http
-  seq: 3
+  seq: 10
 
 http:
-  method: GET
+  method: DELETE
   url: "{{base_url}}/basics/wps/?id=b535f242-3bcc-4109-9b51-73dca7c44c13"
   params:
     - name: id
@@ -19,20 +19,19 @@ settings:
   maxRedirects: 5
 
 docs: |-
-  Request: Get WPS Detail
-  Method: GET
-  URL: {{base_url}}/api/basics/wps/{wps_id}}/
+  Request: Delete WPS Record
+  Method: DELETE
+  URL: {{base_url}}/api/basics/wps/wps/{{wps_id}}/
 
   Alternative:
-  GET {{base_url}}/api/basics/wps/?id={{wps_id}}
+  DELETE {{base_url}}/api/basics/wps/wps/?id={{wps_id}}
 
   Purpose:
-  Returns one WPS record with nested runs, weld details, work_step_detail,
-  designation, and qualified_welder_count.
+  Deletes one WPS record.
 
   Success Response:
   {
     "success": true,
-    "message": "WPS retrieved successfully.",
-    "data": {...}
+    "message": "WPS deleted successfully.",
+    "data": null
   }

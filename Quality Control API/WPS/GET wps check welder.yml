@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/basics/wps/qualified-welders/?id=b535f242-3bcc-4109-9b51-73dca7c44c13&employee_id=1"
+  url: "{{base_url}}/basics/wps/check-welder/?id=b535f242-3bcc-4109-9b51-73dca7c44c13&employee_id=1"
   params:
     - name: id
       value: b535f242-3bcc-4109-9b51-73dca7c44c13

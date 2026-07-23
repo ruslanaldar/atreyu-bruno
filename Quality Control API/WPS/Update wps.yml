@@ -20,3 +20,26 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  Request: Partial Update WPS Record
+  Method: PATCH
+  URL: {{base_url}}/api/basics/wps/{{wps_id}}/
+
+  Alternative:
+  PATCH {{base_url}}/api/basics/wps/
+  Body must include id.
+
+  Purpose:
+  Updates only provided WPS fields.
+
+  Important:
+  If runs is not provided, existing runs stay unchanged.
+  If runs is provided, existing runs are replaced.
+
+  Success Response:
+  {
+    "success": true,
+    "message": "WPS updated successfully.",
+    "data": {...}
+  }

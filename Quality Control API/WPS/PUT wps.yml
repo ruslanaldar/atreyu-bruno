@@ -70,3 +70,26 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  Request: Update WPS Record
+  Method: PUT
+  URL: {{base_url}}/api/basics/wps/{{wps_id}}/
+
+  Alternative:
+  PUT {{base_url}}/api/basics/wps/
+  Body must include id.
+
+  Purpose:
+  Full update of a WPS record.
+
+  Important:
+  If runs is provided, existing runs are deleted and replaced by the submitted runs.
+  If weld_details is provided, existing weld details are replaced.
+
+  Success Response:
+  {
+    "success": true,
+    "message": "WPS updated successfully.",
+    "data": {...}
+  }

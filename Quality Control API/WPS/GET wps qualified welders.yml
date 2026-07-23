@@ -17,3 +17,21 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  Request: Get Qualified Welders For WPS
+  Method: GET
+  URL: {{base_url}}/api/basics/wps/qualified-welders/?id={{wps_id}}
+
+  Purpose:
+  Returns active welder qualifications that cover the selected WPS variables.
+
+  Required Query Param:
+  id = WPS id
+
+  Success Response:
+  {
+    "success": true,
+    "message": "Qualified welders for WPS ... retrieved successfully.",
+    "data": []
+  }

@@ -13,3 +13,35 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  Request: List WPS Records
+  Method: GET
+  URL: {{base_url}}/api/basics/wps/
+
+  Purpose:
+  Returns all WPS records. Each WPS belongs to one workstep.
+
+  Query Params:
+  standard = certification standard code, example TESTSTD-1
+  is_pwps = true or false
+  work_step = workstep id
+  workstep = alias for work_step
+  subpart = subpart id, filtered through WPS.work_step.sub_part
+  search = keyword search
+  keyword = alias for search
+  q = alias for search
+  ordering = wps_number, -wps_number, date, -date, created_at, -created_at
+
+  Search Checks:
+  wps_number, supporting_pqr, client, made_by, approved_by, examiner_body,
+  base material, shielding gas, standard, process, material group, filler,
+  welding position, weld detail, joint type, execution type, run filler code,
+  workstep description, workcenter, workstation, subpart serial/name/drawing_no.
+
+  Success Response:
+  {
+    "success": true,
+    "message": "WPS list retrieved successfully.",
+    "data": []
+  }
