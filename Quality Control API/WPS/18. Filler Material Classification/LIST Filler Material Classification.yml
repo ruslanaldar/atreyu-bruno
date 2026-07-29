@@ -1,0 +1,23 @@
+info:
+  name: LIST Filler Material Classification
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/filler-material-classifications/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Request: List Filler Material Classifications
+  Method: GET
+  URL: {{base_url}}/api/basics/wps/filler-material-classifications/
+
+  Purpose:
+  Returns recommended filler classifications by base material and process.

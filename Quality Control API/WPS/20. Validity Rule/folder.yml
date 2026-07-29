@@ -1,0 +1,7 @@
+info:
+  name: 20. Validity Rule
+  type: folder
+  seq: 20
+
+request:
+  auth: inherit

@@ -1,0 +1,48 @@
+info:
+  name: CREATE Inspection Method
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/inspection-methods/"
+  body:
+    type: json
+    data: |-
+      {
+        "code": "TVT",
+        "name": "Test Visual Testing",
+        "standard": "ISO 17637",
+        "acceptance_standard": "ISO 5817",
+        "typical_application": "Created by Bruno WPS collection"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("inspection_method_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Request: Create Inspection Method
+  Method: POST
+  URL: {{base_url}}/api/basics/wps/inspection-methods/
+
+  Required Fields:
+  code, name
+
+  Optional Fields:
+  standard, acceptance_standard, typical_application
+
+  Capture:
+  inspection_method_id = data.id

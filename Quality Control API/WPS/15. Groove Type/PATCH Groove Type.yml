@@ -1,17 +1,17 @@
 info:
-  name: Patch joint types
+  name: PATCH Groove Type
   type: http
   seq: 4
 
 http:
   method: PATCH
-  url: "{{base_url}}/basics/wps/joint-types/{{joint_type_id}}/"
+  url: "{{base_url}}/basics/wps/groove-types/{{groove_type_id}}/"
   body:
     type: multipart-form
     data:
       - name: description
         type: text
-        value: Patched description
+        value: Patched groove type description
       - name: image
         type: file
         value:
@@ -25,12 +25,12 @@ settings:
   maxRedirects: 5
 
 docs: |-
-  Request: Patch Joint Type
+  Request: Patch Groove Type
   Method: PATCH
-  URL: {{base_url}}/api/basics/wps/joint-types/{{joint_type_id}}/
+  URL: {{base_url}}/api/basics/wps/groove-types/{{groove_type_id}}/
 
   Body Type:
   multipart-form
 
   Purpose:
-  Updates text fields and can replace the joint diagram image.
+  Updates text fields and can replace the groove diagram image.

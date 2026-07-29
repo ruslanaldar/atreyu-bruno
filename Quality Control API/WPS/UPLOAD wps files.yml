@@ -1,0 +1,47 @@
+info:
+  name: UPLOAD wps files
+  type: http
+  seq: 11
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/"
+  body:
+    type: multipart-form
+    data:
+      - name: id
+        type: text
+        value: "{{wps_id}}"
+      - name: image
+        type: file
+        value:
+          - Parts Management API/6. Work Steps/image1.jpg
+      - name: wps_file
+        type: file
+        value: []
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Request: Upload WPS Files
+  Method: PATCH
+  URL: {{base_url}}/api/basics/wps/
+
+  Body Type:
+  multipart-form
+
+  Required Field:
+  id = WPS id
+
+  File Fields:
+  image = WPS preview/image
+  wps_file = original WPS document, such as PDF or scan
+
+  Important:
+  Use this request after CREATE wps when you need to attach files.
+  Keeping file upload separate avoids multipart parsing issues with nested runs and inspections.

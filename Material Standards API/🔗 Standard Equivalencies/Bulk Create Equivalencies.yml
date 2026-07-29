@@ -14,146 +14,25 @@ http:
   body:
     type: json
     data: |-
+      // ════════════════════════════════════════════════════════════════════
+      // BATCH 1 — POM EQUIVALENCIES
+      // Delrin 500P POM-H (3936) ↔ EN ISO 9988 POM (3937)
+      // ════════════════════════════════════════════════════════════════════
       {
         "equivalencies": [
-          // ── GROUP 1: EXACT / APPROXIMATE — 20Mn class (~0.20% C) ────────
-          // DIN 21Mn4 (3910) ↔ EN 080A20 (3911) ↔ GB 20Mn (161)
-
-          // GB FIRST
           {
-            "standard_1_id": 161,
-            "standard_2_id": 3910,
-            "equivalency_type": "exact",
-            "confidence_level": 95,
-            "notes": "GB 20Mn and DIN 21Mn4 / 1.0469 are equivalent medium-manganese carbon steels at the ~0.20% C strength class. Both specify C 0.17–0.25%, Mn 0.70–1.10%, and identical application scope — shafts, axles, pins, and general engineering components in normalised or Q+T condition. GB/T 699 specifies tighter P/S (≤0.035%) vs DIN 17200 (≤0.040%), making 20Mn marginally cleaner. GB 20Mn is the preferred Chinese market procurement grade."
-          },
-          {
-            "standard_1_id": 161,
-            "standard_2_id": 3911,
+            "standard_1_id": 3936,
+            "standard_2_id": 3937,
             "equivalency_type": "approximate",
-            "confidence_level": 88,
-            "notes": "GB 20Mn and BS EN 080A20 are equivalent in carbon class and application but differ in Mn range: GB 20Mn 0.70–1.00% vs 080A20 0.60–0.90%. GB/T 699 also specifies tighter P/S (≤0.035%) vs BS 970 (≤0.050%), giving 20Mn slightly better toughness. Mechanical properties and application scope are equivalent; GB 20Mn is the preferred Chinese market alternative."
+            "confidence_level": 85,
+            "notes": "Delrin 500P is DuPont's commercial POM homopolymer (POM-H) grade; EN ISO 9988 POM is the governing European/international classification standard covering both POM-H and POM-C types. Delrin 500P falls within the POM-H classification of ISO 9988. Key differences: POM-H (Delrin 500P) has higher tensile yield (~69 MPa vs ~60 MPa for POM-C), higher melting point (~178°C vs ~165°C), superior fatigue and creep resistance, but lower notched impact toughness and acid resistance vs POM-C. Approximate equivalency as ISO 9988 POM-H type — exact equivalence depends on which ISO 9988 sub-classification is specified."
           },
           {
-            "standard_1_id": 3910,
-            "standard_2_id": 161,
-            "equivalency_type": "exact",
-            "confidence_level": 95,
-            "notes": "DIN 21Mn4 / 1.0469 and GB 20Mn are equivalent medium-manganese carbon steels. Both specify ~0.20% C with elevated Mn for improved hardenability vs plain carbon steel. Minor difference in P/S limits: DIN ≤0.040% vs GB ≤0.035%. Full interchangeability in general engineering applications; specify GB 20Mn for Chinese market sourcing."
-          },
-          {
-            "standard_1_id": 3910,
-            "standard_2_id": 3911,
+            "standard_1_id": 3937,
+            "standard_2_id": 3936,
             "equivalency_type": "approximate",
-            "confidence_level": 90,
-            "notes": "DIN 21Mn4 / 1.0469 and BS EN 080A20 are equivalent medium-manganese carbon steels at the 0.20% C strength class. DIN specifies slightly wider Mn range (0.70–1.10%) vs BS 970 (0.60–0.90%). Both used for shafts, pins, bolts, and general engineering components in normalised or Q+T condition. DIN 17200 and BS 970 are legacy standards; EN equivalents now govern in European practice."
-          },
-          {
-            "standard_1_id": 3911,
-            "standard_2_id": 161,
-            "equivalency_type": "approximate",
-            "confidence_level": 88,
-            "notes": "BS EN 080A20 and GB 20Mn are equivalent in carbon class and application. Key differences: BS 970 allows higher P/S (≤0.050%) vs GB/T 699 (≤0.035%), and slightly lower Mn range (0.60–0.90% vs 0.70–1.00%). Strength class and application scope are equivalent; GB 20Mn preferred for Chinese market procurement with higher domestic availability."
-          },
-          {
-            "standard_1_id": 3911,
-            "standard_2_id": 3910,
-            "equivalency_type": "approximate",
-            "confidence_level": 90,
-            "notes": "BS EN 080A20 and DIN 21Mn4 / 1.0469 are equivalent medium-manganese carbon steels widely cross-referenced in European engineering. DIN specifies slightly higher Mn upper limit (1.10% vs 0.90%) giving marginally better hardenability. Both are legacy designations; modern designs should reference current EN standards."
-          },
-
-          // ── GROUP 2: EXACT — 25Mn class (~0.25–0.30% C) ────────────────
-          // DIN 30Mn4 (3912) ↔ GB 25Mn (3913)
-
-          // GB FIRST
-          {
-            "standard_1_id": 3913,
-            "standard_2_id": 3912,
-            "equivalency_type": "exact",
-            "confidence_level": 94,
-            "notes": "GB 25Mn and DIN 30Mn4 / 1.1146 are equivalent medium-manganese carbon steels at the higher strength class (~0.25–0.30% C). Both specify elevated C and Mn vs the 20Mn/21Mn4 base grades, delivering one strength class improvement — Rm 540–730 MPa vs 490–620 MPa. GB/T 699 specifies tighter P/S (≤0.035%) vs DIN 17200 (≤0.040%). GB 25Mn is the preferred Chinese market procurement grade."
-          },
-          {
-            "standard_1_id": 3912,
-            "standard_2_id": 3913,
-            "equivalency_type": "exact",
-            "confidence_level": 94,
-            "notes": "DIN 30Mn4 / 1.1146 and GB 25Mn are equivalent medium-manganese carbon steels at the higher strength class. Both are used for higher-load shafts, crankshafts, gears, and fasteners in Q+T or normalised condition. Minor difference in P/S: DIN ≤0.040% vs GB ≤0.035%. Specify GB 25Mn for Chinese market sourcing."
-          },
-
-          // ── GROUP 3: BETTER GRADE — 20Mn class → 25Mn class ────────────
-
-          // GB recommended upgrade first
-          {
-            "standard_1_id": 3913,
-            "standard_2_id": 161,
-            "equivalency_type": "better",
             "confidence_level": 85,
-            "notes": "GB 25Mn is the recommended Chinese-market upgrade over GB 20Mn within the GB/T 699 medium-manganese carbon steel series. Higher C (0.22–0.29% vs 0.17–0.24%) raises Rp0.2 from ≥295 MPa to ≥330 MPa and Rm from 490–620 MPa to 540–680 MPa. Same Mn range and identical P/S limits — same process, no tooling changes. Preferred GB better grade."
-          },
-          {
-            "standard_1_id": 161,
-            "standard_2_id": 3913,
-            "equivalency_type": "better",
-            "confidence_level": 85,
-            "notes": "GB 20Mn is one strength class below GB 25Mn within the GB/T 699 Mn-carbon steel series. Upgrade to 25Mn when yield strength requirements exceed 295 MPa or tensile requirements exceed 620 MPa; same Mn range and P/S limits — no process changes required."
-          },
-          {
-            "standard_1_id": 3913,
-            "standard_2_id": 3910,
-            "equivalency_type": "better",
-            "confidence_level": 83,
-            "notes": "GB 25Mn is the cross-standard upgrade over DIN 21Mn4 / 1.0469. Higher C raises yield and tensile by one class; GB 25Mn is the preferred Chinese-market better grade with very high domestic availability. Tighter P/S in GB 25Mn (≤0.035%) further improves toughness over DIN 21Mn4 (≤0.040%)."
-          },
-          {
-            "standard_1_id": 3910,
-            "standard_2_id": 3913,
-            "equivalency_type": "better",
-            "confidence_level": 83,
-            "notes": "DIN 21Mn4 / 1.0469 is one strength class below GB 25Mn. When tensile requirements exceed 610 MPa or yield exceeds 300 MPa, upgrade to GB 25Mn (or DIN 30Mn4 / 1.1146) within the same medium-manganese carbon steel family."
-          },
-          {
-            "standard_1_id": 3913,
-            "standard_2_id": 3911,
-            "equivalency_type": "better",
-            "confidence_level": 82,
-            "notes": "GB 25Mn is the cross-standard upgrade over BS EN 080A20. Higher C and tighter P/S limits deliver improved strength and toughness. GB 25Mn is the preferred Chinese-market better grade over 080A20 with highest domestic foundry and mill availability."
-          },
-          {
-            "standard_1_id": 3911,
-            "standard_2_id": 3913,
-            "equivalency_type": "better",
-            "confidence_level": 82,
-            "notes": "BS EN 080A20 is one strength class below GB 25Mn. Upgrade to GB 25Mn (or DIN 30Mn4 / 1.1146) when tensile or yield requirements exceed 080A20 capability; same medium-manganese carbon steel family with higher C for improved hardenability."
-          },
-          {
-            "standard_1_id": 3912,
-            "standard_2_id": 3910,
-            "equivalency_type": "better",
-            "confidence_level": 85,
-            "notes": "DIN 30Mn4 / 1.1146 is one strength class above DIN 21Mn4 / 1.0469 within DIN 17200 medium-manganese carbon steel series. Higher C (0.27–0.34% vs 0.18–0.25%) and Mn (0.90–1.20% vs 0.70–1.10%) raise Rm from 490–610 MPa to 590–730 MPa. Same family, no process changes required."
-          },
-          {
-            "standard_1_id": 3910,
-            "standard_2_id": 3912,
-            "equivalency_type": "better",
-            "confidence_level": 85,
-            "notes": "DIN 21Mn4 / 1.0469 is one strength class below DIN 30Mn4 / 1.1146 within DIN 17200. Upgrade to 30Mn4 (or preferably GB 25Mn for Chinese market) when strength requirements exceed 21Mn4 capability; same Mn-carbon steel family."
-          },
-          {
-            "standard_1_id": 3912,
-            "standard_2_id": 3911,
-            "equivalency_type": "better",
-            "confidence_level": 83,
-            "notes": "DIN 30Mn4 / 1.1146 is one strength class above BS EN 080A20. Higher C and Mn deliver Rm 590–730 MPa vs 080A20 460–590 MPa. Select 30Mn4 (or GB 25Mn for Chinese market) when tensile requirements exceed 080A20 capability."
-          },
-          {
-            "standard_1_id": 3911,
-            "standard_2_id": 3912,
-            "equivalency_type": "better",
-            "confidence_level": 83,
-            "notes": "BS EN 080A20 is one strength class below DIN 30Mn4 / 1.1146. Upgrade to 30Mn4 / 1.1146 (or GB 25Mn for Chinese market) when yield or tensile requirements exceed 080A20 capability within the medium-manganese carbon steel family."
+            "notes": "EN ISO 9988 POM classification standard covers both POM-H and POM-C acetal types. Delrin 500P is a specific commercial POM-H grade within ISO 9988 POM-H classification. When EN ISO 9988 POM-H type is specified, Delrin 500P (or equivalent domestic Chinese POM-H from Yunnan Yuntianhua or Shenhua Ningxia) is the direct procurement equivalent. For POM-C type per ISO 9988, specify Hostaform or Ultraform grades instead — Delrin 500P is not a POM-C equivalent."
           }
         ]
       }

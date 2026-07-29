@@ -5,10 +5,10 @@ info:
 
 http:
   method: DELETE
-  url: "{{base_url}}/basics/wps/?id=b535f242-3bcc-4109-9b51-73dca7c44c13"
+  url: "{{base_url}}/basics/wps/?id={{wps_id}}"
   params:
     - name: id
-      value: b535f242-3bcc-4109-9b51-73dca7c44c13
+      value: "{{wps_id}}"
       type: query
   auth: inherit
 
@@ -21,10 +21,10 @@ settings:
 docs: |-
   Request: Delete WPS Record
   Method: DELETE
-  URL: {{base_url}}/api/basics/wps/wps/{{wps_id}}/
+  URL: {{base_url}}/api/basics/wps/{{wps_id}}/
 
   Alternative:
-  DELETE {{base_url}}/api/basics/wps/wps/?id={{wps_id}}
+  DELETE {{base_url}}/api/basics/wps/?id={{wps_id}}
 
   Purpose:
   Deletes one WPS record.

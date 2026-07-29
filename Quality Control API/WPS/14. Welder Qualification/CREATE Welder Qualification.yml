@@ -12,15 +12,15 @@ http:
       {
         "employee": "1",
         "standard": "{{standard_id}}",
-        "welding_process": "5bab117a-7126-4a2d-a49a-c29e4fe4dbee",
-        "product_type": "fe76598f-2bdd-4790-b12b-f13498bf31da",
-        "weld_type": "fdecbff4-1d13-4a6a-84f9-d09ba921f883",
-        "material_group": "5faef834-9605-4f88-b293-247cae9ed19d",
+        "welding_process": "{{welding_process_id}}",
+        "product_type": "{{product_type_id}}",
+        "weld_type": "{{weld_type_id}}",
+        "material_group": "{{material_group_weld_id}}",
         "filler_material_type": "{{filler_material_id}}",
         "deposited_thickness": "3.6",
         "outside_diameter": "60.0",
         "welding_position": "{{welding_position_id}}",
-        "weld_detail": ["{{weld_detail_id}}"],
+        "weld_details": ["{{weld_detail_id}}"],
         "certificate_number": "TEST-CERT-0001",
         "examiner_body": "Test Examiner Body",
         "wps_reference": "TEST-WPS-0001",
@@ -44,3 +44,25 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  Request: Create Welder Qualification
+  Method: POST
+  URL: {{base_url}}/api/basics/wps/welder-qualifications/
+
+  Purpose:
+  Registers one employee qualification/certificate against a standard and welding variables.
+
+  Required Fields:
+  employee, standard, welding_process, product_type, weld_type, material_group,
+  filler_material_type, welding_position, certificate_number, date_of_test, valid_until
+
+  File Fields:
+  certificate_image, certificate_file
+
+  Important:
+  Use UPLOAD Welder Qualification Files for certificate_image or certificate_file uploads
+  after creating the qualification.
+
+  Capture:
+  welder_qualification_id = data.id

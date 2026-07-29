@@ -1,0 +1,19 @@
+info:
+  name: DETAIL Shielding Gas
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/shielding-gases/?id={{shielding_gas_id}}"
+  params:
+    - name: id
+      value: "{{shielding_gas_id}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

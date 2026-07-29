@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/basics/wps/check-welder/?id=b535f242-3bcc-4109-9b51-73dca7c44c13&employee_id=1"
+  url: "{{base_url}}/basics/wps/check-welder/?id={{wps_id}}&employee_id=1"
   params:
     - name: id
-      value: b535f242-3bcc-4109-9b51-73dca7c44c13
+      value: "{{wps_id}}"
       type: query
     - name: employee_id
       value: "1"
@@ -20,3 +20,14 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  Request: Check Welder Against WPS
+  Method: GET
+  URL: {{base_url}}/api/basics/wps/check-welder/?id={{wps_id}}&employee_id=1
+
+  Purpose:
+  Checks whether a specific employee has an active qualification matching the WPS variables.
+
+  Important:
+  This endpoint returns a direct JSON object, not the usual success/message/data envelope.

@@ -1,0 +1,27 @@
+info:
+  name: LIST Thickness Diameter Range
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/thickness-diameter-ranges/?standard=TESTSTD-1"
+  params:
+    - name: standard
+      value: TESTSTD-1
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Request: List Thickness Diameter Ranges
+  Method: GET
+  URL: {{base_url}}/api/basics/wps/thickness-diameter-ranges/?standard=TESTSTD-1
+
+  Purpose:
+  Returns qualified thickness and diameter ranges for a certification standard.

@@ -1,0 +1,18 @@
+info:
+  name: DELETE Thickness Diameter Range
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{base_url}}/basics/wps/thickness-diameter-ranges/{{thickness_range_id}}/"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,19 @@
+info:
+  name: DETAIL Validity Rule
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/validity-rules/?id={{validity_rule_id}}"
+  params:
+    - name: id
+      value: "{{validity_rule_id}}"
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

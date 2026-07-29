@@ -1,0 +1,47 @@
+info:
+  name: CREATE Shielding Gas
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/shielding-gases/"
+  body:
+    type: json
+    data: |-
+      {
+        "designation": "TM21",
+        "family": "M",
+        "composition": "82% Ar / 18% CO2",
+        "typical_application": "Created by Bruno WPS collection"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("shielding_gas_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Request: Create Shielding Gas
+  Method: POST
+  URL: {{base_url}}/api/basics/wps/shielding-gases/
+
+  Required Fields:
+  designation, family, composition
+
+  Optional Fields:
+  typical_application
+
+  Capture:
+  shielding_gas_id = data.id

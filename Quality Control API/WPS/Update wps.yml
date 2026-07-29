@@ -10,7 +10,7 @@ http:
     type: json
     data: |-
       {
-        "id": "b535f242-3bcc-4109-9b51-73dca7c44c13",
+        "id": "{{wps_id}}",
         "approved_by": "Test QA Manager (Re-approved)"
       }
   auth: inherit

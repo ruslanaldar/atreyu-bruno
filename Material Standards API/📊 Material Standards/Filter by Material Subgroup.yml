@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/basics/materials/material-standards?material_subgroup=26"
+  url: "{{base_url}}/basics/materials/material-standards?material_subgroup=26"
   headers:
     - name: Authorization
       value: Bearer {{authToken}}
@@ -13,7 +13,6 @@ http:
     - name: material_subgroup
       value: "26"
       type: query
-      description: Filter by material subgroup ID
   auth: inherit
 
 settings:

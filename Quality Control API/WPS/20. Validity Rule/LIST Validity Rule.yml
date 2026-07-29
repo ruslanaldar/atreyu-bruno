@@ -1,0 +1,27 @@
+info:
+  name: LIST Validity Rule
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/validity-rules/?standard=TESTSTD-1"
+  params:
+    - name: standard
+      value: TESTSTD-1
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Request: List Validity Rules
+  Method: GET
+  URL: {{base_url}}/api/basics/wps/validity-rules/?standard=TESTSTD-1
+
+  Purpose:
+  Returns welder qualification continuity and renewal rules for a standard.

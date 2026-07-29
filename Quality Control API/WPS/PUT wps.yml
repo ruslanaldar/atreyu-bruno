@@ -10,10 +10,11 @@ http:
     type: json
     data: |-
       {
-        "id": "b535f242-3bcc-4109-9b51-73dca7c44c13",
+        "id": "{{wps_id}}",
         "wps_number": "WPS-TEST-00001",
-        "revision": 0,
+        "revision": 1,
         "is_pwps": false,
+        "manufacturer": "Test Manufacturer Ltd.",
         "standard": "{{standard_id}}",
         "made_by": "Test Engineer1",
         "approved_by": "Test QA Manager",
@@ -21,23 +22,25 @@ http:
         "work_step": "271298",
         "examiner_body": "Test Examiner Body",
         "supporting_pqr": "TEST-PQR-0001",
-        "welding_process": "5bab117a-7126-4a2d-a49a-c29e4fe4dbee",
-        "product_type": "fe76598f-2bdd-4790-b12b-f13498bf31da",
-        "weld_type": "fdecbff4-1d13-4a6a-84f9-d09ba921f883",
-        "material_group": "5faef834-9605-4f88-b293-247cae9ed19d",
+        "welding_process": "{{welding_process_id}}",
+        "execution_type": "{{execution_type_id}}",
+        "product_type": "{{product_type_id}}",
+        "weld_type": "{{weld_type_id}}",
+        "material_group": "{{material_group_weld_id}}",
         "filler_material_type": "{{filler_material_id}}",
         "deposited_thickness": "3.6",
         "outside_diameter": "60.0",
         "welding_position": "{{welding_position_id}}",
         "weld_details": ["{{weld_detail_id}}"],
-        "joint_type": "ae8022c7-0e4b-406b-8744-3d1e5e6dbad3",
-        "execution_type": "7cde8cb4-902e-479d-adb4-30ddc7635c94",
+        "joint_type": "{{joint_type_id}}",
+        "groove_type": "{{groove_type_id}}",
         "root_opening_mm": "0-0.5 MM",
         "material_thickness": "T=4mm +2mm",
         "electrode_type": "Tungsten-Cerium",
         "electrode_diameter_mm": "2.4",
         "base_material_spec": "TEST-SPEC-001",
         "base_material_grade": "TEST-GRADE-001",
+        "shielding_gas_ref": "{{shielding_gas_id}}",
         "shielding_gas": "100% Ar",
         "gas_flow_rate": "10~15 L/min",
         "flux": "",
@@ -49,17 +52,35 @@ http:
         "runs": [
           {
             "run_number": 1,
-            "process": "5bab117a-7126-4a2d-a49a-c29e4fe4dbee",
+            "process": "{{welding_process_id}}",
             "freedom_mm": "1",
             "swing_mm": "3",
             "filler_material_type": "{{filler_material_id}}",
             "filler_product_code": "ER316L",
             "filler_diameter_mm": "2.0",
-            "current_type": "7c47d86d-e802-4082-a7bb-df21df9cf786",
+            "current_type": "{{current_type_id}}",
             "amps_min": 60,
             "amps_max": 80,
             "voltage_v": "12",
             "travel_speed": "1-1.2"
+          },
+          {
+            "run_number": 2,
+            "process": "{{welding_process_id}}",
+            "filler_material_type": "{{filler_material_id}}",
+            "filler_product_code": "ER316L",
+            "filler_diameter_mm": "2.4",
+            "current_type": "{{current_type_id}}",
+            "amps_min": 90,
+            "amps_max": 110,
+            "voltage_v": "14",
+            "travel_speed": "1.5-1.8"
+          }
+        ],
+        "inspections": [
+          {
+            "method": "{{inspection_method_id}}",
+            "extent": "100%"
           }
         ]
       }
@@ -84,7 +105,7 @@ docs: |-
   Full update of a WPS record.
 
   Important:
-  If runs is provided, existing runs are deleted and replaced by the submitted runs.
+  If runs or inspections are provided, existing child rows are deleted and replaced by the submitted rows.
   If weld_details is provided, existing weld details are replaced.
 
   Success Response:

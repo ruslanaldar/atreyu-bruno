@@ -20,27 +20,43 @@ http:
         "work_step": "271298",
         "examiner_body": "Test Examiner Body",
         "supporting_pqr": "TEST-PQR-0001",
-        "welding_process": "5bab117a-7126-4a2d-a49a-c29e4fe4dbee",
-        "product_type": "fe76598f-2bdd-4790-b12b-f13498bf31da",
-        "weld_type": "fdecbff4-1d13-4a6a-84f9-d09ba921f883",
-        "material_group": "5faef834-9605-4f88-b293-247cae9ed19d",
+        "manufacturer": "Test Manufacturer Ltd.",
+        "welding_process": "{{welding_process_id}}",
+        "product_type": "{{product_type_id}}",
+        "weld_type": "{{weld_type_id}}",
+        "material_group": "{{material_group_weld_id}}",
         "filler_material_type": "{{filler_material_id}}",
         "deposited_thickness": "3.6",
         "outside_diameter": "60.0",
         "welding_position": "{{welding_position_id}}",
         "weld_details": ["{{weld_detail_id}}"],
-        "joint_type": "ae8022c7-0e4b-406b-8744-3d1e5e6dbad3",
-        "execution_type": "7cde8cb4-902e-479d-adb4-30ddc7635c94",
+        "joint_type": "{{joint_type_id}}",
+        "groove_type": "{{groove_type_id}}",
+        "groove_angle": "60 deg",
+        "root_face_mm": "1.5",
+        "execution_type": "{{execution_type_id}}",
         "root_opening_mm": "0-0.5 MM",
         "material_thickness": "T=4mm +2mm",
         "electrode_type": "Tungsten-Cerium",
         "electrode_diameter_mm": "2.4",
         "base_material_spec": "TEST-SPEC-001",
         "base_material_grade": "TEST-GRADE-001",
+        "shielding_gas_ref": "{{shielding_gas_id}}",
         "shielding_gas": "100% Ar",
         "gas_flow_rate": "10~15 L/min",
+        "backing_gas": "Ar",
+        "backing_gas_flow_rate": "5-10 L/min",
         "flux": "",
+        "preheat_min_temp": "75 C",
+        "interpass_max_temp": "250 C",
+        "bead_technique": "Stringer bead preferred",
+        "torch_angle": "10 deg push",
+        "interpass_cleaning": "Remove oxides by brushing",
+        "welding_direction": "Left to Right",
         "weld_cleanout": "SS BRUSH",
+        "pwht_required": false,
+        "pwht_cooling_method": "AC",
+        "acceptance_criteria": "ISO 5817 - Quality Level B",
         "welding_engineer": "Test Engineer",
         "qa_qc_manager": "Test QA Manager",
         "producer_gm": "Test GM",
@@ -48,17 +64,26 @@ http:
         "runs": [
           {
             "run_number": 1,
-            "process": "5bab117a-7126-4a2d-a49a-c29e4fe4dbee",
+            "process": "{{welding_process_id}}",
             "freedom_mm": "1",
             "swing_mm": "3",
             "filler_material_type": "{{filler_material_id}}",
             "filler_product_code": "ER316L",
             "filler_diameter_mm": "2.0",
-            "current_type": "7c47d86d-e802-4082-a7bb-df21df9cf786",
+            "current_type": "{{current_type_id}}",
             "amps_min": 60,
             "amps_max": 80,
             "voltage_v": "12",
-            "travel_speed": "1-1.2"
+            "wire_feed_speed": "3.0-4.0",
+            "travel_speed": "1-1.2",
+            "heat_input": "0.8-1.0 kJ/mm"
+          }
+        ],
+        "inspections": [
+          {
+            "method": "{{inspection_method_id}}",
+            "extent": "100%",
+            "notes": "All welds"
           }
         ]
       }
@@ -83,7 +108,8 @@ docs: |-
   URL: {{base_url}}/api/basics/wps/
 
   Purpose:
-  Creates one WPS record for one workstep. work_step is required.
+  Creates one WPS record for one workstep, including nested run and inspection rows.
+  work_step is required.
 
   Required Fields:
   wps_number, standard, work_step, welding_process, product_type, weld_type,
@@ -91,11 +117,12 @@ docs: |-
 
   Optional Fields:
   revision, is_pwps, made_by, approved_by, date, examiner_body, supporting_pqr,
-  weld_details, client, technical fields, runs
+  weld_details, client, technical fields, runs, inspections, image, wps_file
 
   Important:
   weld_details maps to the WPS model field weld_detail.
-  runs are nested. If omitted, WPS is created without run rows.
+  runs and inspections are nested. If omitted, WPS is created without those child rows.
+  Use UPLOAD wps files for image or wps_file uploads after creating the WPS.
 
   Capture:
   wps_id = data.id

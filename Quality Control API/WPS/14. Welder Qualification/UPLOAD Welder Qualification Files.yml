@@ -1,0 +1,47 @@
+info:
+  name: UPLOAD Welder Qualification Files
+  type: http
+  seq: 9
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/wps/welder-qualifications/"
+  body:
+    type: multipart-form
+    data:
+      - name: id
+        type: text
+        value: "{{welder_qualification_id}}"
+      - name: certificate_image
+        type: file
+        value:
+          - Parts Management API/6. Work Steps/image1.jpg
+      - name: certificate_file
+        type: file
+        value: []
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Request: Upload Welder Qualification Files
+  Method: PATCH
+  URL: {{base_url}}/api/basics/wps/welder-qualifications/
+
+  Body Type:
+  multipart-form
+
+  Required Field:
+  id = welder qualification id
+
+  File Fields:
+  certificate_image = image preview of the certificate
+  certificate_file = original certificate document, such as PDF or scan
+
+  Important:
+  Use multipart-form whenever uploading certificate_image or certificate_file.
+  The id stays in the form body because this endpoint updates by body id.

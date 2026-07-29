@@ -1,0 +1,47 @@
+info:
+  name: CREATE Filler Material Classification
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/filler-material-classifications/"
+  body:
+    type: json
+    data: |-
+      {
+        "base_material_desc": "S235 / S275 / S355",
+        "welding_process_label": "MAG (135)",
+        "classification": "G 42 4 M21 G3Si1",
+        "filler_standard": "ISO 14341-A"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("filler_classification_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Request: Create Filler Material Classification
+  Method: POST
+  URL: {{base_url}}/api/basics/wps/filler-material-classifications/
+
+  Required Fields:
+  base_material_desc, welding_process_label, classification
+
+  Optional Fields:
+  filler_standard
+
+  Capture:
+  filler_classification_id = data.id

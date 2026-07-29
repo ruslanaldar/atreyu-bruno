@@ -1,0 +1,49 @@
+info:
+  name: CREATE Thickness Diameter Range
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/thickness-diameter-ranges/"
+  body:
+    type: json
+    data: |-
+      {
+        "standard": "{{standard_id}}",
+        "test_condition": "BW thickness 3 <= s < 12 mm",
+        "test_value": "s",
+        "min_qualified": "3",
+        "max_qualified": "2s",
+        "notes": "Created by Bruno WPS collection"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("thickness_range_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Request: Create Thickness Diameter Range
+  Method: POST
+  URL: {{base_url}}/api/basics/wps/thickness-diameter-ranges/
+
+  Required Fields:
+  standard, test_condition, test_value, min_qualified, max_qualified
+
+  Optional Fields:
+  notes
+
+  Capture:
+  thickness_range_id = data.id

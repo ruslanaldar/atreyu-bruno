@@ -1,0 +1,7 @@
+info:
+  name: 17. Inspection Method
+  type: folder
+  seq: 17
+
+request:
+  auth: inherit

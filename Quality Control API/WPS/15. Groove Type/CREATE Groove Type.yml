@@ -1,23 +1,23 @@
 info:
-  name: CREATE joint type
+  name: CREATE Groove Type
   type: http
   seq: 2
 
 http:
   method: POST
-  url: "{{base_url}}/basics/wps/joint-types/"
+  url: "{{base_url}}/basics/wps/groove-types/"
   body:
     type: multipart-form
     data:
       - name: code
         type: text
-        value: TEX
+        value: TGV
       - name: name
         type: text
-        value: Test Joint Type
+        value: Test Single V-groove
       - name: description
         type: text
-        value: Created by admin
+        value: Created by Bruno WPS collection
       - name: status
         type: text
         value: active
@@ -33,7 +33,7 @@ runtime:
       code: |-
         var data = res.getBody();
         if (data.data){
-          bru.setEnvVar("joint_type_id", data.data.id)
+          bru.setEnvVar("groove_type_id", data.data.id)
         }
 
 settings:
@@ -43,12 +43,9 @@ settings:
   maxRedirects: 5
 
 docs: |-
-  Request: Create Joint Type
+  Request: Create Groove Type
   Method: POST
-  URL: {{base_url}}/api/basics/wps/joint-types/
-
-  Body Type:
-  multipart-form
+  URL: {{base_url}}/api/basics/wps/groove-types/
 
   Required Fields:
   code, name, image
@@ -57,4 +54,4 @@ docs: |-
   description, status
 
   Capture:
-  joint_type_id = data.id
+  groove_type_id = data.id

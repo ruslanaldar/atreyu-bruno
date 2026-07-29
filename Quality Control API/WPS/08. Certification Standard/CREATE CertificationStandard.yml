@@ -7,18 +7,36 @@ http:
   method: POST
   url: "{{base_url}}/basics/wps/standards/"
   body:
-    type: json
-    data: |-
-      {
-        "code": "TESTSTD-2",
-        "name": "Test Standard 2:2026",
-        "family": "{{std_family_id}}",
-        "series": "1",
-        "designation_format": "4e12c072-a860-4909-b93a-0aea1976736a",
-        "material_scope": "Test materials",
-        "country_region": "Testland",
-        "status": "active"
-      }
+    type: multipart-form
+    data:
+      - name: code
+        type: text
+        value: TESTSTD-2
+      - name: name
+        type: text
+        value: Test Standard 2:2026
+      - name: family
+        type: text
+        value: "{{std_family_id}}"
+      - name: series
+        type: text
+        value: "1"
+      - name: designation_format
+        type: text
+        value: "{{std_format_id}}"
+      - name: material_scope
+        type: text
+        value: Test materials
+      - name: country_region
+        type: text
+        value: Testland
+      - name: status
+        type: text
+        value: active
+      - name: image
+        type: file
+        value:
+          - Parts Management API/6. Work Steps/image1.jpg
   auth: inherit
 
 runtime:
@@ -35,3 +53,20 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+
+docs: |-
+  Request: Create Certification Standard
+  Method: POST
+  URL: {{base_url}}/api/basics/wps/standards/
+
+  Body Type:
+  multipart-form
+
+  Required Fields:
+  code, name, family, designation_format, image
+
+  Optional Fields:
+  series, material_scope, country_region, status
+
+  Capture:
+  standard_id = data.id

@@ -1,0 +1,48 @@
+info:
+  name: CREATE Validity Rule
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/wps/validity-rules/"
+  body:
+    type: json
+    data: |-
+      {
+        "standard": "{{standard_id}}",
+        "rule": "6-month activity",
+        "continuity_check": "Every 6 months",
+        "formal_renewal": "Every 2 years",
+        "details": "Created by Bruno WPS collection"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data.data){
+          bru.setEnvVar("validity_rule_id", data.data.id)
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Request: Create Validity Rule
+  Method: POST
+  URL: {{base_url}}/api/basics/wps/validity-rules/
+
+  Required Fields:
+  standard, rule
+
+  Optional Fields:
+  continuity_check, formal_renewal, details
+
+  Capture:
+  validity_rule_id = data.id

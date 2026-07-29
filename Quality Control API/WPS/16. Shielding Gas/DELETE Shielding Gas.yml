@@ -1,0 +1,18 @@
+info:
+  name: DELETE Shielding Gas
+  type: http
+  seq: 4
+
+http:
+  method: DELETE
+  url: "{{base_url}}/basics/wps/shielding-gases/{{shielding_gas_id}}/"
+  body:
+    type: json
+    data: ""
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
