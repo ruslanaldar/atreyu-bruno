@@ -15,24 +15,55 @@ http:
     type: json
     data: |-
       // ════════════════════════════════════════════════════════════════════
-      // BATCH 1 — POM EQUIVALENCIES
-      // Delrin 500P POM-H (3936) ↔ EN ISO 9988 POM (3937)
+      // BATCH 2 — STAINLESS SPRING WIRE EQUIVALENCIES
+      // ASTM 302CRE (3938) ↔ EN 1.4310 (3939) ↔ GB S30210 (3940)
       // ════════════════════════════════════════════════════════════════════
       {
         "equivalencies": [
+          // ── GROUP 1: CROSS-STANDARD PAIRS — 302 family spring wire ───────
+
+          // GB FIRST
           {
-            "standard_1_id": 3936,
-            "standard_2_id": 3937,
+            "standard_1_id": 3940,
+            "standard_2_id": 3938,
             "equivalency_type": "approximate",
-            "confidence_level": 85,
-            "notes": "Delrin 500P is DuPont's commercial POM homopolymer (POM-H) grade; EN ISO 9988 POM is the governing European/international classification standard covering both POM-H and POM-C types. Delrin 500P falls within the POM-H classification of ISO 9988. Key differences: POM-H (Delrin 500P) has higher tensile yield (~69 MPa vs ~60 MPa for POM-C), higher melting point (~178°C vs ~165°C), superior fatigue and creep resistance, but lower notched impact toughness and acid resistance vs POM-C. Approximate equivalency as ISO 9988 POM-H type — exact equivalence depends on which ISO 9988 sub-classification is specified."
+            "confidence_level": 90,
+            "notes": "GB/T 24588 S30210 and ASTM A313 302CRE are equivalent Type 302-family austenitic stainless spring wires. Both achieve high tensile strength (1450–2000 MPa) via cold drawing and deformation-induced martensite. Composition differences: GB S30210 specifies tighter P (≤0.035% vs ≤0.045%) and S (≤0.020% vs ≤0.030%) improving fatigue life; Cr ranges are identical (17.0–19.0%); Ni ranges overlap (GB 7.0–10.0% vs ASTM 8.0–10.0%). Tensile strength classes are equivalent for equivalent wire diameters. S30210 is the preferred Chinese market procurement grade per GB/T 24588."
           },
           {
-            "standard_1_id": 3937,
-            "standard_2_id": 3936,
+            "standard_1_id": 3940,
+            "standard_2_id": 3939,
             "equivalency_type": "approximate",
-            "confidence_level": 85,
-            "notes": "EN ISO 9988 POM classification standard covers both POM-H and POM-C acetal types. Delrin 500P is a specific commercial POM-H grade within ISO 9988 POM-H classification. When EN ISO 9988 POM-H type is specified, Delrin 500P (or equivalent domestic Chinese POM-H from Yunnan Yuntianhua or Shenhua Ningxia) is the direct procurement equivalent. For POM-C type per ISO 9988, specify Hostaform or Ultraform grades instead — Delrin 500P is not a POM-C equivalent."
+            "confidence_level": 92,
+            "notes": "GB/T 24588 S30210 and EN 10270-3 1.4310 (X10CrNi18-8) are the closest equivalents in this family — both derived from Type 301/302 higher-C stainless for spring wire. C ranges overlap (GB 0.07–0.15% vs EN 0.05–0.15%); Cr aligned (GB 17.0–19.0% vs EN 16.0–19.0%); Ni ranges comparable (GB 7.0–10.0% vs EN 6.0–9.5%). EN 10270-3 specifies tighter S (≤0.015%) vs GB (≤0.020%) giving marginally better fatigue life in EN material. Tensile strength classes VHS (EN) and GB/T 24588 strength classes are equivalent for same wire diameters. S30210 is the preferred Chinese market equivalent to 1.4310."
+          },
+          {
+            "standard_1_id": 3938,
+            "standard_2_id": 3940,
+            "equivalency_type": "approximate",
+            "confidence_level": 90,
+            "notes": "ASTM A313 302CRE and GB/T 24588 S30210 are equivalent Type 302-family cold-drawn stainless spring wires. ASTM A313 CRE (Cold Rolled Extra) is the highest cold-work condition in ASTM A313 comparable to GB/T 24588 highest strength class. Key differences: ASTM allows looser S (≤0.030% vs GB ≤0.020%) and P (≤0.045% vs GB ≤0.035%), giving GB S30210 slightly better fatigue performance. Tensile ranges and spring design parameters (G ~69 GPa) are equivalent. For Chinese market sourcing specify GB/T 24588 S30210."
+          },
+          {
+            "standard_1_id": 3938,
+            "standard_2_id": 3939,
+            "equivalency_type": "approximate",
+            "confidence_level": 91,
+            "notes": "ASTM A313 302CRE and EN 10270-3 1.4310 are equivalent austenitic stainless spring wires in the Type 301/302 higher-C family. Both achieve equivalent tensile strength classes via cold drawing to deformation-induced martensite. Composition differences: EN 1.4310 has lower Ni minimum (6.0% vs 8.0%) giving more metastable austenite and higher martensite content at equivalent cold reduction — slightly higher hardness potential; EN specifies tighter S (≤0.015% vs ≤0.030%) giving better fatigue life. ASTM designates temper as CRE; EN uses strength class NS/HS/VHS per Table 4. Both are appropriate for the same spring applications."
+          },
+          {
+            "standard_1_id": 3939,
+            "standard_2_id": 3940,
+            "equivalency_type": "approximate",
+            "confidence_level": 92,
+            "notes": "EN 10270-3 1.4310 and GB/T 24588 S30210 are the closest cross-standard equivalent pair in this family. Composition, strength class, and spring application scope are virtually identical. EN 10270-3 specifies slightly tighter S (≤0.015% vs ≤0.020%) giving marginally better fatigue life. Cr ranges nearly identical; Ni ranges overlap. For Chinese market procurement specify GB/T 24588 S30210 — produced by all major Chinese spring wire mills with very high domestic availability."
+          },
+          {
+            "standard_1_id": 3939,
+            "standard_2_id": 3938,
+            "equivalency_type": "approximate",
+            "confidence_level": 91,
+            "notes": "EN 10270-3 1.4310 and ASTM A313 302CRE are equivalent stainless spring wire standards in the Type 301/302 higher-C cold-drawn family. EN 10270-3 specifies tighter S (≤0.015%) and slightly lower Ni minimum (6.0%), giving marginally better fatigue life and higher deformation-martensite content vs ASTM 302 CRE. Tensile strength classes are equivalent for the same wire diameters. EN 10270-3 replaces DIN 17223-2; ASTM A313 is the North American equivalent."
           }
         ]
       }

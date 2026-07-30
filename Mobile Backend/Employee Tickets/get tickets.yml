@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/employee-time-tickets/313/"
+  url: "{{base_url}}/mobile/timetickets/employee-time-tickets/313/"
   auth: inherit
 
 settings:

@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/employee-time-tickets/?emp_id=313&id=ett_b30b96e266b049e7"
+  url: "{{base_url}}/mobile/timetickets/employee-time-tickets/?emp_id=313&id=ett_b30b96e266b049e7"
   params:
     - name: emp_id
       value: "313"
