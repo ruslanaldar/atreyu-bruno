@@ -1,0 +1,7 @@
+info:
+  name: Employee Tickets
+  type: folder
+  seq: 19
+
+request:
+  auth: inherit

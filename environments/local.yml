@@ -6,3 +6,5 @@ variables:
     name: token
   - secret: true
     name: refresh_token
+  - name: task_id
+    value: 70c22fa0-0bba-4927-97dd-1e125a855f9b
