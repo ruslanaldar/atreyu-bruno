@@ -1,0 +1,15 @@
+info:
+  name: Filter by date range + status
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/mobile/timetickets/employee-tz/?emp_id=313&start_date=2026-07-30&end_date=2026-08-03&status=active&page=1&quantity=20"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

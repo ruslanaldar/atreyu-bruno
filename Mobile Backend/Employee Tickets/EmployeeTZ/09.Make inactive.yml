@@ -1,0 +1,21 @@
+info:
+  name: Make inactive tz
+  type: http
+  seq: 9
+
+http:
+  method: PATCH
+  url: "{{base_url}}/mobile/timetickets/employee-tz/{{employee_tz_id}}/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  This request is used to make an employee's time zone entry inactive. 
+  It sends a PATCH request to the specified URL with the employee's ID 
+  and updates the status to "inactive" along with a description explaining 
+  the reason for the change.
