@@ -10,7 +10,7 @@ http:
     type: json
     data: |-
       {
-      "tz_number": "ett_c350cd0fc35fc0f6_a72ak",
+      "tz_number": "ett_c350cd0fc35fc0f6_a72ak1",
       "employee": 313,
       "emp_id": "313",
       "emp_name": "Tang Jixiao",
@@ -43,8 +43,8 @@ runtime:
     - type: after-response
       code: |-
         var data = res.getBody();
-        if (data && data.length > 0) {
-          bru.setEnvVar('id', data.id);
+        if (data) {
+          bru.setEnvVar('employee_tz_id', data.id);
         }
 
 settings:

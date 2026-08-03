@@ -5,10 +5,10 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/organization/categories/hr/employee-tz/?id=8608ff8d-4e1f-41df-9afc-2d305b4a00c8"
+  url: "{{base_url}}/organization/categories/hr/employee-tz/?id={{employee_tz_id}}"
   params:
     - name: id
-      value: 8608ff8d-4e1f-41df-9afc-2d305b4a00c8
+      value: "{{employee_tz_id}}"
       type: query
   auth: inherit
 

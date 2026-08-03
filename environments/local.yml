@@ -8,3 +8,5 @@ variables:
     name: refresh_token
   - name: task_id
     value: 132aa64f-1c1f-4b7e-afb3-344a27087eb3
+  - name: employee_tz_id
+    value: bfba56b5-8fb3-47d2-8c3d-5d1396c4ab74
