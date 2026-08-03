@@ -1,0 +1,59 @@
+info:
+  name: CREATE EmployeeTZ registration
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/organization/categories/hr/employee-tz/"
+  body:
+    type: json
+    data: |-
+      {
+      "tz_number": "ett_c350cd0fc35fc0f6_a72ak",
+      "employee": 313,
+      "emp_id": "313",
+      "emp_name": "Tang Jixiao",
+      "source_ett_id": "ett_c350cd0fc35fc0f6",
+      "wskey": "your_wskey_here",
+      "production_date": "2026-07-29",
+      "start_time": "2026-07-29T08:00:00",
+      "end_time": "2026-07-29T20:00:00",
+      "container_no": "ed190",
+      "main_no": "60001794",
+      "sub_no": "59506122",
+      "center_code": "l01",
+      "station_code": "l0101",
+      "location": "station location here",
+      "total_time": "720.00",
+      "planned_qty": "1.00",
+      "registered_qty": "1.00",
+      "status": "active",
+      "description": "Registered from mobile time ticket",
+      "source_payload": {
+        "id": "ett_c350cd0fc35fc0f6",
+        "date": "2026-07-29",
+        "container_no": "ed190"
+        }
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data && data.length > 0) {
+          bru.setEnvVar('id', data.id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  This request creates a new Employee Time Zone (EmployeeTZ) registration in the system. It requires various details about the employee, the time zone, and related information. The request is sent as a POST request to the specified URL with the necessary data in JSON format.
+
+  After the response is received, if the response contains data, it extracts the 'id' of the newly created EmployeeTZ and sets it as an environment variable 'employee_tz_id' for use in subsequent requests.

@@ -1,0 +1,49 @@
+info:
+  name: Partial Update Record
+  type: http
+  seq: 8
+
+http:
+  method: PATCH
+  url: "{{base_url}}/organization/categories/hr/employee-tz/8608ff8d-4e1f-41df-9afc-2d305b4a00c8/"
+  body:
+    type: json
+    data: |-
+      {
+        "registered_qty": 10,
+        "satus": "active",
+        "description": "Updated description for the employee TZ record."
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  This request is used to partially update an existing employee time zone (TZ) record in the system. The request uses the HTTP PATCH method to modify specific fields of the record identified by its unique ID.
+
+  **Request URL:**
+  ```
+  {{base_url}}/organization/categories/hr/employee-tz/{{id}}/
+  ```
+
+  **Request Body:**
+  The request body should be in JSON format and can include any of the following fields to update:
+  - `registered_qty`: The updated quantity of registered time zones.
+  - `status`: The updated status of the employee TZ record (e.g., "active", "inactive").
+  - `description`: A brief description or notes about the employee TZ record.
+
+  **Example Request Body:**
+  ```json
+  {
+    "registered_qty": 10,
+    "status": "active",
+    "description": "Updated description for the employee TZ record."
+  }
+  ```
+
+  **Response:**
+  A successful response will return a status code of `200 OK` along with the updated employee TZ record in JSON format. If the record does not exist or if there are validation errors, appropriate error messages will be returned.

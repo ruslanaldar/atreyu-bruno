@@ -15,55 +15,107 @@ http:
     type: json
     data: |-
       // ════════════════════════════════════════════════════════════════════
-      // BATCH 2 — STAINLESS SPRING WIRE EQUIVALENCIES
-      // ASTM 302CRE (3938) ↔ EN 1.4310 (3939) ↔ GB S30210 (3940)
+      // BATCH 2 — 6063 O / 6061 O ALUMINIUM
+      // EN AW-6063-O (3953) ↔ GB 6063-O (3954)
+      // Better: EN AW-6061-O (3955) ↔ GB 6061-O (3956)
       // ════════════════════════════════════════════════════════════════════
       {
         "equivalencies": [
-          // ── GROUP 1: CROSS-STANDARD PAIRS — 302 family spring wire ───────
+          // ── GROUP 1: EXACT — 6063 O class ───────────────────────────────
 
           // GB FIRST
           {
-            "standard_1_id": 3940,
-            "standard_2_id": 3938,
-            "equivalency_type": "approximate",
-            "confidence_level": 90,
-            "notes": "GB/T 24588 S30210 and ASTM A313 302CRE are equivalent Type 302-family austenitic stainless spring wires. Both achieve high tensile strength (1450–2000 MPa) via cold drawing and deformation-induced martensite. Composition differences: GB S30210 specifies tighter P (≤0.035% vs ≤0.045%) and S (≤0.020% vs ≤0.030%) improving fatigue life; Cr ranges are identical (17.0–19.0%); Ni ranges overlap (GB 7.0–10.0% vs ASTM 8.0–10.0%). Tensile strength classes are equivalent for equivalent wire diameters. S30210 is the preferred Chinese market procurement grade per GB/T 24588."
+            "standard_1_id": 3954,
+            "standard_2_id": 3953,
+            "equivalency_type": "exact",
+            "confidence_level": 98,
+            "notes": "GB 6063 O and EN AW-6063 O are equivalent AlMg0.7Si alloys in fully annealed condition. Both governed by their respective standards (GB/T 3190 / GB/T 6892 and EN 573-3 / EN 485) with identical composition limits: Mg 0.45–0.90%, Si 0.20–0.60%, Fe ≤0.35%, Cu ≤0.10%, Mn ≤0.10%, Ti ≤0.10%, Zn ≤0.10%. O temper properties are identical — Rp0.2 ≥25 MPa, Rm 90–150 MPa, A5 ≥16%. Same annealing treatment and microstructure. GB 6063 O is the preferred Chinese market procurement grade."
           },
           {
-            "standard_1_id": 3940,
-            "standard_2_id": 3939,
-            "equivalency_type": "approximate",
-            "confidence_level": 92,
-            "notes": "GB/T 24588 S30210 and EN 10270-3 1.4310 (X10CrNi18-8) are the closest equivalents in this family — both derived from Type 301/302 higher-C stainless for spring wire. C ranges overlap (GB 0.07–0.15% vs EN 0.05–0.15%); Cr aligned (GB 17.0–19.0% vs EN 16.0–19.0%); Ni ranges comparable (GB 7.0–10.0% vs EN 6.0–9.5%). EN 10270-3 specifies tighter S (≤0.015%) vs GB (≤0.020%) giving marginally better fatigue life in EN material. Tensile strength classes VHS (EN) and GB/T 24588 strength classes are equivalent for same wire diameters. S30210 is the preferred Chinese market equivalent to 1.4310."
+            "standard_1_id": 3953,
+            "standard_2_id": 3954,
+            "equivalency_type": "exact",
+            "confidence_level": 98,
+            "notes": "EN AW-6063 O and GB 6063 O are equivalent AlMg0.7Si alloys in fully annealed condition per EN 573-3 and GB/T 3190 respectively. Composition, O temper mechanical properties, and application scope are identical. Full technical interchangeability; specify GB 6063 O for Chinese market sourcing with very high domestic availability."
+          },
+
+          // ── GROUP 2: EXACT — 6061 O class ───────────────────────────────
+
+          // GB FIRST
+          {
+            "standard_1_id": 3956,
+            "standard_2_id": 3955,
+            "equivalency_type": "exact",
+            "confidence_level": 97,
+            "notes": "GB 6061 O and EN AW-6061 O are equivalent AlMg1SiCu alloys in fully annealed condition. Both governed by GB/T 3190 / GB/T 6892 and EN 573-3 / EN 485 with identical composition: Mg 0.80–1.20%, Si 0.40–0.80%, Cu 0.15–0.40%, Cr 0.04–0.35%, Fe ≤0.70%, Mn ≤0.15%. O temper mechanical properties are equivalent — Rp0.2 ≥55 MPa, Rm 125–180 MPa, A5 ≥16%. GB 6061 O is the preferred Chinese market grade."
           },
           {
-            "standard_1_id": 3938,
-            "standard_2_id": 3940,
-            "equivalency_type": "approximate",
-            "confidence_level": 90,
-            "notes": "ASTM A313 302CRE and GB/T 24588 S30210 are equivalent Type 302-family cold-drawn stainless spring wires. ASTM A313 CRE (Cold Rolled Extra) is the highest cold-work condition in ASTM A313 comparable to GB/T 24588 highest strength class. Key differences: ASTM allows looser S (≤0.030% vs GB ≤0.020%) and P (≤0.045% vs GB ≤0.035%), giving GB S30210 slightly better fatigue performance. Tensile ranges and spring design parameters (G ~69 GPa) are equivalent. For Chinese market sourcing specify GB/T 24588 S30210."
+            "standard_1_id": 3955,
+            "standard_2_id": 3956,
+            "equivalency_type": "exact",
+            "confidence_level": 97,
+            "notes": "EN AW-6061 O and GB 6061 O are equivalent AlMg1SiCu alloys in fully annealed condition per EN 573-3 and GB/T 3190 respectively. Composition limits and O temper mechanical properties are identical. Full technical interchangeability; specify GB 6061 O for Chinese market sourcing."
+          },
+
+          // ── GROUP 3: BETTER GRADE — 6063 O → 6061 O ─────────────────────
+          // Higher strength, higher aged performance at cost of surface/extrudability
+
+          // GB FIRST
+          {
+            "standard_1_id": 3956,
+            "standard_2_id": 3954,
+            "equivalency_type": "better",
+            "confidence_level": 88,
+            "notes": "GB 6061 O is the recommended Chinese-market upgrade over GB 6063 O. In O temper: 6061 O has higher Rm (125–180 MPa vs 90–150 MPa) and Rp0.2 (≥55 vs ≥25 MPa) due to higher Mg (0.80–1.20% vs 0.45–0.90%), Si (0.40–0.80% vs 0.20–0.60%), and Cu addition (0.15–0.40% absent in 6063). In aged condition (T6), the advantage is decisive: 6061 T6 Rp0.2 ≥276 MPa vs 6063 T6 ≥150 MPa. Trade-offs: 6061 has lower corrosion resistance, lower electrical conductivity, reduced anodising quality, and reduced extrudability vs 6063. Select 6061 when structural strength is the primary requirement."
           },
           {
-            "standard_1_id": 3938,
-            "standard_2_id": 3939,
-            "equivalency_type": "approximate",
-            "confidence_level": 91,
-            "notes": "ASTM A313 302CRE and EN 10270-3 1.4310 are equivalent austenitic stainless spring wires in the Type 301/302 higher-C family. Both achieve equivalent tensile strength classes via cold drawing to deformation-induced martensite. Composition differences: EN 1.4310 has lower Ni minimum (6.0% vs 8.0%) giving more metastable austenite and higher martensite content at equivalent cold reduction — slightly higher hardness potential; EN specifies tighter S (≤0.015% vs ≤0.030%) giving better fatigue life. ASTM designates temper as CRE; EN uses strength class NS/HS/VHS per Table 4. Both are appropriate for the same spring applications."
+            "standard_1_id": 3954,
+            "standard_2_id": 3956,
+            "equivalency_type": "better",
+            "confidence_level": 88,
+            "notes": "GB 6063 O is the lower-strength architectural/forming grade relative to GB 6061 O. 6063 O offers superior anodising quality, higher electrical conductivity (~58% vs ~50% IACS), better extrudability for complex thin-wall profiles, and better corrosion resistance. Upgrade to 6061 O (or 6061 T6) when structural yield requirements exceed 150 MPa (T6 equivalent) or when Cr-bearing grain structure suppression is required for fatigue applications."
           },
           {
-            "standard_1_id": 3939,
-            "standard_2_id": 3940,
-            "equivalency_type": "approximate",
-            "confidence_level": 92,
-            "notes": "EN 10270-3 1.4310 and GB/T 24588 S30210 are the closest cross-standard equivalent pair in this family. Composition, strength class, and spring application scope are virtually identical. EN 10270-3 specifies slightly tighter S (≤0.015% vs ≤0.020%) giving marginally better fatigue life. Cr ranges nearly identical; Ni ranges overlap. For Chinese market procurement specify GB/T 24588 S30210 — produced by all major Chinese spring wire mills with very high domestic availability."
+            "standard_1_id": 3956,
+            "standard_2_id": 3953,
+            "equivalency_type": "better",
+            "confidence_level": 87,
+            "notes": "GB 6061 O is the cross-standard upgrade over EN AW-6063 O. Higher Mg, Si, and Cu addition in 6061 gives superior O temper strength (Rm 125–180 vs 90–150 MPa) and dramatically higher aged strength (T6: Rp0.2 ≥276 vs ≥150 MPa). For Chinese market projects requiring structural performance beyond 6063 capability, GB 6061 O is the preferred domestic better grade with high mill availability."
           },
           {
-            "standard_1_id": 3939,
-            "standard_2_id": 3938,
-            "equivalency_type": "approximate",
-            "confidence_level": 91,
-            "notes": "EN 10270-3 1.4310 and ASTM A313 302CRE are equivalent stainless spring wire standards in the Type 301/302 higher-C cold-drawn family. EN 10270-3 specifies tighter S (≤0.015%) and slightly lower Ni minimum (6.0%), giving marginally better fatigue life and higher deformation-martensite content vs ASTM 302 CRE. Tensile strength classes are equivalent for the same wire diameters. EN 10270-3 replaces DIN 17223-2; ASTM A313 is the North American equivalent."
+            "standard_1_id": 3953,
+            "standard_2_id": 3956,
+            "equivalency_type": "better",
+            "confidence_level": 87,
+            "notes": "EN AW-6063 O is the lower-strength architectural grade relative to GB 6061 O. Upgrade to 6061 O (or EN AW-6061 O for European supply) when yield requirements in aged condition exceed 6063 T6 capability (≥150 MPa Rp0.2). 6063 O retains advantage in anodising quality, electrical conductivity, and extrudability for complex profiles."
+          },
+          {
+            "standard_1_id": 3955,
+            "standard_2_id": 3954,
+            "equivalency_type": "better",
+            "confidence_level": 87,
+            "notes": "EN AW-6061 O is the structural upgrade over GB 6063 O. Higher Mg, Si, and Cu content gives superior O temper and aged strength. In T6 condition, 6061 delivers Rp0.2 ≥276 MPa vs 6063 T6 ≥150 MPa — an 84% yield strength increase. Trade-off: 6061 has lower surface quality, extrudability, and corrosion resistance vs 6063. Select when structural loading governs design."
+          },
+          {
+            "standard_1_id": 3954,
+            "standard_2_id": 3955,
+            "equivalency_type": "better",
+            "confidence_level": 87,
+            "notes": "GB 6063 O is the lower-strength architectural/forming grade relative to EN AW-6061 O. Upgrade to EN AW-6061 O (or GB 6061 O for Chinese market) when structural strength requirements exceed 6063 T6 capability; 6063 retains advantage for architectural, decorative, and electrical conductor applications where surface quality and extrudability govern."
+          },
+          {
+            "standard_1_id": 3955,
+            "standard_2_id": 3953,
+            "equivalency_type": "better",
+            "confidence_level": 88,
+            "notes": "EN AW-6061 O is the structural upgrade over EN AW-6063 O within the EN 6xxx wrought aluminium family. Higher Mg (0.80–1.20% vs 0.45–0.90%), Si (0.40–0.80% vs 0.20–0.60%), and Cu addition (0.15–0.40%) raises O temper strength and delivers T6 Rp0.2 ≥276 MPa vs 6063 T6 ≥150 MPa. Trade-offs: reduced extrudability, anodising quality, and corrosion resistance vs 6063. For Chinese market, prefer GB 6061 O."
+          },
+          {
+            "standard_1_id": 3953,
+            "standard_2_id": 3955,
+            "equivalency_type": "better",
+            "confidence_level": 88,
+            "notes": "EN AW-6063 O is one structural strength class below EN AW-6061 O within the EN 6xxx alloy family. Upgrade to 6061 O (T6 target: Rp0.2 ≥276 MPa) when yield requirements exceed 6063 T6 capability (≥150 MPa); retain 6063 for architectural profiles, decorative anodising, heat sinks, and electrical conductor applications where surface quality and extrudability are primary."
           }
         ]
       }
