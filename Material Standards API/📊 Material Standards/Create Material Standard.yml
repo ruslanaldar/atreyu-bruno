@@ -15,225 +15,184 @@ http:
     type: json
     data: |-
       {
-        "material_group_id": 14,
-        "material_subgroup_id": 33,
+        "material_group_id": 13,
+        "material_subgroup_id": 25,
         "organization_id": 7,
-        "standard_number": "6061 O",
-        "description": "Heat-treatable wrought aluminium-magnesium-silicon-copper alloy per GB/T 3190 and GB/T 6892; full designation: GB 6061 O. AlMg1SiCu composition in fully annealed (O) temper. Chinese equivalent to EN AW-6061 O. 6061 is the primary structural aluminium alloy in China for engineering applications requiring higher strength than 6063 — higher Mg (0.8–1.2%), Si (0.4–0.8%), and Cu (0.15–0.40%) deliver Rp0.2 ≥276 MPa in T6 condition. O temper provides maximum ductility for cold forming, deep drawing, tube bending, and machining operations before subsequent T4 or T6 heat treatment. Preferred Chinese-market better grade over 6063-O for structural applications.",
-        "material_price_kg": 2.70,
-        "density_kg_m3": 2700.0,
+        "standard_number": "30Mn2",
+        "description": "GB/T 3077 manganese alloy structural steel, ~0.30%C ~1.6%Mn. Q+T shafts/gears. Chinese counterpart to 30Mn5; strength upgrade over 20Mn2.",
+        "material_price_kg": null,
+        "density_kg_m3": 7850.0,
         "chemical_composition": {
-          "aluminum": {
-            "name": "Aluminum",
-            "symbol": "Al",
+          "carbon": {
+            "name": "Carbon",
+            "symbol": "C",
             "unit": "% (wt)",
-            "typical_range": { "min": 95.8, "max": 98.6 },
-            "effect": "Base metal; same as EN AW-6061 O per GB/T 3190.",
-            "value": "Balance",
-            "specification": "Balance",
-            "test_method": "GB/T 7999"
-          },
-          "magnesium": {
-            "name": "Magnesium",
-            "symbol": "Mg",
-            "unit": "% (wt)",
-            "typical_range": { "min": 0.80, "max": 1.20 },
-            "effect": "Primary strengthener; same range as EN AW-6061. Higher Mg vs GB 6063 (0.45–0.90%) gives superior T6 strength.",
-            "value": "0.80–1.20%",
-            "specification": "0.80–1.20%",
-            "test_method": "GB/T 7999"
+            "typical_range": {
+              "min": 0.0,
+              "max": 0.6
+            },
+            "effect": "Primary hardness/strength driver.",
+            "value": "0.27-0.34",
+            "specification": null,
+            "test_method": "ASTM E1019"
           },
           "silicon": {
             "name": "Silicon",
             "symbol": "Si",
             "unit": "% (wt)",
-            "typical_range": { "min": 0.40, "max": 0.80 },
-            "effect": "Higher Si vs GB 6063; more Mg2Si for T6 precipitation hardening.",
-            "value": "0.40–0.80%",
-            "specification": "0.40–0.80%",
-            "test_method": "GB/T 7999"
-          },
-          "copper": {
-            "name": "Copper",
-            "symbol": "Cu",
-            "unit": "% (wt)",
-            "typical_range": { "min": 0.15, "max": 0.40 },
-            "effect": "Key differentiator from 6063; Cu addition provides additional precipitation hardening strength in T6. Absent in 6063.",
-            "value": "0.15–0.40%",
-            "specification": "0.15–0.40%",
-            "test_method": "GB/T 7999"
-          },
-          "iron": {
-            "name": "Iron",
-            "symbol": "Fe",
-            "unit": "% (wt)",
-            "typical_range": { "min": 0.0, "max": 0.70 },
-            "effect": "Higher Fe tolerance vs GB 6063 (≤0.35%); structural alloy — surface quality is secondary to strength.",
-            "value": "≤0.70%",
-            "specification": "≤0.70%",
-            "test_method": "GB/T 7999"
+            "typical_range": {
+              "min": 0.0,
+              "max": 0.6
+            },
+            "effect": "Deoxidizer, mild solid-solution strengthening.",
+            "value": "0.17-0.37",
+            "specification": null,
+            "test_method": "ASTM E1019"
           },
           "manganese": {
             "name": "Manganese",
             "symbol": "Mn",
             "unit": "% (wt)",
-            "typical_range": { "min": 0.0, "max": 0.15 },
-            "effect": "Low Mn; same as EN AW-6061.",
-            "value": "≤0.15%",
-            "specification": "≤0.15%",
-            "test_method": "GB/T 7999"
+            "typical_range": {
+              "min": 0.0,
+              "max": 2.0
+            },
+            "effect": "Increases hardenability and tensile strength.",
+            "value": "1.40-1.80",
+            "specification": null,
+            "test_method": "ASTM E1019"
+          },
+          "phosphorus": {
+            "name": "Phosphorus",
+            "symbol": "P",
+            "unit": "% (wt)",
+            "typical_range": {
+              "min": 0.0,
+              "max": 0.05
+            },
+            "effect": "Impurity; embrittles, kept low.",
+            "value": "≤0.035",
+            "specification": null,
+            "test_method": "ASTM E1019"
+          },
+          "sulfur": {
+            "name": "Sulfur",
+            "symbol": "S",
+            "unit": "% (wt)",
+            "typical_range": {
+              "min": 0.0,
+              "max": 0.05
+            },
+            "effect": "Impurity; reduces ductility/toughness.",
+            "value": "≤0.035",
+            "specification": null,
+            "test_method": "ASTM E1019"
           },
           "chromium": {
             "name": "Chromium",
             "symbol": "Cr",
             "unit": "% (wt)",
-            "typical_range": { "min": 0.04, "max": 0.35 },
-            "effect": "Grain growth inhibitor; Cr dispersoids improve fatigue and toughness vs 6063. Same role as EN AW-6061.",
-            "value": "0.04–0.35%",
-            "specification": "0.04–0.35%",
-            "test_method": "GB/T 7999"
+            "typical_range": {
+              "min": 0.0,
+              "max": 0.5
+            },
+            "effect": "Residual; contributes to hardenability.",
+            "value": "≤0.30",
+            "specification": "Residual",
+            "test_method": "ASTM E1019"
           },
-          "titanium": {
-            "name": "Titanium",
-            "symbol": "Ti",
+          "iron": {
+            "name": "Iron",
+            "symbol": "Fe",
             "unit": "% (wt)",
-            "typical_range": { "min": 0.0, "max": 0.15 },
-            "effect": "Grain refiner.",
-            "value": "≤0.15%",
-            "specification": "≤0.15%",
-            "test_method": "GB/T 7999"
-          },
-          "zinc": {
-            "name": "Zinc",
-            "symbol": "Zn",
-            "unit": "% (wt)",
-            "typical_range": { "min": 0.0, "max": 0.25 },
-            "effect": "Impurity; same limit as EN AW-6061.",
-            "value": "≤0.25%",
-            "specification": "≤0.25%",
-            "test_method": "GB/T 7999"
+            "typical_range": {
+              "min": 95.0,
+              "max": 99.5
+            },
+            "effect": "Base metal.",
+            "value": "Balance",
+            "specification": "Balance",
+            "test_method": "Calculated"
           }
         },
         "material_properties": {
+          "density": {
+            "name": "Density",
+            "symbol": "ρ",
+            "unit": "kg/m³",
+            "typical_range": {
+              "min": 7800,
+              "max": 7900
+            },
+            "effect": "Mass per unit volume.",
+            "value": "7850 kg/m³",
+            "test_standard": "ASTM B311",
+            "category": "physical"
+          },
           "yield_strength": {
-            "name": "Yield Strength (0.2% proof, O temper)",
-            "symbol": "Rp0.2",
+            "name": "Yield Strength",
+            "symbol": "σy",
             "unit": "MPa",
-            "typical_range": { "min": 55, "max": 110 },
-            "effect": "Higher than GB 6063-O in O temper due to Cu and higher Mg solid solution strengthening; same as EN AW-6061 O.",
-            "value": "≥55 MPa",
-            "test_standard": "GB/T 228.1",
+            "typical_range": {
+              "min": 200,
+              "max": 900
+            },
+            "effect": "Stress at onset of plastic deformation.",
+            "value": "≥635 MPa (Q+T)",
+            "test_standard": "ASTM E8",
             "category": "mechanical"
           },
           "ultimate_tensile_strength": {
-            "name": "Tensile Strength (O temper)",
-            "symbol": "Rm",
+            "name": "Ultimate Tensile Strength",
+            "symbol": "σu",
             "unit": "MPa",
-            "typical_range": { "min": 125, "max": 180 },
-            "effect": "Higher than GB 6063-O (90–150 MPa) in annealed condition; identical to EN AW-6061 O.",
-            "value": "125–180 MPa",
-            "test_standard": "GB/T 228.1",
+            "typical_range": {
+              "min": 300,
+              "max": 1200
+            },
+            "effect": "Max stress before fracture.",
+            "value": "≥785 MPa (Q+T)",
+            "test_standard": "ASTM E8",
             "category": "mechanical"
           },
           "elongation": {
-            "name": "Elongation at Break (O temper)",
-            "symbol": "A5",
+            "name": "Elongation at Break",
+            "symbol": "εf",
             "unit": "%",
-            "typical_range": { "min": 16, "max": 25 },
-            "effect": "Good ductility for forming operations before heat treatment; same as EN AW-6061 O.",
-            "value": "≥16%",
-            "test_standard": "GB/T 228.1",
-            "category": "mechanical"
-          },
-          "hardness_brinell": {
-            "name": "Brinell Hardness (O temper)",
-            "symbol": "HB",
-            "unit": "HB",
-            "typical_range": { "min": 30, "max": 60 },
-            "effect": "Slightly harder than GB 6063-O; Cu and Mg solid solution contribution.",
-            "value": "30–60 HB",
-            "test_standard": "GB/T 231.1",
+            "typical_range": {
+              "min": 8,
+              "max": 30
+            },
+            "effect": "Ductility measure.",
+            "value": "≥12%",
+            "test_standard": "ASTM E8",
             "category": "mechanical"
           },
           "elastic_modulus": {
             "name": "Elastic Modulus",
             "symbol": "E",
             "unit": "GPa",
-            "typical_range": { "min": 68, "max": 72 },
-            "effect": "Standard 6xxx modulus; identical to GB 6063-O.",
-            "value": "~70 GPa",
-            "test_standard": "GB/T 22315",
+            "typical_range": {
+              "min": 200,
+              "max": 215
+            },
+            "effect": "Stiffness.",
+            "value": "210 GPa",
+            "test_standard": "ASTM E111",
             "category": "mechanical"
           },
-          "fatigue_strength": {
-            "name": "Fatigue Strength (T6 reference, 10⁸ cycles)",
-            "symbol": "σf",
-            "unit": "MPa",
-            "typical_range": { "min": 90, "max": 130 },
-            "effect": "T6 reference: superior to GB 6063-T6 due to Cr dispersoids and higher strength. O temper fatigue lower; T6 values given for context.",
-            "value": "~96 MPa (T6 reference)",
-            "test_standard": "GB/T 4337",
+          "hardness_brinell": {
+            "name": "Brinell Hardness",
+            "symbol": "HB",
+            "unit": "HB",
+            "typical_range": {
+              "min": 120,
+              "max": 300
+            },
+            "effect": "Indentation resistance.",
+            "value": null,
+            "test_standard": "ASTM E10",
             "category": "mechanical"
-          },
-          "thermal_conductivity": {
-            "name": "Thermal Conductivity",
-            "symbol": "k",
-            "unit": "W/(m·K)",
-            "typical_range": { "min": 150, "max": 180 },
-            "effect": "Lower than GB 6063-O (~200 W/m·K) due to higher Cu, Mg, Si alloying.",
-            "value": "~167 W/m·K",
-            "test_standard": "GB/T 22588",
-            "category": "physical"
-          },
-          "thermal_expansion": {
-            "name": "Thermal Expansion Coefficient",
-            "symbol": "α",
-            "unit": "10⁻⁶/K",
-            "typical_range": { "min": 21.8, "max": 23.5 },
-            "effect": "Same 6xxx CTE; identical to GB 6063-O.",
-            "value": "~23.0×10⁻⁶/°C",
-            "test_standard": "GB/T 4339",
-            "category": "physical"
-          },
-          "density": {
-            "name": "Density",
-            "symbol": "ρ",
-            "unit": "kg/m³",
-            "typical_range": { "min": 2690, "max": 2710 },
-            "effect": "Same density as GB 6063-O.",
-            "value": "2700 kg/m³",
-            "test_standard": "GB/T 1423",
-            "category": "physical"
-          },
-          "corrosion_resistance": {
-            "name": "Corrosion Resistance",
-            "symbol": null,
-            "unit": "qualitative",
-            "typical_range": null,
-            "effect": "Good; slightly below GB 6063 due to Cu addition. Suitable for general outdoor structural use with anodising or coating; not recommended for marine or strong acid environments without protection.",
-            "value": "Good (below 6063)",
-            "test_standard": "GB/T 10125",
-            "category": "process"
-          },
-          "weldability": {
-            "name": "Weldability",
-            "symbol": null,
-            "unit": "qualitative",
-            "typical_range": null,
-            "effect": "Good MIG/TIG with 4043 or 5356 filler; Cu slightly increases hot-cracking sensitivity. Post-weld T6 ageing required for strength-critical joints.",
-            "value": "Good",
-            "test_standard": null,
-            "category": "process"
-          },
-          "availability_china": {
-            "name": "Availability in China",
-            "symbol": null,
-            "unit": "qualitative",
-            "typical_range": null,
-            "effect": "Widely produced at Chinese extrusion and rolling mills under GB/T 6892; O temper available from major domestic mills. High domestic availability as the preferred Chinese structural upgrade over 6063.",
-            "value": "High",
-            "test_standard": null,
-            "category": "commercial"
           }
         },
         "is_active": true

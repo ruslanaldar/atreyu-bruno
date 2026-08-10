@@ -14,108 +14,67 @@ http:
   body:
     type: json
     data: |-
-      // ════════════════════════════════════════════════════════════════════
-      // BATCH 2 — 6063 O / 6061 O ALUMINIUM
-      // EN AW-6063-O (3953) ↔ GB 6063-O (3954)
-      // Better: EN AW-6061-O (3955) ↔ GB 6061-O (3956)
-      // ════════════════════════════════════════════════════════════════════
       {
         "equivalencies": [
-          // ── GROUP 1: EXACT — 6063 O class ───────────────────────────────
 
-          // GB FIRST
+          // GROUP 1: APPROXIMATE - same-class Mn steel peers, cross-standard (both directions)
           {
-            "standard_1_id": 3954,
-            "standard_2_id": 3953,
-            "equivalency_type": "exact",
-            "confidence_level": 98,
-            "notes": "GB 6063 O and EN AW-6063 O are equivalent AlMg0.7Si alloys in fully annealed condition. Both governed by their respective standards (GB/T 3190 / GB/T 6892 and EN 573-3 / EN 485) with identical composition limits: Mg 0.45–0.90%, Si 0.20–0.60%, Fe ≤0.35%, Cu ≤0.10%, Mn ≤0.10%, Ti ≤0.10%, Zn ≤0.10%. O temper properties are identical — Rp0.2 ≥25 MPa, Rm 90–150 MPa, A5 ≥16%. Same annealing treatment and microstructure. GB 6063 O is the preferred Chinese market procurement grade."
+                "standard_1_id": 3974,
+                "standard_2_id": 3973,
+                "equivalency_type": "approximate",
+                "confidence_level": 85,
+                "notes": "GB 20Mn2 (GB/T 3077) and DIN 20Mn6 are both ~0.20%C manganese structural steels of the same class; GB Mn band 1.40-1.80 runs slightly higher than DIN 1.30-1.65, otherwise equivalent (Si, P/S <=0.035) and same application scope. GB 20Mn2 is the preferred Chinese procurement grade."
           },
           {
-            "standard_1_id": 3953,
-            "standard_2_id": 3954,
-            "equivalency_type": "exact",
-            "confidence_level": 98,
-            "notes": "EN AW-6063 O and GB 6063 O are equivalent AlMg0.7Si alloys in fully annealed condition per EN 573-3 and GB/T 3190 respectively. Composition, O temper mechanical properties, and application scope are identical. Full technical interchangeability; specify GB 6063 O for Chinese market sourcing with very high domestic availability."
-          },
-
-          // ── GROUP 2: EXACT — 6061 O class ───────────────────────────────
-
-          // GB FIRST
-          {
-            "standard_1_id": 3956,
-            "standard_2_id": 3955,
-            "equivalency_type": "exact",
-            "confidence_level": 97,
-            "notes": "GB 6061 O and EN AW-6061 O are equivalent AlMg1SiCu alloys in fully annealed condition. Both governed by GB/T 3190 / GB/T 6892 and EN 573-3 / EN 485 with identical composition: Mg 0.80–1.20%, Si 0.40–0.80%, Cu 0.15–0.40%, Cr 0.04–0.35%, Fe ≤0.70%, Mn ≤0.15%. O temper mechanical properties are equivalent — Rp0.2 ≥55 MPa, Rm 125–180 MPa, A5 ≥16%. GB 6061 O is the preferred Chinese market grade."
+                "standard_1_id": 3973,
+                "standard_2_id": 3974,
+                "equivalency_type": "approximate",
+                "confidence_level": 85,
+                "notes": "DIN 20Mn6 and GB 20Mn2 are equivalent ~0.20%C ~1.5%Mn structural manganese steels with minor Mn-band difference. Reverse-direction record. For Chinese market sourcing specify GB 20Mn2."
           },
           {
-            "standard_1_id": 3955,
-            "standard_2_id": 3956,
-            "equivalency_type": "exact",
-            "confidence_level": 97,
-            "notes": "EN AW-6061 O and GB 6061 O are equivalent AlMg1SiCu alloys in fully annealed condition per EN 573-3 and GB/T 3190 respectively. Composition limits and O temper mechanical properties are identical. Full technical interchangeability; specify GB 6061 O for Chinese market sourcing."
+                "standard_1_id": 3976,
+                "standard_2_id": 3975,
+                "equivalency_type": "approximate",
+                "confidence_level": 85,
+                "notes": "GB 30Mn2 (GB/T 3077) and DIN 30Mn5 are both ~0.30%C manganese quench-and-temper steels of the same strength class; GB Mn band slightly higher, otherwise equivalent composition and application. GB 30Mn2 is the preferred Chinese procurement grade."
+          },
+          {
+                "standard_1_id": 3975,
+                "standard_2_id": 3976,
+                "equivalency_type": "approximate",
+                "confidence_level": 85,
+                "notes": "DIN 30Mn5 and GB 30Mn2 are equivalent ~0.30%C manganese Q+T steels with minor Mn-band difference. Reverse-direction record. For Chinese market sourcing specify GB 30Mn2."
           },
 
-          // ── GROUP 3: BETTER GRADE — 6063 O → 6061 O ─────────────────────
-          // Higher strength, higher aged performance at cost of surface/extrudability
-
-          // GB FIRST
+          // GROUP 2: BETTER - 30-series over 20-series upgrade matrix (standard_2 = superior)
           {
-            "standard_1_id": 3956,
-            "standard_2_id": 3954,
-            "equivalency_type": "better",
-            "confidence_level": 88,
-            "notes": "GB 6061 O is the recommended Chinese-market upgrade over GB 6063 O. In O temper: 6061 O has higher Rm (125–180 MPa vs 90–150 MPa) and Rp0.2 (≥55 vs ≥25 MPa) due to higher Mg (0.80–1.20% vs 0.45–0.90%), Si (0.40–0.80% vs 0.20–0.60%), and Cu addition (0.15–0.40% absent in 6063). In aged condition (T6), the advantage is decisive: 6061 T6 Rp0.2 ≥276 MPa vs 6063 T6 ≥150 MPa. Trade-offs: 6061 has lower corrosion resistance, lower electrical conductivity, reduced anodising quality, and reduced extrudability vs 6063. Select 6061 when structural strength is the primary requirement."
+                "standard_1_id": 3974,
+                "standard_2_id": 3976,
+                "equivalency_type": "better",
+                "confidence_level": 84,
+                "notes": "Same-standard upgrade (GB): 30Mn2 higher carbon (0.27-0.34 vs 0.17-0.24) raises strength/hardness class over 20Mn2 in the quench-and-tempered condition. standard_2 (GB 30Mn2) is the superior grade."
           },
           {
-            "standard_1_id": 3954,
-            "standard_2_id": 3956,
-            "equivalency_type": "better",
-            "confidence_level": 88,
-            "notes": "GB 6063 O is the lower-strength architectural/forming grade relative to GB 6061 O. 6063 O offers superior anodising quality, higher electrical conductivity (~58% vs ~50% IACS), better extrudability for complex thin-wall profiles, and better corrosion resistance. Upgrade to 6061 O (or 6061 T6) when structural yield requirements exceed 150 MPa (T6 equivalent) or when Cr-bearing grain structure suppression is required for fatigue applications."
+                "standard_1_id": 3974,
+                "standard_2_id": 3975,
+                "equivalency_type": "better",
+                "confidence_level": 82,
+                "notes": "Cross-standard upgrade: from GB 20Mn2, DIN 30Mn5 is the higher-carbon, higher-strength alternative. standard_2 (DIN 30Mn5) is the superior grade."
           },
           {
-            "standard_1_id": 3956,
-            "standard_2_id": 3953,
-            "equivalency_type": "better",
-            "confidence_level": 87,
-            "notes": "GB 6061 O is the cross-standard upgrade over EN AW-6063 O. Higher Mg, Si, and Cu addition in 6061 gives superior O temper strength (Rm 125–180 vs 90–150 MPa) and dramatically higher aged strength (T6: Rp0.2 ≥276 vs ≥150 MPa). For Chinese market projects requiring structural performance beyond 6063 capability, GB 6061 O is the preferred domestic better grade with high mill availability."
+                "standard_1_id": 3973,
+                "standard_2_id": 3976,
+                "equivalency_type": "better",
+                "confidence_level": 82,
+                "notes": "Cross-standard upgrade: from DIN 20Mn6, GB 30Mn2 is the higher-carbon, higher-strength alternative and preferred Chinese route. standard_2 (GB 30Mn2) is the superior grade."
           },
           {
-            "standard_1_id": 3953,
-            "standard_2_id": 3956,
-            "equivalency_type": "better",
-            "confidence_level": 87,
-            "notes": "EN AW-6063 O is the lower-strength architectural grade relative to GB 6061 O. Upgrade to 6061 O (or EN AW-6061 O for European supply) when yield requirements in aged condition exceed 6063 T6 capability (≥150 MPa Rp0.2). 6063 O retains advantage in anodising quality, electrical conductivity, and extrudability for complex profiles."
-          },
-          {
-            "standard_1_id": 3955,
-            "standard_2_id": 3954,
-            "equivalency_type": "better",
-            "confidence_level": 87,
-            "notes": "EN AW-6061 O is the structural upgrade over GB 6063 O. Higher Mg, Si, and Cu content gives superior O temper and aged strength. In T6 condition, 6061 delivers Rp0.2 ≥276 MPa vs 6063 T6 ≥150 MPa — an 84% yield strength increase. Trade-off: 6061 has lower surface quality, extrudability, and corrosion resistance vs 6063. Select when structural loading governs design."
-          },
-          {
-            "standard_1_id": 3954,
-            "standard_2_id": 3955,
-            "equivalency_type": "better",
-            "confidence_level": 87,
-            "notes": "GB 6063 O is the lower-strength architectural/forming grade relative to EN AW-6061 O. Upgrade to EN AW-6061 O (or GB 6061 O for Chinese market) when structural strength requirements exceed 6063 T6 capability; 6063 retains advantage for architectural, decorative, and electrical conductor applications where surface quality and extrudability govern."
-          },
-          {
-            "standard_1_id": 3955,
-            "standard_2_id": 3953,
-            "equivalency_type": "better",
-            "confidence_level": 88,
-            "notes": "EN AW-6061 O is the structural upgrade over EN AW-6063 O within the EN 6xxx wrought aluminium family. Higher Mg (0.80–1.20% vs 0.45–0.90%), Si (0.40–0.80% vs 0.20–0.60%), and Cu addition (0.15–0.40%) raises O temper strength and delivers T6 Rp0.2 ≥276 MPa vs 6063 T6 ≥150 MPa. Trade-offs: reduced extrudability, anodising quality, and corrosion resistance vs 6063. For Chinese market, prefer GB 6061 O."
-          },
-          {
-            "standard_1_id": 3953,
-            "standard_2_id": 3955,
-            "equivalency_type": "better",
-            "confidence_level": 88,
-            "notes": "EN AW-6063 O is one structural strength class below EN AW-6061 O within the EN 6xxx alloy family. Upgrade to 6061 O (T6 target: Rp0.2 ≥276 MPa) when yield requirements exceed 6063 T6 capability (≥150 MPa); retain 6063 for architectural profiles, decorative anodising, heat sinks, and electrical conductor applications where surface quality and extrudability are primary."
+                "standard_1_id": 3973,
+                "standard_2_id": 3975,
+                "equivalency_type": "better",
+                "confidence_level": 84,
+                "notes": "Same-standard upgrade (DIN): 30Mn5 higher carbon over 20Mn6 raises strength class in Q+T condition. standard_2 (DIN 30Mn5) is the superior grade."
           }
         ]
       }

@@ -10,12 +10,11 @@ http:
     type: json
     data: |-
       {
-      "tz_number": "ett_c350cd0fc35fc0f6_a72ak1",
+      "tz_number": "ett_c350cd0fc35fc0f6",
       "employee": 313,
       "emp_id": "313",
       "emp_name": "Tang Jixiao",
       "source_ett_id": "ett_c350cd0fc35fc0f6",
-      "wskey": "your_wskey_here",
       "production_date": "2026-07-29",
       "start_time": "2026-07-29T08:00:00",
       "end_time": "2026-07-29T20:00:00",

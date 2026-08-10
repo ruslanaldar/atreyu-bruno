@@ -7,6 +7,6 @@ variables:
   - secret: true
     name: refresh_token
   - name: task_id
-    value: addbb5f5-06ff-48ad-b848-b6b2891253a9
+    value: cba3522f-2d9b-47e4-a971-4f312e66b1e0
   - name: employee_tz_id
-    value: bfba56b5-8fb3-47d2-8c3d-5d1396c4ab74
+    value: 19d53fc7-d18c-4282-afc2-e54bb287d70b
