@@ -1,0 +1,76 @@
+info:
+  name: Create GREEN Ticket - ERP 59506976 with images
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/part-tickets/create/"
+  headers:
+    - name: Authorization
+      value: Bearer {{token}}
+  body:
+    type: multipart-form
+    data:
+      - name: container_no
+        type: text
+        value: wk-0002
+      - name: pp_no
+        type: text
+        value: "60001929"
+      - name: erp_no
+        type: text
+        value: "59506976"
+      - name: station
+        type: text
+        value: s01
+      - name: sub_station
+        type: text
+        value: s0101
+      - name: completed_qty
+        type: text
+        value: "5.00"
+      - name: status
+        type: text
+        value: green
+      - name: emp_id
+        type: text
+        value: "211"
+      - name: emp_name
+        type: text
+        value: Wang Yanzhong
+      - name: unit_processing_time
+        type: text
+        value: "0.50"
+      - name: created_by
+        type: text
+        value: Rolf
+      - name: mo_no
+        type: text
+        value: I-0709-0009
+      - name: drawing_no
+        type: text
+        value: "30026801.00"
+      - name: man_seq
+        type: text
+        value: "1"
+      - name: notes
+        type: text
+        value: GREEN ticket - 5 pieces completed successfully
+      - name: images
+        type: file
+        value:
+          - /Users/ruslan/Downloads/ArcRecoveryPhrase.png
+        contentType: image/png
+      - name: images
+        type: file
+        value:
+          - /Users/ruslan/Documents/CSSC documents/part images/IMG2026.3.16/11030609.jpg
+        contentType: image/jpeg
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

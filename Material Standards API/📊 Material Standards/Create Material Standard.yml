@@ -15,184 +15,225 @@ http:
     type: json
     data: |-
       {
-        "material_group_id": 13,
-        "material_subgroup_id": 25,
+        "material_group_id": 22,
+        "material_subgroup_id": 78,
         "organization_id": 7,
-        "standard_number": "30Mn2",
-        "description": "GB/T 3077 manganese alloy structural steel, ~0.30%C ~1.6%Mn. Q+T shafts/gears. Chinese counterpart to 30Mn5; strength upgrade over 20Mn2.",
-        "material_price_kg": null,
-        "density_kg_m3": 7850.0,
+        "standard_number": "YZZnAl4Cu3",
+        "description": "Zinc-aluminium-copper die-casting alloy per GB/T 13818; full designation: GB YZZnAl4Cu3. YZ = 压铸 (pressure die-casting); ZnAl4Cu3 = zinc base, 4% Al, ~3% Cu. Higher Cu content (2.5–3.5%) vs YZZnAl4Cu1 (0.75–1.25%) gives significantly improved tensile strength, hardness, and wear resistance at reduced elongation and dimensional stability. Chinese equivalent concept aligns with ASTM Zamak 2 (highest Cu Zamak grade) or sits between Zamak 5 and Zamak 2. Used for high-strength die-castings — automotive mechanical components, gearbox housings, high-load hardware, tools, and applications where maximum strength in the zinc alloy family is required. Preferred Chinese better grade over YZZnAl4Cu1 for structural strength-critical applications.",
+        "material_price_kg": 2.40,
+        "density_kg_m3": 6700.0,
         "chemical_composition": {
-          "carbon": {
-            "name": "Carbon",
-            "symbol": "C",
+          "zinc": {
+            "name": "Zinc",
+            "symbol": "Zn",
             "unit": "% (wt)",
-            "typical_range": {
-              "min": 0.0,
-              "max": 0.6
-            },
-            "effect": "Primary hardness/strength driver.",
-            "value": "0.27-0.34",
-            "specification": null,
-            "test_method": "ASTM E1019"
+            "typical_range": { "min": 91.0, "max": 93.5 },
+            "effect": "Base metal; lower Zn balance vs YZZnAl4Cu1 due to higher Cu content.",
+            "value": "Balance",
+            "specification": "Balance",
+            "test_method": "GB/T 7999"
           },
-          "silicon": {
-            "name": "Silicon",
-            "symbol": "Si",
+          "aluminum": {
+            "name": "Aluminum",
+            "symbol": "Al",
             "unit": "% (wt)",
-            "typical_range": {
-              "min": 0.0,
-              "max": 0.6
-            },
-            "effect": "Deoxidizer, mild solid-solution strengthening.",
-            "value": "0.17-0.37",
-            "specification": null,
-            "test_method": "ASTM E1019"
+            "typical_range": { "min": 3.90, "max": 4.30 },
+            "effect": "Same Al range as all Zamak-family grades; primary alloying element for strength and castability.",
+            "value": "3.90–4.30%",
+            "specification": "3.90–4.30%",
+            "test_method": "GB/T 7999"
           },
-          "manganese": {
-            "name": "Manganese",
-            "symbol": "Mn",
+          "copper": {
+            "name": "Copper",
+            "symbol": "Cu",
             "unit": "% (wt)",
-            "typical_range": {
-              "min": 0.0,
-              "max": 2.0
-            },
-            "effect": "Increases hardenability and tensile strength.",
-            "value": "1.40-1.80",
-            "specification": null,
-            "test_method": "ASTM E1019"
+            "typical_range": { "min": 2.50, "max": 3.50 },
+            "effect": "High intentional Cu — defining differentiator from YZZnAl4Cu1 (0.75–1.25%). Higher Cu provides maximum solid-solution strengthening in the Zamak family: raises Rm by ~80 MPa and hardness by ~20 HB vs Zamak 3. Trade-off: significant reduction in elongation (≥4% vs ≥10%) and dimensional stability.",
+            "value": "2.50–3.50%",
+            "specification": "2.50–3.50%",
+            "test_method": "GB/T 7999"
           },
-          "phosphorus": {
-            "name": "Phosphorus",
-            "symbol": "P",
+          "magnesium": {
+            "name": "Magnesium",
+            "symbol": "Mg",
             "unit": "% (wt)",
-            "typical_range": {
-              "min": 0.0,
-              "max": 0.05
-            },
-            "effect": "Impurity; embrittles, kept low.",
-            "value": "≤0.035",
-            "specification": null,
-            "test_method": "ASTM E1019"
-          },
-          "sulfur": {
-            "name": "Sulfur",
-            "symbol": "S",
-            "unit": "% (wt)",
-            "typical_range": {
-              "min": 0.0,
-              "max": 0.05
-            },
-            "effect": "Impurity; reduces ductility/toughness.",
-            "value": "≤0.035",
-            "specification": null,
-            "test_method": "ASTM E1019"
-          },
-          "chromium": {
-            "name": "Chromium",
-            "symbol": "Cr",
-            "unit": "% (wt)",
-            "typical_range": {
-              "min": 0.0,
-              "max": 0.5
-            },
-            "effect": "Residual; contributes to hardenability.",
-            "value": "≤0.30",
-            "specification": "Residual",
-            "test_method": "ASTM E1019"
+            "typical_range": { "min": 0.025, "max": 0.060 },
+            "effect": "Same critical grain-refiner and corrosion-resistance role as all Zamak grades.",
+            "value": "0.025–0.060%",
+            "specification": "0.025–0.060%",
+            "test_method": "GB/T 7999"
           },
           "iron": {
             "name": "Iron",
             "symbol": "Fe",
             "unit": "% (wt)",
-            "typical_range": {
-              "min": 95.0,
-              "max": 99.5
-            },
-            "effect": "Base metal.",
-            "value": "Balance",
-            "specification": "Balance",
-            "test_method": "Calculated"
+            "typical_range": { "min": 0.0, "max": 0.10 },
+            "effect": "Impurity; same ≤0.10% limit.",
+            "value": "≤0.10%",
+            "specification": "≤0.10%",
+            "test_method": "GB/T 7999"
+          },
+          "lead": {
+            "name": "Lead",
+            "symbol": "Pb",
+            "unit": "% (wt)",
+            "typical_range": { "min": 0.0, "max": 0.005 },
+            "effect": "Critical impurity; same ≤0.005% limit.",
+            "value": "≤0.005%",
+            "specification": "≤0.005%",
+            "test_method": "GB/T 7999"
+          },
+          "cadmium": {
+            "name": "Cadmium",
+            "symbol": "Cd",
+            "unit": "% (wt)",
+            "typical_range": { "min": 0.0, "max": 0.004 },
+            "effect": "Critical impurity; ≤0.004% per GB/T 13818.",
+            "value": "≤0.004%",
+            "specification": "≤0.004%",
+            "test_method": "GB/T 7999"
+          },
+          "tin": {
+            "name": "Tin",
+            "symbol": "Sn",
+            "unit": "% (wt)",
+            "typical_range": { "min": 0.0, "max": 0.003 },
+            "effect": "Critical impurity; ≤0.003% per GB/T 13818.",
+            "value": "≤0.003%",
+            "specification": "≤0.003%",
+            "test_method": "GB/T 7999"
           }
         },
         "material_properties": {
-          "density": {
-            "name": "Density",
-            "symbol": "ρ",
-            "unit": "kg/m³",
-            "typical_range": {
-              "min": 7800,
-              "max": 7900
-            },
-            "effect": "Mass per unit volume.",
-            "value": "7850 kg/m³",
-            "test_standard": "ASTM B311",
-            "category": "physical"
-          },
           "yield_strength": {
-            "name": "Yield Strength",
-            "symbol": "σy",
+            "name": "Yield Strength (0.2% proof)",
+            "symbol": "Rp0.2",
             "unit": "MPa",
-            "typical_range": {
-              "min": 200,
-              "max": 900
-            },
-            "effect": "Stress at onset of plastic deformation.",
-            "value": "≥635 MPa (Q+T)",
-            "test_standard": "ASTM E8",
+            "typical_range": { "min": 240, "max": 300 },
+            "effect": "Highest yield in GB/T 13818 Zamak family; Cu 2.5–3.5% gives maximum solid-solution strengthening.",
+            "value": "~270 MPa",
+            "test_standard": "GB/T 228.1",
             "category": "mechanical"
           },
           "ultimate_tensile_strength": {
-            "name": "Ultimate Tensile Strength",
-            "symbol": "σu",
+            "name": "Tensile Strength",
+            "symbol": "Rm",
             "unit": "MPa",
-            "typical_range": {
-              "min": 300,
-              "max": 1200
-            },
-            "effect": "Max stress before fracture.",
-            "value": "≥785 MPa (Q+T)",
-            "test_standard": "ASTM E8",
+            "typical_range": { "min": 345, "max": 400 },
+            "effect": "Highest tensile in GB/T 13818 zinc alloy family; ~25% higher than Zamak 3/ZL0400 (~280 MPa).",
+            "value": "~370 MPa",
+            "test_standard": "GB/T 228.1",
             "category": "mechanical"
           },
           "elongation": {
             "name": "Elongation at Break",
-            "symbol": "εf",
+            "symbol": "A",
             "unit": "%",
-            "typical_range": {
-              "min": 8,
-              "max": 30
-            },
-            "effect": "Ductility measure.",
-            "value": "≥12%",
-            "test_standard": "ASTM E8",
-            "category": "mechanical"
-          },
-          "elastic_modulus": {
-            "name": "Elastic Modulus",
-            "symbol": "E",
-            "unit": "GPa",
-            "typical_range": {
-              "min": 200,
-              "max": 215
-            },
-            "effect": "Stiffness.",
-            "value": "210 GPa",
-            "test_standard": "ASTM E111",
+            "typical_range": { "min": 3, "max": 6 },
+            "effect": "Lowest elongation in GB/T 13818 Zamak family; high Cu significantly reduces ductility. Verify application is not impact-sensitive before specifying.",
+            "value": "~4%",
+            "test_standard": "GB/T 228.1",
             "category": "mechanical"
           },
           "hardness_brinell": {
             "name": "Brinell Hardness",
             "symbol": "HB",
             "unit": "HB",
-            "typical_range": {
-              "min": 120,
-              "max": 300
-            },
-            "effect": "Indentation resistance.",
-            "value": null,
-            "test_standard": "ASTM E10",
+            "typical_range": { "min": 98, "max": 115 },
+            "effect": "Highest hardness in GB/T 13818 Zamak family; Cu 2.5–3.5% raises HB from ~82 (Zamak 3) to ~105 HB.",
+            "value": "~105 HB",
+            "test_standard": "GB/T 231.1",
             "category": "mechanical"
+          },
+          "impact_toughness": {
+            "name": "Charpy Impact Strength",
+            "symbol": "KU",
+            "unit": "J",
+            "typical_range": { "min": 20, "max": 40 },
+            "effect": "Lowest toughness in GB/T 13818 Zamak family; high Cu significantly reduces impact energy from ~58 J (Zamak 3) to ~28 J.",
+            "value": "~28 J",
+            "test_standard": "GB/T 229",
+            "category": "mechanical"
+          },
+          "elastic_modulus": {
+            "name": "Elastic Modulus",
+            "symbol": "E",
+            "unit": "GPa",
+            "typical_range": { "min": 85, "max": 92 },
+            "effect": "Highest modulus in Zamak family from high Cu content.",
+            "value": "~88 GPa",
+            "test_standard": "GB/T 22315",
+            "category": "mechanical"
+          },
+          "thermal_conductivity": {
+            "name": "Thermal Conductivity",
+            "symbol": "k",
+            "unit": "W/(m·K)",
+            "typical_range": { "min": 100, "max": 112 },
+            "effect": "Slightly lower than YZZnAl4Cu1 due to higher Cu alloying.",
+            "value": "~105 W/m·K",
+            "test_standard": "GB/T 22588",
+            "category": "physical"
+          },
+          "thermal_expansion": {
+            "name": "Thermal Expansion Coefficient",
+            "symbol": "α",
+            "unit": "10⁻⁶/K",
+            "typical_range": { "min": 26, "max": 28 },
+            "effect": "Same CTE family as all Zamak grades; Cu has minor effect on CTE.",
+            "value": "~27.4×10⁻⁶/°C",
+            "test_standard": "GB/T 4339",
+            "category": "physical"
+          },
+          "melting_point": {
+            "name": "Liquidus / Solidus",
+            "symbol": "Tl/Ts",
+            "unit": "°C",
+            "typical_range": { "min": 375, "max": 395 },
+            "effect": "Wider freezing range than lower-Cu Zamak grades due to high Cu; still suitable for hot-chamber die-casting but requires tighter process control.",
+            "value": "375–395°C",
+            "test_standard": "GB/T 17657",
+            "category": "physical"
+          },
+          "density": {
+            "name": "Density",
+            "symbol": "ρ",
+            "unit": "kg/m³",
+            "typical_range": { "min": 6650, "max": 6750 },
+            "effect": "Highest density in Zamak family due to high Cu content (Cu density 8900 kg/m³).",
+            "value": "~6700 kg/m³",
+            "test_standard": "GB/T 1423",
+            "category": "physical"
+          },
+          "dimensional_stability": {
+            "name": "Dimensional Stability (long-term)",
+            "symbol": null,
+            "unit": "qualitative",
+            "typical_range": null,
+            "effect": "Reduced vs YZZnAl4Cu1; high Cu (2.5–3.5%) significantly increases susceptibility to inter-crystalline corrosion and progressive dimensional change. Not recommended for precision components requiring long-term dimensional stability — specify Zamak 3/ZL0400 instead.",
+            "value": "Moderate",
+            "test_standard": null,
+            "category": "process"
+          },
+          "castability": {
+            "name": "Castability",
+            "symbol": null,
+            "unit": "qualitative",
+            "typical_range": null,
+            "effect": "Good hot-chamber die-casting; wider freezing range requires tighter process control vs lower-Cu grades but is well-established in Chinese foundry practice.",
+            "value": "Good",
+            "test_standard": null,
+            "category": "process"
+          },
+          "availability_china": {
+            "name": "Availability in China",
+            "symbol": null,
+            "unit": "qualitative",
+            "typical_range": null,
+            "effect": "Standard GB/T 13818 grade; produced by Chinese zinc die-casting foundries for domestic and export markets. High domestic availability as the Chinese maximum-strength zinc die-casting grade.",
+            "value": "High",
+            "test_standard": null,
+            "category": "commercial"
           }
         },
         "is_active": true

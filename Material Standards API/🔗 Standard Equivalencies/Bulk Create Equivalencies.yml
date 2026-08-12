@@ -16,65 +16,221 @@ http:
     data: |-
       {
         "equivalencies": [
+          // ── GROUP 1: EXACT — Zamak 3 class (ZnAl4, no intentional Cu) ───
+          // DIN GD-ZnAl4 (3977) ↔ EN ZL0400 (3978) ↔ ASTM Zamak 3 (3980)
 
-          // GROUP 1: APPROXIMATE - same-class Mn steel peers, cross-standard (both directions)
+          // GB FIRST — note: YZZnAl4Cu1 (3979) has Cu 0.75–1.25% so NOT exact with Zamak 3
           {
-                "standard_1_id": 3974,
-                "standard_2_id": 3973,
-                "equivalency_type": "approximate",
-                "confidence_level": 85,
-                "notes": "GB 20Mn2 (GB/T 3077) and DIN 20Mn6 are both ~0.20%C manganese structural steels of the same class; GB Mn band 1.40-1.80 runs slightly higher than DIN 1.30-1.65, otherwise equivalent (Si, P/S <=0.035) and same application scope. GB 20Mn2 is the preferred Chinese procurement grade."
+            "standard_1_id": 3978,
+            "standard_2_id": 3980,
+            "equivalency_type": "exact",
+            "confidence_level": 98,
+            "notes": "EN ZL0400 and ASTM Zamak 3 are the same zinc die-casting alloy under different standardisation bodies. Both specify Al 3.90–4.30%, Mg 0.025–0.050%, Cu ≤0.10%, Fe ≤0.10%, Pb ≤0.005%, Cd ≤0.004%, Sn ≤0.003% — identical composition in all critical elements. Mechanical properties match: Rm ≥268–280 MPa, A ≥10%, HB ~82, impact ≥58 J. EN 1774 is the European governing standard; ASTM B86 is the North American equivalent. Full technical interchangeability; specify EN ZL0400 for European supply chains."
           },
           {
-                "standard_1_id": 3973,
-                "standard_2_id": 3974,
-                "equivalency_type": "approximate",
-                "confidence_level": 85,
-                "notes": "DIN 20Mn6 and GB 20Mn2 are equivalent ~0.20%C ~1.5%Mn structural manganese steels with minor Mn-band difference. Reverse-direction record. For Chinese market sourcing specify GB 20Mn2."
+            "standard_1_id": 3978,
+            "standard_2_id": 3977,
+            "equivalency_type": "exact",
+            "confidence_level": 98,
+            "notes": "EN ZL0400 directly superseded DIN 1743 GD-ZnAl4 under EN 1774 harmonisation. Both designate the same ZnAl4 composition with no intentional Cu — identical Al 3.90–4.30%, Mg 0.025–0.060%, Cu ≤0.10%, Pb ≤0.005%, Cd ≤0.004%, Sn ≤0.003%. EN 1774 is the current active standard; DIN 1743 GD-ZnAl4 is the legacy predecessor retained for reference to older drawings."
           },
           {
-                "standard_1_id": 3976,
-                "standard_2_id": 3975,
-                "equivalency_type": "approximate",
-                "confidence_level": 85,
-                "notes": "GB 30Mn2 (GB/T 3077) and DIN 30Mn5 are both ~0.30%C manganese quench-and-temper steels of the same strength class; GB Mn band slightly higher, otherwise equivalent composition and application. GB 30Mn2 is the preferred Chinese procurement grade."
+            "standard_1_id": 3980,
+            "standard_2_id": 3978,
+            "equivalency_type": "exact",
+            "confidence_level": 98,
+            "notes": "ASTM Zamak 3 (ASTM B86 Alloy No. 3, UNS Z33521) and EN ZL0400 (EN 1774) are the same ZnAl4 alloy under North American and European standards. Composition, mechanical properties, and die-casting process requirements are identical. For European supply specify EN ZL0400; for North American supply specify Zamak 3 per ASTM B86."
           },
           {
-                "standard_1_id": 3975,
-                "standard_2_id": 3976,
-                "equivalency_type": "approximate",
-                "confidence_level": 85,
-                "notes": "DIN 30Mn5 and GB 30Mn2 are equivalent ~0.30%C manganese Q+T steels with minor Mn-band difference. Reverse-direction record. For Chinese market sourcing specify GB 30Mn2."
+            "standard_1_id": 3980,
+            "standard_2_id": 3977,
+            "equivalency_type": "exact",
+            "confidence_level": 97,
+            "notes": "ASTM Zamak 3 and DIN GD-ZnAl4 are equivalent ZnAl4 zinc die-casting alloys. DIN 1743 has been superseded by EN 1774; the ASTM B86 Zamak 3 composition is identical to both. Legacy DIN drawings specifying GD-ZnAl4 may be fulfilled with ASTM Zamak 3 or EN ZL0400 material without any property compromise."
+          },
+          {
+            "standard_1_id": 3977,
+            "standard_2_id": 3978,
+            "equivalency_type": "exact",
+            "confidence_level": 98,
+            "notes": "DIN GD-ZnAl4 is the legacy predecessor to EN ZL0400; EN 1774 directly replaced DIN 1743 for zinc pressure die-casting alloys. Same ZnAl4 composition with no intentional Cu, identical mechanical properties, and identical hot-chamber die-casting process. DIN is legacy; specify EN ZL0400 for all new designs."
+          },
+          {
+            "standard_1_id": 3977,
+            "standard_2_id": 3980,
+            "equivalency_type": "exact",
+            "confidence_level": 97,
+            "notes": "DIN GD-ZnAl4 and ASTM Zamak 3 are equivalent ZnAl4 zinc die-casting alloys at the same composition and strength class. DIN 1743 is the legacy European standard; ASTM B86 Zamak 3 is the current North American equivalent. Full interchangeability; DIN designation used in older European drawings."
           },
 
-          // GROUP 2: BETTER - 30-series over 20-series upgrade matrix (standard_2 = superior)
+          // ── GROUP 1B: APPROXIMATE — YZZnAl4Cu1 vs Zamak 3 class ─────────
+          // Note: YZZnAl4Cu1 (3979) has Cu 0.75–1.25% — closer to Zamak 5 than Zamak 3
+
           {
-                "standard_1_id": 3974,
-                "standard_2_id": 3976,
-                "equivalency_type": "better",
-                "confidence_level": 84,
-                "notes": "Same-standard upgrade (GB): 30Mn2 higher carbon (0.27-0.34 vs 0.17-0.24) raises strength/hardness class over 20Mn2 in the quench-and-tempered condition. standard_2 (GB 30Mn2) is the superior grade."
+            "standard_1_id": 3979,
+            "standard_2_id": 3980,
+            "equivalency_type": "approximate",
+            "confidence_level": 82,
+            "notes": "GB YZZnAl4Cu1 and ASTM Zamak 3 are in the same ZnAl4 alloy family but differ significantly in Cu content. YZZnAl4Cu1 specifies Cu 0.75–1.25% (intentional addition) while Zamak 3 specifies Cu ≤0.10% (impurity limit). This Cu difference raises YZZnAl4Cu1 Rm from ~280 to ~320 MPa and HB from ~82 to ~91 HB, but reduces elongation from ≥10% to ~6% and reduces dimensional stability. YZZnAl4Cu1 is more accurately the Chinese equivalent to Zamak 5 (Cu 0.75–1.25%) than Zamak 3. For Zamak 3 equivalence in China, specify a low-Cu variant from specialist foundries."
           },
           {
-                "standard_1_id": 3974,
-                "standard_2_id": 3975,
-                "equivalency_type": "better",
-                "confidence_level": 82,
-                "notes": "Cross-standard upgrade: from GB 20Mn2, DIN 30Mn5 is the higher-carbon, higher-strength alternative. standard_2 (DIN 30Mn5) is the superior grade."
+            "standard_1_id": 3979,
+            "standard_2_id": 3978,
+            "equivalency_type": "approximate",
+            "confidence_level": 82,
+            "notes": "GB YZZnAl4Cu1 and EN ZL0400 are in the same ZnAl4 alloy family but differ in Cu content: YZZnAl4Cu1 Cu 0.75–1.25% vs ZL0400 Cu ≤0.10%. Same Al range (3.90–4.30%) and Mg/Pb/Cd/Sn controls are identical. Cu addition in YZZnAl4Cu1 raises strength (~320 vs ~280 MPa Rm) but reduces elongation (~6% vs ~10%) and dimensional stability. For EN ZL0400 exact equivalence in China, specify low-Cu zinc alloy from specialist foundry."
           },
           {
-                "standard_1_id": 3973,
-                "standard_2_id": 3976,
-                "equivalency_type": "better",
-                "confidence_level": 82,
-                "notes": "Cross-standard upgrade: from DIN 20Mn6, GB 30Mn2 is the higher-carbon, higher-strength alternative and preferred Chinese route. standard_2 (GB 30Mn2) is the superior grade."
+            "standard_1_id": 3979,
+            "standard_2_id": 3977,
+            "equivalency_type": "approximate",
+            "confidence_level": 82,
+            "notes": "GB YZZnAl4Cu1 and DIN GD-ZnAl4 are in the same ZnAl4 alloy family but differ in Cu: YZZnAl4Cu1 Cu 0.75–1.25% vs DIN GD-ZnAl4 Cu ≤0.10%. The Cu difference produces meaningful mechanical property differences — higher strength and hardness in YZZnAl4Cu1 at reduced elongation and dimensional stability. For DIN GD-ZnAl4 exact equivalence specify a no-Cu zinc die-casting grade from Chinese specialist foundries."
           },
           {
-                "standard_1_id": 3973,
-                "standard_2_id": 3975,
-                "equivalency_type": "better",
-                "confidence_level": 84,
-                "notes": "Same-standard upgrade (DIN): 30Mn5 higher carbon over 20Mn6 raises strength class in Q+T condition. standard_2 (DIN 30Mn5) is the superior grade."
+            "standard_1_id": 3980,
+            "standard_2_id": 3979,
+            "equivalency_type": "approximate",
+            "confidence_level": 82,
+            "notes": "ASTM Zamak 3 and GB YZZnAl4Cu1 are approximate equivalents in the ZnAl4 family. Zamak 3 has Cu ≤0.10% (impurity limit); YZZnAl4Cu1 has Cu 0.75–1.25% (intentional addition) — this Cu difference aligns YZZnAl4Cu1 closer to Zamak 5 than Zamak 3. For Chinese market applications where Zamak 3 is specified, verify that 6% elongation and slightly reduced dimensional stability of YZZnAl4Cu1 are acceptable."
+          },
+          {
+            "standard_1_id": 3978,
+            "standard_2_id": 3979,
+            "equivalency_type": "approximate",
+            "confidence_level": 82,
+            "notes": "EN ZL0400 and GB YZZnAl4Cu1 are approximate equivalents. ZL0400 is the pure Zamak 3 equivalent (Cu ≤0.10%); YZZnAl4Cu1 has intentional Cu 0.75–1.25% making it closer to Zamak 5 in copper content. For Chinese market supply where ZL0400 is specified, confirm that the higher strength but lower elongation and dimensional stability of YZZnAl4Cu1 are acceptable for the target application."
+          },
+          {
+            "standard_1_id": 3977,
+            "standard_2_id": 3979,
+            "equivalency_type": "approximate",
+            "confidence_level": 82,
+            "notes": "DIN GD-ZnAl4 and GB YZZnAl4Cu1 are approximate equivalents in the ZnAl4 family. DIN grade has no intentional Cu (≤0.10%); GB grade has Cu 0.75–1.25% — closer in behaviour to Zamak 5. For Chinese market procurement where DIN GD-ZnAl4 properties (10% elongation, excellent dimensional stability) are required, specify low-Cu zinc alloy from specialist Chinese foundry."
+          },
+
+          // ── GROUP 2: EXACT — Zamak 5 class (ZnAl4Cu1, Cu 0.75–1.25%) ────
+          // Zamak 5 (3981) ↔ YZZnAl4Cu1 (3979)
+
+          {
+            "standard_1_id": 3979,
+            "standard_2_id": 3981,
+            "equivalency_type": "exact",
+            "confidence_level": 95,
+            "notes": "GB YZZnAl4Cu1 and ASTM Zamak 5 are the same zinc die-casting alloy class — both specify Al 3.90–4.30%, Cu 0.75–1.25%, Mg 0.025–0.050%, with identical Pb/Cd/Sn impurity limits. Mechanical properties match: Rm ~320–335 MPa, A ~6–7%, HB ~91. GB YZZnAl4Cu1 per GB/T 13818 is the Chinese equivalent to ASTM Zamak 5 per ASTM B86. GB YZZnAl4Cu1 is the preferred Chinese market procurement grade."
+          },
+          {
+            "standard_1_id": 3981,
+            "standard_2_id": 3979,
+            "equivalency_type": "exact",
+            "confidence_level": 95,
+            "notes": "ASTM Zamak 5 (ASTM B86 Alloy No. 5, UNS Z35531) and GB YZZnAl4Cu1 are equivalent zinc die-casting alloys at the same Cu-bearing ZnAl4 class. Both specify Cu 0.75–1.25% with identical Al, Mg, and critical impurity limits. Full technical interchangeability; specify GB YZZnAl4Cu1 for Chinese market sourcing with very high domestic foundry availability."
+          },
+
+          // ── GROUP 3: BETTER GRADE — Zamak 3 class → Zamak 5/Cu-bearing class ─
+
+          // GB FIRST
+          {
+            "standard_1_id": 3979,
+            "standard_2_id": 3978,
+            "equivalency_type": "better",
+            "confidence_level": 88,
+            "notes": "GB YZZnAl4Cu1 is the recommended Chinese-market upgrade over EN ZL0400 (Zamak 3 class) when higher strength and hardness are required. Cu addition (0.75–1.25%) raises Rm from ~280 MPa to ~320 MPa (~14% increase) and HB from ~82 to ~91. Trade-offs: elongation reduces from ≥10% to ~6%; dimensional stability reduces — avoid for precision components with long-term tight tolerance requirements. YZZnAl4Cu1 is the standard Chinese foundry die-casting alloy and most readily available."
+          },
+          {
+            "standard_1_id": 3978,
+            "standard_2_id": 3979,
+            "equivalency_type": "better",
+            "confidence_level": 88,
+            "notes": "EN ZL0400 (Zamak 3, no Cu) is the lower-strength base grade relative to GB YZZnAl4Cu1. ZL0400 offers superior elongation (≥10% vs ~6%), better dimensional stability, and superior plating adhesion. Upgrade to YZZnAl4Cu1 (or Zamak 5) when tensile requirements exceed ~280 MPa or when improved hardness and wear resistance are needed."
+          },
+          {
+            "standard_1_id": 3981,
+            "standard_2_id": 3980,
+            "equivalency_type": "better",
+            "confidence_level": 88,
+            "notes": "ASTM Zamak 5 is the recommended upgrade over Zamak 3 when higher strength and hardness are required within the Zamak alloy system. Cu addition (0.75–1.25%) raises Rm from ≥268 MPa to ≥328 MPa and HB from ~82 to ~91. Trade-offs: elongation reduces from ≥10% to ≥7%; long-term dimensional stability decreases. Same Al base, same Mg control, same die-casting process — no tooling changes required."
+          },
+          {
+            "standard_1_id": 3980,
+            "standard_2_id": 3981,
+            "equivalency_type": "better",
+            "confidence_level": 88,
+            "notes": "ASTM Zamak 3 is the lower-strength base grade relative to Zamak 5. Zamak 3 offers superior elongation (≥10% vs ≥7%), better impact toughness (≥58 J vs ~48 J), better long-term dimensional stability, and superior plating adhesion. Upgrade to Zamak 5 when tensile strength >268 MPa or hardness >82 HB is required."
+          },
+          {
+            "standard_1_id": 3981,
+            "standard_2_id": 3977,
+            "equivalency_type": "better",
+            "confidence_level": 85,
+            "notes": "ASTM Zamak 5 is the cross-standard upgrade over DIN GD-ZnAl4 (Zamak 3 class). Cu addition raises Rm from ~280 MPa to ≥328 MPa and HB from ~82 to ~91 HB. For Chinese market applications, specify GB YZZnAl4Cu1 as the equivalent Chinese better grade over DIN GD-ZnAl4."
+          },
+          {
+            "standard_1_id": 3977,
+            "standard_2_id": 3981,
+            "equivalency_type": "better",
+            "confidence_level": 85,
+            "notes": "DIN GD-ZnAl4 is the lower-strength no-Cu base grade relative to Zamak 5. Upgrade to Zamak 5 (or GB YZZnAl4Cu1 for Chinese market) when strength requirements exceed GD-ZnAl4 capability; retain GD-ZnAl4 for maximum elongation, toughness, and dimensional stability applications."
+          },
+
+          // ── GROUP 4: BETTER GRADE — YZZnAl4Cu3 (3982) better grade ──────
+
+          // GB FIRST — YZZnAl4Cu3 better over YZZnAl4Cu1
+          {
+            "standard_1_id": 3982,
+            "standard_2_id": 3979,
+            "equivalency_type": "better",
+            "confidence_level": 88,
+            "notes": "GB YZZnAl4Cu3 is the recommended Chinese-market upgrade over GB YZZnAl4Cu1 within GB/T 13818 zinc die-casting alloy series. Higher Cu (2.50–3.50% vs 0.75–1.25%) raises Rm from ~320 MPa to ~370 MPa (~16% increase), HB from ~91 to ~105 HB, and provides improved wear and creep resistance. Trade-offs: elongation reduces from ~6% to ~4%; dimensional stability further reduces; impact toughness drops from ~48 J to ~28 J. Preferred Chinese better grade for maximum-strength zinc die-casting applications — gearbox housings, high-load hardware, and structural automotive components."
+          },
+          {
+            "standard_1_id": 3979,
+            "standard_2_id": 3982,
+            "equivalency_type": "better",
+            "confidence_level": 88,
+            "notes": "GB YZZnAl4Cu1 is one strength class below YZZnAl4Cu3 within GB/T 13818. Upgrade to YZZnAl4Cu3 when tensile requirements exceed ~320 MPa or hardness >91 HB is needed. Note significant trade-offs: elongation reduces to ~4%, impact toughness reduces to ~28 J, dimensional stability further reduces — verify application is not ductility or toughness critical before upgrading."
+          },
+          {
+            "standard_1_id": 3982,
+            "standard_2_id": 3981,
+            "equivalency_type": "better",
+            "confidence_level": 85,
+            "notes": "GB YZZnAl4Cu3 is the cross-standard upgrade over ASTM Zamak 5 in strength and hardness. Higher Cu (2.50–3.50% vs 0.75–1.25%) raises Rm from ≥328 MPa to ~370 MPa and HB from ~91 to ~105. YZZnAl4Cu3 aligns closer to ASTM Zamak 2 (Cu 2.6–2.9%) in the ASTM alloy system. For Chinese market maximum-strength zinc die-casting, YZZnAl4Cu3 is the preferred domestic better grade over Zamak 5."
+          },
+          {
+            "standard_1_id": 3981,
+            "standard_2_id": 3982,
+            "equivalency_type": "better",
+            "confidence_level": 85,
+            "notes": "ASTM Zamak 5 is the lower-strength Cu-bearing grade relative to GB YZZnAl4Cu3. Zamak 5 offers better elongation (≥7% vs ~4%), better toughness (~48 vs ~28 J), and better dimensional stability. Upgrade to YZZnAl4Cu3 (or ASTM Zamak 2) when maximum zinc die-casting strength is required; retain Zamak 5 when ductility or dimensional precision is more critical than peak strength."
+          },
+          {
+            "standard_1_id": 3982,
+            "standard_2_id": 3980,
+            "equivalency_type": "better",
+            "confidence_level": 83,
+            "notes": "GB YZZnAl4Cu3 is the cross-standard maximum-strength upgrade over ASTM Zamak 3 (no Cu). Cu 2.50–3.50% raises Rm from ~280 MPa to ~370 MPa (~32% increase) and HB from ~82 to ~105 HB. Significant trade-offs: elongation reduces from ≥10% to ~4%; impact toughness from ≥58 J to ~28 J; dimensional stability significantly reduced. Only specify YZZnAl4Cu3 when peak tensile strength is the primary design driver."
+          },
+          {
+            "standard_1_id": 3980,
+            "standard_2_id": 3982,
+            "equivalency_type": "better",
+            "confidence_level": 83,
+            "notes": "ASTM Zamak 3 is the lowest-strength highest-ductility base grade relative to GB YZZnAl4Cu3. Zamak 3 is preferred when elongation (≥10%), impact toughness (≥58 J), dimensional stability, or plating quality are primary requirements. Upgrade to YZZnAl4Cu3 (or ASTM Zamak 2) only when peak strength (Rm ~370 MPa, HB ~105) is required and reduced ductility/stability is acceptable."
+          },
+          {
+            "standard_1_id": 3982,
+            "standard_2_id": 3978,
+            "equivalency_type": "better",
+            "confidence_level": 83,
+            "notes": "GB YZZnAl4Cu3 is the maximum-strength cross-standard upgrade over EN ZL0400 (Zamak 3). Cu 2.50–3.50% raises Rm by ~32% and HB by ~28% vs ZL0400. For Chinese market projects requiring maximum zinc die-casting strength over ZL0400 capability, YZZnAl4Cu3 is the preferred domestic better grade with high foundry availability."
+          },
+          {
+            "standard_1_id": 3978,
+            "standard_2_id": 3982,
+            "equivalency_type": "better",
+            "confidence_level": 83,
+            "notes": "EN ZL0400 is the lowest-strength base grade relative to GB YZZnAl4Cu3. ZL0400 offers maximum elongation (≥10%), best dimensional stability, best plating adhesion, and best impact toughness in the Zamak family. Upgrade to YZZnAl4Cu3 only when tensile or hardness requirements are the primary driver and elongation/stability can be traded."
           }
         ]
       }
