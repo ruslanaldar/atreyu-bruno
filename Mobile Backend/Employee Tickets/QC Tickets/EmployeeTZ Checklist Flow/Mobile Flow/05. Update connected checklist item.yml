@@ -1,0 +1,24 @@
+info:
+  name: Update connected checklist item
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{base_url}}/mobile/timetickets/employee-tz/checklist-items/{{mobile_item_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "status": "pass",
+        "notes": "Checked and accepted"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Mark one connected mobile checklist item as pass.

@@ -1,0 +1,20 @@
+info:
+  name: 04. GET Filter by  Filler Material Type
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/options/?filler_material_type_id=957ec481-e9a1-4e77-92b3-4cc73b6c27bc"
+  params:
+    - name: "filler_material_type_id"
+      value: "957ec481-e9a1-4e77-92b3-4cc73b6c27bc"
+      type: query
+
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

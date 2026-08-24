@@ -1,0 +1,23 @@
+info:
+  name: List green QC tickets
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/green/?container_no=wk-0002"
+  params:
+    - name: container_no
+      value: wk-0002
+      type: query
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Description: List green QC tickets.
+  Supported filters: container_no, pp_no, erp_no, station, sub_station, emp_id, and is_applied.

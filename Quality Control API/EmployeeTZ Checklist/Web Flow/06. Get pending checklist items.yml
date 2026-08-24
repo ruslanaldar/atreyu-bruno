@@ -1,0 +1,17 @@
+info:
+  name: Get pending checklist items
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/employee-tz/checklist-items/?checklist={{checklist_id}}&status=pending"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Filter checklist items by checklist and pending status.

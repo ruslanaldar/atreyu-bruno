@@ -1,0 +1,30 @@
+info:
+  name: Mobile Flow
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Mobile EmployeeTZ checklist lifecycle.
+
+    Requests:
+    - 01. Create EmployeeTZ with images: registers EmployeeTZ from the mobile endpoint and captures mobile_tz_number/mobile_employee_tz_id.
+      Example action: worker submits production registration with photo evidence.
+    - 02. List connected EmployeeTZ QC checklists: finds checklist by {{mobile_tz_number}} and captures mobile checklist/task/inspection IDs.
+      Example action: load the QC checklist attached to the just-created EmployeeTZ.
+    - 03. Connected checklist detail: retrieves full mobile checklist detail and captures the first item ID.
+      Example action: open the mobile checklist detail screen.
+    - 04. Connected checklist items: lists pending checklist items.
+      Example action: show the remaining QC questions/actions.
+    - 05. Update connected checklist item: marks {{mobile_item_id}} as pass with notes.
+      Example action: mobile QC accepts one checklist item.
+    - 06. Connected inspection batch detail: fetches the batch connected to the mobile checklist.
+      Example action: show sample_positions and current inspection record status.
+    - 07. Connected create green QC PartTicket: creates GREEN ticket linked by {{mobile_tz_number}}.
+      Example action: register passed QC quantity from the mobile app.
+    - 08. Close connected checklist: closes {{mobile_checklist_id}} after the GREEN ticket exists.
+      Example action: finish the mobile QC checklist.
+  type: text/markdown

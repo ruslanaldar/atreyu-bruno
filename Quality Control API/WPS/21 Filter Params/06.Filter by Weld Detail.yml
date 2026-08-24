@@ -1,0 +1,20 @@
+info:
+  name: 06. GET Filter by Weld Detail
+  type: http
+  seq: 6
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/options/?weld_detail_id=07dbf203-992c-4179-a7d8-6cf51eb42537"
+  params:
+    - name: "weld_detail_id"
+      value: "07dbf203-992c-4179-a7d8-6cf51eb42537"
+      type: query
+
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

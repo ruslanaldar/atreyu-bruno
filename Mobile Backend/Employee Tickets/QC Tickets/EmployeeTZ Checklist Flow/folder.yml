@@ -1,0 +1,30 @@
+info:
+  name: EmployeeTZ Checklist Flow
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Mobile EmployeeTZ QC checklist flow and connected inspection package requests.
+
+    Purpose:
+    - Covers mobile EmployeeTZ registration, connected QC checklist actions, sampled inspection records, and support lookups.
+    - Use this folder for the mobile worker/QC app screens.
+
+    Folders:
+    - Mobile Flow: create EmployeeTZ, fetch connected checklist, update item, create GREEN ticket, and close checklist.
+    - Connected Inspection Package: inspection plan, batch, record submission, bulk submission, and batch close.
+    - Supporting Lookups: mobile FMEA, Control Plan, and notification detail requests.
+
+    Typical mobile sequence:
+    - Create EmployeeTZ with images.
+    - List connected checklist by mobile_tz_number.
+    - Open checklist detail and pending items.
+    - Inspect batch/sample positions.
+    - Submit inspection records.
+    - Create GREEN QC PartTicket.
+    - Close checklist.
+  type: text/markdown

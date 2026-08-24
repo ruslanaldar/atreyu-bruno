@@ -43,7 +43,7 @@ runtime:
       code: |-
         var data = res.getBody();
         if (data) {
-          bru.setEnvVar('employee_tz_id', data.id);
+          bru.setEnvVar('tz_number', data.tz_number);
         }
 
 settings:
@@ -51,6 +51,7 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: |-
   This request creates a new Employee Time Zone (EmployeeTZ) registration in the system. It requires various details about the employee, the time zone, and related information. The request is sent as a POST request to the specified URL with the necessary data in JSON format.

@@ -1,0 +1,78 @@
+info:
+  name: Create QC ticket multipart
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/create/"
+  body:
+    type: multipart-form
+    data:
+      - name: container_no
+        type: text
+        value: abc123
+      - name: pp_no
+        type: text
+        value: PP-001
+      - name: erp_no
+        type: text
+        value: ERP-001
+      - name: station
+        type: text
+        value: QC
+      - name: sub_station
+        type: text
+        value: QC-01
+      - name: completed_qty
+        type: text
+        value: "1"
+      - name: status
+        type: text
+        value: green
+      - name: emp_id
+        type: text
+        value: E001
+      - name: emp_name
+        type: text
+        value: Test User
+      - name: unit_processing_time
+        type: text
+        value: "0.00"
+      - name: created_by
+        type: text
+        value: mobile
+      - name: mo_no
+        type: text
+        value: MO-001
+      - name: drawing_no
+        type: text
+        value: DRW-001
+      - name: man_seq
+        type: text
+        value: "10"
+      - name: notes
+        type: text
+        value: QC ticket created from mobile with images.
+      - name: images
+        type: file
+        value:
+          - /Users/ruslan/Documents/CSSC documents/part images/IMG/11036633.jpg
+        contentType: image/jpeg
+      - name: images
+        type: file
+        value:
+          - /Users/ruslan/Documents/CSSC documents/part images/IMG/11036632.jpg
+        contentType: image/jpeg
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Description: Create a QC ticket using multipart form data.
+  Use status = green, yellow, or red.
+  Attach one or more files using the images field before sending.

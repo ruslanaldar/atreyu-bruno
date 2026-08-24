@@ -1,0 +1,17 @@
+info:
+  name: List green tickets by tz_number
+  type: http
+  seq: 11
+
+http:
+  method: GET
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/green/?tz_number={{tz_number}}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: List GREEN QC PartTickets linked to the current tz_number.

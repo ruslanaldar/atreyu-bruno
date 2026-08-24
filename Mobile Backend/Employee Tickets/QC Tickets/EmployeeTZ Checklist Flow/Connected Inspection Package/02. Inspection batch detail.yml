@@ -1,0 +1,19 @@
+info:
+  name: Inspection batch detail
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/mobile/timetickets/qc-control-plan/inspection-batches/{{inspection_batch_id}}/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Mobile QC checking screen source.
+  Includes sample_positions, sample_count, accept_number, reject_number, AQL code letter, RPN snapshots, and current inspection records.

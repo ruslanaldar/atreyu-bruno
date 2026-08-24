@@ -1,11 +1,11 @@
 info:
   name: Make inactive tz
   type: http
-  seq: 9
+  seq: 10
 
 http:
   method: PATCH
-  url: "{{base_url}}/mobile/timetickets/employee-tz/{{employee_tz_id}}/"
+  url: "{{base_url}}/mobile/timetickets/employee-tz/{{tz_number}}/"
   auth: inherit
 
 settings:
@@ -13,6 +13,7 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: |-
   This request is used to make an employee's time zone entry inactive. 

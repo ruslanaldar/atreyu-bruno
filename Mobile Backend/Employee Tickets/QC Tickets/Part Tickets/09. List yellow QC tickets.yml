@@ -1,0 +1,19 @@
+info:
+  name: List yellow QC tickets
+  type: http
+  seq: 9
+
+http:
+  method: GET
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/yellow/?container_no=abc123"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Description: List yellow QC tickets.
+  Supported filters: container_no, pp_no, erp_no, station, sub_station, emp_id, and is_applied.

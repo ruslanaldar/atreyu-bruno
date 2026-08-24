@@ -1,0 +1,27 @@
+info:
+  name: QC Tickets
+  type: folder
+  seq: 19
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Mobile Backend QC ticket and EmployeeTZ checklist requests.
+
+    Purpose:
+    - Contains mobile-facing QC PartTicket registration and QC checklist/inspection screen requests.
+    - Mobile routes live mostly under /mobile/timetickets/.
+    - Web-controlled QC checklist requests are kept under Quality Control API/EmployeeTZ Checklist.
+
+    Folders:
+    - Part Tickets: generic QC PartTicket list/create/status/delete requests.
+    - EmployeeTZ Checklist Flow: mobile EmployeeTZ checklist lifecycle, connected inspection package, and support lookups.
+
+    Common variables:
+    - token is inherited from the environment auth flow.
+    - tz_number and employee_tz_id are used by the web flow.
+    - mobile_tz_number and mobile_employee_tz_id are used by the mobile flow.
+    - inspection_plan_id, inspection_batch_id, fmea_entry_id, control_plan_entry_id, and control_plan_id are captured from checklist detail responses.
+  type: text/markdown

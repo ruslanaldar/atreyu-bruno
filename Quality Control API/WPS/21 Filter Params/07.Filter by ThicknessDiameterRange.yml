@@ -1,0 +1,20 @@
+info:
+  name: 07. GET Filter by Thickness Diameter Range
+  type: http
+  seq: 7
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/options/?thickness_diameter_range_id=47992446-fcd4-4135-a689-e133b794a0af"
+  params:
+    - name: "thickness_diameter_range_id"
+      value: "47992446-fcd4-4135-a689-e133b794a0af"
+      type: query
+
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

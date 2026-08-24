@@ -1,0 +1,20 @@
+info:
+  name: 08. GET Filter by WPS ID
+  type: http
+  seq: 8
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/options/?wps_id="
+  params:
+    - name: "wps_id"
+      value: ""
+      type: query
+
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,72 @@
+info:
+  name: Connected create green QC PartTicket
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/green/"
+  body:
+    type: multipart-form
+    data:
+      - name: tz_number
+        type: text
+        value: "{{mobile_tz_number}}"
+      - name: container_no
+        type: text
+        value: C001
+      - name: pp_no
+        type: text
+        value: "60000001"
+      - name: erp_no
+        type: text
+        value: "30000001"
+      - name: station
+        type: text
+        value: M05
+      - name: sub_station
+        type: text
+        value: M0503
+      - name: completed_qty
+        type: text
+        value: "3.00"
+      - name: unit_processing_time
+        type: text
+        value: "5.00"
+      - name: emp_id
+        type: text
+        value: E001
+      - name: emp_name
+        type: text
+        value: Factory Worker
+      - name: man_seq
+        type: text
+        value: "10"
+      - name: notes
+        type: text
+        value: GREEN ticket for mobile EmployeeTZ QC pass
+      - name: images
+        type: file
+        value: []
+        contentType: image/jpeg
+      - name: images
+        type: file
+        value: []
+        contentType: image/jpeg
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        if (body && body.ticket_id) bru.setEnvVar('mobile_green_ticket_id', body.ticket_id);
+        if (body && body.data && body.data.ticket_id) bru.setEnvVar('mobile_green_ticket_id', body.data.ticket_id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create the GREEN QC PartTicket connected to the mobile EmployeeTZ checklist.

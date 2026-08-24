@@ -1,0 +1,19 @@
+info:
+  name: Delete QC ticket
+  type: http
+  seq: 13
+
+http:
+  method: DELETE
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/?ticket_id=00000000-0000-0000-0000-000000000000"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Description: Delete a QC ticket by ticket_id.
+  This restores MPP data according to the existing PartTicket delete service.

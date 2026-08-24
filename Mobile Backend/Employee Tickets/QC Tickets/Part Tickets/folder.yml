@@ -1,0 +1,40 @@
+info:
+  name: Part Tickets
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Generic mobile QC PartTicket requests for list, create, status filters, and delete.
+
+    Requests:
+    - 01. List QC tickets by container: lists tickets for a required container_no.
+      Example action: get all QC tickets for container abc123.
+    - 02. List unapplied QC tickets by container: lists tickets where applied_only=false.
+      Example action: find tickets that have not been applied back to planning/MPP.
+    - 03. Create QC ticket multipart: creates a QC ticket with explicit status green, yellow, or red.
+      Example action: submit a QC ticket with two optional image uploads.
+    - 04. List QC tickets by status green: lists tickets through the by-status endpoint.
+      Example action: fetch all green tickets.
+    - 05. List QC tickets by status red: lists red tickets through the by-status endpoint.
+      Example action: fetch all red/failed QC tickets.
+    - 06. List QC tickets by status yellow: lists yellow tickets through the by-status endpoint.
+      Example action: fetch all warning/rework-review tickets.
+    - 07. List green QC tickets: lists green tickets with filters such as container_no.
+      Example action: list passed QC tickets for one container.
+    - 08. Create green QC ticket: creates a GREEN ticket with multipart form data.
+      Example action: register accepted production quantity and attach evidence.
+    - 09. List yellow QC tickets: lists yellow tickets with filters.
+      Example action: list caution/review tickets for one container.
+    - 10. Create yellow QC ticket: creates a YELLOW ticket with multipart form data.
+      Example action: register a QC warning or partial concern with evidence.
+    - 11. List red QC tickets: lists red tickets with filters.
+      Example action: list rejected/failed tickets for one container.
+    - 12. Create red QC ticket: creates a RED ticket with multipart form data.
+      Example action: register a failed QC result with image evidence.
+    - 13. Delete QC ticket: deletes a ticket by ticket_id.
+      Example action: remove a mistaken QC ticket and restore related MPP data.
+  type: text/markdown

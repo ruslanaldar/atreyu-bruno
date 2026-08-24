@@ -1,0 +1,7 @@
+info:
+  name: 21. Filter by Params
+  type: folder
+  seq: 21
+
+request:
+  auth: inherit

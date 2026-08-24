@@ -1,0 +1,52 @@
+info:
+  name: Web Flow
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    End-to-end web QC checklist flow.
+
+    Run order:
+    - Start with EmployeeTZ registration.
+    - Ensure or list the generated QC checklist.
+    - Open checklist detail and update checklist items.
+    - Check the linked QC task.
+    - Try close before GREEN ticket when testing validation.
+    - Create the GREEN QC PartTicket.
+    - Re-fetch checklist summary.
+    - Close the checklist.
+
+    Requests:
+    - 01. Create EmployeeTZ with images: registers EmployeeTZ and can generate FMEA, Control Plan, Inspection Plan, Inspection Batch, checklist, task, websocket event, and notification.
+      Example action: submit EmployeeTZ for main_no 60000509 / sub_no 59501879 with image evidence.
+    - 02. Ensure QC checklist by tz_number: idempotently creates or returns the checklist for {{tz_number}}.
+      Example action: force checklist creation when automatic creation needs to be verified.
+    - 03. List QC checklists by tz_number: recommended lookup and captures checklist/task/inspection IDs.
+      Example action: find the open checklist for the current EmployeeTZ tracking number.
+    - 04. List QC checklists by EmployeeTZ UUID: alternate lookup using {{employee_tz_id}}.
+      Example action: verify backend UUID-based filtering.
+    - 05. Checklist detail: retrieves full checklist detail and captures FMEA/Control Plan/item IDs.
+      Example action: load the web QC checklist detail screen.
+    - 06. Get pending checklist items: lists pending checklist items for {{checklist_id}}.
+      Example action: show only items that still need QC action.
+    - 07. Mark checklist item pass: marks {{checklist_item_id}} as pass with notes.
+      Example action: approve a checklist item after inspection.
+    - 08. QC task detail: retrieves the organization task linked to {{task_id}}.
+      Example action: open the web task side panel for the QC work.
+    - 09. Try close checklist before green ticket: expected 400 when no GREEN ticket exists.
+      Example action: confirm the backend blocks premature close.
+    - 10. Create green QC PartTicket: creates the GREEN ticket linked by {{tz_number}}.
+      Example action: register passed QC quantity and upload image evidence.
+    - 11. List green tickets by tz_number: lists GREEN tickets linked to {{tz_number}}.
+      Example action: verify the ticket appears in the checklist summary.
+    - 12. List green tickets by EmployeeTZ UUID: lists GREEN tickets linked to {{employee_tz_id}}.
+      Example action: test UUID-based ticket filtering.
+    - 13. Confirm checklist green ticket summary: re-fetches checklist after GREEN ticket creation.
+      Example action: confirm green_ticket_count, green_ticket_qty, remaining_qty, and can_close.
+    - 14. Close checklist after green ticket: closes {{checklist_id}} after validation passes.
+      Example action: complete the web QC checklist.
+  type: text/markdown

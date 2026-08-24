@@ -1,0 +1,38 @@
+info:
+  name: List QC checklists by tz_number
+  type: http
+  seq: 3
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/employee-tz/checklists/?tz_number={{tz_number}}"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var rows = body && body.data ? body.data : body;
+        var row = Array.isArray(rows) ? rows[0] : rows;
+        if (row) {
+          if (row.id) bru.setEnvVar('checklist_id', row.id);
+          if (row.task_id) bru.setEnvVar('task_id', row.task_id);
+          if (row.inspection_plan) bru.setEnvVar('inspection_plan_id', row.inspection_plan);
+          if (row.inspection_batch) bru.setEnvVar('inspection_batch_id', row.inspection_batch);
+          if (row.sample_positions) bru.setEnvVar('sample_positions', JSON.stringify(row.sample_positions));
+          if (row.sample_count !== undefined) bru.setEnvVar('sample_count', row.sample_count);
+          if (row.green_ticket_count !== undefined) bru.setEnvVar('green_ticket_count', row.green_ticket_count);
+          if (row.green_ticket_qty !== undefined) bru.setEnvVar('green_ticket_qty', row.green_ticket_qty);
+          if (row.remaining_qty !== undefined) bru.setEnvVar('remaining_qty', row.remaining_qty);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Recommended web checklist lookup.
+  Short response includes inspection_plan, inspection_batch, sample_positions, sample_count, green ticket summary, remaining_qty, and can_close.

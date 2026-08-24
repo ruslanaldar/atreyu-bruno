@@ -1,0 +1,23 @@
+info:
+  name: Close connected checklist
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/employee-tz/checklists/{{mobile_checklist_id}}/close/"
+  body:
+    type: json
+    data: |-
+      {
+        "notes": "GREEN ticket created, mobile QC checklist closed"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Close the connected mobile QC checklist after GREEN ticket creation.

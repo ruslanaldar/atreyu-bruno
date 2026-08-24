@@ -1,0 +1,20 @@
+info:
+  name: 01. GET Filter by Welding Position
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/wps/options/?process_id=5bab117a-7126-4a2d-a49a-c29e4fe4dbee"
+  params:
+    - name: "process_id"
+      value: "5bab117a-7126-4a2d-a49a-c29e4fe4dbee"
+      type: query
+
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5

@@ -1,0 +1,35 @@
+info:
+  name: Submit inspection records in bulk
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/qc-control-plan/inspection-records/bulk/"
+  body:
+    type: json
+    data: |-
+      {
+        "batch": {{inspection_batch_id}},
+        "records": [
+          {
+            "piece_sequence_no": 1,
+            "result": "Pass",
+            "notes": "OK"
+          },
+          {
+            "piece_sequence_no": 6,
+            "result": "Pass",
+            "notes": "OK"
+          }
+        ]
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Submit all checked sample positions together from the mobile UI.

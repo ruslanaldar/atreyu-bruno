@@ -1,0 +1,26 @@
+info:
+  name: Connected Inspection Package
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Mobile inspection screen requests for inspection plans, batches, and sampled piece records.
+
+    Requests:
+    - 01. Inspection plan detail: fetches {{inspection_plan_id}}.
+      Example action: show AQL/inspection-level settings that drive batch sampling.
+    - 02. Inspection batch detail: fetches {{inspection_batch_id}}.
+      Example action: show sample_positions, sample_count, accept/reject numbers, RPN snapshots, and existing records.
+    - 03. List inspection records for batch: lists records for {{inspection_batch_id}}.
+      Example action: display which sampled pieces have already been checked.
+    - 04. Submit one inspection record: creates one sampled piece result and captures inspection_record_id.
+      Example action: submit piece_sequence_no 1 as Pass with notes.
+    - 05. Submit inspection records in bulk: creates multiple sampled piece results in one request.
+      Example action: submit all checked sample positions together from the mobile UI.
+    - 06. Close inspection batch manually: closes {{inspection_batch_id}}.
+      Example action: QC decides the sample inspection is complete and closes the batch.
+  type: text/markdown

@@ -1,0 +1,33 @@
+info:
+  name: Ensure QC checklist by tz_number
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/employee-tz/checklists/"
+  body:
+    type: json
+    data: |-
+      {
+        "tz_number": "{{tz_number}}",
+        "notify": true
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data && data.id) bru.setEnvVar('checklist_id_from_create', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Force or idempotently create the QC checklist by tz_number. If it already exists, the API should return the existing checklist.

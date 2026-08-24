@@ -1,0 +1,17 @@
+info:
+  name: Connected checklist items
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/mobile/timetickets/employee-tz/checklist-items/?checklist={{mobile_checklist_id}}&status=pending"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: List pending checklist items for the connected mobile checklist.

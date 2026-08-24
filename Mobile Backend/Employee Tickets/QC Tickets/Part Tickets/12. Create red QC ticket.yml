@@ -1,0 +1,68 @@
+info:
+  name: Create red QC ticket
+  type: http
+  seq: 12
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/red/"
+  body:
+    type: multipart-form
+    data:
+      - name: container_no
+        type: text
+        value: abc123
+      - name: pp_no
+        type: text
+        value: PP-001
+      - name: erp_no
+        type: text
+        value: ERP-001
+      - name: station
+        type: text
+        value: QC
+      - name: sub_station
+        type: text
+        value: QC-01
+      - name: completed_qty
+        type: text
+        value: "1"
+      - name: emp_id
+        type: text
+        value: E001
+      - name: emp_name
+        type: text
+        value: Test User
+      - name: unit_processing_time
+        type: text
+        value: "0.00"
+      - name: created_by
+        type: text
+        value: mobile
+      - name: mo_no
+        type: text
+        value: MO-001
+      - name: drawing_no
+        type: text
+        value: DRW-001
+      - name: man_seq
+        type: text
+        value: "10"
+      - name: notes
+        type: text
+        value: Red QC ticket created from mobile.
+      - name: images
+        type: file
+        value: []
+        contentType: image/jpeg
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Description: Create a red QC ticket using multipart form data with images.
+  Attach files using the images field before sending.

@@ -1,0 +1,25 @@
+info:
+  name: EmployeeTZ Checklist
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    EmployeeTZ-driven QC checklist flow for web QC users.
+
+    Purpose:
+    - Covers the web-controlled lifecycle created from EmployeeTZ registration.
+    - Web QC endpoints live under /qcs/employee-tz/.
+    - The flow creates or reads the connected QC checklist, task, FMEA entry, Control Plan entry, Inspection Plan, and Inspection Batch.
+
+    Important variables:
+    - tz_number is the normal lookup key.
+    - employee_tz_id is the real EmployeeTZ UUID when returned by the API.
+    - checklist_id, task_id, inspection_plan_id, inspection_batch_id, control_plan_id, control_plan_entry_id, fmea_entry_id, checklist_item_id, and green_ticket_id are captured as the flow runs.
+
+    Main folder:
+    - Web Flow: web QC checklist lifecycle from EmployeeTZ creation through checklist close.
+  type: text/markdown

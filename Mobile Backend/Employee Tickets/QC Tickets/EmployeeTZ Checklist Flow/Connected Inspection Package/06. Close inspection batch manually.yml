@@ -1,0 +1,23 @@
+info:
+  name: Close inspection batch manually
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/qc-control-plan/inspection-batches/{{inspection_batch_id}}/close/"
+  body:
+    type: json
+    data: |-
+      {
+        "notes": "Sample inspection completed"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Manually close the inspection batch when QC decides sampled pieces are sufficient.

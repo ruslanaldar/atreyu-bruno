@@ -1,0 +1,23 @@
+info:
+  name: Try close checklist before green ticket
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/employee-tz/checklists/{{checklist_id}}/close/"
+  body:
+    type: json
+    data: |-
+      {
+        "notes": "Trying before green ticket"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Expected to return 400 if no GREEN PartTicket exists yet.

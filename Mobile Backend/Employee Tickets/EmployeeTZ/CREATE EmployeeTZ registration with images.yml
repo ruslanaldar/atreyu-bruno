@@ -1,0 +1,103 @@
+info:
+  name: CREATE EmployeeTZ registration with images
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/employee-tz/"
+  body:
+    type: multipart-form
+    data:
+      - name: tz_number
+        type: text
+        value: ett_c350cd0fc35fc0f6_a72ak1
+      - name: employee
+        type: text
+        value: "313"
+      - name: emp_id
+        type: text
+        value: "313"
+      - name: emp_name
+        type: text
+        value: Tang Jixiao
+      - name: source_ett_id
+        type: text
+        value: ett_c350cd0fc35fc0f6
+      - name: wskey
+        type: text
+        value: your_wskey_here
+      - name: production_date
+        type: text
+        value: 2026-07-29
+      - name: start_time
+        type: text
+        value: 2026-07-29T08:00:00
+      - name: end_time
+        type: text
+        value: 2026-07-29T20:00:00
+      - name: container_no
+        type: text
+        value: ed190
+      - name: main_no
+        type: text
+        value: "60001794"
+      - name: sub_no
+        type: text
+        value: "59506122"
+      - name: center_code
+        type: text
+        value: l01
+      - name: station_code
+        type: text
+        value: l0101
+      - name: location
+        type: text
+        value: station location here
+      - name: total_time
+        type: text
+        value: "720.00"
+      - name: planned_qty
+        type: text
+        value: "1.00"
+      - name: registered_qty
+        type: text
+        value: "1.00"
+      - name: status
+        type: text
+        value: active
+      - name: description
+        type: text
+        value: Registered from mobile time ticket
+      - name: source_payload
+        type: text
+        value: '{"id":"ett_c350cd0fc35fc0f6","date":"2026-07-29","container_no":"ed190"}'
+      - name: images
+        type: file
+        value:
+          - /Users/ruslan/Documents/CSSC documents/part images/IMG/11010310.jpg
+        contentType: image/jpeg
+      - name: images
+        type: file
+        value:
+          - /Users/ruslan/Documents/CSSC documents/part images/IMG2026.3.16/11030609.jpg
+        contentType: image/jpeg
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var data = res.getBody();
+        if (data) {
+          bru.setEnvVar('tz_number', data.tz_number);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: This request creates a new EmployeeTZ registration with multiple images.

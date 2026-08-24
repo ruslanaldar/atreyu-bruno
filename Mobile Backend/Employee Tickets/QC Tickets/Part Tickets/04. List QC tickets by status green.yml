@@ -1,0 +1,19 @@
+info:
+  name: List QC tickets by status green
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/by-status/?status=green"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Description: List tickets by color status.
+  Valid status values are green, yellow, and red.

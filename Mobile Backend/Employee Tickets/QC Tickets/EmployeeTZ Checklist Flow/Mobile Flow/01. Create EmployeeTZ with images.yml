@@ -1,0 +1,83 @@
+info:
+  name: Create EmployeeTZ with images
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/employee-tz/"
+  body:
+    type: multipart-form
+    data:
+      - name: tz_number
+        type: text
+        value: TZ260814002
+      - name: emp_id
+        type: text
+        value: E001
+      - name: emp_name
+        type: text
+        value: Factory Worker
+      - name: pp_no
+        type: text
+        value: "60000001"
+      - name: erp_no
+        type: text
+        value: "30000001"
+      - name: registered_qty
+        type: text
+        value: "3.00"
+      - name: container_no
+        type: text
+        value: C001
+      - name: center_code
+        type: text
+        value: M05
+      - name: center_name
+        type: text
+        value: Machining
+      - name: station_code
+        type: text
+        value: M0503
+      - name: station_name
+        type: text
+        value: Machining Station 03
+      - name: location
+        type: text
+        value: Factory QC
+      - name: sequence
+        type: text
+        value: "10"
+      - name: production_date
+        type: text
+        value: 2026-08-14
+      - name: images
+        type: file
+        value: []
+        contentType: image/jpeg
+      - name: images
+        type: file
+        value: []
+        contentType: image/jpeg
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data) {
+          if (data.employee_tz_id) bru.setEnvVar('mobile_employee_tz_id', data.employee_tz_id);
+          if (data.tz_number) bru.setEnvVar('mobile_tz_number', data.tz_number);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Creates/registers EmployeeTZ from the mobile endpoint.
+  The response may include $.data.id as tz_number and $.data.employee_tz_id as the real UUID.

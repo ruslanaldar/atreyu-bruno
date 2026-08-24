@@ -1,0 +1,36 @@
+info:
+  name: Submit one inspection record
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/qc-control-plan/inspection-records/"
+  body:
+    type: json
+    data: |-
+      {
+        "batch": {{inspection_batch_id}},
+        "piece_sequence_no": 1,
+        "result": "Pass",
+        "notes": "Sample checked OK"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data && data.id) bru.setEnvVar('inspection_record_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Submit a single inspection record. piece_sequence_no must be one of sample_positions.
+  Result values are usually Pass, Fail, or Rework.

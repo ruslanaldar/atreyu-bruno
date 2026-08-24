@@ -1,0 +1,22 @@
+info:
+  name: Supporting Lookups
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Supporting mobile QC detail and notification lookups.
+
+    Requests:
+    - 01. FMEA entry detail: fetches {{fmea_entry_id}} through the mobile QC FMEA endpoint.
+      Example action: show failure mode/risk context for the checklist.
+    - 02. Control plan entry detail: fetches {{control_plan_entry_id}} through the mobile Control Plan endpoint.
+      Example action: show inspection method and control details for the checklist item.
+    - 03. Control plan document detail: fetches {{control_plan_id}} through the mobile Control Plan document endpoint.
+      Example action: show the full control plan document context.
+    - 04. Notifications: fetches /chat/notifications/.
+      Example action: verify QC notification payloads were created.
+  type: text/markdown

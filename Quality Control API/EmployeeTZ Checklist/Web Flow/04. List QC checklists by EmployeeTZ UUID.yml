@@ -1,0 +1,19 @@
+info:
+  name: List QC checklists by EmployeeTZ UUID
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/qcs/employee-tz/checklists/?employee_tz={{employee_tz_id}}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Alternative checklist lookup by real EmployeeTZ UUID.
+  employee_tz must be the UUID from $.data.employee_tz_id, not the tz_number.

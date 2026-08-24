@@ -1,0 +1,102 @@
+info:
+  name: Create EmployeeTZ with images
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/organization/categories/hr/employee-tz/"
+  body:
+    type: multipart-form
+    data:
+      - name: tz_number
+        type: text
+        value: ett_2e36c50e9e9d2f13
+      - name: employee
+        type: text
+        value: "479"
+      - name: emp_id
+        type: text
+        value: "479"
+      - name: emp_name
+        type: text
+        value: Tang Jixiao
+      - name: source_ett_id
+        type: text
+        value: ett_2e36c50e9e9d2f13
+      - name: production_date
+        type: text
+        value: 2026-08-05
+      - name: start_time
+        type: text
+        value: 2026-08-05T08:00:00
+      - name: end_time
+        type: text
+        value: 2026-08-05T10:18:00
+      - name: container_no
+        type: text
+        value: s363
+      - name: main_no
+        type: text
+        value: "60000509"
+      - name: sub_no
+        type: text
+        value: "59501879"
+      - name: center_code
+        type: text
+        value: l01
+      - name: station_code
+        type: text
+        value: l0103
+      - name: location
+        type: text
+        value: station location here
+      - name: sequence
+        type: text
+        value: "1"
+      - name: total_time
+        type: text
+        value: "81.12"
+      - name: planned_qty
+        type: text
+        value: "104.0"
+      - name: registered_qty
+        type: text
+        value: "11"
+      - name: status
+        type: text
+        value: active
+      - name: description
+        type: text
+        value: Registered from mobile time ticket
+      - name: images
+        type: file
+        value: []
+        contentType: image/jpeg
+      - name: images
+        type: file
+        value: []
+        contentType: image/jpeg
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data) {
+          if (data.employee_tz_id) bru.setEnvVar('employee_tz_id', data.employee_tz_id);
+          if (data.tz_number) bru.setEnvVar('tz_number', data.tz_number);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Creates/registers EmployeeTZ from the web endpoint.
+  Expected side effects: creates or ensures the FMEA document/entries, control plan document/entries, inspection plan, inspection batch with sample_positions, QC checklist, QC task, websocket payload, and notification.
+  Important: $.data.id may be tz_number for frontend compatibility. The real UUID should be captured from $.data.employee_tz_id when present.

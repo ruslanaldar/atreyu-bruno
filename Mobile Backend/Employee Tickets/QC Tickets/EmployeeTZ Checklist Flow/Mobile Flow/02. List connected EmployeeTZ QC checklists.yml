@@ -1,0 +1,32 @@
+info:
+  name: List connected EmployeeTZ QC checklists
+  type: http
+  seq: 2
+
+http:
+  method: GET
+  url: "{{base_url}}/mobile/timetickets/employee-tz/checklists/?tz_number={{mobile_tz_number}}"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var rows = body && body.data ? body.data : body;
+        var row = Array.isArray(rows) ? rows[0] : rows;
+        if (row) {
+          if (row.id) bru.setEnvVar('mobile_checklist_id', row.id);
+          if (row.task_id) bru.setEnvVar('mobile_task_id', row.task_id);
+          if (row.inspection_plan) bru.setEnvVar('mobile_inspection_plan_id', row.inspection_plan);
+          if (row.inspection_batch) bru.setEnvVar('mobile_inspection_batch_id', row.inspection_batch);
+          if (row.items && row.items[0] && row.items[0].id) bru.setEnvVar('mobile_checklist_item_id', row.items[0].id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: List QC checklists connected to the mobile EmployeeTZ by tz_number.

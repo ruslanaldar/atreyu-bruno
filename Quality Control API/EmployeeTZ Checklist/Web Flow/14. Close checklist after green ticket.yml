@@ -1,0 +1,23 @@
+info:
+  name: Close checklist after green ticket
+  type: http
+  seq: 14
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/employee-tz/checklists/{{checklist_id}}/close/"
+  body:
+    type: json
+    data: |-
+      {
+        "notes": "GREEN ticket created, QC checklist closed"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Close the web QC checklist after the required GREEN ticket exists.
