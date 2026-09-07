@@ -16,8 +16,14 @@ http:
         type: text
         value: login
 
+runtime:
+  variables:
+    - name: base_url
+      value: http://27.223.82.66:18080/api
+
 settings:
   encodeUrl: true
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

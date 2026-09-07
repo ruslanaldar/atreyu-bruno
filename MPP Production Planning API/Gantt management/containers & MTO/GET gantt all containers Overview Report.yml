@@ -5,21 +5,21 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/gantt/containers_overview/?get_report=true&scenario_id=scenario-1774983298419-rtq7a89"
+  url: "{{base_url}}/productionplans/gantt/containers_overview/?get_report=true"
   params:
     - name: get_report
       value: "true"
       type: query
-    - name: scenario_id
-      value: scenario-1774983298419-rtq7a89
-      type: query
-  auth: inherit
+  auth:
+    type: bearer
+    token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzg3ODk5OTU1LCJpYXQiOjE3ODc4MTM1NTUsImp0aSI6IjAyMWQzNmEwMGJkYzQwZDA4NTliOTA3NTdhYjdjNzM2IiwidXNlcl9pZCI6MX0.eCZWfDSC8CJCZog2BHNhs29y_BSwUxRuCE03LjTNNuw
 
 settings:
   encodeUrl: true
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: |-
   # Action Report API Response Guide

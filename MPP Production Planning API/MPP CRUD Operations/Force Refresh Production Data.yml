@@ -1,7 +1,7 @@
 info:
   name: Force Refresh Production Data
   type: http
-  seq: 14
+  seq: 15
 
 http:
   method: POST
@@ -22,5 +22,6 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: Force production planning refresh and update

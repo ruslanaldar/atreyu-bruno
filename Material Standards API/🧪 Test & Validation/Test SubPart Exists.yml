@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/parts/sub-parts/check_record?subpart_id=8"
+  url: "{{base_url}}/parts/sub-parts/check_record?subpart_id=8"
   headers:
     - name: Authorization
       value: Bearer {{authToken}}

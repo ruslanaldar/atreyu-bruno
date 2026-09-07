@@ -15,6 +15,13 @@ config:
       bypassProxy: ""
 
 request:
+  variables:
+    - name: base_url
+      value: http://27.223.82.66:18080/api
+    - name: baseUrl
+      value: http://27.223.82.66:18080/api
+    - name: prefix
+      value: orders
   auth:
     type: bearer
     token: "{{token}}"

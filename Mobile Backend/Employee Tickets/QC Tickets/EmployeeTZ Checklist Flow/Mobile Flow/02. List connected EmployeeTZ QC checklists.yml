@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/mobile/timetickets/employee-tz/checklists/?tz_number={{mobile_tz_number}}"
+  url: "{{base_url}}/mobile/timetickets/employee-tz/checklists/"
   auth: inherit
 
 runtime:
@@ -28,5 +28,6 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: List QC checklists connected to the mobile EmployeeTZ by tz_number.

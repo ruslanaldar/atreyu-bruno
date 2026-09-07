@@ -20,15 +20,38 @@ http:
         value: "292929"
 
 runtime:
+  variables:
+    - name: base_url
+      value: http://27.223.82.66:18080/api
   scripts:
     - type: after-response
       code: |-
         var data = res.getBody();
-        if (data.access) {
-            bru.setEnvVar("token", data.access);
+        if (typeof data === "string") {
+          data = JSON.parse(data);
         }
+
+        if (data.access) {
+          bru.setVar("token", data.access);
+          bru.setVar("auth_token", data.access);
+          bru.setVar("jwt_token", data.access);
+          bru.setVar("access_token", data.access);
+
+          bru.setEnvVar("token", data.access);
+          bru.setEnvVar("auth_token", data.access);
+          bru.setEnvVar("jwt_token", data.access);
+          bru.setEnvVar("access_token", data.access);
+
+          bru.setGlobalEnvVar("token", data.access);
+          bru.setGlobalEnvVar("auth_token", data.access);
+          bru.setGlobalEnvVar("jwt_token", data.access);
+          bru.setGlobalEnvVar("access_token", data.access);
+        }
+
         if (data.refresh) {
-            bru.setEnvVar("refresh_token", data.refresh);
+          bru.setVar("refresh_token", data.refresh);
+          bru.setEnvVar("refresh_token", data.refresh);
+          bru.setGlobalEnvVar("refresh_token", data.refresh);
         }
 
 settings:
@@ -36,3 +59,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

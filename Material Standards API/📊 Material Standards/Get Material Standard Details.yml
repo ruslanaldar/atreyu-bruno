@@ -19,7 +19,7 @@ settings:
 examples:
   - name: Query Material Standard
     request:
-      url: "{{baseUrl}}/basics/materials/material-standards/98"
+      url: "{{base_url}}/basics/materials/material-standards/98"
       method: GET
       headers:
         - name: Authorization
@@ -30,7 +30,7 @@ examples:
         data: ""
   - name: Query Material Group
     request:
-      url: "{{baseUrl}}/basics/materials/material-standards/98"
+      url: "{{base_url}}/basics/materials/material-standards/98"
       method: GET
       headers:
         - name: Authorization
@@ -41,7 +41,7 @@ examples:
         data: ""
   - name: Query MaterialSubgroup
     request:
-      url: "{{baseUrl}}/basics/materials/material-standards/98"
+      url: "{{base_url}}/basics/materials/material-standards/98"
       method: GET
       headers:
         - name: Authorization

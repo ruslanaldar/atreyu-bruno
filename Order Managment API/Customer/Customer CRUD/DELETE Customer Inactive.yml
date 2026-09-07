@@ -5,7 +5,7 @@ info:
 
 http:
   method: DELETE
-  url: "{{baseUrl}}/{{prefix}}/customers/?id=114"
+  url: "{{base_url}}/{{prefix}}/customers/?id=114"
   params:
     - name: id
       value: "114"

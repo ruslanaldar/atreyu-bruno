@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/{{prefix}}/companies/?id=69"
+  url: "{{base_url}}/{{prefix}}/companies/?id=69"
   params:
     - name: id
       value: "69"

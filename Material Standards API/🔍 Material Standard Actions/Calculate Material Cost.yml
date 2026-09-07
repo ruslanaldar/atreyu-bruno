@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/basics/materials/material-standards/calculate_cost/"
+  url: "{{base_url}}/basics/materials/material-standards/calculate_cost/"
   headers:
     - name: Content-Type
       value: application/json

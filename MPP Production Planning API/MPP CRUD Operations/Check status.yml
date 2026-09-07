@@ -1,11 +1,11 @@
 info:
   name: Check status
   type: http
-  seq: 8
+  seq: 9
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/mpp/task_status/?task_id=464887c7-da95-43e4-8e40-e3c96d8739ba"
+  url: "{{base_url}}/productionplans/mpp/task_status/?task_id=ec37399c-2f14-4686-bba6-864ec22da00e"
   headers:
     - name: Content-Type
       value: application/json
@@ -15,7 +15,7 @@ http:
       type: query
       disabled: true
     - name: task_id
-      value: 464887c7-da95-43e4-8e40-e3c96d8739ba
+      value: ec37399c-2f14-4686-bba6-864ec22da00e
       type: query
   body:
     type: json
@@ -32,5 +32,6 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: Create new MPP - automatically runs production planning to generate production_plan and remaining_capacity

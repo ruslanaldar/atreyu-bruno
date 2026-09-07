@@ -14,10 +14,10 @@ http:
         value: ett_2e36c50e9e9d2f13
       - name: employee
         type: text
-        value: "479"
+        value: "313"
       - name: emp_id
         type: text
-        value: "479"
+        value: "313"
       - name: emp_name
         type: text
         value: Tang Jixiao
@@ -95,6 +95,7 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: |-
   Creates/registers EmployeeTZ from the web endpoint.

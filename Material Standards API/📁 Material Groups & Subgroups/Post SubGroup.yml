@@ -5,7 +5,7 @@ info:
 
 http:
   method: POST
-  url: "{{baseUrl}}/basics/materials/material-subgroups/"
+  url: "{{base_url}}/basics/materials/material-subgroups/"
   body:
     type: json
     data: |-

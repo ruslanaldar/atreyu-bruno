@@ -5,7 +5,14 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/organization/tasks/?action=detail&taskId={{task_id}}"
+  url: "{{base_url}}/organization/tasks/?action=detail&taskId=76"
+  params:
+    - name: action
+      value: detail
+      type: query
+    - name: taskId
+      value: "76"
+      type: query
   auth: inherit
 
 settings:
@@ -13,5 +20,6 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: Fetch the QC task detail created from EmployeeTZ/checklist generation.

@@ -5,7 +5,11 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/qcs/employee-tz/checklists/?employee_tz={{employee_tz_id}}"
+  url: "{{base_url}}/qcs/employee-tz/checklists/?employee_tz=745eb980-54e8-4424-97df-ac38f44982a6"
+  params:
+    - name: employee_tz
+      value: 745eb980-54e8-4424-97df-ac38f44982a6
+      type: query
   auth: inherit
 
 settings:
@@ -13,6 +17,7 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: |-
   Alternative checklist lookup by real EmployeeTZ UUID.

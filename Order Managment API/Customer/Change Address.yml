@@ -5,7 +5,7 @@ info:
 
 http:
   method: PUT
-  url: "{{baseUrl}}/{{prefix}}/addresses/"
+  url: "{{base_url}}/{{prefix}}/addresses/"
   body:
     type: json
     data: |-

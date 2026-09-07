@@ -5,7 +5,7 @@ info:
 
 http:
   method: PATCH
-  url: "{{baseUrl}}/parts/sub-parts/update_by_query?subpart_id=522"
+  url: "{{base_url}}/parts/sub-parts/update_by_query?subpart_id=522"
   headers:
     - name: Content-Type
       value: application/json

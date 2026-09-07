@@ -1,7 +1,7 @@
 info:
   name: Update MPP (Smart Logic)
   type: http
-  seq: 10
+  seq: 11
 
 http:
   method: PUT
@@ -24,5 +24,6 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: "Smart update: metadata changes update in-place, production changes check containers first"

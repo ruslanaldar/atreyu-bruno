@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{baseUrl}}/basics/materials/material-standards"
+  url: "{{base_url}}/basics/materials/material-standards"
   headers:
     - name: Authorization
       value: Bearer {{authToken}}

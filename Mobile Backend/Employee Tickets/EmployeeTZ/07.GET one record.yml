@@ -5,9 +5,9 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/mobile/timetickets/employee-tz/?tz_id=ett_c350cd0fc35fc0f6_a72ak1_PgP"
+  url: "{{base_url}}/mobile/timetickets/employee-tz/?tz_number=ett_c350cd0fc35fc0f6_a72ak1_PgP"
   params:
-    - name: tz_id
+    - name: tz_number
       value: ett_c350cd0fc35fc0f6_a72ak1_PgP
       type: query
     - name: id

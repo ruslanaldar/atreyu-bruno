@@ -2,13 +2,69 @@ name: local
 variables:
   - name: base_url
     value: http://27.223.82.66:18080/api
+  - name: baseUrl
+    value: http://27.223.82.66:18080/api
+  - name: prefix
+    value: orders
   - secret: true
     name: token
   - secret: true
+    name: auth_token
+  - secret: true
+    name: jwt_token
+  - secret: true
+    name: access_token
+  - secret: true
     name: refresh_token
   - name: task_id
-    value: 464887c7-da95-43e4-8e40-e3c96d8739ba
+    value:
+      type: number
+      data: "76"
   - name: action_id
     value:
       type: number
       data: "1"
+  - name: tz_number
+    value: ett_2e36c50e9e9d2f13_aXg
+  - name: checklist_id_from_create
+    value: 1b7788f8-2c15-48b2-8d0d-7505de6d42e9
+  - name: checklist_id
+    value: 1b7788f8-2c15-48b2-8d0d-7505de6d42e9
+  - name: inspection_plan_id
+    value:
+      type: number
+      data: "17"
+  - name: inspection_batch_id
+    value:
+      type: number
+      data: "26"
+  - name: sample_positions
+    value: "[1,2,9,15,23,28,33,39,41,52,54,60,69,70,79,85,88,95,100,104]"
+  - name: sample_count
+    value:
+      type: number
+      data: "20"
+  - name: green_ticket_count
+    value:
+      type: number
+      data: "0"
+  - name: green_ticket_qty
+    value: "0.00"
+  - name: remaining_qty
+    value: "11.00"
+  - name: control_plan_id
+    value:
+      type: number
+      data: "33"
+  - name: control_plan_entry_id
+    value:
+      type: number
+      data: "411"
+  - name: fmea_entry_id
+    value:
+      type: number
+      data: "658"
+  - name: checklist_item_id
+    value:
+      type: number
+      data: "181"

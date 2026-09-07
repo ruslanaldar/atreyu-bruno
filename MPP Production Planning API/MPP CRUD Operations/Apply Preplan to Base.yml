@@ -1,7 +1,7 @@
 info:
-  name: New Create New MPP shift_time
+  name: Apply Preplan to Base
   type: http
-  seq: 7
+  seq: 8
 
 http:
   method: POST
@@ -18,7 +18,8 @@ http:
           "status": "produce",
           "shift_time": 10,
           "is_saturday": true,
-          "week_no": 12
+          "week_no": 12,
+          "preplan_applied": true
       }
   auth: inherit
 
@@ -40,4 +41,12 @@ settings:
   maxRedirects: 5
   forwardAuthorizationHeader: true
 
-docs: Create new MPP - automatically runs production planning to generate production_plan and remaining_capacity
+docs: |-
+  preplan_applied :\
+  True - apply preplan shift assignment except sim employees
+
+  False- cancel preplan_applied for the base_plan
+
+  <br/>
+
+  if preplan_applied is not provided it will take last settings for the preplan_applied.
