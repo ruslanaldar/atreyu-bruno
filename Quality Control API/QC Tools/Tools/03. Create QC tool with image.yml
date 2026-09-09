@@ -1,0 +1,49 @@
+info:
+  name: Create QC tool with image
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/qc-tools/"
+  body:
+    type: multipart-form
+    data:
+      - name: category
+        type: text
+        value: "{{qc_category_id}}"
+      - name: tool_name
+        type: text
+        value: Hurl Image QC Caliper
+      - name: serial_number
+        type: text
+        value: HURL-QC-IMAGE-20260909-001
+      - name: quantity
+        type: text
+        value: "1"
+      - name: condition
+        type: text
+        value: available
+      - name: remarks
+        type: text
+        value: Temporary QC tool created to verify multipart image upload.
+      - name: image
+        type: file
+        value: []
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data && data.id) bru.setEnvVar('qc_tool_image_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a QC tool with an image upload and capture qc_tool_image_id.

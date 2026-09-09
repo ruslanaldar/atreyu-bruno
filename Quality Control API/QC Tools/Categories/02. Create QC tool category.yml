@@ -1,0 +1,32 @@
+info:
+  name: Create QC tool category
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/qc-tools/categories/"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Test category",
+        "description": "Temporary QC-tool category created by Bruno CRUD testing."
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data && data.id) bru.setEnvVar('qc_category_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a QC tool category used by the QC tool create request.

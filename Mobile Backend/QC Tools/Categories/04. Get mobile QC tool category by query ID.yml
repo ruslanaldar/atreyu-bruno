@@ -1,0 +1,17 @@
+info:
+  name: Get mobile QC tool category by query ID
+  type: http
+  seq: 4
+
+http:
+  method: GET
+  url: "{{base_url}}/mobile/qc/tools/categories/?id={{mobile_qc_category_id}}"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Read the mobile-created QC-tool category through the mobile ?id= query parameter.

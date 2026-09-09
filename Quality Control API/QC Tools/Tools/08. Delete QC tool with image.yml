@@ -1,0 +1,17 @@
+info:
+  name: Delete QC tool with image
+  type: http
+  seq: 8
+
+http:
+  method: DELETE
+  url: "{{base_url}}/qcs/qc-tools/{{qc_tool_image_id}}/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete the QC tool created by the multipart image-upload request.

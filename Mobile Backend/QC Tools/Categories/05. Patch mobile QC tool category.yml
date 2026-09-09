@@ -1,0 +1,23 @@
+info:
+  name: Patch mobile QC tool category
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{base_url}}/mobile/qc/tools/categories/{{mobile_qc_category_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Updated through the mobile CRUD API."
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update the mobile-created QC-tool category through the mobile API.

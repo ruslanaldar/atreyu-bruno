@@ -1,0 +1,23 @@
+info:
+  name: Patch QC tool category
+  type: http
+  seq: 6
+
+http:
+  method: PATCH
+  url: "{{base_url}}/qcs/qc-tools/categories/{{qc_category_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "description": "Updated by the Bruno CRUD collection."
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Partially update the captured QC tool category description.

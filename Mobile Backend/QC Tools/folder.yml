@@ -1,0 +1,20 @@
+info:
+  name: QC Tools
+  type: folder
+  seq: 14
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Mobile backend QC-tool CRUD requests under /mobile/qc/tools/.
+
+    Folders:
+    - Tools: mobile CRUD requests for QC tools.
+    - Categories: mobile CRUD requests for QC-tool categories.
+
+    Notes:
+    - These mobile routes expose the same QC-tool APIViews with JWT authentication.
+    - Mobile CRUD requests use mobile_qc_category_id and mobile_qc_tool_id so they can run independently from the web QC Tools folder.
+  type: text/markdown

@@ -1,0 +1,17 @@
+info:
+  name: Delete QC tool
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{base_url}}/qcs/qc-tools/{{qc_tool_id}}/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete the captured QC tool before deleting its category.

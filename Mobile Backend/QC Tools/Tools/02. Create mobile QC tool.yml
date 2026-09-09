@@ -1,0 +1,38 @@
+info:
+  name: Create mobile QC tool
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/qc/tools/"
+  body:
+    type: json
+    data: |-
+      {
+        "category": "{{mobile_qc_category_id}}",
+        "tool_name": "Mobile Hurl Digital Caliper",
+        "tool_name_cn": "移动端 Hurl 数显卡尺",
+        "serial_number": "HURL-MOBILE-QC-20260909-001",
+        "company_no": "HURL-MOBILE-QC-001",
+        "quantity": 1,
+        "condition": "available",
+        "remarks": "Temporary QC tool created through the mobile CRUD API."
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data && data.id) bru.setEnvVar('mobile_qc_tool_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a QC tool through the mobile backend API and capture mobile_qc_tool_id.

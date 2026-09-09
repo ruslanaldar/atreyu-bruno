@@ -1,0 +1,26 @@
+info:
+  name: Categories
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    QC tool category CRUD requests under /qcs/qc-tools/categories/.
+
+    Requests:
+    - 01. List QC tool categories: lists all categories.
+    - 02. Create QC tool category: creates a category and captures qc_category_id.
+    - 03. Create QC tool category with image: creates a multipart category with image and captures qc_category_image_id.
+    - 04. Get QC tool category by ID: reads {{qc_category_id}} through REST detail URL.
+    - 05. Get QC tool category by query ID: reads {{qc_category_id}} with ?id= query parameter.
+    - 06. Patch QC tool category: updates category description.
+    - 07. Delete QC tool category: deletes {{qc_category_id}}.
+    - 08. Delete QC tool category with image: deletes {{qc_category_image_id}}.
+
+    Dependency:
+    - Delete QC tools linked to a category before deleting the category.
+    - Attach a PNG or JPG in Bruno before running the multipart image request.
+  type: text/markdown

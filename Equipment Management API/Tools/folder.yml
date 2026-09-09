@@ -1,0 +1,29 @@
+info:
+  name: Tools
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Equipment/basic inventory tools CRUD requests under /basics/tools/.
+
+    Requests:
+    - 01. List basic tools: lists all tools.
+    - 02. Create basic tool: creates an inventory tool and captures basic_tool_id.
+    - 03. Create basic tool with image: creates a multipart inventory tool with image and captures basic_tool_image_id.
+    - 04. Get basic tool by ID: reads {{basic_tool_id}} through REST detail URL.
+    - 05. Get basic tool by query ID: reads {{basic_tool_id}} with ?id= query parameter.
+    - 06. Patch basic tool: updates quantity and description.
+    - 07. Delete basic tool: deletes {{basic_tool_id}}.
+    - 08. Delete basic tool with image: deletes {{basic_tool_image_id}}.
+
+    Example workflow:
+    - Create a temporary basic tool.
+    - Optionally create a temporary basic tool with image.
+    - Read it by detail URL and query ID.
+    - Patch current_qty from 2 to 3.
+    - Delete the created records.
+  type: text/markdown

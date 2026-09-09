@@ -1,0 +1,23 @@
+info:
+  name: Tools
+  type: folder
+  seq: 1
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Mobile QC tool CRUD requests.
+
+    Requests:
+    - 01. List mobile QC tools: lists QC tools through /mobile/qc/tools/.
+    - 02. Create mobile QC tool: creates a tool linked to {{mobile_qc_category_id}} and captures mobile_qc_tool_id.
+    - 03. Get mobile QC tool by ID: reads {{mobile_qc_tool_id}} through mobile detail route.
+    - 04. Get mobile QC tool by query ID: reads {{mobile_qc_tool_id}} with ?id= query parameter.
+    - 05. Patch mobile QC tool: updates condition and remarks.
+    - 06. Delete mobile QC tool: deletes {{mobile_qc_tool_id}}.
+
+    Required setup:
+    - Run Categories/02. Create mobile QC tool category first, or set mobile_qc_category_id manually.
+  type: text/markdown

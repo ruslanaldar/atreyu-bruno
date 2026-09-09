@@ -1,0 +1,37 @@
+info:
+  name: Create QC tool category with image
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/qc-tools/categories/"
+  body:
+    type: multipart-form
+    data:
+      - name: name
+        type: text
+        value: Test category with image
+      - name: description
+        type: text
+        value: Temporary category created to verify multipart image upload.
+      - name: image
+        type: file
+        value: []
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data && data.id) bru.setEnvVar('qc_category_image_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a QC-tool category with an image upload and capture qc_category_image_id.

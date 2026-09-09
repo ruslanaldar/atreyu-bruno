@@ -1,0 +1,48 @@
+info:
+  name: Create basic tool
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/tools/"
+  body:
+    type: json
+    data: |-
+      {
+        "serial": "HURL BasicTool01",
+        "drawing_no": "HURL-TOOL-DWG-001",
+        "description": "Temporary basic tool created by Bruno CRUD testing.",
+        "description_en": "Hurl CRUD basic tool",
+        "stock_id": "HURL-STOCK-001",
+        "short_name": "Hurl tool",
+        "current_qty": 2,
+        "unit_type": "piece",
+        "unit_price": "12.50",
+        "stock_value": "25.00",
+        "incoming_date": "2026-09-09",
+        "inquiry_no": "HURL-INQ-001",
+        "stock_name": "Hurl test stock",
+        "tool_type": "testing",
+        "tool_code": "HT",
+        "tool_type_cn": "测试",
+        "suitable_work_centers": [],
+        "preferred_work_centers": []
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data && data.id) bru.setEnvVar('basic_tool_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a basic inventory tool and capture basic_tool_id.

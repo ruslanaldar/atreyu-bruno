@@ -1,0 +1,20 @@
+info:
+  name: Categories
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Mobile QC-tool category CRUD requests.
+
+    Requests:
+    - 01. List mobile QC tool categories: lists categories through /mobile/qc/tools/categories/.
+    - 02. Create mobile QC tool category: creates a category and captures mobile_qc_category_id.
+    - 03. Get mobile QC tool category by ID: reads {{mobile_qc_category_id}} through detail route.
+    - 04. Get mobile QC tool category by query ID: reads {{mobile_qc_category_id}} with ?id= query parameter.
+    - 05. Patch mobile QC tool category: updates category description.
+    - 06. Delete mobile QC tool category: deletes {{mobile_qc_category_id}}.
+  type: text/markdown

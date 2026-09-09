@@ -1,0 +1,26 @@
+info:
+  name: Tools
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    QC tools CRUD requests under /qcs/qc-tools/.
+
+    Requests:
+    - 01. List QC tools: lists all QC tools.
+    - 02. Create QC tool: creates a QC tool linked to {{qc_category_id}} and captures qc_tool_id.
+    - 03. Create QC tool with image: creates a multipart QC tool with image and captures qc_tool_image_id.
+    - 04. Get QC tool by ID: reads {{qc_tool_id}} through REST detail URL.
+    - 05. Get QC tool by query ID: reads {{qc_tool_id}} with ?id= query parameter.
+    - 06. Patch QC tool: updates condition and remarks.
+    - 07. Delete QC tool: deletes {{qc_tool_id}}.
+    - 08. Delete QC tool with image: deletes {{qc_tool_image_id}}.
+
+    Required setup:
+    - Run Categories/02. Create QC tool category first, or set qc_category_id manually.
+    - Attach a PNG or JPG in Bruno before running the multipart image request.
+  type: text/markdown

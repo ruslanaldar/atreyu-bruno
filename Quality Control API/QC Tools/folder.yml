@@ -1,0 +1,22 @@
+info:
+  name: QC Tools
+  type: folder
+  seq: 5
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    QC tool management requests under /qcs/qc-tools/.
+
+    Folders:
+    - Categories: CRUD requests for QC tool categories.
+    - Tools: CRUD requests for QC tools linked to categories.
+
+    Example workflow:
+    - Create a QC category.
+    - Create a QC tool linked to that category.
+    - Read and patch the tool.
+    - Delete the tool first, then delete the category.
+  type: text/markdown

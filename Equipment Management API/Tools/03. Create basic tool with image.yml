@@ -1,0 +1,52 @@
+info:
+  name: Create basic tool with image
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/tools/"
+  body:
+    type: multipart-form
+    data:
+      - name: serial
+        type: text
+        value: HURL BasicToolImage01
+      - name: drawing_no
+        type: text
+        value: HURL-TOOL-IMAGE-001
+      - name: description
+        type: text
+        value: Temporary basic tool created to verify multipart image upload.
+      - name: current_qty
+        type: text
+        value: "1"
+      - name: unit_type
+        type: text
+        value: piece
+      - name: tool_type
+        type: text
+        value: testing
+      - name: tool_code
+        type: text
+        value: HTI
+      - name: image
+        type: file
+        value: []
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data && data.id) bru.setEnvVar('basic_tool_image_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a basic inventory tool with an image upload and capture basic_tool_image_id.
