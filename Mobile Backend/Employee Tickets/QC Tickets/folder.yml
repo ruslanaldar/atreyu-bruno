@@ -17,6 +17,7 @@ docs:
 
     Folders:
     - Part Tickets: generic QC PartTicket list/create/status/delete requests.
+    - Failure Types: failure taxonomy read/CRUD requests for PartTicket.failure_type.
     - EmployeeTZ Checklist Flow: mobile EmployeeTZ checklist lifecycle, connected inspection package, and support lookups.
 
     Common variables:
@@ -24,4 +25,5 @@ docs:
     - tz_number and employee_tz_id are used by the web flow.
     - mobile_tz_number and mobile_employee_tz_id are used by the mobile flow.
     - inspection_plan_id, inspection_batch_id, fmea_entry_id, control_plan_entry_id, and control_plan_id are captured from checklist detail responses.
+    - failure_type_id is captured from Failure Types and can be submitted in red/yellow PartTicket create requests.
   type: text/markdown

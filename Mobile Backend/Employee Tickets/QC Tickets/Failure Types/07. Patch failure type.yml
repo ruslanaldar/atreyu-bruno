@@ -1,0 +1,23 @@
+info:
+  name: Patch failure type
+  type: http
+  seq: 7
+
+http:
+  method: PATCH
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/failure-types/{{crud_child_id}}/"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Hurl temporary child failure updated"
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: PATCH changes only supplied fields. PUT requires the complete writable node.

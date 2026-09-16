@@ -5,7 +5,7 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/api/productionplans/part-tickets/green/"
+  url: "{{base_url}}/productionplans/part-tickets/green/"
   headers:
     - name: Authorization
       value: Bearer {{access_token}}
@@ -16,3 +16,4 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true

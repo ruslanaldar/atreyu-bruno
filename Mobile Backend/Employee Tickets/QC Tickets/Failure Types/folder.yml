@@ -1,0 +1,30 @@
+info:
+  name: Failure Types
+  type: folder
+  seq: 3
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Mobile QC ticket failure-type taxonomy requests under /mobile/timetickets/qc-tickets/failure-types/.
+
+    Frontend behavior:
+    - GET without parent_id returns the full nested tree.
+    - GET with parent_id returns immediate children for the next dropdown.
+    - Continue loading children until has_children is false.
+    - Submit only the final leaf node ID as PartTicket.failure_type.
+    - Backend derives the full ancestry from the submitted leaf failure_type.
+
+    Requests:
+    - 01. List failure types nested map: captures main_failure_id from the first root node.
+    - 02. List failure type children: captures subcategory_id from children of main_failure_id.
+    - 03. List failure type next level: captures failure_type_id for ticket create samples.
+    - 04. Create main failure type: creates a temporary root node and captures crud_main_id.
+    - 05. Create child failure type: creates a temporary child node and captures crud_child_id.
+    - 06. Get failure type detail: reads crud_child_id.
+    - 07. Patch failure type: updates the temporary child node.
+    - 08. Delete child failure type: deletes crud_child_id.
+    - 09. Delete main failure type: deletes crud_main_id.
+  type: text/markdown

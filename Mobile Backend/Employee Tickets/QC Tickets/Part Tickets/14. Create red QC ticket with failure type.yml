@@ -1,0 +1,62 @@
+info:
+  name: Create red QC ticket with failure type
+  type: http
+  seq: 14
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/red/"
+  body:
+    type: multipart-form
+    data:
+      - name: container_no
+        type: text
+        value: hurl-qc-red-001
+      - name: pp_no
+        type: text
+        value: HURL-PP-001
+      - name: erp_no
+        type: text
+        value: HURL-ERP-001
+      - name: station
+        type: text
+        value: QC01
+      - name: sub_station
+        type: text
+        value: QC01-01
+      - name: completed_qty
+        type: text
+        value: "1.00"
+      - name: unit_processing_time
+        type: text
+        value: "0.00"
+      - name: emp_id
+        type: text
+        value: HURL-QC
+      - name: emp_name
+        type: text
+        value: Hurl QC Tester
+      - name: man_seq
+        type: text
+        value: "10"
+      - name: notes
+        type: text
+        value: Red-ticket attachment example.
+      - name: failure_type
+        type: text
+        value: "{{failure_type_id}}"
+      - name: images
+        type: file
+        value: []
+        contentType: image/jpeg
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  Create a RED ticket with one attached image and failure_type.
+  failure_type must identify a leaf node where has_children=false.

@@ -1,0 +1,27 @@
+info:
+  name: List failure types nested map
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/failure-types/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var rows = body && body.results ? body.results : [];
+        if (rows[0] && rows[0].id) bru.setEnvVar('main_failure_id', rows[0].id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: |-
+  GET without parent_id returns the full nested map.
+  Each node contains id, name, parent_id, parent_name, has_children, and children.

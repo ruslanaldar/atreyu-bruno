@@ -1,0 +1,35 @@
+info:
+  name: Create child failure type
+  type: http
+  seq: 5
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/failure-types/"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Hurl temporary child failure",
+        "code": "hurl-temp-child",
+        "parent": "{{crud_main_id}}",
+        "sort_order": 0,
+        "is_active": true
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data && data.id) bru.setEnvVar('crud_child_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a child failure type under {{crud_main_id}}.

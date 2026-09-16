@@ -37,4 +37,14 @@ docs:
       Example action: register a failed QC result with image evidence.
     - 13. Delete QC ticket: deletes a ticket by ticket_id.
       Example action: remove a mistaken QC ticket and restore related MPP data.
+    - 14. Create red QC ticket with failure type: creates a RED ticket with failure_type and one image.
+      Example action: submit a failed QC ticket linked to a selected leaf failure type.
+    - 15. Create yellow QC ticket with failure type: creates a YELLOW ticket with failure_type and two images.
+      Example action: submit a warning/rework-review ticket linked to a selected leaf failure type.
+
+    failure_type usage:
+    - Load choices from Failure Types.
+    - Use the final leaf node ID where has_children=false.
+    - Submit that leaf ID as failure_type.
+    - Backend derives and stores the full failure ancestry for reporting.
   type: text/markdown

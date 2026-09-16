@@ -1,0 +1,17 @@
+info:
+  name: Delete child failure type
+  type: http
+  seq: 8
+
+http:
+  method: DELETE
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/failure-types/{{crud_child_id}}/"
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete child before parent. Referenced nodes return HTTP 409.
