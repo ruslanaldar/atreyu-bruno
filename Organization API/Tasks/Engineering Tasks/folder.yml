@@ -1,0 +1,15 @@
+info:
+  name: Engineering Tasks
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Read-only views for engineering tasks generated after successful MPP processing.
+
+    Server user 333 is used for the engineer-specific requests.
+    The admin.master request retains user ID 1 and may correctly return an empty task list when no current MPP candidate matches the admin's routing rule.
+  type: text/markdown

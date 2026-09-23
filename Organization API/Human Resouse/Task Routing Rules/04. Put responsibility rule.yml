@@ -1,0 +1,55 @@
+info:
+  name: 04. Put responsibility rule
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/organization/categories/hr/task-routing-rules/{{routing_rule_id}}/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "task_kind": "engineering_data_completion",
+        "company": null,
+        "main_part": null,
+        "sub_part": null,
+        "division": null,
+        "department": null,
+        "team": null,
+        "position": null,
+        "primary_user": 333,
+        "backup_user": null,
+        "notify_users": [],
+        "priority": 110,
+        "active": true,
+        "effective_from": null,
+        "effective_to": null
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        test("Responsibility rule was fully updated", function () {
+          expect(Number(data.primary_user)).to.equal(333);
+          expect(Number(data.priority)).to.equal(110);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Fully replace editable values on routing_rule_id while retaining server user 333.

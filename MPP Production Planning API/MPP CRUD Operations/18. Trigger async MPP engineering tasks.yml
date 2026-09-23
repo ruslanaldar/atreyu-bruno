@@ -1,0 +1,65 @@
+info:
+  name: 18. Trigger async MPP engineering tasks
+  type: http
+  seq: 18
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/mpp/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "async": true,
+        "trigger_reason": "8h shift change",
+        "status": "pending",
+        "week_no": 12,
+        "is_saturday": true,
+        "shift_time": 12
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 202", function () {
+          expect(res.getStatus()).to.equal(202);
+        });
+
+        var body = res.getBody();
+        test("Asynchronous MPP generation started", function () {
+          expect(body.success).to.equal(true);
+          expect(body.operation).to.equal('async_create');
+          expect(body.message).to.include('Production planning started');
+          expect(body).to.have.property('task_id');
+          expect(body).to.have.property('status_url');
+        });
+
+        if (body && body.task_id) bru.setEnvVar('mpp_task_id', body.task_id);
+        if (body && body.status_url) {
+          bru.setEnvVar('mpp_status_url', body.status_url);
+
+          var baseUrl = bru.getVar('base_url') || bru.getEnvVar('base_url') || '';
+          var statusUrl = body.status_url;
+          var pollUrl = statusUrl;
+          if (!/^https?:\/\//i.test(statusUrl)) {
+            if (/^\/api\//.test(statusUrl) && /\/api\/?$/.test(baseUrl)) {
+              pollUrl = baseUrl.replace(/\/api\/?$/, '') + statusUrl;
+            } else {
+              pollUrl = baseUrl.replace(/\/$/, '') + '/' + statusUrl.replace(/^\//, '');
+            }
+          }
+          bru.setEnvVar('mpp_poll_url', pollUrl);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Trigger asynchronous MPP generation. A successful Celery job refreshes engineering tasks. Captures mpp_task_id, mpp_status_url, and a normalized mpp_poll_url.

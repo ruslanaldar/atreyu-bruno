@@ -1,0 +1,33 @@
+info:
+  name: 01. List engineering tasks for user 333
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/organization/task-routing/engineering-tasks/?assigned_to=333"
+  params:
+    - name: assigned_to
+      value: "333"
+      type: query
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        test("Engineering-task response exists", function () {
+          expect(res.getBody()).to.exist;
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: HR/admin view of generated engineering tasks assigned to server user 333.

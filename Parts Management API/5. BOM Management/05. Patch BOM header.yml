@@ -1,0 +1,41 @@
+info:
+  name: 05. Patch BOM header
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{base_url}}/parts/boms/732/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "description": "BOM reviewed and released for purchasing."
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        test("BOM description was patched", function () {
+          expect(data.description).to.equal('BOM reviewed and released for purchasing.');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Partially update editable header values for BOM 732.

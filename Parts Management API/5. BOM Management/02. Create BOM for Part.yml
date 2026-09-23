@@ -1,0 +1,51 @@
+info:
+  name: 02. Create BOM for Part
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/boms/for-part/6930/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Engineering BOM",
+        "description": "BOM maintained from the part structure",
+        "revision": "01",
+        "is_active": true
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        test("Created BOM and generated BOM item have IDs", function () {
+          expect(data).to.have.property('id');
+          expect(data).to.have.nested.property('bom_items[0].id');
+        });
+        if (data && data.id) {
+          bru.setEnvVar('bom_id', data.id);
+        }
+        if (data && data.bom_items && data.bom_items[0] && data.bom_items[0].id) {
+          bru.setEnvVar('bom_item_id', data.bom_items[0].id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Create the engineering BOM for Part 6930. The current Part structure initializes its BOM items; capture bom_id and the first generated bom_item_id.

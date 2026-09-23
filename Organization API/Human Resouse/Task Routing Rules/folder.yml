@@ -1,0 +1,18 @@
+info:
+  name: Task Routing Rules
+  type: folder
+  seq: 9
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    HR-managed CRUD workflow for engineering-task responsibility rules.
+
+    The sample rule routes engineering_data_completion tasks to server user 333.
+    Run requests 01-07 in order. Request 02 captures routing_rule_id; request 07 deletes the sample rule.
+
+    The HR and task-routing list endpoints expose the same protected rule records.
+    HR/admin permissions are required for all rule-management actions.
+  type: text/markdown

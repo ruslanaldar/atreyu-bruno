@@ -5,7 +5,11 @@ info:
 
 http:
   method: GET
-  url: "{{base_url}}/mobile/timetickets/qc-tickets/failure-types/?parent_id={{subcategory_id}}"
+  url: "{{base_url}}/mobile/timetickets/qc-tickets/failure-types/?parent_id=2d37827b-0b0b-4cdd-b23d-be3a06fedf3e"
+  params:
+    - name: parent_id
+      value: 2d37827b-0b0b-4cdd-b23d-be3a06fedf3e
+      type: query
   auth: inherit
 
 runtime:
@@ -21,6 +25,7 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: |-
   Continue using a selected child ID as parent_id for selection1 through selection4.

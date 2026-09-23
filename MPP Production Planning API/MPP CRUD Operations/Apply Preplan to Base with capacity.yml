@@ -1,0 +1,65 @@
+info:
+  name: Apply Preplan to Base with capacity
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{base_url}}/productionplans/mpp/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "async": true,
+        "trigger_reason": "capacity extension for for the base plan",
+        "status": "pending",
+        "week_no": 12,
+        "is_saturday": true,
+        "shift_time": 10,
+        "set_capactiy": [
+          {
+            "wc_code": "w05",
+            "date_from": "2026-09-15",
+            "date_to": "2026-11-15",
+            "extended_overtime_hours": 12
+          },
+          {
+            "wc_code": "w02",
+            "date_from": "2026-09-15",
+            "date_to": "2026-11-15",
+            "extended_overtime_hours": 20
+          }
+        ]
+      }
+  auth: inherit
+
+runtime:
+  actions:
+    - type: set-variable
+      phase: after-response
+      selector:
+        expression: ""
+        method: jsonq
+      variable:
+        name: task_id
+        scope: runtime
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: |-
+  preplan_applied :\
+  True - apply preplan shift assignment except sim employees
+
+  False- cancel preplan_applied for the base_plan
+
+  <br/>
+
+  if preplan_applied is not provided it will take last settings for the preplan_applied.

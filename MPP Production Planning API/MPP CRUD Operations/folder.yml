@@ -7,5 +7,10 @@ request:
   auth: inherit
 
 docs:
-  content: Basic CRUD operations for Master Production Plan records
+  content: |-
+    Basic CRUD operations for Master Production Plan records.
+
+    Requests 18-19 cover the asynchronous engineering-task workflow:
+    1. Trigger MPP generation and capture its task/status references.
+    2. Poll mpp_poll_url until status.state is SUCCESS, then inspect engineering-task totals.
   type: text/markdown

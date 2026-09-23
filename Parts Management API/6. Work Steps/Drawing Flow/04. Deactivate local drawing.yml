@@ -1,0 +1,38 @@
+info:
+  name: 04. Deactivate local drawing
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/parts/work-step-files/change_status/?workstep_file_id={{workstep_file_id}}&status=Inactive"
+  params:
+    - name: workstep_file_id
+      value: "{{workstep_file_id}}"
+      type: query
+    - name: status
+      value: Inactive
+      type: query
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Local Drawing is inactive", function () {
+          expect(body.success).to.equal(true);
+          expect(body).to.have.nested.property('data.status', 'Inactive');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Deactivate the local workstep_file_id. This leaves a local drawing history and does not restore inheritance automatically.

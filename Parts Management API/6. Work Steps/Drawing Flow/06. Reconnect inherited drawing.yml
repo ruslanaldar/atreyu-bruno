@@ -1,0 +1,33 @@
+info:
+  name: 06. Reconnect inherited drawing
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/work-steps/{{workstep_id}}/connect-drawing/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Inherited drawing is explicitly reconnected", function () {
+          expect(body.success).to.equal(true);
+          expect(body).to.have.nested.property('data.result.drawing.mode', 'inherited');
+          expect(body).to.have.nested.property('data.result.drawing.is_connected', true);
+          expect(String(body.data.result.drawing.file.id)).to.equal(String(bru.getEnvVar('inherited_drawing_file_id')));
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Explicitly reconnect the latest active selected source Drawing and confirm it matches inherited_drawing_file_id.

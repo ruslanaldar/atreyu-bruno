@@ -1,0 +1,25 @@
+info:
+  name: 07. Delete responsibility rule
+  type: http
+  seq: 7
+
+http:
+  method: DELETE
+  url: "{{base_url}}/organization/categories/hr/task-routing-rules/{{routing_rule_id}}/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 204", function () {
+          expect(res.getStatus()).to.equal(204);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete the temporary routing_rule_id created by request 02.

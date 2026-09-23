@@ -1,7 +1,7 @@
 info:
   name: Update MPP (Smart Logic)
   type: http
-  seq: 11
+  seq: 12
 
 http:
   method: PUT

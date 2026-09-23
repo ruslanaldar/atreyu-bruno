@@ -1,0 +1,46 @@
+info:
+  name: 02. Create responsibility rule
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/organization/categories/hr/task-routing-rules/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "task_kind": "engineering_data_completion",
+        "primary_user": 333,
+        "notify_users": [],
+        "priority": 100,
+        "active": true
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        test("Rule targets server user 333", function () {
+          expect(data).to.have.property('id');
+          expect(Number(data.primary_user)).to.equal(333);
+        });
+        if (data && data.id) bru.setEnvVar('routing_rule_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a global engineering-data responsibility rule for user 333 and capture routing_rule_id. Duplicate routing scopes are rejected; update the existing rule if one already exists.

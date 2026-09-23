@@ -1,0 +1,61 @@
+info:
+  name: 02. Upload local WorkStep drawing
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/work-step-files/create_for_workstep/?workstep_id=273346"
+  params:
+    - name: workstep_id
+      value: "273346"
+      type: query
+  body:
+    type: multipart-form
+    data:
+      - name: category
+        type: text
+        value: Drawing
+      - name: status
+        type: text
+        value: Active
+      - name: title
+        type: text
+        value: Local workstep drawing
+      - name: revision_no
+        type: text
+        value: WS-01
+      - name: file
+        type: file
+        value: []
+        contentType: application/pdf
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        test("Local Drawing file is active", function () {
+          expect(body.success).to.equal(true);
+          expect(body).to.have.nested.property('data.id');
+          expect(body).to.have.nested.property('data.status', 'Active');
+          expect(body).to.have.nested.property('data.category_name', 'Drawing');
+        });
+
+        if (body && body.data && body.data.id) {
+          bru.setEnvVar('workstep_file_id', body.data.id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Select a local PDF in the file field. Creating an active local Drawing disconnects inherited drawing mode.

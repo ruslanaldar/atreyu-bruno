@@ -1,0 +1,40 @@
+info:
+  name: 19. Poll async MPP engineering tasks
+  type: http
+  seq: 19
+
+http:
+  method: GET
+  url: "{{mpp_poll_url}}"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("MPP task status is available", function () {
+          expect(body.success).to.equal(true);
+          expect(body).to.have.nested.property('status.state');
+        });
+
+        if (body && body.status && body.status.state === 'SUCCESS') {
+          test("Successful result includes engineering-task totals", function () {
+            expect(body).to.have.nested.property('status.result.engineering_tasks.candidates');
+            expect(body).to.have.nested.property('status.result.engineering_tasks.created');
+            expect(body).to.have.nested.property('status.result.engineering_tasks.refreshed');
+            expect(body).to.have.nested.property('status.result.engineering_tasks.unassigned');
+          });
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Re-run until status.state is SUCCESS. On success, verify candidates, created, refreshed, and unassigned under status.result.engineering_tasks.

@@ -1,0 +1,47 @@
+info:
+  name: 01. List selectable SubParts
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: "{{base_url}}/parts/sub-parts/?main_part_id=6930"
+  params:
+    - name: main_part_id
+      value: "{{part_id}}"
+      type: query
+      disabled: true
+    - name: main_part_id
+      value: "6930"
+      type: query
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        var rows = body && Array.isArray(body.data) ? body.data : body;
+
+        test("First SubPart includes selectable engineering data", function () {
+          expect(rows).to.be.an('array').that.is.not.empty;
+          expect(rows[0]).to.have.property('id');
+          expect(rows[0]).to.have.property('serial');
+        });
+
+        if (rows && rows[0] && rows[0].id) {
+          bru.setEnvVar('sub_part_id', rows[0].id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: List SubParts belonging to part_id and capture the first selectable sub_part_id.

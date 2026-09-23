@@ -1,0 +1,43 @@
+info:
+  name: 08. Patch BOM item
+  type: http
+  seq: 8
+
+http:
+  method: PATCH
+  url: "{{base_url}}/parts/bom-items/{{bom_item_id}}/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "quantity": 6,
+        "description": "Approved supplier material, quantity revised."
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        test("BOM-owned values were patched", function () {
+          expect(Number(data.quantity)).to.equal(6);
+          expect(data.description).to.equal('Approved supplier material, quantity revised.');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Partially update BOM-owned values for bom_item_id. SubPart engineering fields remain read-only.

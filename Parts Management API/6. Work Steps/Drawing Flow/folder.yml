@@ -1,0 +1,27 @@
+info:
+  name: Drawing Flow
+  type: folder
+  seq: 10
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    WorkStep drawing inheritance and local override workflow.
+
+    Before running:
+    - Set workstep_id to a WorkStep whose SubPart or main Part has an active Drawing file.
+    - In request 02, select a local PDF in the file field.
+
+    Run the requests in sequence:
+    1. Connect the inherited source drawing and capture inherited_drawing_file_id.
+    2. Upload a local Drawing and capture workstep_file_id. This disconnects inheritance.
+    3. Confirm that the local drawing overrides the inherited drawing.
+    4. Deactivate the local drawing.
+    5. Confirm local_missing; the API must not silently fall back to inheritance.
+    6. Explicitly reconnect the latest active selected source drawing.
+
+    Required starting variable: workstep_id.
+    Captured variables: inherited_drawing_file_id, workstep_file_id.
+  type: text/markdown

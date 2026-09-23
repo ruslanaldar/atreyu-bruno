@@ -1,0 +1,37 @@
+info:
+  name: 01. Connect inherited drawing
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/parts/work-steps/273346/connect-drawing/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Inherited drawing is connected", function () {
+          expect(body.success).to.equal(true);
+          expect(body).to.have.nested.property('data.result.drawing.mode', 'inherited');
+          expect(body).to.have.nested.property('data.result.drawing.is_connected', true);
+          expect(body).to.have.nested.property('data.result.drawing.file.id');
+        });
+
+        var sourceFileId = body && body.data ? body.data.connected_source_file_id : null;
+        if (sourceFileId) bru.setEnvVar('inherited_drawing_file_id', sourceFileId);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Connect the active Drawing inherited from the WorkStep's SubPart or main Part and capture its source file ID.

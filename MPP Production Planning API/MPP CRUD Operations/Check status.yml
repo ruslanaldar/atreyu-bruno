@@ -1,11 +1,11 @@
 info:
   name: Check status
   type: http
-  seq: 9
+  seq: 10
 
 http:
   method: GET
-  url: "{{base_url}}/productionplans/mpp/task_status/?task_id=90558836-34a2-4fa8-a3ac-c2f3736200b7"
+  url: "{{base_url}}/productionplans/mpp/task_status/?task_id=ab95cb1d-3b03-466d-b9f1-16d8036f65cb"
   headers:
     - name: Content-Type
       value: application/json
@@ -15,7 +15,7 @@ http:
       type: query
       disabled: true
     - name: task_id
-      value: 90558836-34a2-4fa8-a3ac-c2f3736200b7
+      value: ab95cb1d-3b03-466d-b9f1-16d8036f65cb
       type: query
   body:
     type: json

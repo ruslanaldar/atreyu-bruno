@@ -1,0 +1,31 @@
+info:
+  name: 05. Confirm local drawing missing
+  type: http
+  seq: 5
+
+http:
+  method: GET
+  url: "{{base_url}}/parts/work-steps/{{workstep_id}}/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Inactive local drawing does not silently fall back", function () {
+          expect(body).to.have.nested.property('data.result.drawing.mode', 'local_missing');
+          expect(body).to.have.nested.property('data.result.drawing.is_connected', false);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Verify local_missing after deactivation; fallback to an inherited drawing requires an explicit reconnect.

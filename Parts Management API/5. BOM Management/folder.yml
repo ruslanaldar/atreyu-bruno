@@ -5,3 +5,22 @@ info:
 
 request:
   auth: inherit
+
+docs:
+  content: |
+    Part-owned engineering BOM workflow.
+
+    Run the requests in sequence:
+    1. List selectable SubParts and capture sub_part_id.
+    2. Create the Part's BOM and capture bom_id plus the first generated bom_item_id.
+    3. Load all dropdown/form options for BOM-item create and update forms.
+    4. Fully update editable BOM-header fields with PUT.
+    5. Partially update the BOM header with PATCH.
+    6. Read tree-ordered BOM items with part_level and sub_part_details.
+    7. Fully replace editable BOM-item values with PUT.
+    8. Partially update BOM-owned values with PATCH.
+    9. Retrieve the BOM detail with its tree-ordered bom_items.
+
+    Preserved record IDs: Part 6930, BOM 732, SubPart 60836.
+    Captured variables: sub_part_id, bom_id, bom_item_id.
+  type: text/markdown

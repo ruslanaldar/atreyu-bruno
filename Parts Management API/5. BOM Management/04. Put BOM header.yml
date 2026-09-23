@@ -1,0 +1,45 @@
+info:
+  name: 04. Put BOM header
+  type: http
+  seq: 4
+
+http:
+  method: PUT
+  url: "{{base_url}}/parts/boms/732/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "part": 6930,
+        "name": "Engineering BOM - reviewed",
+        "description": "BOM initialized from the current part structure.",
+        "revision": "02",
+        "is_active": true
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        test("BOM header was fully updated", function () {
+          expect(data.name).to.equal('Engineering BOM - reviewed');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Replace editable header values for BOM 732. Part 6930 is included for full replacement but remains immutable after BOM creation.

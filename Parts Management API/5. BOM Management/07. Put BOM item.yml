@@ -1,0 +1,56 @@
+info:
+  name: 07. Put BOM item
+  type: http
+  seq: 7
+
+http:
+  method: PUT
+  url: "{{base_url}}/parts/bom-items/{{bom_item_id}}/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "bom": 732,
+        "sub_part": 60836,
+        "no": 20,
+        "component_no": 10,
+        "quantity": 4,
+        "item_type": "purchased_part",
+        "make_buy": "buy",
+        "issue_method": "backflush",
+        "traceability": "lot",
+        "certificate": "coc",
+        "change_source": "purchasing",
+        "change_type": "supplier",
+        "stock_disposition": "hold",
+        "status": "review",
+        "description": "Use approved supplier material."
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        test("BOM item values were fully replaced", function () {
+          expect(data.make_buy).to.equal('buy');
+          expect(Number(data.quantity)).to.equal(4);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: Fully replace editable values for bom_item_id. BOM 732 and SubPart 60836 are required relationships; SubPart engineering fields remain read-only.
