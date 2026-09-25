@@ -31,3 +31,4 @@ settings:
 
 docs: |-
   Force or idempotently create the QC checklist by tz_number. If it already exists, the API should return the existing checklist.
+  This explicit legacy action uses notify=true and opens the QC task/notification. The normal EmployeeSelfCheck flow opens QC work when the employee submits the self-check.

@@ -1,0 +1,47 @@
+info:
+  name: 08. Submit EmployeeSelfCheck
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{base_url}}/qcs/employee-self-checks/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "employee_tz_id": "{{employee_tz_uuid}}",
+        "tz_number": "{{tz_number}}",
+        "completed_qty": "11.00",
+        "notes": "[QC bubbles]\n3:1|pass|12.34\n3:2|fail|7.91"
+      }
+  auth:
+    type: bearer
+    token: "{{employee_token}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        if (data) {
+          if (data.id) bru.setEnvVar('self_check_id', data.id);
+          if (data.completed_qty !== undefined) bru.setEnvVar('self_check_qty', data.completed_qty);
+          if (data.inspection_batch) bru.setEnvVar('inspection_batch_id', data.inspection_batch);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Submit the employee handoff using both EmployeeTZ UUID and TZ number. Their combination must identify the same record. Submission opens the QC task and notifications while preserving the bubble-result format in notes.

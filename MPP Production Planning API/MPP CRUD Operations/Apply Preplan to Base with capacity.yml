@@ -19,7 +19,7 @@ http:
         "week_no": 12,
         "is_saturday": true,
         "shift_time": 10,
-        "set_capactiy": [
+        "set_capacity": [
           {
             "wc_code": "w05",
             "date_from": "2026-09-15",

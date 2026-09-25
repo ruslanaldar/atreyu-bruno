@@ -1,0 +1,43 @@
+info:
+  name: 11. Record QC checklist result
+  type: http
+  seq: 11
+
+http:
+  method: PATCH
+  url: "{{base_url}}/qcs/employee-tz/checklist-items/{{checklist_item_id}}/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "status": "pass",
+        "notes": "[QC bubbles]\n3:1|pass|12.34\n3:2|fail|7.91"
+      }
+  auth:
+    type: bearer
+    token: "{{employee_token}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Existing checklist item records the QC result", function () {
+          expect(body.success).to.equal(true);
+          expect(body).to.have.nested.property('data.status', 'pass');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Update the existing QC checklist item. EmployeeSelfCheck does not create a second checklist or a separate ticket workflow.

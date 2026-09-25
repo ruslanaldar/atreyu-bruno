@@ -1,14 +1,14 @@
 info:
-  name: 01. List engineering tasks for user 333
+  name: 01. List engineering tasks for user 194
   type: http
   seq: 1
 
 http:
   method: GET
-  url: "{{base_url}}/organization/task-routing/engineering-tasks/?assigned_to=333"
+  url: "{{base_url}}/organization/task-routing/engineering-tasks/?assigned_to=194"
   params:
     - name: assigned_to
-      value: "333"
+      value: "194"
       type: query
   auth: inherit
 
@@ -29,5 +29,6 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: HR/admin view of generated engineering tasks assigned to server user 333.

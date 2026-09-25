@@ -11,13 +11,13 @@ http:
     data:
       - name: email
         type: text
-        value: billy@cssc-tp.com
+        value: ruslan.aldar@gmail.com
       - name: porpose
         type: text
         value: login
       - name: otp
         type: text
-        value: "123456"
+        value: "292929"
 
 runtime:
   variables:

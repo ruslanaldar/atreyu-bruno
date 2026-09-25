@@ -21,10 +21,10 @@ docs:
     - Close the checklist.
 
     Requests:
-    - 01. Create EmployeeTZ with images: registers EmployeeTZ and can generate FMEA, Control Plan, Inspection Plan, Inspection Batch, checklist, task, websocket event, and notification.
+    - 01. Create EmployeeTZ with images: registers EmployeeTZ and prepares FMEA, Control Plan, Inspection Plan, Inspection Batch, and checklist context without opening a QC task/notification.
       Example action: submit EmployeeTZ for main_no 60000509 / sub_no 59501879 with image evidence.
-    - 02. Ensure QC checklist by tz_number: idempotently creates or returns the checklist for {{tz_number}}.
-      Example action: force checklist creation when automatic creation needs to be verified.
+    - 02. Ensure QC checklist by tz_number: idempotently creates or returns the checklist and explicitly opens the legacy QC task/notification because notify=true.
+      Example action: force checklist creation and QC work when testing the direct checklist flow instead of EmployeeSelfCheck handoff.
     - 03. List QC checklists by tz_number: recommended lookup and captures checklist/task/inspection IDs.
       Example action: find the open checklist for the current EmployeeTZ tracking number.
     - 04. List QC checklists by EmployeeTZ UUID: alternate lookup using {{employee_tz_id}}.

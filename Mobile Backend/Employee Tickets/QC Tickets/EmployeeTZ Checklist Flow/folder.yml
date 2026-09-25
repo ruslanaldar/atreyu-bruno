@@ -18,10 +18,12 @@ docs:
     - Mobile Flow: create EmployeeTZ, fetch connected checklist, update item, create GREEN ticket, and close checklist.
     - Connected Inspection Package: inspection plan, batch, record submission, bulk submission, and batch close.
     - Supporting Lookups: mobile FMEA, Control Plan, and notification detail requests.
+    - Employee Self Checks: submit and list EmployeeSelfCheck records through /mobile/timetickets/employee-self-checks/.
 
     Typical mobile sequence:
     - Create EmployeeTZ with images.
     - List connected checklist by mobile_tz_number.
+    - Submit EmployeeSelfCheck to hand work over for QC review.
     - Open checklist detail and pending items.
     - Inspect batch/sample positions.
     - Submit inspection records.

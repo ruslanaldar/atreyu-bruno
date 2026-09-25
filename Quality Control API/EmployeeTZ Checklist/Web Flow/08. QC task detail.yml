@@ -22,4 +22,4 @@ settings:
   maxRedirects: 5
   forwardAuthorizationHeader: true
 
-docs: Fetch the QC task detail created from EmployeeTZ/checklist generation.
+docs: Fetch the QC task created by the explicit ensure action or by EmployeeSelfCheck submission. EmployeeTZ registration alone no longer creates the task.

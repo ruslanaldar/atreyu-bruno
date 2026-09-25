@@ -1,0 +1,27 @@
+info:
+  name: Employee Self Checks
+  type: folder
+  seq: 4
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Mobile EmployeeSelfCheck submission and lookup views.
+
+    Required variables from the EmployeeTZ/checklist preparation flow:
+    - employee_token
+    - employee_tz_uuid
+    - tz_number
+    - checklist_id
+
+    Run order:
+    1. Submit the employee self-check using both EmployeeTZ identifiers.
+    2. List self-checks by tz_number and verify the submitted record.
+
+    Captured variables:
+    - self_check_id
+    - self_check_qty
+    - inspection_batch_id
+  type: text/markdown

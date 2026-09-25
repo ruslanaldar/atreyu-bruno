@@ -1,7 +1,7 @@
 info:
-  name: Create EmployeeTZ with images
+  name: 06. Register EmployeeTZ
   type: http
-  seq: 1
+  seq: 6
 
 http:
   method: POST
@@ -11,7 +11,7 @@ http:
     data:
       - name: tz_number
         type: text
-        value: ett_2e36c50e9e9d2f13
+        value: ett_fdc522ab2a023e45_81z
       - name: employee
         type: text
         value: "313"
@@ -29,7 +29,7 @@ http:
         value: 2026-08-05
       - name: start_time
         type: text
-        value: 2026-08-05T08:00:00
+        value: 2026-08-05T8:00:00
       - name: end_time
         type: text
         value: 2026-08-05T10:18:00
@@ -77,16 +77,22 @@ http:
         type: file
         value: []
         contentType: image/jpeg
-  auth: inherit
+  auth:
+    type: bearer
+    token: "{{employee_token}}"
 
 runtime:
   scripts:
     - type: after-response
       code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
         var body = res.getBody();
         var data = body && body.data ? body.data : body;
         if (data) {
-          if (data.employee_tz_id) bru.setEnvVar('employee_tz_id', data.employee_tz_id);
+          if (data.id) bru.setEnvVar('tz_id', data.id);
           if (data.tz_number) bru.setEnvVar('tz_number', data.tz_number);
         }
 
@@ -95,10 +101,5 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
-  forwardAuthorizationHeader: true
 
-docs: |-
-  Creates/registers EmployeeTZ from the web endpoint.
-  Expected side effects: creates or ensures the FMEA document/entries, control plan document/entries, inspection plan, inspection batch with sample_positions, and QC checklist.
-  EmployeeTZ creation no longer opens a QC task or notification. EmployeeSelfCheck submission is the normal handoff event; this legacy flow can explicitly open work with request 02.
-  Important: $.data.id may be tz_number for frontend compatibility. The real UUID should be captured from $.data.employee_tz_id when present.
+docs: Register completed work and capture tz_id/tz_number. Select up to two JPEG files in the images fields. This prepares reusable QC context but deliberately creates no QC task or notification yet.

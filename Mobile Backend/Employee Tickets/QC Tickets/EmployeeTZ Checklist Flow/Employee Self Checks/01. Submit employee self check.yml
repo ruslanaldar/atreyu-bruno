@@ -1,0 +1,55 @@
+info:
+  name: 01. Submit employee self-check
+  type: http
+  seq: 1
+
+http:
+  method: POST
+  url: "{{base_url}}/mobile/timetickets/employee-self-checks/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "employee_tz_id": "{{employee_tz_uuid}}",
+        "tz_number": "{{tz_number}}",
+        "completed_qty": "11.00",
+        "notes": "[QC bubbles]\n3:1|pass|12.34\n3:2|fail|7.91"
+      }
+  auth:
+    type: bearer
+    token: "{{employee_token}}"
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        var data = body && body.data ? body.data : body;
+        test("Mobile self-check was submitted with the connected QC context", function () {
+          expect(body.success).to.equal(true);
+          expect(data.status).to.equal('submitted');
+          expect(String(data.employee_tz)).to.equal(String(bru.getEnvVar('employee_tz_uuid')));
+          expect(data.tz_number).to.equal(bru.getEnvVar('tz_number'));
+          expect(String(data.qc_checklist)).to.equal(String(bru.getEnvVar('checklist_id')));
+        });
+
+        if (data) {
+          if (data.id) bru.setEnvVar('self_check_id', data.id);
+          if (data.completed_qty !== undefined) bru.setEnvVar('self_check_qty', data.completed_qty);
+          if (data.inspection_batch) bru.setEnvVar('inspection_batch_id', data.inspection_batch);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Submit EmployeeSelfCheck through the mobile backend. Both identifiers must resolve to the same EmployeeTZ; successful submission opens the connected QC review task.

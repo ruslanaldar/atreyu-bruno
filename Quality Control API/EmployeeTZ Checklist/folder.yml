@@ -22,4 +22,5 @@ docs:
 
     Main folder:
     - Web Flow: web QC checklist lifecycle from EmployeeTZ creation through checklist close.
+    - Employee Self Check Flow: employee submission handoff followed by QC review and final GREEN PartTicket creation.
   type: text/markdown

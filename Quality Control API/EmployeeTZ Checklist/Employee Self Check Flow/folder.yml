@@ -1,0 +1,32 @@
+info:
+  name: Employee Self Check Flow
+  type: folder
+  seq: 2
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Full EmployeeTZ -> EmployeeSelfCheck -> QC final confirmation workflow.
+
+    Authentication:
+    - Requests 01-02 authenticate the employee and capture employee_token.
+    - Set qc_email and qc_otp before requests 03-04; request 04 captures qc_token.
+    - Employee operations explicitly use employee_token.
+    - Final QC PartTicket creation explicitly uses qc_token.
+
+    Lifecycle:
+    1. Authenticate employee and QC reviewer separately.
+    2. Register EmployeeTZ. This prepares reusable QC/FMEA/Control Plan/inspection context but does not open a QC task or notification.
+    3. Find and capture the prepared checklist context.
+    4. Submit EmployeeSelfCheck. This opens the QC task and sends QC notifications.
+    5. Retrieve the submitted self-check and its connected QC context.
+    6. Record QC checklist results using the existing checklist-item endpoint.
+    7. QC creates the normal final GREEN PartTicket; EmployeeSelfCheck remains the handoff/audit context.
+
+    Captured variables:
+    employee_token, qc_token, tz_id, tz_number, checklist_id,
+    employee_tz_uuid, self_check_id, self_check_qty,
+    inspection_batch_id, and checklist_item_id.
+  type: text/markdown
