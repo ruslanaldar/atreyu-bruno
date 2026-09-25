@@ -1,7 +1,7 @@
 info:
   name: 09. List self checks by TZ number
   type: http
-  seq: 9
+  seq: 5
 
 http:
   method: GET
@@ -10,9 +10,7 @@ http:
     - name: tz_number
       value: "{{tz_number}}"
       type: query
-  auth:
-    type: bearer
-    token: "{{employee_token}}"
+  auth: inherit
 
 runtime:
   scripts:
@@ -34,5 +32,6 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: Employee retrieves the submitted EmployeeSelfCheck by tz_number.

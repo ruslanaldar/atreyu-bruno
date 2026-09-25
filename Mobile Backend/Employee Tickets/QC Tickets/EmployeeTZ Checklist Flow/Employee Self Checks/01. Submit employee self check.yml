@@ -18,9 +18,7 @@ http:
         "completed_qty": "11.00",
         "notes": "[QC bubbles]\n3:1|pass|12.34\n3:2|fail|7.91"
       }
-  auth:
-    type: bearer
-    token: "{{employee_token}}"
+  auth: inherit
 
 runtime:
   scripts:

@@ -1,7 +1,7 @@
 info:
   name: 12. Create final green QC PartTicket
   type: http
-  seq: 12
+  seq: 8
 
 http:
   method: POST
@@ -26,9 +26,7 @@ http:
         "man_seq": 1,
         "notes": "QC final GREEN ticket after EmployeeSelfCheck review"
       }
-  auth:
-    type: bearer
-    token: "{{qc_token}}"
+  auth: inherit
 
 runtime:
   scripts:
@@ -49,5 +47,6 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
-docs: QC reviewer creates the established final GREEN PartTicket using qc_token. EmployeeSelfCheck remains the handoff and audit context; MPP updates continue through the existing ticket endpoint.
+docs: QC reviewer creates the established final GREEN PartTicket using inherited collection authentication. EmployeeSelfCheck remains the handoff and audit context; MPP updates continue through the existing ticket endpoint.

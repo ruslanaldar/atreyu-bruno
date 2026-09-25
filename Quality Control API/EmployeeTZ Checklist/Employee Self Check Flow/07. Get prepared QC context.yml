@@ -1,18 +1,16 @@
 info:
   name: 07. Get prepared QC context
   type: http
-  seq: 7
+  seq: 3
 
 http:
   method: GET
-  url: "{{base_url}}/qcs/employee-tz/checklists/?tz_number={{tz_number}}"
+  url: "{{base_url}}/qcs/employee-tz/checklists/?tz_number=ett_fdc522ab2a023e45_81z"
   params:
     - name: tz_number
-      value: "{{tz_number}}"
+      value: ett_fdc522ab2a023e45_81z
       type: query
-  auth:
-    type: bearer
-    token: "{{employee_token}}"
+  auth: inherit
 
 runtime:
   scripts:
@@ -40,5 +38,6 @@ settings:
   timeout: 0
   followRedirects: true
   maxRedirects: 5
+  forwardAuthorizationHeader: true
 
 docs: Verify EmployeeTZ prepared the reusable checklist/inspection context and capture checklist_id plus employee_tz_uuid. No QC task or notification should exist before self-check submission.

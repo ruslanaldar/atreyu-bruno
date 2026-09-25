@@ -10,9 +10,7 @@ http:
     - name: tz_number
       value: "{{tz_number}}"
       type: query
-  auth:
-    type: bearer
-    token: "{{employee_token}}"
+  auth: inherit
 
 runtime:
   scripts:

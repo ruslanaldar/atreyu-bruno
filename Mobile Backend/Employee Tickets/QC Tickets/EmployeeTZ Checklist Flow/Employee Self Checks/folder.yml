@@ -10,8 +10,9 @@ docs:
   content: |
     Mobile EmployeeSelfCheck submission and lookup views.
 
+    Authentication is inherited from the collection-level login.
+
     Required variables from the EmployeeTZ/checklist preparation flow:
-    - employee_token
     - employee_tz_uuid
     - tz_number
     - checklist_id
