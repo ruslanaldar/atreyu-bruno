@@ -1,0 +1,49 @@
+info:
+  name: 02. Create employee attendance
+  type: http
+  seq: 2
+
+http:
+  method: POST
+  url: "{{base_url}}/organization/categories/hr/employee-attendances/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "employee": {{employee_id}},
+        "status": "attending",
+        "start_date": "2026-12-29",
+        "end_date": "2026-12-29",
+        "shift_time": 8,
+        "reason": "Temporary Hurl CRUD record"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        var data = body.data[0];
+        test("Attendance record was created", function () {
+          expect(body.success).to.equal(true);
+          expect(data).to.have.property('id');
+          expect(String(data.employee)).to.equal(String(bru.getEnvVar('employee_id')));
+          expect(data.status).to.equal('attending');
+        });
+        if (data && data.id) bru.setEnvVar('attendance_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create the temporary Hurl attendance record and capture attendance_id from data[0].id.

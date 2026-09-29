@@ -1,0 +1,35 @@
+info:
+  name: Employee Attendance
+  type: folder
+  seq: 10
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    EmployeeAttendance CRUD workflow.
+
+    Before running, set employee_id to an existing CustomUser ID.
+    Authentication is inherited from the collection-level login.
+
+    Run order:
+    1. List attendance records filtered by employee_id.
+    2. Create an attendance record and capture attendance_id.
+    3. Retrieve attendance_id.
+    4. Partially update attendance_id with PATCH.
+    5. Delete the temporary attendance record.
+
+    Response contract:
+    - Every response contains success, message, and data.
+    - Attendance records are returned inside data arrays.
+    - Create/detail/update use data[0].
+    - Delete returns HTTP 200 with data: [].
+
+    Status choices:
+    - attending
+    - not_attending
+
+    Date validation requires end_date to be on or after start_date.
+    created_by and updated_by are assigned from the authenticated user and are read-only.
+  type: text/markdown

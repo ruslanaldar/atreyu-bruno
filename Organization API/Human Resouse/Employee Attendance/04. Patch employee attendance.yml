@@ -1,0 +1,43 @@
+info:
+  name: 04. Patch employee attendance
+  type: http
+  seq: 4
+
+http:
+  method: PATCH
+  url: "{{base_url}}/organization/categories/hr/employee-attendances/{{attendance_id}}/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "status": "not_attending",
+        "reason": "Updated by the Hurl CRUD collection"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        var data = body.data[0];
+        test("Attendance record was partially updated", function () {
+          expect(body.success).to.equal(true);
+          expect(data.status).to.equal('not_attending');
+          expect(data.reason).to.equal('Updated by the Hurl CRUD collection');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Partially update attendance_id and read the updated record from data[0].
