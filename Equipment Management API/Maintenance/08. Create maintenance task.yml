@@ -33,7 +33,7 @@ runtime:
           expect(body.success).to.equal(true);
           expect(Number(data.planned_minutes)).to.equal(45);
         });
-        if (data && data.id) bru.setEnvVar('maintenance_task_id', data.id);
+        if (data && data.id) bru.setVar('maintenance_task_id', data.id);
 
 settings:
   encodeUrl: true

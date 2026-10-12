@@ -23,7 +23,7 @@ runtime:
         var body = res.getBody();
         test("Requested maintenance plan is returned", function () {
           expect(body.success).to.equal(true);
-          expect(String(body.data[0].id)).to.equal(String(bru.getEnvVar('plan_id')));
+          expect(String(body.data[0].id)).to.equal(String(bru.getVar('plan_id')));
         });
 
 settings:

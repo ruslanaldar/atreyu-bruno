@@ -20,7 +20,7 @@ runtime:
         test("Authenticated user ID exists", function () {
           expect(body).to.have.property('id');
         });
-        if (body && body.id) bru.setEnvVar('current_user_id', body.id);
+        if (body && body.id) bru.setVar('current_user_id', body.id);
 
 settings:
   encodeUrl: true

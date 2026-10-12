@@ -33,7 +33,7 @@ runtime:
           expect(body.success).to.equal(true);
           expect(data.is_electrician).to.equal(true);
         });
-        if (data && data.id) bru.setEnvVar('team_member_id', data.id);
+        if (data && data.id) bru.setVar('team_member_id', data.id);
 
 settings:
   encodeUrl: true

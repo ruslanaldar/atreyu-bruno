@@ -39,7 +39,7 @@ runtime:
           expect(data.code_string).to.equal('HURL-MAINT-001');
           expect(data.renew_date).to.equal('2026-10-31');
         });
-        if (data && data.id) bru.setEnvVar('plan_id', data.id);
+        if (data && data.id) bru.setVar('plan_id', data.id);
 
 settings:
   encodeUrl: true
