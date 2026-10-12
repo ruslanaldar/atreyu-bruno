@@ -1,0 +1,31 @@
+info:
+  name: 10. Get completed maintenance task
+  type: http
+  seq: 10
+
+http:
+  method: GET
+  url: "{{base_url}}/basics/maintenance/tasks/{{maintenance_task_id}}/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Completion log marked the task done", function () {
+          expect(body.success).to.equal(true);
+          expect(body).to.have.nested.property('data[0].status', 'done');
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Retrieve maintenance_task_id through its URL path and confirm that log creation changed status to done.

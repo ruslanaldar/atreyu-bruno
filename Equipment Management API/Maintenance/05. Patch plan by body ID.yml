@@ -1,0 +1,41 @@
+info:
+  name: 05. Patch plan by body ID
+  type: http
+  seq: 5
+
+http:
+  method: PATCH
+  url: "{{base_url}}/basics/maintenance/plans/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "id": "{{plan_id}}",
+        "estimated_maintenance_time": 45
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Maintenance duration was patched", function () {
+          expect(body.success).to.equal(true);
+          expect(Number(body.data[0].estimated_maintenance_time)).to.equal(45);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Demonstrate the JSON-body ID option while changing the plan's estimated maintenance time to 45 minutes.

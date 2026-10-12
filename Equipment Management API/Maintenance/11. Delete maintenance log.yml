@@ -1,0 +1,31 @@
+info:
+  name: 11. Delete maintenance log
+  type: http
+  seq: 11
+
+http:
+  method: DELETE
+  url: "{{base_url}}/basics/maintenance/logs/{{maintenance_log_id}}/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Maintenance log was deleted", function () {
+          expect(body.success).to.equal(true);
+          expect(body.data).to.be.an('array').that.has.lengthOf(0);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete maintenance_log_id first because its protected task relationship prevents deleting the task while the log exists.

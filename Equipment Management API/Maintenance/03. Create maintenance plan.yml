@@ -1,0 +1,50 @@
+info:
+  name: 03. Create maintenance plan
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/maintenance/plans/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "code_string": "HURL-MAINT-001",
+        "name": "Hurl maintenance plan",
+        "interval_days": 30,
+        "last_checked_date": "2026-10-01",
+        "estimated_maintenance_time": 30,
+        "shutdown_required": false,
+        "require_electrician": true,
+        "weekend_check_allowed": true
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        var data = body.data[0];
+        test("Maintenance plan was created", function () {
+          expect(body.success).to.equal(true);
+          expect(data.code_string).to.equal('HURL-MAINT-001');
+          expect(data.renew_date).to.equal('2026-10-31');
+        });
+        if (data && data.id) bru.setEnvVar('plan_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a temporary maintenance plan and capture plan_id. POST always creates and must not include an ID.

@@ -1,0 +1,43 @@
+info:
+  name: 06. Create maintenance team
+  type: http
+  seq: 6
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/maintenance/teams/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "name": "Hurl Maintenance Team"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        test("Maintenance team was created", function () {
+          expect(body.success).to.equal(true);
+          expect(body).to.have.nested.property('data[0].id');
+        });
+        if (body.data && body.data[0] && body.data[0].id) {
+          bru.setEnvVar('team_id', body.data[0].id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create the temporary maintenance team and capture team_id.

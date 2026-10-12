@@ -1,0 +1,30 @@
+info:
+  name: 13. Delete electrician team member
+  type: http
+  seq: 13
+
+http:
+  method: DELETE
+  url: "{{base_url}}/basics/maintenance/team-members/{{team_member_id}}/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Maintenance team membership was deleted", function () {
+          expect(body.success).to.equal(true);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Remove team_member_id before deleting its maintenance team.

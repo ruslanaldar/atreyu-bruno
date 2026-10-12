@@ -1,0 +1,46 @@
+info:
+  name: 09. Create maintenance completion log
+  type: http
+  seq: 9
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/maintenance/logs/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "task": "{{maintenance_task_id}}",
+        "performed_date": "2026-10-31",
+        "actual_minutes": 40,
+        "notes": "Temporary Hurl maintenance completion log"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        test("Maintenance completion log was created", function () {
+          expect(body.success).to.equal(true);
+          expect(body).to.have.nested.property('data[0].id');
+        });
+        if (body.data && body.data[0] && body.data[0].id) {
+          bru.setEnvVar('maintenance_log_id', body.data[0].id);
+        }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Record completed maintenance and capture maintenance_log_id. Creating the log marks the task done and updates the plan's last checked date.

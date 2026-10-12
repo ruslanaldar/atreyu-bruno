@@ -1,0 +1,34 @@
+info:
+  name: Maintenance
+  type: folder
+  seq: 5
+
+request:
+  auth: inherit
+
+docs:
+  content: |
+    Maintenance API creation, completion, verification, and cleanup workflow.
+
+    Prerequisite:
+    - Apply the basics maintenance migration before running this folder.
+    - Authentication is inherited from the collection-level login.
+
+    Run requests 01-15 in order. The workflow creates and removes its own:
+    - maintenance plan
+    - maintenance team
+    - electrician team membership
+    - scheduled maintenance task
+    - completion log
+
+    Captured variables:
+    current_user_id, plan_id, team_id, team_member_id,
+    maintenance_task_id, and maintenance_log_id.
+
+    ID transport demonstrated by this workflow:
+    - Query string: retrieve and delete the plan with ?id={{plan_id}}.
+    - JSON body: patch the plan with id in the request body.
+    - URL path: retrieve/delete tasks, logs, teams, and team members.
+
+    Cleanup is child-first because logs protect tasks and tasks reference plans/teams.
+  type: text/markdown

@@ -1,0 +1,44 @@
+info:
+  name: 08. Create maintenance task
+  type: http
+  seq: 8
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/maintenance/tasks/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "equipment": "{{plan_id}}",
+        "team": "{{team_id}}",
+        "planned_date": "2026-10-31"
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        var data = body.data[0];
+        test("Maintenance task inherited the plan duration", function () {
+          expect(body.success).to.equal(true);
+          expect(Number(data.planned_minutes)).to.equal(45);
+        });
+        if (data && data.id) bru.setEnvVar('maintenance_task_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Create a scheduled task for plan_id and qualified team_id, then capture maintenance_task_id. A dedicated variable avoids collision with organization task_id.

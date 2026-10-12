@@ -1,0 +1,31 @@
+info:
+  name: 01. Get current user
+  type: http
+  seq: 1
+
+http:
+  method: GET
+  url: http://27.223.82.66:18080/auth/users/me/
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Authenticated user ID exists", function () {
+          expect(body).to.have.property('id');
+        });
+        if (body && body.id) bru.setEnvVar('current_user_id', body.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Read the authenticated user and capture current_user_id for the maintenance team membership. This root auth URL matches the collection's current server host.

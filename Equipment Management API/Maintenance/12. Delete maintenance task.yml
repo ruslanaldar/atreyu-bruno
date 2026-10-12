@@ -1,0 +1,30 @@
+info:
+  name: 12. Delete maintenance task
+  type: http
+  seq: 12
+
+http:
+  method: DELETE
+  url: "{{base_url}}/basics/maintenance/tasks/{{maintenance_task_id}}/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Maintenance task was deleted", function () {
+          expect(body.success).to.equal(true);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete maintenance_task_id after removing its completion log.

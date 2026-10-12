@@ -1,0 +1,30 @@
+info:
+  name: 14. Delete maintenance team
+  type: http
+  seq: 14
+
+http:
+  method: DELETE
+  url: "{{base_url}}/basics/maintenance/teams/{{team_id}}/"
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 200", function () {
+          expect(res.getStatus()).to.equal(200);
+        });
+
+        var body = res.getBody();
+        test("Maintenance team was deleted", function () {
+          expect(body.success).to.equal(true);
+        });
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Delete the temporary team_id after its task and membership have been removed.

@@ -1,0 +1,44 @@
+info:
+  name: 07. Add electrician team member
+  type: http
+  seq: 7
+
+http:
+  method: POST
+  url: "{{base_url}}/basics/maintenance/team-members/"
+  headers:
+    - name: Content-Type
+      value: application/json
+  body:
+    type: json
+    data: |-
+      {
+        "team": "{{team_id}}",
+        "user": {{current_user_id}},
+        "is_electrician": true
+      }
+  auth: inherit
+
+runtime:
+  scripts:
+    - type: after-response
+      code: |-
+        test("Status code is 201", function () {
+          expect(res.getStatus()).to.equal(201);
+        });
+
+        var body = res.getBody();
+        var data = body.data[0];
+        test("Qualified team member was created", function () {
+          expect(body.success).to.equal(true);
+          expect(data.is_electrician).to.equal(true);
+        });
+        if (data && data.id) bru.setEnvVar('team_member_id', data.id);
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+
+docs: Add current_user_id to team_id as an electrician, satisfying the plan's require_electrician rule.
